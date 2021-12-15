@@ -43,4 +43,4 @@ repos:
     rev: "v0.16.0"
     hooks:
       - id: terraform-docs-go
-        args: [ "markdown", "--output-file", "README.md", "./tag_vars" ]
+        args: [ "markdown", "--recursive", "--recursive-path", ".", "--output-file", "README.md", "./modules" ]
