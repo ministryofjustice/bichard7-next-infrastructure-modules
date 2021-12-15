@@ -38,7 +38,9 @@ repos:
         name: Check validity of JSON files and templates
         entry: scripts/check_json_files.sh
         language: script
-      - id: terraform-docs
-        name: Update READMEs with terraform-docs
-        entry: scripts/update_docs.sh
-        language: script
+
+  - repo: https://github.com/terraform-docs/terraform-docs
+    rev: "v0.16.0"
+    hooks:
+      - id: terraform-docs-go
+        args: [ "markdown", "--output-file", "README.md", "./tag_vars" ]
