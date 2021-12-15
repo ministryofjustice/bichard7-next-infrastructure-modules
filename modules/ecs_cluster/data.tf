@@ -68,7 +68,7 @@ data "template_file" "allow_ssm_messages_external_kms" {
 data "template_file" "allow_admin_cmk_access" {
   count = (var.create_cluster == true) ? 1 : 0
 
-  template = file("${path.module}/policies/allow_ssm_messages.json.tpl")
+  template = file("${path.module}/policies/allow_admin_cmk_access.json.tpl")
 
   vars = {
     logs_encryption_key_arn = aws_kms_key.cluster_logs_encryption_key.arn
