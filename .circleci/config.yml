@@ -43,6 +43,7 @@ commands:
             make terraform-init
             for dir in ./modules/*/;
             do
+              echo "Validating terraform in ${dir}"
               cd "${dir}"
               AWS_REGION=placeholder-region-name terraform validate
               cd ../../
