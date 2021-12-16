@@ -14,41 +14,6 @@ commands:
   notify_slack_failure:
     description: Notify slack when there is an error
     steps:
-      - slack/notify:
-          event: fail
-          branch_pattern: master
-          custom: |
-            {
-              "blocks": [
-                {
-                  "type": "section",
-                  "text": {
-                    "type": "mrkdwn",
-                    "text": "Your job *${CIRCLE_JOB}* has failed ⚠️ "
-                  }
-                },
-                {
-                  "type": "section",
-                    "text": {
-                      "type": "mrkdwn",
-                      "text": "*Project*: $CIRCLE_PROJECT_REPONAME"
-                    }
-                },
-                {
-                  "type": "actions",
-                  "elements": [
-                    {
-                      "type": "button",
-                      "text": {
-                        "type": "plain_text",
-                        "text": "View Job"
-                      },
-                      "url": "${CIRCLE_BUILD_URL}"
-                    }
-                  ]
-                }
-              ]
-            }
   install_dependencies:
     description: Install dependencies
     steps:
@@ -79,14 +44,12 @@ commands:
       - run:
           command: |
             make terraform-init
-            cd modules/ecs_cluster
-            AWS_REGION=placeholder-region-name terraform validate
-            cd ../ecs_cluster_alb
-            AWS_REGION=placeholder-region-name terraform validate
-            cd ../self_signed_certificate
-            AWS_REGION=placeholder-region-name terraform validate
-            cd ../tag_vars
-            AWS_REGION=placeholder-region-name terraform validate
+            for dir in ./modules/*/;
+            do
+              cd "${dir}"
+              AWS_REGION=placeholder-region-name terraform validate
+              cd ../../
+            done
           name: "Check: Validate tf files (terraform validate)"
   terraform_tfsec:
     description: Run TFSec on our terraform files
