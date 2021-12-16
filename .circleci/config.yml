@@ -1,0 +1,125 @@
+---
+version: 2.1
+orbs:
+  slack: circleci/slack@4.1.1
+workflows:
+  version: 2
+  test_and_deploy:
+    jobs:
+      - terraform_test:
+          version: 1.0.3
+
+commands:
+  notify_slack_failure:
+    description: Notify slack when there is an error
+    steps:
+      - slack/notify:
+          event: fail
+          branch_pattern: master
+          custom: |
+            {
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "Your job *${CIRCLE_JOB}* has failed ⚠️ "
+                  }
+                },
+                {
+                  "type": "section",
+                    "text": {
+                      "type": "mrkdwn",
+                      "text": "*Project*: $CIRCLE_PROJECT_REPONAME"
+                    }
+                },
+                {
+                  "type": "actions",
+                  "elements": [
+                    {
+                      "type": "button",
+                      "text": {
+                        "type": "plain_text",
+                        "text": "View Job"
+                      },
+                      "url": "${CIRCLE_BUILD_URL}"
+                    }
+                  ]
+                }
+              ]
+            }
+  install_dependencies:
+    description: Install dependencies
+    steps:
+      - run:
+          name: Install dependencies
+          command: |
+            apk add curl jq python3 make bash py3-pip openssl wget
+            wget https://github.com/tfsec/tfsec/releases/download/v0.39.29/tfsec-linux-amd64 -O /usr/bin/tfsec
+            chmod +x /usr/bin/tfsec
+      - run:
+          name: install aws cli
+          command: pip3 install awscli
+  terraform_fmt:
+    description: Terraform formatting (terraform fmt)
+    steps:
+      - run:
+          name: "Check: Terraform formatting (terraform fmt)"
+          command: |
+            if [ `terraform fmt --list=true -diff=true -write=false | tee format-issues | wc -c` -ne 0 ]; then
+              echo "Some terraform files need be formatted, run 'terraform fmt' to fix"
+              echo "Formatting issues:"
+              cat format-issues
+              exit 1
+            fi
+  terraform_validate:
+    description: Validate tf files (terraform validate)
+    steps:
+      - run:
+          command: |
+            make terraform-init
+            cd modules/ecs_cluster
+            AWS_REGION=placeholder-region-name terraform validate
+            cd ../ecs_cluster_alb
+            AWS_REGION=placeholder-region-name terraform validate
+            cd ../self_signed_certificate
+            AWS_REGION=placeholder-region-name terraform validate
+            cd ../tag_vars
+            AWS_REGION=placeholder-region-name terraform validate
+          name: "Check: Validate tf files (terraform validate)"
+  terraform_tfsec:
+    description: Run TFSec on our terraform files
+    steps:
+      - run:
+          command: |
+            cd terraform
+            tfsec .
+          name: "Check: Validate tf files (tfsec)"
+
+description: Terraform module testing
+executors:
+  terraform:
+    docker:
+      - entrypoint: /bin/sh
+        image: hashicorp/terraform:<< parameters.version >>
+    parameters:
+      version:
+        default: latest
+        description: Terraform docker version tag
+        type: string
+
+jobs:
+  terraform_test:
+    executor:
+      name: terraform
+      version: << parameters.version >>
+    parameters:
+      version:
+        default: latest
+        description: Terraform version
+        type: string
+    steps:
+      - checkout
+      - install_dependencies
+      - terraform_validate
+      - notify_slack_failure
