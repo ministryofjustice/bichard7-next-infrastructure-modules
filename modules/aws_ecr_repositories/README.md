@@ -39,7 +39,6 @@ No modules.
 | [aws_ecr_repository.bichard7_liberty](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_repository) | resource |
 | [aws_ecr_repository.e2etests](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_repository) | resource |
 | [aws_ecr_repository.gradle_jdk11](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_repository) | resource |
-| [aws_ecr_repository.gradle_jdk8](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_repository) | resource |
 | [aws_ecr_repository.grafana](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_repository) | resource |
 | [aws_ecr_repository.liberty](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_repository) | resource |
 | [aws_ecr_repository.liquibase](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_repository) | resource |
@@ -64,9 +63,6 @@ No modules.
 | [aws_ecr_repository.sonarqube_8_8](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_repository) | resource |
 | [aws_ecr_repository.user_migration](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_repository) | resource |
 | [aws_ecr_repository.user_service](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_repository) | resource |
-| [aws_ecr_repository.was](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_repository) | resource |
-| [aws_ecr_repository.was_baseline](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_repository) | resource |
-| [aws_ecr_repository.websphere](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_repository) | resource |
 | [aws_ecr_repository.zap_owasp_scanner](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_repository) | resource |
 | [aws_ecr_repository_policy.allow_all_node_alpine_current](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_repository_policy) | resource |
 | [aws_ecr_repository_policy.allow_all_postgres_client](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_repository_policy) | resource |
@@ -77,7 +73,6 @@ No modules.
 | [aws_ecr_repository_policy.allow_codebuild_beanconnect](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_repository_policy) | resource |
 | [aws_ecr_repository_policy.allow_codebuild_e2etests](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_repository_policy) | resource |
 | [aws_ecr_repository_policy.allow_codebuild_gradle_jdk11](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_repository_policy) | resource |
-| [aws_ecr_repository_policy.allow_codebuild_gradle_jdk8](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_repository_policy) | resource |
 | [aws_ecr_repository_policy.allow_codebuild_grafana](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_repository_policy) | resource |
 | [aws_ecr_repository_policy.allow_codebuild_liberty](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_repository_policy) | resource |
 | [aws_ecr_repository_policy.allow_codebuild_liquibase](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_repository_policy) | resource |
@@ -93,7 +88,6 @@ No modules.
 | [aws_ecr_repository_policy.allow_codebuild_s3_web_proxy](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_repository_policy) | resource |
 | [aws_ecr_repository_policy.allow_codebuild_scoutsuite](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_repository_policy) | resource |
 | [aws_ecr_repository_policy.allow_codebuild_user_service](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_repository_policy) | resource |
-| [aws_ecr_repository_policy.allow_codebuild_websphere](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_repository_policy) | resource |
 | [aws_ecr_repository_policy.allow_codebuild_zap_owasp_scanner](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_repository_policy) | resource |
 | [aws_ecr_repository_policy.allow_postgres](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_repository_policy) | resource |
 | [aws_ecr_repository_policy.allow_sonarqube](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_repository_policy) | resource |
@@ -101,14 +95,11 @@ No modules.
 | [aws_ecr_repository_policy.ecr_bichard_liberty_policy](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_repository_policy) | resource |
 | [aws_ecr_repository_policy.ecr_prometheus_cloudwatch_exporter_policy](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_repository_policy) | resource |
 | [aws_ecr_repository_policy.ecr_prometheus_policy](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_repository_policy) | resource |
-| [aws_ecr_repository_policy.ecr_was_current_policy](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_repository_policy) | resource |
-| [aws_ecr_repository_policy.ecr_was_policy](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_repository_policy) | resource |
 | [aws_ecr_repository_policy.logstash_7_10_1_staged](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_repository_policy) | resource |
 | [aws_ecr_repository_policy.prometheus_blackbox_exporter](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_repository_policy) | resource |
 | [docker_image.amazon_linux_2](https://registry.terraform.io/providers/kreuzwerker/docker/2.15.0/docs/resources/image) | resource |
 | [docker_image.bash](https://registry.terraform.io/providers/kreuzwerker/docker/2.15.0/docs/resources/image) | resource |
 | [docker_image.gradle_jdk11](https://registry.terraform.io/providers/kreuzwerker/docker/2.15.0/docs/resources/image) | resource |
-| [docker_image.gradle_jdk8](https://registry.terraform.io/providers/kreuzwerker/docker/2.15.0/docs/resources/image) | resource |
 | [docker_image.liberty](https://registry.terraform.io/providers/kreuzwerker/docker/2.15.0/docs/resources/image) | resource |
 | [docker_image.liquibase](https://registry.terraform.io/providers/kreuzwerker/docker/2.15.0/docs/resources/image) | resource |
 | [docker_image.node_alpine_current](https://registry.terraform.io/providers/kreuzwerker/docker/2.15.0/docs/resources/image) | resource |
@@ -117,12 +108,10 @@ No modules.
 | [docker_image.puppeteer](https://registry.terraform.io/providers/kreuzwerker/docker/2.15.0/docs/resources/image) | resource |
 | [docker_image.scoutsuite](https://registry.terraform.io/providers/kreuzwerker/docker/2.15.0/docs/resources/image) | resource |
 | [docker_image.sonarqube_8_8](https://registry.terraform.io/providers/kreuzwerker/docker/2.15.0/docs/resources/image) | resource |
-| [docker_image.websphere](https://registry.terraform.io/providers/kreuzwerker/docker/2.15.0/docs/resources/image) | resource |
 | [docker_image.zap_owasp_scanner](https://registry.terraform.io/providers/kreuzwerker/docker/2.15.0/docs/resources/image) | resource |
 | [null_resource.tag_and_push_amazon_linux_2](https://registry.terraform.io/providers/hashicorp/null/3.0.0/docs/resources/resource) | resource |
 | [null_resource.tag_and_push_bash](https://registry.terraform.io/providers/hashicorp/null/3.0.0/docs/resources/resource) | resource |
 | [null_resource.tag_and_push_gradle_jdk11](https://registry.terraform.io/providers/hashicorp/null/3.0.0/docs/resources/resource) | resource |
-| [null_resource.tag_and_push_gradle_jdk8](https://registry.terraform.io/providers/hashicorp/null/3.0.0/docs/resources/resource) | resource |
 | [null_resource.tag_and_push_liberty](https://registry.terraform.io/providers/hashicorp/null/3.0.0/docs/resources/resource) | resource |
 | [null_resource.tag_and_push_liquibase](https://registry.terraform.io/providers/hashicorp/null/3.0.0/docs/resources/resource) | resource |
 | [null_resource.tag_and_push_node_alpine_current](https://registry.terraform.io/providers/hashicorp/null/3.0.0/docs/resources/resource) | resource |
@@ -131,14 +120,12 @@ No modules.
 | [null_resource.tag_and_push_puppeteer](https://registry.terraform.io/providers/hashicorp/null/3.0.0/docs/resources/resource) | resource |
 | [null_resource.tag_and_push_scoutsuite](https://registry.terraform.io/providers/hashicorp/null/3.0.0/docs/resources/resource) | resource |
 | [null_resource.tag_and_push_sonarqube_8_8](https://registry.terraform.io/providers/hashicorp/null/3.0.0/docs/resources/resource) | resource |
-| [null_resource.tag_and_push_websphere](https://registry.terraform.io/providers/hashicorp/null/3.0.0/docs/resources/resource) | resource |
 | [null_resource.tag_and_push_zap_owasp_scanner](https://registry.terraform.io/providers/hashicorp/null/3.0.0/docs/resources/resource) | resource |
 | [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/data-sources/caller_identity) | data source |
 | [aws_region.current_region](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/data-sources/region) | data source |
 | [docker_registry_image.amazon_linux_2](https://registry.terraform.io/providers/kreuzwerker/docker/2.15.0/docs/data-sources/registry_image) | data source |
 | [docker_registry_image.bash](https://registry.terraform.io/providers/kreuzwerker/docker/2.15.0/docs/data-sources/registry_image) | data source |
 | [docker_registry_image.gradle_jdk11](https://registry.terraform.io/providers/kreuzwerker/docker/2.15.0/docs/data-sources/registry_image) | data source |
-| [docker_registry_image.gradle_jdk8](https://registry.terraform.io/providers/kreuzwerker/docker/2.15.0/docs/data-sources/registry_image) | data source |
 | [docker_registry_image.liberty](https://registry.terraform.io/providers/kreuzwerker/docker/2.15.0/docs/data-sources/registry_image) | data source |
 | [docker_registry_image.liquibase](https://registry.terraform.io/providers/kreuzwerker/docker/2.15.0/docs/data-sources/registry_image) | data source |
 | [docker_registry_image.node_alpine_current](https://registry.terraform.io/providers/kreuzwerker/docker/2.15.0/docs/data-sources/registry_image) | data source |
@@ -151,7 +138,6 @@ No modules.
 | [external_external.amazon_linux_2_hash](https://registry.terraform.io/providers/hashicorp/external/2.1.0/docs/data-sources/external) | data source |
 | [external_external.bash_hash](https://registry.terraform.io/providers/hashicorp/external/2.1.0/docs/data-sources/external) | data source |
 | [external_external.gradle_jdk11_hash](https://registry.terraform.io/providers/hashicorp/external/2.1.0/docs/data-sources/external) | data source |
-| [external_external.gradle_jdk8_hash](https://registry.terraform.io/providers/hashicorp/external/2.1.0/docs/data-sources/external) | data source |
 | [external_external.liberty_hash](https://registry.terraform.io/providers/hashicorp/external/2.1.0/docs/data-sources/external) | data source |
 | [external_external.liquibase_hash](https://registry.terraform.io/providers/hashicorp/external/2.1.0/docs/data-sources/external) | data source |
 | [external_external.node_alpine_current_hash](https://registry.terraform.io/providers/hashicorp/external/2.1.0/docs/data-sources/external) | data source |
@@ -184,14 +170,9 @@ No modules.
 | <a name="output_bash_repository_arn"></a> [bash\_repository\_arn](#output\_bash\_repository\_arn) | The repository arn for our bash image |
 | <a name="output_bash_repository_url"></a> [bash\_repository\_url](#output\_bash\_repository\_url) | The repository url for our bash image |
 | <a name="output_bichard_liberty_ecr"></a> [bichard\_liberty\_ecr](#output\_bichard\_liberty\_ecr) | The Bichard Liberty ecr repository details |
-| <a name="output_bichard_was_baseline_ecr"></a> [bichard\_was\_baseline\_ecr](#output\_bichard\_was\_baseline\_ecr) | The WAS baseline ecr repository details |
-| <a name="output_bichard_was_ecr"></a> [bichard\_was\_ecr](#output\_bichard\_was\_ecr) | The WAS ecr repository details |
 | <a name="output_gradle_jdk11_docker_image"></a> [gradle\_jdk11\_docker\_image](#output\_gradle\_jdk11\_docker\_image) | The image hash for our ecs deployment |
 | <a name="output_gradle_jdk11_repository_arn"></a> [gradle\_jdk11\_repository\_arn](#output\_gradle\_jdk11\_repository\_arn) | The repository arn for our gradle\_jdk11 image |
 | <a name="output_gradle_jdk11_repository_url"></a> [gradle\_jdk11\_repository\_url](#output\_gradle\_jdk11\_repository\_url) | The repository url for our gradle\_jdk11 image |
-| <a name="output_gradle_jdk8_docker_image"></a> [gradle\_jdk8\_docker\_image](#output\_gradle\_jdk8\_docker\_image) | The image hash for our ecs deployment |
-| <a name="output_gradle_jdk8_repository_arn"></a> [gradle\_jdk8\_repository\_arn](#output\_gradle\_jdk8\_repository\_arn) | The repository arn for our gradle\_jdk8 image |
-| <a name="output_gradle_jdk8_repository_url"></a> [gradle\_jdk8\_repository\_url](#output\_gradle\_jdk8\_repository\_url) | The repository url for our gradle\_jdk8 image |
 | <a name="output_grafana_repository_arn"></a> [grafana\_repository\_arn](#output\_grafana\_repository\_arn) | The arn of our grafana repository |
 | <a name="output_liquibase_docker_image"></a> [liquibase\_docker\_image](#output\_liquibase\_docker\_image) | The image hash for liquibase |
 | <a name="output_liquibase_repository_arn"></a> [liquibase\_repository\_arn](#output\_liquibase\_repository\_arn) | The repository arn for our liquibase image |
@@ -222,9 +203,6 @@ No modules.
 | <a name="output_sonarqube_8_8_repository_arn"></a> [sonarqube\_8\_8\_repository\_arn](#output\_sonarqube\_8\_8\_repository\_arn) | The repository arn for our sonarqube image |
 | <a name="output_user_service_repository"></a> [user\_service\_repository](#output\_user\_service\_repository) | The outputs of the user service ecr repository |
 | <a name="output_user_service_repository_arn"></a> [user\_service\_repository\_arn](#output\_user\_service\_repository\_arn) | The repository arn for our user service image |
-| <a name="output_websphere_docker_image"></a> [websphere\_docker\_image](#output\_websphere\_docker\_image) | The image hash for our ecs deployment |
-| <a name="output_websphere_repository_arn"></a> [websphere\_repository\_arn](#output\_websphere\_repository\_arn) | The repository arn for our websphere image |
-| <a name="output_websphere_repository_url"></a> [websphere\_repository\_url](#output\_websphere\_repository\_url) | The repository url for our websphere image |
 | <a name="output_zap_owasp_scanner_docker_image"></a> [zap\_owasp\_scanner\_docker\_image](#output\_zap\_owasp\_scanner\_docker\_image) | The image hash for our ecs deployment |
 | <a name="output_zap_owasp_scanner_repository_arn"></a> [zap\_owasp\_scanner\_repository\_arn](#output\_zap\_owasp\_scanner\_repository\_arn) | The repository arn for our zap owasp scanner image |
 | <a name="output_zap_owasp_scanner_repository_url"></a> [zap\_owasp\_scanner\_repository\_url](#output\_zap\_owasp\_scanner\_repository\_url) | The repository url for our zap owasp scanner image |

@@ -1,33 +1,3 @@
-output "websphere_repository_url" {
-  description = "The repository url for our websphere image"
-  value       = aws_ecr_repository.websphere.repository_url
-}
-
-output "websphere_repository_arn" {
-  description = "The repository arn for our websphere image"
-  value       = aws_ecr_repository.websphere.arn
-}
-
-output "websphere_docker_image" {
-  description = "The image hash for our ecs deployment"
-  value       = "${aws_ecr_repository.websphere.repository_url}@${local.websphere.sha256_digest}"
-}
-
-output "gradle_jdk8_repository_url" {
-  description = "The repository url for our gradle_jdk8 image"
-  value       = aws_ecr_repository.gradle_jdk8.repository_url
-}
-
-output "gradle_jdk8_repository_arn" {
-  description = "The repository arn for our gradle_jdk8 image"
-  value       = aws_ecr_repository.gradle_jdk8.arn
-}
-
-output "gradle_jdk8_docker_image" {
-  description = "The image hash for our ecs deployment"
-  value       = "${aws_ecr_repository.gradle_jdk8.repository_url}@${data.docker_registry_image.gradle_jdk8.sha256_digest}"
-}
-
 output "gradle_jdk11_repository_url" {
   description = "The repository url for our gradle_jdk11 image"
   value       = aws_ecr_repository.gradle_jdk11.repository_url
@@ -251,16 +221,6 @@ output "bash_repository_arn" {
 output "bichard_liberty_ecr" {
   description = "The Bichard Liberty ecr repository details"
   value       = aws_ecr_repository.bichard7_liberty
-}
-
-output "bichard_was_ecr" {
-  description = "The WAS ecr repository details"
-  value       = aws_ecr_repository.was
-}
-
-output "bichard_was_baseline_ecr" {
-  description = "The WAS baseline ecr repository details"
-  value       = aws_ecr_repository.was_baseline
 }
 
 output "s3_web_proxy_ecr" {
