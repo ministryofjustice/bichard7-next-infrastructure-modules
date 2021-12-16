@@ -1,4 +1,5 @@
 ---
+
 version: 2.1
 orbs:
   slack: circleci/slack@4.1.1
@@ -122,4 +123,4 @@ jobs:
       - checkout
       - install_dependencies
       - terraform_validate
-      - notify_slack_failure
+...
