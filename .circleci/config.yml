@@ -11,9 +11,6 @@ workflows:
           version: 1.0.3
 
 commands:
-  notify_slack_failure:
-    description: Notify slack when there is an error
-    steps:
   install_dependencies:
     description: Install dependencies
     steps:
