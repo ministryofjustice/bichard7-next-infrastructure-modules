@@ -14,3 +14,8 @@ resource "aws_ecr_repository_policy" "allow_codebuild_grafana" {
   policy     = data.template_file.shared_docker_image_policy.rendered
   repository = aws_ecr_repository.grafana.name
 }
+
+resource "aws_ecr_lifecycle_policy" "grafana" {
+  policy     = file("${path.module}/policies/application_image_ecr_lifecycle_policy.json")
+  repository = aws_ecr_repository.grafana.name
+}

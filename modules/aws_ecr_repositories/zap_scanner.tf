@@ -49,3 +49,8 @@ resource "null_resource" "tag_and_push_zap_owasp_scanner" {
   }
   depends_on = [docker_image.zap_owasp_scanner]
 }
+
+resource "aws_ecr_lifecycle_policy" "zap_owasp_scanner" {
+  policy     = file("${path.module}/policies/builder_image_ecr_lifecycle_policy.json")
+  repository = aws_ecr_repository.zap_owasp_scanner.name
+}

@@ -49,3 +49,8 @@ resource "null_resource" "tag_and_push_gradle_jdk11" {
   }
   depends_on = [docker_image.gradle_jdk11]
 }
+
+resource "aws_ecr_lifecycle_policy" "gradle_jdk11" {
+  policy     = file("${path.module}/policies/builder_image_ecr_lifecycle_policy.json")
+  repository = aws_ecr_repository.gradle_jdk11.name
+}

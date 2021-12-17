@@ -49,3 +49,8 @@ resource "null_resource" "tag_and_push_liquibase" {
   }
   depends_on = [docker_image.liquibase]
 }
+
+resource "aws_ecr_lifecycle_policy" "liquibase" {
+  policy     = file("${path.module}/policies/builder_image_ecr_lifecycle_policy.json")
+  repository = aws_ecr_repository.liquibase.name
+}

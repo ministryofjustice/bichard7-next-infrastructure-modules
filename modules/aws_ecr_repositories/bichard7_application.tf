@@ -14,3 +14,8 @@ resource "aws_ecr_repository_policy" "ecr_bichard_liberty_policy" {
   policy     = data.template_file.shared_docker_image_policy.rendered
   repository = aws_ecr_repository.bichard7_liberty.name
 }
+
+resource "aws_ecr_lifecycle_policy" "bichard7_liberty" {
+  policy     = file("${path.module}/policies/application_image_ecr_lifecycle_policy.json")
+  repository = aws_ecr_repository.bichard7_liberty.name
+}
