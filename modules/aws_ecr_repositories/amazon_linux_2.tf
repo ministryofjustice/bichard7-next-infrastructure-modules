@@ -24,8 +24,13 @@ resource "aws_ecr_repository" "amazon_linux_2" {
   tags = var.tags
 }
 
-resource "aws_ecr_repository_policy" "allow_codebuild_amazon_linux_focal" {
+resource "aws_ecr_repository_policy" "allow_codebuild_amazon_linux" {
   policy     = file("${path.module}/templates/codebuild_image_policy.json")
+  repository = aws_ecr_repository.amazon_linux_2.name
+}
+
+resource "aws_ecr_lifecycle_policy" "amazon_linux_2" {
+  policy     = file("${path.module}/policies/builder_image_ecr_lifecycle_policy.json")
   repository = aws_ecr_repository.amazon_linux_2.name
 }
 
@@ -65,5 +70,10 @@ resource "aws_ecr_repository" "amazon_linux_2_base" {
 
 resource "aws_ecr_repository_policy" "allow_codebuild_amazon_linux_2_base" {
   policy     = file("${path.module}/templates/codebuild_image_policy.json")
+  repository = aws_ecr_repository.amazon_linux_2_base.name
+}
+
+resource "aws_ecr_lifecycle_policy" "amazon_linux_2_base" {
+  policy     = file("${path.module}/policies/builder_image_ecr_lifecycle_policy.json")
   repository = aws_ecr_repository.amazon_linux_2_base.name
 }

@@ -68,16 +68,6 @@ output "amazon_linux_2_docker_image" {
   value       = "${aws_ecr_repository.amazon_linux_2.repository_url}@${data.docker_registry_image.amazon_linux_2.sha256_digest}"
 }
 
-output "postgres_12_docker_image" {
-  description = "The image hash for our sonar postgres image"
-  value       = "${aws_ecr_repository.postgres_12.repository_url}@${data.docker_registry_image.postgres_12.sha256_digest}"
-}
-
-output "postgres_12_repository_arn" {
-  description = "The repository arn for our postgres image"
-  value       = aws_ecr_repository.postgres_12.arn
-}
-
 output "sonarqube_8_8_docker_image" {
   description = "The image hash for our sonarqube"
   value       = "${aws_ecr_repository.sonarqube_8_8.repository_url}@${data.docker_registry_image.sonarqube_8_8.sha256_digest}"
@@ -201,21 +191,6 @@ output "prometheus_cloudwatch_exporter_repository_url" {
 output "prometheus_cloudwatch_exporter_repository_arn" {
   description = "The repository arn for our prometheus cloudwatch exporter image"
   value       = aws_ecr_repository.prometheus_cloudwatch_exporter.arn
-}
-
-output "bash_docker_image" {
-  description = "The image hash for our ecs deployment"
-  value       = "${aws_ecr_repository.bash.repository_url}@${data.docker_registry_image.bash.sha256_digest}"
-}
-
-output "bash_repository_url" {
-  description = "The repository url for our bash image"
-  value       = aws_ecr_repository.bash.repository_url
-}
-
-output "bash_repository_arn" {
-  description = "The repository arn for our bash image"
-  value       = aws_ecr_repository.bash.arn
 }
 
 output "bichard_liberty_ecr" {

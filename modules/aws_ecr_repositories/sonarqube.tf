@@ -50,3 +50,9 @@ resource "null_resource" "tag_and_push_sonarqube_8_8" {
   }
   depends_on = [docker_image.sonarqube_8_8]
 }
+
+
+resource "aws_ecr_lifecycle_policy" "sonarqube_8_8" {
+  policy     = file("${path.module}/policies/builder_image_ecr_lifecycle_policy.json")
+  repository = aws_ecr_repository.sonarqube_8_8.name
+}

@@ -49,3 +49,8 @@ resource "null_resource" "tag_and_push_puppeteer" {
   }
   depends_on = [docker_image.puppeteer]
 }
+
+resource "aws_ecr_lifecycle_policy" "puppeteer" {
+  policy     = file("${path.module}/policies/application_image_ecr_lifecycle_policy.json")
+  repository = aws_ecr_repository.puppeteer.name
+}

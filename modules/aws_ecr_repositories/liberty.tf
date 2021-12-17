@@ -49,3 +49,8 @@ resource "null_resource" "tag_and_push_liberty" {
   }
   depends_on = [docker_image.liberty]
 }
+
+resource "aws_ecr_lifecycle_policy" "liberty" {
+  policy     = file("${path.module}/policies/builder_image_ecr_lifecycle_policy.json")
+  repository = aws_ecr_repository.liberty.name
+}
