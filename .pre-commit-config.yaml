@@ -39,8 +39,9 @@ repos:
         entry: scripts/check_json_files.sh
         language: script
 
-  - repo: https://github.com/terraform-docs/terraform-docs
-    rev: "v0.16.0"
-    hooks:
-      - id: terraform-docs-go
+      - id: terraform-docs
+        name: terraform-docs
+        language: docker_image
+        entry: quay.io/terraform-docs/terraform-docs:0.16.0
         args: [ "markdown", "--recursive", "--recursive-path", ".", "--output-file", "README.md", "./modules" ]
+        pass_filenames: false
