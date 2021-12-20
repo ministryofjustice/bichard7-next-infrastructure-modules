@@ -8,8 +8,3 @@ variable "buckets" {
   type        = list(string)
   default     = []
 }
-
-variable "ebs_encryption_key" {
-  description = "The shared key arn that we can use to share amis"
-  type        = string
-}

@@ -60,7 +60,6 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_buckets"></a> [buckets](#input\_buckets) | A list of shared buckets that the parent allows the children to access | `list(string)` | `[]` | no |
-| <a name="input_ebs_encryption_key"></a> [ebs\_encryption\_key](#input\_ebs\_encryption\_key) | The shared key arn that we can use to share amis | `string` | n/a | yes |
 | <a name="input_tags"></a> [tags](#input\_tags) | A list of AWS tags | `map(string)` | n/a | yes |
 
 ## Outputs
