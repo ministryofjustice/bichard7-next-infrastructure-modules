@@ -332,8 +332,25 @@ data "aws_cloudwatch_log_group" "blackbox_exporter" {
 }
 
 data "template_file" "allow_cmk_admin_access" {
-  template = "${path.module}/policies/allow_cmk_admin_access.json.tpl"
+  template = file("${path.module}/policies/allow_cmk_admin_access.json.tpl")
+
   vars = {
     kms_key_arn = aws_kms_key.cluster_logs_encryption_key.arn
+  }
+}
+
+data "template_file" "allow_sns_events_publish" {
+  template = file("${path.module}/policies/allow_sns_events_publish.json.tpl")
+
+  vars = {
+    sns_topic_arn = aws_sns_topic.alert_notifications.arn
+  }
+}
+
+data "template_file" "allow_notifications_kms_access" {
+  template = file("${path.module}/policies/allow_notifications_kms_access.json.tpl")
+
+  vars = {
+    kms_key_arn = aws_kms_key.alert_notifications_key.arn
   }
 }

@@ -14,13 +14,15 @@ repos:
       - id: mixed-line-ending
 
   - repo: git://github.com/antonbabenko/pre-commit-terraform
-    rev: v1.45.0
+    rev: v1.62.1
     hooks:
       - id: terraform_fmt
       - id: terraform_tflint
         args:
           - "--args=--module"
           - "--args=--force"
+          - "--args=--config=__GIT_WORKING_DIR__/.tflint.hcl"
+          - "--args=--disable-rule=aws_lambda_function_deprecated_runtime"
       - id: terraform_validate
       - id: terraform_tfsec
         args:

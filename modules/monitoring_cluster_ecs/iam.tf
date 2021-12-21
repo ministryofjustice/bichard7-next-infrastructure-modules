@@ -1,19 +1,6 @@
 resource "aws_iam_role" "prometheus_task_role" {
   name               = "${var.name}-Prometheus-Task"
-  assume_role_policy = <<-EOF
-    {
-      "Version": "2008-10-17",
-      "Statement": [
-        {
-          "Effect": "Allow",
-          "Principal": {
-            "Service": "ecs-tasks.amazonaws.com"
-          },
-          "Action": "sts:AssumeRole"
-        }
-      ]
-    }
-  EOF
+  assume_role_policy = file("${path.module}/policies/ecs_task_role.json")
 }
 
 resource "aws_iam_role_policy_attachment" "attach_ecs_code_deploy_role_for_ecs" {
@@ -53,19 +40,7 @@ resource "aws_iam_role_policy_attachment" "prometheus_allow_ecr_attachment" {
 
 resource "aws_iam_policy" "prometheus_allow_sns_publish" {
   name   = "PrometheusAllowSNSPublish-${var.name}"
-  policy = <<-EOF
-  {
-    "Version": "2012-10-17",
-    "Statement": [
-      {
-        "Sid": "AllowAwsEventsPublish",
-        "Effect": "Allow",
-        "Action": "SNS:Publish",
-        "Resource": "${aws_sns_topic.alert_notifications.arn}"
-      }
-    ]
-  }
-  EOF
+  policy = data.template_file.allow_sns_events_publish.rendered
 }
 
 resource "aws_iam_role_policy_attachment" "prometheus_allow_sns_publish" {
@@ -82,30 +57,6 @@ resource "aws_iam_role_policy" "allow_ssm_messages" {
 }
 
 resource "aws_iam_role_policy" "allow_prometheus_notifications_kms_access" {
-  policy = <<-EOF
-  {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "kms:DescribeKey",
-                "kms:GenerateDataKey",
-                "kms:Encrypt",
-                "kms:Decrypt",
-                "kms:*Grant"
-            ],
-            "Resource": "${aws_kms_key.alert_notifications_key.arn}"
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "kms:List*"
-            ],
-            "Resource": "*"
-        }
-    ]
-  }
-  EOF
+  policy = data.template_file.allow_notifications_kms_access.rendered
   role   = aws_iam_role.prometheus_task_role.id
 }

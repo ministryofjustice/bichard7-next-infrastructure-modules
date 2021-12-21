@@ -26,4 +26,6 @@ locals {
   grafana_data_path = "/grafana"
 
   pnc_port = (var.tags["is-production"] == "true") ? 102 : 30001
+
+  provision_alerts = (lower(lookup(var.tags, "workspace", "unknown")) == "production") ? 1 : 0
 }

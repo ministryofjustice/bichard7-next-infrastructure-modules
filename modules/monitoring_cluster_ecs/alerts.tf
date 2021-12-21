@@ -43,7 +43,7 @@ data "archive_file" "alert_archive" {
 }
 
 resource "aws_lambda_function" "prometheus_alerts" {
-  count = (lower(var.tags["workspace"]) == "production") ? 1 : 0
+  count = local.provision_alerts
 
   function_name = "${var.name}-prometheus-alert"
   description   = "Allow prometheus payload to be parsed from SNS"
@@ -65,7 +65,7 @@ resource "aws_lambda_function" "prometheus_alerts" {
 }
 
 resource "aws_lambda_permission" "prometheus_alerts" {
-  count = (lower(var.tags["workspace"]) == "production") ? 1 : 0
+  count = local.provision_alerts
 
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.prometheus_alerts[count.index].function_name
@@ -74,7 +74,7 @@ resource "aws_lambda_permission" "prometheus_alerts" {
 }
 
 resource "aws_sns_topic_subscription" "prometheus_alerts_subscription" {
-  count     = (lower(var.tags["workspace"]) == "production") ? 1 : 0
+  count     = local.provision_alerts
   endpoint  = aws_lambda_function.prometheus_alerts[count.index].arn
   protocol  = "lambda"
   topic_arn = aws_sns_topic.alert_notifications.arn
