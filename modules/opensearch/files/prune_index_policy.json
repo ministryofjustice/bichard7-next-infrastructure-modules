@@ -1,0 +1,48 @@
+{
+  "policy": {
+    "description": "Changes replica count and deletes.",
+    "schema_version": 1,
+    "default_state": "current",
+    "states": [
+      {
+        "name": "current",
+        "actions": [],
+        "transitions": [
+          {
+            "state_name": "old",
+            "conditions": {
+              "min_index_age": "7d"
+            }
+          }
+        ]
+      },
+      {
+        "name": "old",
+        "actions": [
+          {
+            "replica_count": {
+              "number_of_replicas": 0
+            }
+          }
+        ],
+        "transitions": [
+          {
+            "state_name": "delete",
+            "conditions": {
+              "min_index_age": "${deletion_window}"
+            }
+          }
+        ]
+      },
+      {
+        "name": "delete",
+        "actions": [
+          {
+            "delete": {}
+          }
+        ],
+        "transitions": []
+      }
+    ]
+  }
+}
