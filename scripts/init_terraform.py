@@ -14,11 +14,11 @@ examples:
 
 Init an entire directory tree
 
-python scripts/init_terraform.py terraform_modules
+python scripts/init_terraform.py modules
 
 Init an entire directory tree with backend=false
 
-python scripts/init_terraform.py terraform_modules -skip_backend=True
+python scripts/init_terraform.py modules -skip_backend=True
 
 Init a single directory
 
