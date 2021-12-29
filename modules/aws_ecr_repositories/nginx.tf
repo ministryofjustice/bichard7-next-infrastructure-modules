@@ -53,7 +53,7 @@ resource "aws_ecr_repository_policy" "allow_codebuild_nginx_scan_portal" {
 }
 
 resource "aws_ecr_lifecycle_policy" "nginx_scan_portal" {
-  policy     = file("${path.module}/policies/application_image_ecr_lifecycle_policy.json")
+  policy     = file("${path.module}/policies/helper_image_ecr_lifecycle_policy.json")
   repository = aws_ecr_repository.nginx_scan_portal.name
 }
 
