@@ -2,11 +2,11 @@
   "rules": [
     {
       "rulePriority": 1,
-      "description": "Keep last 2 images only",
+      "description": "Keep last 5 images only",
       "selection": {
         "tagStatus": "any",
         "countType": "imageCountMoreThan",
-        "countNumber": 2
+        "countNumber": 5
       },
       "action": {
         "type": "expire"
