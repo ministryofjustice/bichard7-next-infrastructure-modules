@@ -9,7 +9,7 @@ resource "aws_cloudwatch_metric_alarm" "cpu_usage" {
   statistic           = "Average"
   threshold           = 70
   metric_name         = "cpu_usage_nice"
-  namespace           = "CWAgent"
+  namespace           = "${var.name}/smtp"
   treat_missing_data  = "ignore"
 
   alarm_actions = [

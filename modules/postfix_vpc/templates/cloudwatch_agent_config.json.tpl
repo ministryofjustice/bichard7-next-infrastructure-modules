@@ -4,6 +4,7 @@
     "logfile": "/opt/aws/amazon-cloudwatch-agent/logs/amazon-cloudwatch-agent.log"
   },
   "metrics": {
+    "namespace": "${service_name}/smtp",
     "metrics_collected": {
       "cpu": {
         "resources": [
@@ -111,11 +112,11 @@
           "running",
           "sleeping",
           "dead"
-        ]
-      },
-      "metrics_collection_interval": 60,
-      "append_dimensions": {
-        "InstanceId": "$${aws:InstanceId}"
+        ],
+        "metrics_collection_interval": 60,
+        "append_dimensions": {
+          "InstanceId": "$${aws:InstanceId}"
+        }
       }
     }
   },
