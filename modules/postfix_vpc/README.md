@@ -37,6 +37,7 @@ Configuration management is done via an ansible playbook.
 | Name | Type |
 |------|------|
 | [aws_autoscaling_group.bastion](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/autoscaling_group) | resource |
+| [aws_cloudwatch_metric_alarm.cpu_usage](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/cloudwatch_metric_alarm) | resource |
 | [aws_eip.nat_gateway_static_ip](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/eip) | resource |
 | [aws_eip.postfix_static_ip](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/eip) | resource |
 | [aws_iam_instance_profile.bastion_instance_profile](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/iam_instance_profile) | resource |
@@ -127,6 +128,7 @@ Configuration management is done via an ansible playbook.
 | <a name="input_application_cidr"></a> [application\_cidr](#input\_application\_cidr) | The application cidr block | `list(string)` | n/a | yes |
 | <a name="input_aws_logs_bucket"></a> [aws\_logs\_bucket](#input\_aws\_logs\_bucket) | The bucket we use to log all of our bucket actions | `string` | n/a | yes |
 | <a name="input_bastion_count"></a> [bastion\_count](#input\_bastion\_count) | How many bastion instances do we want | `number` | `1` | no |
+| <a name="input_cloudwatch_notifications_arn"></a> [cloudwatch\_notifications\_arn](#input\_cloudwatch\_notifications\_arn) | The arn of our cloudwatch sns notifications arn | `string` | n/a | yes |
 | <a name="input_ingress_cidr_blocks"></a> [ingress\_cidr\_blocks](#input\_ingress\_cidr\_blocks) | A list of ingress cidr blocks to route to our private cidrs | `list(string)` | n/a | yes |
 | <a name="input_name"></a> [name](#input\_name) | The name from our label module | `string` | n/a | yes |
 | <a name="input_public_zone_id"></a> [public\_zone\_id](#input\_public\_zone\_id) | The public zone we use to create records on | `string` | n/a | yes |

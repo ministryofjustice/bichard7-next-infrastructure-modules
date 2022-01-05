@@ -39,3 +39,8 @@ variable "application_cidr" {
   description = "The application cidr block"
   type        = list(string)
 }
+
+variable "cloudwatch_notifications_arn" {
+  description = "The arn of our cloudwatch sns notifications arn"
+  type        = string
+}
