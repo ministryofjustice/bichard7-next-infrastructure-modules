@@ -134,3 +134,91 @@ resource "aws_cloudwatch_metric_alarm" "percentage_disk_used" {
 
   tags = var.tags
 }
+
+resource "aws_cloudwatch_metric_alarm" "instance_system_errors" {
+  count = length(module.postfix_vpc.private_subnets)
+
+  alarm_name          = "postfix${count.index + 1}-system-status-check-failed"
+  alarm_description   = "${aws_instance.postfix[count.index].tags["Name"]} is failing system status checks"
+  comparison_operator = "GreaterThanThreshold"
+  evaluation_periods  = 5
+  period              = 60
+  statistic           = "Average"
+  threshold           = 1
+  metric_name         = "StatusCheckFailed_System"
+  namespace           = "AWS/EC2"
+  treat_missing_data  = "ignore"
+
+  alarm_actions = [
+    var.cloudwatch_notifications_arn
+  ]
+  ok_actions = [
+    var.cloudwatch_notifications_arn
+  ]
+  actions_enabled = true
+
+  dimensions = {
+    InstanceId = aws_instance.postfix[count.index].id
+  }
+
+  tags = var.tags
+}
+
+resource "aws_cloudwatch_metric_alarm" "instance_errors" {
+  count = length(module.postfix_vpc.private_subnets)
+
+  alarm_name          = "postfix${count.index + 1}-instance-status-check-failed"
+  alarm_description   = "${aws_instance.postfix[count.index].tags["Name"]} is failing instance status checks"
+  comparison_operator = "GreaterThanThreshold"
+  evaluation_periods  = 5
+  period              = 60
+  statistic           = "Average"
+  threshold           = 1
+  metric_name         = "StatusCheckFailed_Instance"
+  namespace           = "AWS/EC2"
+  treat_missing_data  = "ignore"
+
+  alarm_actions = [
+    var.cloudwatch_notifications_arn
+  ]
+  ok_actions = [
+    var.cloudwatch_notifications_arn
+  ]
+  actions_enabled = true
+
+  dimensions = {
+    InstanceId = aws_instance.postfix[count.index].id
+  }
+
+  tags = var.tags
+}
+
+resource "aws_cloudwatch_metric_alarm" "healthy_instances" {
+  count = length(module.postfix_vpc.private_subnets)
+
+  alarm_name          = "postfix-nlb-healthy-instances"
+  alarm_description   = "${aws_lb_target_group.postfix_smtps.name} is reporting less than required instances"
+  comparison_operator = "LessThanThreshold"
+  evaluation_periods  = 5
+  period              = 60
+  statistic           = "Average"
+  threshold           = 2
+  metric_name         = "HealthyHostCount"
+  namespace           = "AWS/NetworkELB"
+  treat_missing_data  = "ignore"
+
+  alarm_actions = [
+    var.cloudwatch_notifications_arn
+  ]
+  ok_actions = [
+    var.cloudwatch_notifications_arn
+  ]
+  actions_enabled = true
+
+  dimensions = {
+    TargetGroup  = aws_lb_target_group.postfix_smtps.arn_suffix
+    LoadBalancer = aws_lb.postfix_nlb.arn_suffix
+  }
+
+  tags = var.tags
+}
