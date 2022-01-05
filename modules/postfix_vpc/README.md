@@ -38,6 +38,7 @@ Configuration management is done via an ansible playbook.
 |------|------|
 | [aws_autoscaling_group.bastion](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/autoscaling_group) | resource |
 | [aws_cloudwatch_metric_alarm.cpu_usage](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/cloudwatch_metric_alarm) | resource |
+| [aws_cloudwatch_metric_alarm.memory_usage](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/cloudwatch_metric_alarm) | resource |
 | [aws_eip.nat_gateway_static_ip](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/eip) | resource |
 | [aws_eip.postfix_static_ip](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/eip) | resource |
 | [aws_iam_instance_profile.bastion_instance_profile](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/iam_instance_profile) | resource |
