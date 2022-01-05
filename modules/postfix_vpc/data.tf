@@ -133,5 +133,6 @@ data "template_file" "bastion_cloudwatch_agent" {
 
   vars = {
     service_name = var.name
+    environment  = var.tags["workspace"]
   }
 }
