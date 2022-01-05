@@ -5,6 +5,9 @@
   },
   "metrics": {
     "metrics_collected": {
+      "append_dimensions": {
+        "InstanceId": "${aws:InstanceId}"
+      },
       "cpu": {
         "resources": [
           "*"
@@ -22,11 +25,7 @@
           "cpu_usage_guest"
         ],
         "totalcpu": false,
-        "metrics_collection_interval": 10,
-        "append_dimensions": {
-          "customized_dimension_key_1": "customized_dimension_value_1",
-          "customized_dimension_key_2": "customized_dimension_value_2"
-        }
+        "metrics_collection_interval": 10
       },
       "disk": {
         "resources": [
@@ -46,11 +45,7 @@
           "sysfs",
           "devtmpfs"
         ],
-        "metrics_collection_interval": 60,
-        "append_dimensions": {
-          "customized_dimension_key_3": "customized_dimension_value_3",
-          "customized_dimension_key_4": "customized_dimension_value_4"
-        }
+        "metrics_collection_interval": 60
       },
       "diskio": {
         "resources": [
@@ -107,63 +102,44 @@
         ]
       }
     },
-    "append_dimensions": {
-      "ImageId": "$${aws:ImageId}",
-      "InstanceId": "$${aws:InstanceId}",
-      "InstanceType": "$${aws:InstanceType}",
-      "AutoScalingGroupName": "$${aws:AutoScalingGroupName}"
-    },
-    "aggregation_dimensions": [
-      [
-        "ImageId"
-      ],
-      [
-        "InstanceId",
-        "InstanceType"
-      ],
-      [
-        "d1"
-      ],
-      []
-    ]
-  },
-  "logs": {
-    "logs_collected": {
-      "files": {
-        "collect_list": [
-          {
-            "file_path": "/opt/aws/amazon-cloudwatch-agent/logs/amazon-cloudwatch-agent.log",
-            "log_group_name": "/${service_name}/CloudWatchAgentLog/",
-            "log_stream_name": "{instance_id}_{hostname}",
-            "timezone": "Local"
-          },
-          {
-            "file_path": "/var/log/messages",
-            "log_group_name": "/${service_name}/var/log/messages",
-            "log_stream_name": "{instance_id}_{hostname}",
-            "timezone": "Local"
-          },
-          {
-            "file_path": "/var/log/secure",
-            "log_group_name": "/${service_name}/var/log/secure",
-            "log_stream_name": "{instance_id}_{hostname}",
-            "timezone": "Local"
-          },
-          {
-            "file_path": "/var/log/yum.log",
-            "log_group_name": "/${service_name}/var/log/yum",
-            "log_stream_name": "{instance_id}_{hostname}",
-            "timezone": "Local"
-          },
-          {
-            "file_path": "/var/log/maillog",
-            "log_group_name": "/${service_name}/var/log/maillog",
-            "log_stream_name": "{instance_id}_{hostname}",
-            "timezone": "Local"
-          }
-        ]
-      }
-    },
-    "log_stream_name": "/ec2/catchall"
+    "logs": {
+      "logs_collected": {
+        "files": {
+          "collect_list": [
+            {
+              "file_path": "/opt/aws/amazon-cloudwatch-agent/logs/amazon-cloudwatch-agent.log",
+              "log_group_name": "/${service_name}/CloudWatchAgentLog/",
+              "log_stream_name": "{instance_id}_{hostname}",
+              "timezone": "Local"
+            },
+            {
+              "file_path": "/var/log/messages",
+              "log_group_name": "/${service_name}/var/log/messages",
+              "log_stream_name": "{instance_id}_{hostname}",
+              "timezone": "Local"
+            },
+            {
+              "file_path": "/var/log/secure",
+              "log_group_name": "/${service_name}/var/log/secure",
+              "log_stream_name": "{instance_id}_{hostname}",
+              "timezone": "Local"
+            },
+            {
+              "file_path": "/var/log/yum.log",
+              "log_group_name": "/${service_name}/var/log/yum",
+              "log_stream_name": "{instance_id}_{hostname}",
+              "timezone": "Local"
+            },
+            {
+              "file_path": "/var/log/maillog",
+              "log_group_name": "/${service_name}/var/log/maillog",
+              "log_stream_name": "{instance_id}_{hostname}",
+              "timezone": "Local"
+            }
+          ]
+        }
+      },
+      "log_stream_name": "/ec2/catchall"
+    }
   }
 }
