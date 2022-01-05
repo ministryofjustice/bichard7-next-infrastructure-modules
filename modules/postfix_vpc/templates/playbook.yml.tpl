@@ -22,27 +22,6 @@
         "${postfix_ip_2}": mail2
         "${postfix_ip_3}": mail3
     - postfix_fqdn: "{{postfix_hosts[ansible_default_ipv4.address]}}.${fqdn}"
-    - lp_logrotate_confd:
-      - path: maillog
-        conf: |
-          /var/log/maillog {
-            daily
-            rotate 3
-            size 10M
-            compress
-            delaycompress
-            missingok
-          }
-      - path: amazon
-        conf: |
-          /var/log/amazon {
-            daily
-            rotate 3
-            size 10M
-            compress
-            delaycompress
-            missingok
-          }
   connection: local
   become: true
   pre_tasks:
@@ -276,10 +255,18 @@
         enabled: true
         state: started
     - blockinfile:
-      path: "/etc/logrotate.d/{{ item.path }}"
-        block: "{{ item.conf }}"
+      path: "/etc/logrotate.d/maillog"
+        block: |
+          /var/log/maillog {
+            daily
+            rotate 3
+            size 10M
+            compress
+            missingok
+          }
         create: true
-        loop: "{{ lp_logrotate_confd }}"
+        loop:
+          - maillog
     - name: Start nginx
       ansible.builtin.systemd:
         name: nginx
