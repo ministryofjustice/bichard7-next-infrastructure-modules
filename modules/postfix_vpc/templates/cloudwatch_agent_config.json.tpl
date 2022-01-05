@@ -6,7 +6,7 @@
   "metrics": {
     "metrics_collected": {
       "append_dimensions": {
-        "InstanceId": "${aws:InstanceId}"
+        "InstanceId": "$${aws:InstanceId}"
       },
       "cpu": {
         "resources": [
