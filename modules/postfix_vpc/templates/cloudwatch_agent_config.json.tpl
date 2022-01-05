@@ -5,9 +5,6 @@
   },
   "metrics": {
     "metrics_collected": {
-      "append_dimensions": {
-        "InstanceId": "$${aws:InstanceId}"
-      },
       "cpu": {
         "resources": [
           "*"
@@ -25,7 +22,10 @@
           "cpu_usage_guest"
         ],
         "totalcpu": false,
-        "metrics_collection_interval": 10
+        "metrics_collection_interval": 10,
+        "append_dimensions": {
+          "InstanceId": "$${aws:InstanceId}"
+        }
       },
       "disk": {
         "resources": [
@@ -45,7 +45,10 @@
           "sysfs",
           "devtmpfs"
         ],
-        "metrics_collection_interval": 60
+        "metrics_collection_interval": 60,
+        "append_dimensions": {
+          "InstanceId": "$${aws:InstanceId}"
+        }
       },
       "diskio": {
         "resources": [
@@ -58,7 +61,10 @@
           "write_time",
           "io_time"
         ],
-        "metrics_collection_interval": 60
+        "metrics_collection_interval": 60,
+        "append_dimensions": {
+          "InstanceId": "$${aws:InstanceId}"
+        }
       },
       "swap": {
         "measurement": [
@@ -73,7 +79,10 @@
           "mem_cached",
           "mem_total"
         ],
-        "metrics_collection_interval": 10
+        "metrics_collection_interval": 10,
+        "append_dimensions": {
+          "InstanceId": "$${aws:InstanceId}"
+        }
       },
       "net": {
         "resources": [
@@ -92,7 +101,10 @@
           "tcp_syn_sent",
           "tcp_close"
         ],
-        "metrics_collection_interval": 60
+        "metrics_collection_interval": 60,
+        "append_dimensions": {
+          "InstanceId": "$${aws:InstanceId}"
+        }
       },
       "processes": {
         "measurement": [
@@ -100,6 +112,10 @@
           "sleeping",
           "dead"
         ]
+      },
+      "metrics_collection_interval": 60,
+      "append_dimensions": {
+        "InstanceId": "$${aws:InstanceId}"
       }
     }
   },
