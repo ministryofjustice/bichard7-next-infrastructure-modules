@@ -10,6 +10,6 @@ output "application" {
 }
 
 output "owner_email" {
-  value       = "MOJ Bichard-7 Team <moj-bichard7@madetech.com>"
+  value       = "moj-bichard7@madetech.com"
   description = "The email address to be added to tags"
 }
