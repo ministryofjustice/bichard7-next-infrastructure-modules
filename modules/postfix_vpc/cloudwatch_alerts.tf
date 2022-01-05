@@ -21,7 +21,7 @@ resource "aws_cloudwatch_metric_alarm" "cpu_usage" {
   actions_enabled = true
 
   dimensions = {
-    host = substr("mail${count.index + 1}.${data.aws_route53_zone.public.name}", 0, 65)
+    host = substr("mail${count.index + 1}.${data.aws_route53_zone.public.name}", 0, 64)
     cpu  = "cpu0"
   }
 
@@ -55,7 +55,7 @@ resource "aws_cloudwatch_metric_alarm" "memory_usage" {
       stat        = "Average"
 
       dimensions = {
-        host = substr("mail${count.index + 1}.${data.aws_route53_zone.public.name}", 0, 65)
+        host = substr("mail${count.index + 1}.${data.aws_route53_zone.public.name}", 0, 64)
       }
     }
   }
@@ -70,7 +70,64 @@ resource "aws_cloudwatch_metric_alarm" "memory_usage" {
       stat        = "Average"
 
       dimensions = {
-        host = substr("mail${count.index + 1}.${data.aws_route53_zone.public.name}", 0, 65)
+        host = substr("mail${count.index + 1}.${data.aws_route53_zone.public.name}", 0, 64)
+      }
+    }
+  }
+
+  tags = var.tags
+}
+
+
+resource "aws_cloudwatch_metric_alarm" "percentage_disk_used" {
+  count = length(module.postfix_vpc.private_subnets)
+
+  alarm_name          = "postfix${count.index + 1}-percentage-disk-used"
+  alarm_description   = "Disk space free on root for ${aws_instance.postfix[count.index].tags["Name"]} greater than threshold %"
+  comparison_operator = "GreaterThanThreshold"
+  evaluation_periods  = 5
+  threshold           = 70
+  treat_missing_data  = "ignore"
+
+  metric_query {
+    id          = "e1"
+    expression  = "(m1/m2)*100"
+    label       = "Disk Space Used"
+    return_data = "true"
+  }
+
+  metric_query {
+    id = "m1"
+
+    metric {
+      metric_name = "disk_used"
+      namespace   = "${var.name}/smtp"
+      period      = 60
+      stat        = "Average"
+
+      dimensions = {
+        host   = substr("mail${count.index + 1}.${data.aws_route53_zone.public.name}", 0, 64)
+        path   = "/"
+        fstype = "xfs"
+        device = "xvda1"
+      }
+    }
+  }
+
+  metric_query {
+    id = "m2"
+
+    metric {
+      metric_name = "disk_total"
+      namespace   = "${var.name}/smtp"
+      period      = 60
+      stat        = "Average"
+
+      dimensions = {
+        host   = substr("mail${count.index + 1}.${data.aws_route53_zone.public.name}", 0, 64)
+        path   = "/"
+        fstype = "xfs"
+        device = "xvda1"
       }
     }
   }
