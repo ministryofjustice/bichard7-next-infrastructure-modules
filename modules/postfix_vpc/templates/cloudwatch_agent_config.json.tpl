@@ -101,45 +101,45 @@
           "dead"
         ]
       }
-    },
-    "logs": {
-      "logs_collected": {
-        "files": {
-          "collect_list": [
-            {
-              "file_path": "/opt/aws/amazon-cloudwatch-agent/logs/amazon-cloudwatch-agent.log",
-              "log_group_name": "/${service_name}/CloudWatchAgentLog/",
-              "log_stream_name": "{instance_id}_{hostname}",
-              "timezone": "Local"
-            },
-            {
-              "file_path": "/var/log/messages",
-              "log_group_name": "/${service_name}/var/log/messages",
-              "log_stream_name": "{instance_id}_{hostname}",
-              "timezone": "Local"
-            },
-            {
-              "file_path": "/var/log/secure",
-              "log_group_name": "/${service_name}/var/log/secure",
-              "log_stream_name": "{instance_id}_{hostname}",
-              "timezone": "Local"
-            },
-            {
-              "file_path": "/var/log/yum.log",
-              "log_group_name": "/${service_name}/var/log/yum",
-              "log_stream_name": "{instance_id}_{hostname}",
-              "timezone": "Local"
-            },
-            {
-              "file_path": "/var/log/maillog",
-              "log_group_name": "/${service_name}/var/log/maillog",
-              "log_stream_name": "{instance_id}_{hostname}",
-              "timezone": "Local"
-            }
-          ]
-        }
-      },
-      "log_stream_name": "/ec2/catchall"
     }
+  },
+  "logs": {
+    "logs_collected": {
+      "files": {
+        "collect_list": [
+          {
+            "file_path": "/opt/aws/amazon-cloudwatch-agent/logs/amazon-cloudwatch-agent.log",
+            "log_group_name": "/${service_name}/CloudWatchAgentLog/",
+            "log_stream_name": "{instance_id}_{hostname}",
+            "timezone": "Local"
+          },
+          {
+            "file_path": "/var/log/messages",
+            "log_group_name": "/${service_name}/var/log/messages",
+            "log_stream_name": "{instance_id}_{hostname}",
+            "timezone": "Local"
+          },
+          {
+            "file_path": "/var/log/secure",
+            "log_group_name": "/${service_name}/var/log/secure",
+            "log_stream_name": "{instance_id}_{hostname}",
+            "timezone": "Local"
+          },
+          {
+            "file_path": "/var/log/yum.log",
+            "log_group_name": "/${service_name}/var/log/yum",
+            "log_stream_name": "{instance_id}_{hostname}",
+            "timezone": "Local"
+          },
+          {
+            "file_path": "/var/log/maillog",
+            "log_group_name": "/${service_name}/var/log/maillog",
+            "log_stream_name": "{instance_id}_{hostname}",
+            "timezone": "Local"
+          }
+        ]
+      }
+    },
+    "log_stream_name": "/ec2/catchall"
   }
 }
