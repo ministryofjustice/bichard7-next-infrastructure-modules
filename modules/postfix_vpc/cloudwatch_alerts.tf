@@ -38,6 +38,14 @@ resource "aws_cloudwatch_metric_alarm" "memory_usage" {
   threshold           = 70
   treat_missing_data  = "ignore"
 
+  alarm_actions = [
+    var.cloudwatch_notifications_arn
+  ]
+  ok_actions = [
+    var.cloudwatch_notifications_arn
+  ]
+  actions_enabled = true
+
   metric_query {
     id          = "e1"
     expression  = "(m1/m2)*100"
@@ -88,6 +96,14 @@ resource "aws_cloudwatch_metric_alarm" "percentage_disk_used" {
   evaluation_periods  = 5
   threshold           = 70
   treat_missing_data  = "ignore"
+
+  alarm_actions = [
+    var.cloudwatch_notifications_arn
+  ]
+  ok_actions = [
+    var.cloudwatch_notifications_arn
+  ]
+  actions_enabled = true
 
   metric_query {
     id          = "e1"
