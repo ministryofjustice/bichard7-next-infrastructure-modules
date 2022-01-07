@@ -23,3 +23,9 @@ variable "denied_user_arns" {
   type        = list(string)
   default     = []
 }
+
+variable "create_nuke_user" {
+  description = "Do we want to create user to run AWS Nuke with"
+  type        = bool
+  default     = false
+}

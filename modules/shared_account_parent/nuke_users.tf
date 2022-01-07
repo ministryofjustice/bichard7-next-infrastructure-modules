@@ -6,6 +6,11 @@ resource "aws_iam_user" "nuke_user" {
   tags = var.tags
 }
 
+resource "aws_iam_group" "aws_nuke_group" {
+  count = (var.create_nuke_user == true) ? 1 : 0
+  name  = "AwsNuke"
+}
+
 resource "aws_iam_user_group_membership" "nuke_user" {
   count = (var.create_nuke_user == true) ? 1 : 0
 
@@ -15,13 +20,25 @@ resource "aws_iam_user_group_membership" "nuke_user" {
   user = aws_iam_user.nuke_user[count.index].name
 }
 
-## Allow our nuke user to assume our nuke on this account so it can get temporary credentials
-resource "aws_iam_role" "assume_nuke_access_on_parent" {
+resource "aws_iam_access_key" "nuke_user_key" {
   count = (var.create_nuke_user == true) ? 1 : 0
+  user  = aws_iam_user.nuke_user[count.index].name
+}
 
-  name                 = "Bichard7-Aws-Nuke-Access"
-  max_session_duration = 10800
-  assume_role_policy   = data.template_file.allow_assume_administrator_access_template.rendered
+resource "aws_ssm_parameter" "nuke_user_access_key_id" {
+  count = (var.create_nuke_user == true) ? 1 : 0
+  name  = "/nuke/user/access_key_id"
+  type  = "SecureString"
+  value = aws_iam_access_key.nuke_user_key[count.index].id
+
+  tags = var.tags
+}
+
+resource "aws_ssm_parameter" "nuke_user_secret_access_key" {
+  count = (var.create_nuke_user == true) ? 1 : 0
+  name  = "/nuke/user/secret_access_key"
+  type  = "SecureString"
+  value = aws_iam_access_key.nuke_user_key[count.index].secret
 
   tags = var.tags
 }

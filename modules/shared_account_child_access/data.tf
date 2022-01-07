@@ -64,3 +64,12 @@ data "template_file" "deny_non_tls_s3_comms_on_logging_bucket" {
     bucket_arn = aws_s3_bucket.account_logging_bucket.arn
   }
 }
+
+data "template_file" "allow_assume_aws_nuke_access" {
+  count    = (var.create_nuke_user == true) ? 1 : 0
+  template = file("${path.module}/policies/allow_assume_aws_nuke_access.json.tpl")
+
+  vars = {
+    parent_account_id = var.root_account_id
+  }
+}
