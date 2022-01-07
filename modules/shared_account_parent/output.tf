@@ -33,6 +33,13 @@ output "ci_users_arns" {
   ])
 }
 
+output "nuke_users_arns" {
+  description = "A list of aws nuke user arns"
+  value = sort(
+    aws_iam_user.nuke_user.*.arn
+  )
+}
+
 output "ci_policy_arn" {
   description = "The arn of our ci policy"
   value       = aws_iam_policy.ci_policy.arn

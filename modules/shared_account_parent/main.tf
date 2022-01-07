@@ -10,6 +10,11 @@ resource "aws_iam_group" "ci_access_group" {
   name = "CIAccess"
 }
 
+resource "aws_iam_group" "aws_nuke_group" {
+  count = (var.create_nuke_user == true) ? 1 : 0
+  name  = "AwsNuke"
+}
+
 resource "aws_iam_group" "mfa_group" {
   name = "EnforceMFA"
 }
