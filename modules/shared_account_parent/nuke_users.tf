@@ -12,7 +12,7 @@ resource "aws_iam_user_group_membership" "nuke_user" {
   groups = [
     aws_iam_group.aws_nuke_group[count.index].name
   ]
-  user = aws_iam_user.ci_user[count.index].name
+  user = aws_iam_user.nuke_user[count.index].name
 }
 
 ## Allow our nuke user to assume our nuke on this account so it can get temporary credentials
