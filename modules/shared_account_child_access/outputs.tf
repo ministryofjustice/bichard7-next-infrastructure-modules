@@ -12,3 +12,8 @@ output "ci_access_role" {
   description = "The ci access role outputs"
   value       = aws_iam_role.assume_ci_access
 }
+
+output "aws_nuke_access_role" {
+  description = "The aws_nuke access role outputs"
+  value       = aws_iam_role.assume_aws_nuke_access.*
+}

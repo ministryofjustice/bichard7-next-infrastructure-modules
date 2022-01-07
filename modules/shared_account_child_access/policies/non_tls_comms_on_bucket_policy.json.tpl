@@ -11,7 +11,7 @@
       ],
       "Condition": {
         "Bool": {
-          "aws:SecureTransport": false
+          "aws:SecureTransport": "false"
         }
       },
       "Principal": {

@@ -36,11 +36,13 @@ The CI username needs to be created as a ssm parameter on the parent account und
 | [aws_iam_policy.ci_policy](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/iam_policy) | resource |
 | [aws_iam_policy.ci_to_parent_policy](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/iam_policy) | resource |
 | [aws_iam_role.assume_administrator_access](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/iam_role) | resource |
+| [aws_iam_role.assume_aws_nuke_access](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/iam_role) | resource |
 | [aws_iam_role.assume_ci_access](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/iam_role) | resource |
 | [aws_iam_role.assume_readonly_access](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/iam_role) | resource |
 | [aws_iam_role.portal_host_lambda_role](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/iam_role) | resource |
 | [aws_iam_role_policy.allow_role_scoutsuite_read](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/iam_role_policy) | resource |
 | [aws_iam_role_policy_attachment.administrator_access_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_iam_role_policy_attachment.assume_nuke_access_admin_access](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.ci_access_policy_attachment_part1](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.ci_access_policy_attachment_part2](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.ci_parent_access_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/iam_role_policy_attachment) | resource |
@@ -53,6 +55,7 @@ The CI username needs to be created as a ssm parameter on the parent account und
 | [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/data-sources/caller_identity) | data source |
 | [aws_region.current_region](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/data-sources/region) | data source |
 | [template_file.allow_assume_administrator_access_template](https://registry.terraform.io/providers/hashicorp/template/2.2.0/docs/data-sources/file) | data source |
+| [template_file.allow_assume_aws_nuke_access](https://registry.terraform.io/providers/hashicorp/template/2.2.0/docs/data-sources/file) | data source |
 | [template_file.allow_assume_ci_access_template](https://registry.terraform.io/providers/hashicorp/template/2.2.0/docs/data-sources/file) | data source |
 | [template_file.allow_assume_readonly_access_template](https://registry.terraform.io/providers/hashicorp/template/2.2.0/docs/data-sources/file) | data source |
 | [template_file.ci_policy_document_part1](https://registry.terraform.io/providers/hashicorp/template/2.2.0/docs/data-sources/file) | data source |
@@ -65,6 +68,7 @@ The CI username needs to be created as a ssm parameter on the parent account und
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_bucket_name"></a> [bucket\_name](#input\_bucket\_name) | The name of the shared bucket | `string` | n/a | yes |
+| <a name="input_create_nuke_user"></a> [create\_nuke\_user](#input\_create\_nuke\_user) | Do we want to create user to run AWS Nuke with | `bool` | `false` | no |
 | <a name="input_denied_user_arns"></a> [denied\_user\_arns](#input\_denied\_user\_arns) | A list of arns that cannot assume roles | `list(string)` | `[]` | no |
 | <a name="input_logging_bucket_name"></a> [logging\_bucket\_name](#input\_logging\_bucket\_name) | The name of the shared logging bucket | `string` | n/a | yes |
 | <a name="input_root_account_id"></a> [root\_account\_id](#input\_root\_account\_id) | The ID of the parent account | `string` | n/a | yes |
@@ -75,6 +79,7 @@ The CI username needs to be created as a ssm parameter on the parent account und
 | Name | Description |
 |------|-------------|
 | <a name="output_administrator_access_role"></a> [administrator\_access\_role](#output\_administrator\_access\_role) | The administrator access role outputs |
+| <a name="output_aws_nuke_access_role"></a> [aws\_nuke\_access\_role](#output\_aws\_nuke\_access\_role) | The aws\_nuke access role outputs |
 | <a name="output_ci_access_role"></a> [ci\_access\_role](#output\_ci\_access\_role) | The ci access role outputs |
 | <a name="output_readonly_access_role"></a> [readonly\_access\_role](#output\_readonly\_access\_role) | The readonly access role outputs |
 <!-- END_TF_DOCS -->
