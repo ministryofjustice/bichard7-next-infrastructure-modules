@@ -28,7 +28,10 @@ resource "aws_ecs_service" "sonar_service" {
 
   network_configuration {
     security_groups = [
-      aws_security_group.sonar_security_group.id
+      aws_security_group.sonar_security_group.id,
+      aws_security_group.sonar_github_git_traffic.id,
+      aws_security_group.sonar_github_web_traffic.id,
+      aws_security_group.sonar_github_ssh_traffic.id
     ]
     subnets          = module.vpc.public_subnets
     assign_public_ip = true
