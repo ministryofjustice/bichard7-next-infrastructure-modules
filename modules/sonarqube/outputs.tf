@@ -4,6 +4,7 @@ output "security_group_ids" {
     sonar     = aws_security_group.sonar_security_group.id
     sonar_git = aws_security_group.sonar_github_git_traffic.id
     sonar_web = aws_security_group.sonar_github_web_traffic.id
+    sonar_ssh = aws_security_group.sonar_github_ssh_traffic.id
     sonar_alb = aws_security_group.sonar_alb.id
     exporter  = aws_security_group.sonar_security_group.id
     alb       = aws_security_group.sonar_alb.id

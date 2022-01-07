@@ -11,11 +11,21 @@ resource "aws_security_group" "sonar_security_group" {
 resource "aws_security_group" "sonar_github_git_traffic" {
   description = "Allow outbound traffic to github"
 
+  name   = "${var.name}-github-ssh"
+  vpc_id = module.vpc.vpc_id
+
+  tags = merge(var.tags, { Name = "${var.name}-github-ssh" })
+}
+
+resource "aws_security_group" "sonar_github_ssh_traffic" {
+  description = "Allow outbound traffic to github"
+
   name   = "${var.name}-github-ssl"
   vpc_id = module.vpc.vpc_id
 
   tags = merge(var.tags, { Name = "${var.name}-github-ssl" })
 }
+
 
 resource "aws_security_group" "sonar_github_web_traffic" {
   description = "Allow outbound web traffic to github"
@@ -44,7 +54,7 @@ resource "aws_security_group_rule" "allow_all_github_ssh" {
   from_port         = 22
   to_port           = 22
   protocol          = "tcp"
-  security_group_id = aws_security_group.sonar_github_git_traffic.id
+  security_group_id = aws_security_group.sonar_github_ssh_traffic.id
   type              = "egress"
 
   cidr_blocks = local.github_git_cidrs

@@ -59,6 +59,7 @@ Module for creating sonarqube cluster on the dev environment
 | [aws_route53_record.sonar_record](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/route53_record) | resource |
 | [aws_security_group.sonar_alb](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/security_group) | resource |
 | [aws_security_group.sonar_github_git_traffic](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/security_group) | resource |
+| [aws_security_group.sonar_github_ssh_traffic](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/security_group) | resource |
 | [aws_security_group.sonar_github_web_traffic](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/security_group) | resource |
 | [aws_security_group.sonar_security_group](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/security_group) | resource |
 | [aws_security_group_rule.allow_alb_to_container](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/security_group_rule) | resource |
