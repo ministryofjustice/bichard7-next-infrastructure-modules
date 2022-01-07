@@ -8,13 +8,31 @@ resource "aws_security_group" "sonar_security_group" {
   tags = merge(var.tags, { Name = "${var.name}-container" })
 }
 
+resource "aws_security_group" "sonar_github_git_traffic" {
+  description = "Allow outbound traffic to github"
+
+  name   = "${var.name}-github-ssl"
+  vpc_id = module.vpc.vpc_id
+
+  tags = merge(var.tags, { Name = "${var.name}-github-ssl" })
+}
+
+resource "aws_security_group" "sonar_github_web_traffic" {
+  description = "Allow outbound web traffic to github"
+
+  name   = "${var.name}-web"
+  vpc_id = module.vpc.vpc_id
+
+  tags = merge(var.tags, { Name = "${var.name}-web" })
+}
+
 resource "aws_security_group_rule" "allow_all_github_ssl" {
   description = "Allow outbound github ssl traffic"
 
   from_port         = 443
   to_port           = 443
   protocol          = "tcp"
-  security_group_id = aws_security_group.sonar_security_group.id
+  security_group_id = aws_security_group.sonar_github_web_traffic.id
   type              = "egress"
 
   cidr_blocks = local.github_web_cidrs
@@ -26,7 +44,7 @@ resource "aws_security_group_rule" "allow_all_github_ssh" {
   from_port         = 22
   to_port           = 22
   protocol          = "tcp"
-  security_group_id = aws_security_group.sonar_security_group.id
+  security_group_id = aws_security_group.sonar_github_git_traffic.id
   type              = "egress"
 
   cidr_blocks = local.github_git_cidrs
@@ -38,7 +56,7 @@ resource "aws_security_group_rule" "allow_all_github_http" {
   from_port         = 80
   to_port           = 80
   protocol          = "tcp"
-  security_group_id = aws_security_group.sonar_security_group.id
+  security_group_id = aws_security_group.sonar_github_web_traffic.id
   type              = "egress"
 
   cidr_blocks = local.github_web_cidrs
@@ -50,7 +68,7 @@ resource "aws_security_group_rule" "allow_all_github_git" {
   from_port         = 9418
   to_port           = 9418
   protocol          = "tcp"
-  security_group_id = aws_security_group.sonar_security_group.id
+  security_group_id = aws_security_group.sonar_github_git_traffic.id
   type              = "egress"
 
   cidr_blocks = local.github_git_cidrs
