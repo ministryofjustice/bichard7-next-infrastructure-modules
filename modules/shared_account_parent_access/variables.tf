@@ -32,3 +32,9 @@ variable "ci_access_arn" {
   description = "The child ci assume role arn"
   type        = string
 }
+
+variable "aws_nuke_access_arn" {
+  description = "The child aws nuke assume role arn"
+  type        = string
+  default     = null
+}
