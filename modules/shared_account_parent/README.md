@@ -60,6 +60,7 @@ No modules.
 | [aws_ssm_parameter.aws_nuke_user](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/data-sources/ssm_parameter) | data source |
 | [aws_ssm_parameter.ci_user](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/data-sources/ssm_parameter) | data source |
 | [template_file.allow_assume_administrator_access_template](https://registry.terraform.io/providers/hashicorp/template/2.2.0/docs/data-sources/file) | data source |
+| [template_file.allow_assume_aws_nuke_access_template](https://registry.terraform.io/providers/hashicorp/template/2.2.0/docs/data-sources/file) | data source |
 | [template_file.allow_codebuild_ci](https://registry.terraform.io/providers/hashicorp/template/2.2.0/docs/data-sources/file) | data source |
 | [template_file.parent_account_ci_policy](https://registry.terraform.io/providers/hashicorp/template/2.2.0/docs/data-sources/file) | data source |
 

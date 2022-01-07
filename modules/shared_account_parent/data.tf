@@ -34,3 +34,13 @@ data "aws_ssm_parameter" "aws_nuke_user" {
   name            = "/users/system/aws_nuke"
   with_decryption = true
 }
+
+data "template_file" "allow_assume_aws_nuke_access_template" {
+  count = (var.create_nuke_user == true) ? 1 : 0
+
+  template = file("${path.module}/policies/allow_assume_parent_aws_nuke_access.json.tpl")
+
+  vars = {
+    parent_account_id = data.aws_caller_identity.current.account_id
+  }
+}
