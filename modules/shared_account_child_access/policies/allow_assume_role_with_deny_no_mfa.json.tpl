@@ -8,8 +8,8 @@
       },
       "Action": "sts:AssumeRole",
       "Condition": {
-        "Bool": {
-          "aws:MultiFactorAuthPresent": "true"
+        "ArnNotEquals" : {
+          "aws:PrincipalArn" : ${excluded_arns}
         },
         "StringEquals" : {
           "aws:PrincipalTag/user-role": "${user_role}"

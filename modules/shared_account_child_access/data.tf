@@ -32,10 +32,12 @@ data "template_file" "ci_policy_document_part2" {
 }
 
 data "template_file" "allow_assume_ci_access_template" {
-  template = file("${path.module}/policies/allow_assume_ci_access.json.tpl")
+  template = file("${path.module}/policies/${local.no_mfa_access_template}")
 
   vars = {
     parent_account_id = var.root_account_id
+    excluded_arns     = jsonencode(var.denied_user_arns)
+    user_role         = "ci/cd"
   }
 }
 
@@ -45,6 +47,7 @@ data "template_file" "allow_assume_administrator_access_template" {
   vars = {
     parent_account_id = var.root_account_id
     excluded_arns     = jsonencode(var.denied_user_arns)
+    user_role         = "operations"
   }
 }
 
@@ -54,6 +57,7 @@ data "template_file" "allow_assume_readonly_access_template" {
   vars = {
     parent_account_id = var.root_account_id
     excluded_arns     = jsonencode(var.denied_user_arns)
+    user_role         = "readonly"
   }
 }
 
@@ -67,9 +71,11 @@ data "template_file" "deny_non_tls_s3_comms_on_logging_bucket" {
 
 data "template_file" "allow_assume_aws_nuke_access" {
   count    = (var.create_nuke_user == true) ? 1 : 0
-  template = file("${path.module}/policies/allow_assume_aws_nuke_access.json.tpl")
+  template = file("${path.module}/policies/${local.no_mfa_access_template}")
 
   vars = {
     parent_account_id = var.root_account_id
+    excluded_arns     = jsonencode(var.denied_user_arns)
+    user_role         = "aws-nuke"
   }
 }

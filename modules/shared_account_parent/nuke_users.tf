@@ -3,7 +3,12 @@ resource "aws_iam_user" "nuke_user" {
   name  = data.aws_ssm_parameter.aws_nuke_user[count.index].value
   path  = "/system/"
 
-  tags = var.tags
+  tags = merge(
+    var.tags,
+    {
+      "user-role" = "aws-nuke"
+    }
+  )
 }
 
 resource "aws_iam_group" "aws_nuke_group" {

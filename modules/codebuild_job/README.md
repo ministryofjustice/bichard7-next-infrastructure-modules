@@ -48,6 +48,8 @@ be overridden. If the notifications variable is empty we won't create the notifi
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_allowed_resource_arns"></a> [allowed\_resource\_arns](#input\_allowed\_resource\_arns) | A list of resource arns that we are allowed access too | `list(string)` | `[]` | no |
+| <a name="input_aws_access_key_id_ssm_path"></a> [aws\_access\_key\_id\_ssm\_path](#input\_aws\_access\_key\_id\_ssm\_path) | Path to our ssm access key | `string` | `"/ci/user/access_key_id"` | no |
+| <a name="input_aws_secret_access_key_ssm_path"></a> [aws\_secret\_access\_key\_ssm\_path](#input\_aws\_secret\_access\_key\_ssm\_path) | Path to access to our smm secret access key | `string` | `"/ci/user/secret_access_key"` | no |
 | <a name="input_build_description"></a> [build\_description](#input\_build\_description) | The description of our build job | `string` | n/a | yes |
 | <a name="input_build_environments"></a> [build\_environments](#input\_build\_environments) | A list of maps of our build environments | `list(map(string))` | <pre>[<br>  {<br>    "compute_type": "BUILD_GENERAL1_SMALL",<br>    "image": "aws/codebuild/amazonlinux2-x86_64-standard:3.0",<br>    "privileged_mode": true,<br>    "type": "LINUX_CONTAINER"<br>  }<br>]</pre> | no |
 | <a name="input_build_timeout"></a> [build\_timeout](#input\_build\_timeout) | How long, in minutes, before we terminate our build as non responsive | `number` | `180` | no |

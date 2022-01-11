@@ -2,7 +2,12 @@ resource "aws_iam_user" "ci_user" {
   name = data.aws_ssm_parameter.ci_user.value
   path = "/system/"
 
-  tags = var.tags
+  tags = merge(
+    var.tags,
+    {
+      "user-role" = "ci/cd"
+    }
+  )
 }
 
 resource "aws_iam_user_group_membership" "ci_user" {

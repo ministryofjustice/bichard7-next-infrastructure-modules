@@ -126,13 +126,13 @@ variable "report_build_status" {
   default     = false
 }
 
-# tfsec:ignore:sensitive-in-variable
+# tfsec:ignore:general-secrets-sensitive-in-variable
 variable "aws_access_key_id_ssm_path" {
   description = "Path to our ssm access key"
   default     = "/ci/user/access_key_id"
 }
 
-# tfsec:ignore:sensitive-in-variable
+# tfsec:ignore:general-secrets-sensitive-in-variable
 variable "aws_secret_access_key_ssm_path" {
   description = "Path to access to our smm secret access key"
   default     = "/ci/user/secret_access_key"
