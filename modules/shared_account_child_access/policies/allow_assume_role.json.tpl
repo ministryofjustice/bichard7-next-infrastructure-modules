@@ -4,12 +4,15 @@
     {
       "Effect": "Allow",
       "Principal": {
-        "AWS": "arn:aws:iam::${parent_account_id}:${arn_suffix}"
+        "AWS": "arn:aws:iam::${parent_account_id}:root"
       },
       "Action": "sts:AssumeRole",
       "Condition": {
         "Bool": {
           "aws:MultiFactorAuthPresent": "true"
+        },
+        "StringEquals" : {
+          "aws:PrincipalTag/user-role": "${user_role}"
         }
       }
     }

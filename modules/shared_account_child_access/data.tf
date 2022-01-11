@@ -35,9 +35,9 @@ data "template_file" "allow_assume_ci_access_template" {
   template = file("${path.module}/policies/${local.no_mfa_access_template}")
 
   vars = {
-    arn_suffix        = "group/CIAccess"
     parent_account_id = var.root_account_id
     excluded_arns     = jsonencode(var.denied_user_arns)
+    user_role         = "ci/cd"
   }
 }
 
@@ -48,6 +48,7 @@ data "template_file" "allow_assume_administrator_access_template" {
     arn_suffix        = "group/AdminAccess"
     parent_account_id = var.root_account_id
     excluded_arns     = jsonencode(var.denied_user_arns)
+    user_role         = "operations"
   }
 }
 
@@ -58,6 +59,7 @@ data "template_file" "allow_assume_readonly_access_template" {
     arn_suffix        = "group/ReadOnlyAccess"
     parent_account_id = var.root_account_id
     excluded_arns     = jsonencode(var.denied_user_arns)
+    user_role         = "readonly"
   }
 }
 
@@ -76,6 +78,6 @@ data "template_file" "allow_assume_aws_nuke_access" {
   vars = {
     parent_account_id = var.root_account_id
     excluded_arns     = jsonencode(var.denied_user_arns)
-    arn_suffix        = "group/AwsNuke"
+    user_role         = "aws-nuke"
   }
 }
