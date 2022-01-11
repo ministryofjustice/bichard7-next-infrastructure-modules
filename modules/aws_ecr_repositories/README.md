@@ -50,6 +50,7 @@ No modules.
 | [aws_ecr_lifecycle_policy.nodejs](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_lifecycle_policy) | resource |
 | [aws_ecr_lifecycle_policy.openjdk_jre](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_lifecycle_policy) | resource |
 | [aws_ecr_lifecycle_policy.pncemulator](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_lifecycle_policy) | resource |
+| [aws_ecr_lifecycle_policy.postfix](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_lifecycle_policy) | resource |
 | [aws_ecr_lifecycle_policy.prometheus](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_lifecycle_policy) | resource |
 | [aws_ecr_lifecycle_policy.prometheus_blackbox_exporter](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_lifecycle_policy) | resource |
 | [aws_ecr_lifecycle_policy.puppeteer](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_lifecycle_policy) | resource |
@@ -77,6 +78,7 @@ No modules.
 | [aws_ecr_repository.nodejs](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_repository) | resource |
 | [aws_ecr_repository.openjdk_jre](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_repository) | resource |
 | [aws_ecr_repository.pncemulator](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_repository) | resource |
+| [aws_ecr_repository.postfix](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_repository) | resource |
 | [aws_ecr_repository.prometheus](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_repository) | resource |
 | [aws_ecr_repository.prometheus_blackbox_exporter](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_repository) | resource |
 | [aws_ecr_repository.prometheus_cloudwatch_exporter](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_repository) | resource |
@@ -103,6 +105,7 @@ No modules.
 | [aws_ecr_repository_policy.allow_codebuild_nodejs](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_repository_policy) | resource |
 | [aws_ecr_repository_policy.allow_codebuild_openjdk_jre](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_repository_policy) | resource |
 | [aws_ecr_repository_policy.allow_codebuild_pncemulator](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_repository_policy) | resource |
+| [aws_ecr_repository_policy.allow_codebuild_postfix](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_repository_policy) | resource |
 | [aws_ecr_repository_policy.allow_codebuild_puppeteer](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_repository_policy) | resource |
 | [aws_ecr_repository_policy.allow_codebuild_s3_web_proxy](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_repository_policy) | resource |
 | [aws_ecr_repository_policy.allow_codebuild_scoutsuite](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ecr_repository_policy) | resource |
@@ -184,6 +187,7 @@ No modules.
 | <a name="output_nodejs_repository_arn"></a> [nodejs\_repository\_arn](#output\_nodejs\_repository\_arn) | The repository arn for our nodejs image |
 | <a name="output_openjdk_jre_repository_arn"></a> [openjdk\_jre\_repository\_arn](#output\_openjdk\_jre\_repository\_arn) | The repository arn for our openjdk jre image |
 | <a name="output_openjdk_jre_repository_url"></a> [openjdk\_jre\_repository\_url](#output\_openjdk\_jre\_repository\_url) | The repository url for our openjdk jre image |
+| <a name="output_postfix_ecr"></a> [postfix\_ecr](#output\_postfix\_ecr) | The Postfix ECR repository details |
 | <a name="output_prometheus_blackbox_exporter_arn"></a> [prometheus\_blackbox\_exporter\_arn](#output\_prometheus\_blackbox\_exporter\_arn) | The repository arn for our blackbox exporter image |
 | <a name="output_prometheus_cloudwatch_exporter_repository_arn"></a> [prometheus\_cloudwatch\_exporter\_repository\_arn](#output\_prometheus\_cloudwatch\_exporter\_repository\_arn) | The repository arn for our prometheus cloudwatch exporter image |
 | <a name="output_prometheus_cloudwatch_exporter_repository_url"></a> [prometheus\_cloudwatch\_exporter\_repository\_url](#output\_prometheus\_cloudwatch\_exporter\_repository\_url) | The repository url for our prometheus cloudwatch exporter image |

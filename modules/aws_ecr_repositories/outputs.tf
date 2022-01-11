@@ -202,3 +202,8 @@ output "s3_web_proxy_ecr" {
   description = "The S3 Web Proxy ecr repository details"
   value       = aws_ecr_repository.s3_web_proxy
 }
+
+output "postfix_ecr" {
+  description = "The Postfix ECR repository details"
+  value       = aws_ecr_repository.postfix
+}
