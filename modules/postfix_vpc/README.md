@@ -29,6 +29,7 @@ Configuration management is done via an ansible playbook.
 
 | Name | Source | Version |
 |------|--------|---------|
+| <a name="module_postfix_ecs_cluster"></a> [postfix\_ecs\_cluster](#module\_postfix\_ecs\_cluster) | github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster | n/a |
 | <a name="module_postfix_vpc"></a> [postfix\_vpc](#module\_postfix\_vpc) | terraform-aws-modules/vpc/aws | 3.0.0 |
 | <a name="module_smtp_nginx_self_signed_certificate"></a> [smtp\_nginx\_self\_signed\_certificate](#module\_smtp\_nginx\_self\_signed\_certificate) | github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/self_signed_certificate | n/a |
 
@@ -124,6 +125,7 @@ Configuration management is done via an ansible playbook.
 | [template_file.bastion_instance_userdata](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) | data source |
 | [template_file.postfix_allow_ssm_parameters](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) | data source |
 | [template_file.postfix_ansible_playbook](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) | data source |
+| [template_file.postfix_ecs_task](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) | data source |
 | [template_file.postfix_instance_userdata](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) | data source |
 
 ## Inputs
@@ -136,6 +138,8 @@ Configuration management is done via an ansible playbook.
 | <a name="input_cloudwatch_notifications_arn"></a> [cloudwatch\_notifications\_arn](#input\_cloudwatch\_notifications\_arn) | The arn of our cloudwatch sns notifications arn | `string` | n/a | yes |
 | <a name="input_ingress_cidr_blocks"></a> [ingress\_cidr\_blocks](#input\_ingress\_cidr\_blocks) | A list of ingress cidr blocks to route to our private cidrs | `list(string)` | n/a | yes |
 | <a name="input_name"></a> [name](#input\_name) | The name from our label module | `string` | n/a | yes |
+| <a name="input_postfix_image_hash"></a> [postfix\_image\_hash](#input\_postfix\_image\_hash) | The ecr sha256hash for our postfix image | `string` | n/a | yes |
+| <a name="input_postfix_repository_arn"></a> [postfix\_repository\_arn](#input\_postfix\_repository\_arn) | The repository arn for our postfix ecr image | `string` | n/a | yes |
 | <a name="input_public_zone_id"></a> [public\_zone\_id](#input\_public\_zone\_id) | The public zone we use to create records on | `string` | n/a | yes |
 | <a name="input_tags"></a> [tags](#input\_tags) | A map of resource tags | `map(string)` | n/a | yes |
 | <a name="input_vpc_cidr_block"></a> [vpc\_cidr\_block](#input\_vpc\_cidr\_block) | Our cidr block to apply to this vpc | `string` | `null` | no |

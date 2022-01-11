@@ -44,3 +44,13 @@ variable "cloudwatch_notifications_arn" {
   description = "The arn of our cloudwatch sns notifications arn"
   type        = string
 }
+
+variable "postfix_repository_arn" {
+  description = "The repository arn for our postfix ecr image"
+  type        = string
+}
+
+variable "postfix_image_hash" {
+  description = "The ecr sha256hash for our postfix image"
+  type        = string
+}

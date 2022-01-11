@@ -292,3 +292,28 @@ resource "aws_ssm_parameter" "cloudwatch_agent_configuration_file" {
 
   tags = var.tags
 }
+
+#### Postfix ecs cluster
+module "postfix_ecs_cluster" {
+  source       = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster"
+  cluster_name = "postfix"
+  ecr_repository_arns = [
+    var.postfix_repository_arn
+  ]
+  log_group_name           = ""
+  rendered_task_definition = base64encode(data.template_file.postfix_ecs_task.rendered)
+  security_group_name      = aws_security_group.postfix_instance.name
+  service_subnets          = module.postfix_vpc.private_subnets
+  tags                     = var.tags
+
+  container_count        = 3
+  enable_execute_command = true
+  ssm_resources = [
+    data.aws_ssm_parameter.cjse_client_certificate.arn,
+    data.aws_ssm_parameter.cjse_relay_password.arn,
+    data.aws_ssm_parameter.cjse_relay_user.arn,
+    data.aws_ssm_parameter.cjse_root_certificate.arn,
+    aws_ssm_parameter.public_domain_signing_key.arn
+  ]
+  service_name = ""
+}

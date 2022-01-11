@@ -136,3 +136,25 @@ data "template_file" "bastion_cloudwatch_agent" {
     environment  = var.tags["workspace"]
   }
 }
+
+### Postfix Cluster
+data "template_file" "postfix_ecs_task" {
+  template = file("${path.module}/templates/postfix_task.json.tpl")
+
+  vars = {
+    postfix_image = "${var.postfix_repository_arn}@${var.postfix_image_hash}"
+    cpu_units     = 2048
+    memory_units  = 4096
+    mail_hostname = aws_route53_record.mail.fqdn
+    mail_domain   = data.aws_route53_zone.public.name
+    allowed_cidrs = join(" ", var.application_cidr)
+    postfix_cidrs = join(" ", module.postfix_vpc.private_subnets_cidr_blocks)
+    cjsm_hostname = local.cjsm_mail_server_dns
+
+    postfix_relay_user_arn       = data.aws_ssm_parameter.cjse_relay_user.arn
+    postfix_relay_password_arn   = data.aws_ssm_parameter.cjse_relay_password.arn
+    postfix_certificate_arn      = data.aws_ssm_parameter.cjse_client_certificate.arn
+    postfix_key_arn              = aws_ssm_parameter.public_domain_signing_key.arn
+    postfix_root_certificate_arn = data.aws_ssm_parameter.cjse_root_certificate.arn
+  }
+}

@@ -28,7 +28,7 @@
       },
       {
         "name": "CJSM_ALLOWED_CIDRS",
-        "value": "${allowd_cidrs}"
+        "value": "${allowed_cidrs}"
       },
       {
         "name": "CJSM_POSTFIX_CIDRS",
