@@ -17,7 +17,7 @@ Module for creating sonarqube cluster on the dev environment
 | Name | Version |
 |------|---------|
 | <a name="provider_aws"></a> [aws](#provider\_aws) | 3.56.0 |
-| <a name="provider_external"></a> [external](#provider\_external) | 2.1.1 |
+| <a name="provider_external"></a> [external](#provider\_external) | 2.2.0 |
 | <a name="provider_null"></a> [null](#provider\_null) | 3.1.0 |
 | <a name="provider_random"></a> [random](#provider\_random) | 3.1.0 |
 | <a name="provider_template"></a> [template](#provider\_template) | 2.2.0 |
