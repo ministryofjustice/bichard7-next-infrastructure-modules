@@ -45,7 +45,6 @@ data "template_file" "allow_assume_administrator_access_template" {
   template = file("${path.module}/policies/${local.access_template}")
 
   vars = {
-    arn_suffix        = "group/AdminAccess"
     parent_account_id = var.root_account_id
     excluded_arns     = jsonencode(var.denied_user_arns)
     user_role         = "operations"
@@ -56,7 +55,6 @@ data "template_file" "allow_assume_readonly_access_template" {
   template = file("${path.module}/policies/${local.access_template}")
 
   vars = {
-    arn_suffix        = "group/ReadOnlyAccess"
     parent_account_id = var.root_account_id
     excluded_arns     = jsonencode(var.denied_user_arns)
     user_role         = "readonly"
