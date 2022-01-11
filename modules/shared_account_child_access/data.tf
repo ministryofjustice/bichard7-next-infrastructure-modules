@@ -32,7 +32,7 @@ data "template_file" "ci_policy_document_part2" {
 }
 
 data "template_file" "allow_assume_ci_access_template" {
-  template = file("${path.module}/policies/${local.access_template}")
+  template = file("${path.module}/policies/${local.no_mfa_access_template}")
 
   vars = {
     arn_suffix        = "group/CIAccess"
@@ -71,7 +71,7 @@ data "template_file" "deny_non_tls_s3_comms_on_logging_bucket" {
 
 data "template_file" "allow_assume_aws_nuke_access" {
   count    = (var.create_nuke_user == true) ? 1 : 0
-  template = file("${path.module}/policies/${local.access_template}")
+  template = file("${path.module}/policies/${local.no_mfa_access_template}")
 
   vars = {
     parent_account_id = var.root_account_id
