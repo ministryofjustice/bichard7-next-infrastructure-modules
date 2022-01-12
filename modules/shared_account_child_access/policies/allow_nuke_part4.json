@@ -1,0 +1,35 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowNukePart4",
+            "Effect": "Allow",
+            "Action": [
+                "elasticbeanstalk:AbortEnvironmentUpdate",
+                "elasticbeanstalk:DeleteApplication",
+                "elasticbeanstalk:DeleteApplicationVersion",
+                "elasticbeanstalk:DeleteConfigurationTemplate",
+                "elasticbeanstalk:DeleteEnvironmentConfiguration",
+                "elasticbeanstalk:DeletePlatformVersion",
+                "elasticbeanstalk:DescribeApplications",
+                "elasticbeanstalk:DescribeApplicationVersions ",
+                "elasticbeanstalk:DescribeAccountAttributes",
+                "elasticbeanstalk:DescribeConfigurationOptions",
+                "elasticbeanstalk:DescribeConfigurationSettings",
+                "elasticbeanstalk:DescribeEnvironmentHealth",
+                "elasticbeanstalk:DescribeEvents",
+                "elasticbeanstalk:DescribeInstancesHealth",
+                "elasticbeanstalk:DescribePlatformVersion",
+                "elasticbeanstalk:DisassociateEnvironmentOperationsRole",
+                "elasticbeanstalk:ListPlatformBranches",
+                "elasticbeanstalk:ListAvailableSolutionStacks",
+                "elasticbeanstalk:ListTagsForResource",
+                "elasticbeanstalk:RemoveTags",
+                "elasticbeanstalk:RetrieveEnvironmentInfo",
+                "elasticbeanstalk:RequestEnvironmentInfo",
+                "elasticbeanstalk:TerminateEnvironment"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
