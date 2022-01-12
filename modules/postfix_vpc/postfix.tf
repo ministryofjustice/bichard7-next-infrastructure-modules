@@ -350,7 +350,7 @@ module "postfix_nlb" {
 
 resource "aws_alb_target_group" "postfix_smtps" {
   name_prefix = "psmtps"
-  port        = 445
+  port        = 465
   protocol    = "TCP"
   vpc_id      = module.postfix_vpc.vpc_id
   target_type = "ip"
@@ -386,6 +386,7 @@ resource "aws_alb_listener" "postfix_ecs_smtps" {
 module "postfix_ecs_cluster" {
   source       = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster"
   cluster_name = "${var.name}-postfix"
+
   ecr_repository_arns = [
     var.postfix_ecs.repository_arn
   ]

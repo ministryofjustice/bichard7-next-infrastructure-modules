@@ -165,7 +165,7 @@ resource "aws_security_group" "bastion" {
   tags = merge(
     var.tags,
     {
-      name = "${var.name}-bastion"
+      Name = "${var.name}-bastion"
     }
   )
 }
@@ -228,7 +228,7 @@ resource "aws_security_group" "postfix_vpce" {
   tags = merge(
     var.tags,
     {
-      name = "${var.name}-postfix-vpce"
+      Name = "${var.name}-postfix-vpce"
     }
   )
 }
