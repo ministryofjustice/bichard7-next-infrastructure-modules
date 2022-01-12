@@ -142,7 +142,7 @@ data "template_file" "postfix_ecs_task" {
   template = file("${path.module}/templates/postfix_task.json.tpl")
 
   vars = {
-    postfix_image = "${var.postfix_repository_arn}@${var.postfix_image_hash}"
+    postfix_image = "${var.postfix_ecs.repository_url}@${var.postfix_ecs.image_hash}"
     cpu_units     = 1024
     memory_units  = 4096
     mail_hostname = aws_route53_record.mail.fqdn

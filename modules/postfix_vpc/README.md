@@ -7,6 +7,14 @@ There is also an autoscaling group with a bastion instance to allow to ssh into 
 
 Configuration management is done via an ansible playbook.
 
+The `postfix_ecs` variable is a map in the following format
+```shell
+{
+  repository_url = "The url of the repository"
+  image_hash     = "sha256 hash from repo"
+  repository_arn = "The arn of the repository"
+}
+```
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
@@ -149,8 +157,7 @@ Configuration management is done via an ansible playbook.
 | <a name="input_cloudwatch_notifications_arn"></a> [cloudwatch\_notifications\_arn](#input\_cloudwatch\_notifications\_arn) | The arn of our cloudwatch sns notifications arn | `string` | n/a | yes |
 | <a name="input_ingress_cidr_blocks"></a> [ingress\_cidr\_blocks](#input\_ingress\_cidr\_blocks) | A list of ingress cidr blocks to route to our private cidrs | `list(string)` | n/a | yes |
 | <a name="input_name"></a> [name](#input\_name) | The name from our label module | `string` | n/a | yes |
-| <a name="input_postfix_image_hash"></a> [postfix\_image\_hash](#input\_postfix\_image\_hash) | The ecr sha256hash for our postfix image | `string` | n/a | yes |
-| <a name="input_postfix_repository_arn"></a> [postfix\_repository\_arn](#input\_postfix\_repository\_arn) | The repository arn for our postfix ecr image | `string` | n/a | yes |
+| <a name="input_postfix_ecs"></a> [postfix\_ecs](#input\_postfix\_ecs) | A map of postfix ecr values | `map(string)` | n/a | yes |
 | <a name="input_public_zone_id"></a> [public\_zone\_id](#input\_public\_zone\_id) | The public zone we use to create records on | `string` | n/a | yes |
 | <a name="input_tags"></a> [tags](#input\_tags) | A map of resource tags | `map(string)` | n/a | yes |
 | <a name="input_vpc_cidr_block"></a> [vpc\_cidr\_block](#input\_vpc\_cidr\_block) | Our cidr block to apply to this vpc | `string` | `null` | no |

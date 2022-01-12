@@ -386,7 +386,7 @@ module "postfix_ecs_cluster" {
   source       = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster"
   cluster_name = "${var.name}-postfix"
   ecr_repository_arns = [
-    var.postfix_repository_arn
+    var.postfix_ecs.repository_arn
   ]
   log_group_name           = aws_cloudwatch_log_group.postfix_log_group.name
   rendered_task_definition = base64encode(data.template_file.postfix_ecs_task.rendered)

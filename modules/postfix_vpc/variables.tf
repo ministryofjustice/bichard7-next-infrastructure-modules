@@ -45,12 +45,7 @@ variable "cloudwatch_notifications_arn" {
   type        = string
 }
 
-variable "postfix_repository_arn" {
-  description = "The repository arn for our postfix ecr image"
-  type        = string
-}
-
-variable "postfix_image_hash" {
-  description = "The ecr sha256hash for our postfix image"
-  type        = string
+variable "postfix_ecs" {
+  description = "A map of postfix ecr values"
+  type        = map(string)
 }
