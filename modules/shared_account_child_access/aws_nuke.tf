@@ -36,27 +36,3 @@ resource "aws_iam_role_policy" "nuke_policy_4" {
   policy = file("${path.module}/policies/allow_nuke_part4.json")
 }
 
-resource "aws_iam_role_policy_attachment" "attach_nuke_access_1" {
-  count      = (var.create_nuke_user == true) ? 1 : 0
-  policy_arn = aws_iam_role_policy.nuke_policy_1[count.index].arn
-  role       = aws_iam_role.assume_aws_nuke_access[count.index].name
-}
-
-resource "aws_iam_role_policy_attachment" "attach_nuke_access_2" {
-  count      = (var.create_nuke_user == true) ? 1 : 0
-  policy_arn = aws_iam_role_policy.nuke_policy_2[count.index].arn
-  role       = aws_iam_role.assume_aws_nuke_access[count.index].name
-}
-
-resource "aws_iam_role_policy_attachment" "attach_nuke_access_3" {
-  count      = (var.create_nuke_user == true) ? 1 : 0
-  policy_arn = aws_iam_role_policy.nuke_policy_3[count.index].arn
-  role       = aws_iam_role.assume_aws_nuke_access[count.index].name
-}
-
-resource "aws_iam_role_policy_attachment" "attach_nuke_access_4" {
-  count      = (var.create_nuke_user == true) ? 1 : 0
-  policy_arn = aws_iam_role_policy.nuke_policy_4[count.index].arn
-  role       = aws_iam_role.assume_aws_nuke_access[count.index].name
-}
-
