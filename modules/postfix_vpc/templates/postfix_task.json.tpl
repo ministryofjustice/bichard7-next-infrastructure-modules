@@ -8,12 +8,12 @@
     "portMappings": [
       {
         "containerPort": 25,
-        "hostPort": 2525,
+        "hostPort": 25,
         "protocol": "tcp"
       },
       {
-        "containerPort": 445,
-        "hostPort": 4545,
+        "containerPort": 465,
+        "hostPort": 465,
         "protocol": "tcp"
       }
     ],

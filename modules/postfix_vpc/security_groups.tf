@@ -294,9 +294,9 @@ resource "aws_security_group" "postfix_container" {
 
 resource "aws_security_group_rule" "allow_smtps_ingress_from_vpc_to_postfix_container" {
   description       = "Allow postfix smtps access to postfix container"
-  from_port         = 4545
+  from_port         = 465
   protocol          = "tcp"
-  to_port           = 4545
+  to_port           = 465
   type              = "ingress"
   security_group_id = aws_security_group.postfix_container.id
 
@@ -307,9 +307,9 @@ resource "aws_security_group_rule" "allow_smtps_ingress_from_vpc_to_postfix_cont
 
 resource "aws_security_group_rule" "allow_smtp_ingress_from_vpc_to_postfix_container" {
   description       = "Allow postfix smtp access to postfix container"
-  from_port         = 2525
+  from_port         = 25
   protocol          = "tcp"
-  to_port           = 2525
+  to_port           = 25
   type              = "ingress"
   security_group_id = aws_security_group.postfix_container.id
 

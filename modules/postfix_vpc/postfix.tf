@@ -339,7 +339,7 @@ module "postfix_nlb" {
 
   alb_name        = trim(substr("${var.name}-postfix", 0, 32), "-")
   alb_name_prefix = "psmtp"
-  alb_port        = 2525
+  alb_port        = 25
 
   alb_protocol        = "TCP"
   logging_bucket_name = var.aws_logs_bucket
@@ -349,7 +349,7 @@ module "postfix_nlb" {
 
 resource "aws_alb_target_group" "postfix_smtps" {
   name_prefix = "psmtps"
-  port        = 4545
+  port        = 445
   protocol    = "TCP"
   vpc_id      = module.postfix_vpc.vpc_id
   target_type = "ip"
@@ -384,7 +384,7 @@ resource "aws_alb_listener" "postfix_ecs_smtps" {
 
 module "postfix_ecs_cluster" {
   source       = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster"
-  cluster_name = "postfix"
+  cluster_name = "${var.name}-postfix"
   ecr_repository_arns = [
     var.postfix_repository_arn
   ]
