@@ -156,5 +156,18 @@ data "template_file" "postfix_ecs_task" {
     postfix_certificate_arn      = data.aws_ssm_parameter.cjse_client_certificate.arn
     postfix_key_arn              = aws_ssm_parameter.public_domain_signing_key.arn
     postfix_root_certificate_arn = data.aws_ssm_parameter.cjse_root_certificate.arn
+
+    log_group         = aws_cloudwatch_log_group.postfix_log_group.name
+    region            = data.aws_region.current.name
+    log_stream_prefix = "postfix-ecs"
+  }
+}
+
+data "template_file" "allow_kms" {
+  template = file("${path.module}/policies/allow_kms.json.tpl")
+
+  vars = {
+    account_id = data.aws_caller_identity.current.account_id
+    region     = data.aws_region.current.name
   }
 }

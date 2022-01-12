@@ -11,4 +11,6 @@ locals {
   cjsm_mail_server_dns     = "mail.cjsm.net"
 
   postfix_fqdn = "mail.${data.aws_route53_zone.public.name}"
+
+  log_retention = (lookup(var.tags, "is-production", false) == false) ? 90 : 731
 }

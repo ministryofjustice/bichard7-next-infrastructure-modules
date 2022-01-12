@@ -294,13 +294,37 @@ resource "aws_ssm_parameter" "cloudwatch_agent_configuration_file" {
 }
 
 #### Postfix ecs cluster
+resource "aws_kms_key" "logging_encryption_key" {
+  description = "${var.name}-postfix-cloudwatch-key"
+
+  enable_key_rotation     = true
+  deletion_window_in_days = 7
+
+  policy = data.template_file.allow_kms.rendered
+
+  tags = var.tags
+}
+
+resource "aws_kms_alias" "logging_encryption_key_alias" {
+  target_key_id = aws_kms_key.logging_encryption_key.arn
+  name          = "alias/${aws_kms_key.logging_encryption_key.description}"
+}
+
+resource "aws_cloudwatch_log_group" "postfix_log_group" {
+  name              = "${var.name}-postfix-ecs-logs"
+  retention_in_days = local.log_retention
+  kms_key_id        = aws_kms_key.logging_encryption_key.arn
+
+  tags = var.tags
+}
+
 module "postfix_ecs_cluster" {
   source       = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster"
   cluster_name = "postfix"
   ecr_repository_arns = [
     var.postfix_repository_arn
   ]
-  log_group_name           = ""
+  log_group_name           = aws_cloudwatch_log_group.postfix_log_group.name
   rendered_task_definition = base64encode(data.template_file.postfix_ecs_task.rendered)
   security_group_name      = aws_security_group.postfix_instance.name
   service_subnets          = module.postfix_vpc.private_subnets
@@ -315,5 +339,5 @@ module "postfix_ecs_cluster" {
     data.aws_ssm_parameter.cjse_root_certificate.arn,
     aws_ssm_parameter.public_domain_signing_key.arn
   ]
-  service_name = ""
+  service_name = "postfix"
 }

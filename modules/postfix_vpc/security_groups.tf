@@ -278,3 +278,30 @@ resource "aws_security_group_rule" "allow_postfix_exporter_ingress_from_the_appl
   security_group_id = aws_security_group.postfix_vpce.id
   cidr_blocks       = var.application_cidr
 }
+
+#postfix ecs cluster
+resource "aws_security_group" "postfix_container" {
+  description = "Postfix ECS container security group"
+  name        = "${var.name}-postfix-container"
+  vpc_id      = module.postfix_vpc.vpc_id
+
+  tags = merge(
+    var.tags,
+    {
+      Name = "${var.name}-postfix-container"
+    }
+  )
+}
+
+resource "aws_security_group" "postfix_nlb" {
+  description = "Postfix ECS Network lb security group"
+  name        = "${var.name}-postfix-nlb"
+  vpc_id      = module.postfix_vpc.vpc_id
+
+  tags = merge(
+    var.tags,
+    {
+      Name = "${var.name}-postfix-nlb"
+    }
+  )
+}

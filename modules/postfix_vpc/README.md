@@ -38,6 +38,7 @@ Configuration management is done via an ansible playbook.
 | Name | Type |
 |------|------|
 | [aws_autoscaling_group.bastion](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/autoscaling_group) | resource |
+| [aws_cloudwatch_log_group.postfix_log_group](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/cloudwatch_log_group) | resource |
 | [aws_cloudwatch_metric_alarm.cpu_usage](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/cloudwatch_metric_alarm) | resource |
 | [aws_cloudwatch_metric_alarm.healthy_instances](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/cloudwatch_metric_alarm) | resource |
 | [aws_cloudwatch_metric_alarm.instance_errors](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/cloudwatch_metric_alarm) | resource |
@@ -56,6 +57,8 @@ Configuration management is done via an ansible playbook.
 | [aws_iam_role_policy_attachment.postfix_cloudwatch_agent](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_instance.postfix](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/instance) | resource |
 | [aws_key_pair.aws_keypair](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/key_pair) | resource |
+| [aws_kms_alias.logging_encryption_key_alias](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/kms_alias) | resource |
+| [aws_kms_key.logging_encryption_key](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/kms_key) | resource |
 | [aws_launch_template.bastion](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/launch_template) | resource |
 | [aws_lb.postfix_nlb](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/lb) | resource |
 | [aws_lb_listener.postfix_prometheus_node_exporter](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/lb_listener) | resource |
@@ -75,7 +78,9 @@ Configuration management is done via an ansible playbook.
 | [aws_s3_bucket.vpc_flow_logs_bucket](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/s3_bucket) | resource |
 | [aws_s3_bucket_public_access_block.vpc_flow_logs_bucket](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/s3_bucket_public_access_block) | resource |
 | [aws_security_group.bastion](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/security_group) | resource |
+| [aws_security_group.postfix_container](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/security_group) | resource |
 | [aws_security_group.postfix_instance](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/security_group) | resource |
+| [aws_security_group.postfix_nlb](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/security_group) | resource |
 | [aws_security_group.postfix_vpc_sg](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/security_group) | resource |
 | [aws_security_group.postfix_vpce](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/security_group) | resource |
 | [aws_security_group_rule.allow_https_egress](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/security_group_rule) | resource |
@@ -120,6 +125,7 @@ Configuration management is done via an ansible playbook.
 | [aws_ssm_parameter.cjse_relay_password](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/data-sources/ssm_parameter) | data source |
 | [aws_ssm_parameter.cjse_relay_user](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/data-sources/ssm_parameter) | data source |
 | [aws_ssm_parameter.cjse_root_certificate](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/data-sources/ssm_parameter) | data source |
+| [template_file.allow_kms](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) | data source |
 | [template_file.bastion_allow_ssm_parameters](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) | data source |
 | [template_file.bastion_cloudwatch_agent](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) | data source |
 | [template_file.bastion_instance_userdata](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) | data source |
