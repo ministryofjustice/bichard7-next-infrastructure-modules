@@ -108,6 +108,7 @@ The `postfix_ecs` variable is a map in the following format
 | [aws_security_group_rule.allow_smtp_to_cjsm_net](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.allow_smtp_to_instance_from_private_subnets](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.allow_smtp_to_instance_from_vpce](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.allow_smtps_from_bastion_to_private_vpc](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.allow_smtps_from_container_to_cjsm_net](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.allow_smtps_ingress_from_the_application](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.allow_smtps_ingress_from_vpc_to_postfix_container](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/security_group_rule) | resource |

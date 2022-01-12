@@ -194,6 +194,18 @@ resource "aws_security_group_rule" "allow_ssh_from_bastion_to_private_vpc" {
   cidr_blocks       = module.postfix_vpc.private_subnets_cidr_blocks
 }
 
+resource "aws_security_group_rule" "allow_smtps_from_bastion_to_private_vpc" {
+  description = "Allow smtps egress to our private vpc cidrs"
+
+  from_port = 465
+  to_port   = 465
+  protocol  = "tcp"
+  type      = "egress"
+
+  security_group_id = aws_security_group.bastion.id
+  cidr_blocks       = module.postfix_vpc.private_subnets_cidr_blocks
+}
+
 resource "aws_security_group_rule" "allow_https_from_bastion" {
   description = "Allow Bastion https access out so we can pull SSM"
 
