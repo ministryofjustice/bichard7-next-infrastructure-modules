@@ -19,7 +19,7 @@ resource "aws_ssm_parameter" "private_key" {
 }
 
 resource "aws_network_interface" "static_ip" {
-  count = 0
+  count = length(module.postfix_vpc.private_subnets)
 
   subnet_id   = module.postfix_vpc.private_subnets[count.index]
   private_ips = [cidrhost(module.postfix_vpc.private_subnets_cidr_blocks[count.index], 50)]
@@ -31,7 +31,7 @@ resource "aws_network_interface" "static_ip" {
 }
 
 resource "aws_eip" "postfix_static_ip" {
-  count = 0
+  count = length(module.postfix_vpc.private_subnets)
 
   network_interface         = aws_network_interface.static_ip[count.index].id
   associate_with_private_ip = cidrhost(module.postfix_vpc.private_subnets_cidr_blocks[count.index], 50)
@@ -39,7 +39,7 @@ resource "aws_eip" "postfix_static_ip" {
 }
 
 resource "aws_instance" "postfix" {
-  count = 0
+  count = length(module.postfix_vpc.private_subnets)
 
   ami           = data.aws_ami.amazon_linux_2.id
   instance_type = "t2.medium"
@@ -236,7 +236,7 @@ resource "aws_lb_listener" "postfix_prometheus_postfix_exporter" {
 
 
 resource "aws_lb_target_group_attachment" "postfix_smtp" {
-  count = 0
+  count = length(module.postfix_vpc.private_subnets)
 
   target_group_arn = aws_lb_target_group.postfix_smtp.arn
   target_id        = aws_instance.postfix[count.index].id
@@ -244,7 +244,7 @@ resource "aws_lb_target_group_attachment" "postfix_smtp" {
 }
 
 resource "aws_lb_target_group_attachment" "postfix_smtps" {
-  count = 0
+  count = length(module.postfix_vpc.private_subnets)
 
   target_group_arn = aws_lb_target_group.postfix_smtps.arn
   target_id        = aws_instance.postfix[count.index].id
@@ -252,7 +252,7 @@ resource "aws_lb_target_group_attachment" "postfix_smtps" {
 }
 
 resource "aws_lb_target_group_attachment" "postfix_prometheus_node_exporter" {
-  count = 0
+  count = length(module.postfix_vpc.private_subnets)
 
   target_group_arn = aws_lb_target_group.postfix_prometheus_node_exporter.arn
   target_id        = aws_instance.postfix[count.index].id
@@ -260,7 +260,7 @@ resource "aws_lb_target_group_attachment" "postfix_prometheus_node_exporter" {
 }
 
 resource "aws_lb_target_group_attachment" "postfix_prometheus_postfix_exporter" {
-  count = 0
+  count = length(module.postfix_vpc.private_subnets)
 
   target_group_arn = aws_lb_target_group.postfix_prometheus_postfix_exporter.arn
   target_id        = aws_instance.postfix[count.index].id
