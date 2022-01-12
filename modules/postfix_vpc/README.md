@@ -30,6 +30,7 @@ Configuration management is done via an ansible playbook.
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_postfix_ecs_cluster"></a> [postfix\_ecs\_cluster](#module\_postfix\_ecs\_cluster) | github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster | n/a |
+| <a name="module_postfix_nlb"></a> [postfix\_nlb](#module\_postfix\_nlb) | github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster_alb | n/a |
 | <a name="module_postfix_vpc"></a> [postfix\_vpc](#module\_postfix\_vpc) | terraform-aws-modules/vpc/aws | 3.0.0 |
 | <a name="module_smtp_nginx_self_signed_certificate"></a> [smtp\_nginx\_self\_signed\_certificate](#module\_smtp\_nginx\_self\_signed\_certificate) | github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/self_signed_certificate | n/a |
 
@@ -37,6 +38,8 @@ Configuration management is done via an ansible playbook.
 
 | Name | Type |
 |------|------|
+| [aws_alb_listener.postfix_ecs_smtps](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/alb_listener) | resource |
+| [aws_alb_target_group.postfix_smtps](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/alb_target_group) | resource |
 | [aws_autoscaling_group.bastion](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/autoscaling_group) | resource |
 | [aws_cloudwatch_log_group.postfix_log_group](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/cloudwatch_log_group) | resource |
 | [aws_cloudwatch_metric_alarm.cpu_usage](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/cloudwatch_metric_alarm) | resource |

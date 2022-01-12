@@ -318,6 +318,70 @@ resource "aws_cloudwatch_log_group" "postfix_log_group" {
   tags = var.tags
 }
 
+module "postfix_nlb" {
+  source             = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster_alb"
+  load_balancer_type = "network"
+  vpc_id             = module.postfix_vpc.vpc_id
+
+  alb_listener = [
+    {
+      port     = 2525
+      protocol = "TCP"
+    }
+  ]
+  default_action = [
+    [
+      {
+        type = "forward"
+      }
+    ]
+  ]
+
+  alb_name        = trim(substr("${var.name}-postfix", 0, 32), "-")
+  alb_name_prefix = "psmtp"
+  alb_port        = 2525
+
+  alb_protocol        = "TCP"
+  logging_bucket_name = var.aws_logs_bucket
+  service_subnets     = module.postfix_vpc.private_subnets
+  tags                = var.tags
+}
+
+resource "aws_alb_target_group" "postfix_smtps" {
+  name_prefix = "psmtps"
+  port        = 4545
+  protocol    = "TCP"
+  vpc_id      = module.postfix_vpc.vpc_id
+  target_type = "ip"
+
+  health_check {
+    healthy_threshold   = 10
+    interval            = 30
+    protocol            = "TCP"
+    unhealthy_threshold = 10
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
+
+  tags = var.tags
+}
+
+# tfsec:ignore:AWS004
+resource "aws_alb_listener" "postfix_ecs_smtps" {
+  load_balancer_arn = module.postfix_nlb.load_balancer.arn
+  port              = 4545
+  protocol          = "TCP"
+
+  default_action {
+    type             = "forward"
+    target_group_arn = aws_alb_target_group.postfix_smtps.arn
+  }
+
+  tags = var.tags
+}
+
 module "postfix_ecs_cluster" {
   source       = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster"
   cluster_name = "postfix"
@@ -340,4 +404,12 @@ module "postfix_ecs_cluster" {
     aws_ssm_parameter.public_domain_signing_key.arn
   ]
   service_name = "postfix"
+
+  load_balancers = [
+    {
+      target_group_arn = module.postfix_nlb.target_group.arn
+      container_name   = "postfix"
+      container_port   = module.postfix_nlb.target_group.port
+    }
+  ]
 }
