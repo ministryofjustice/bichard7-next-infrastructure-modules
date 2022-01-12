@@ -39,7 +39,7 @@ resource "aws_eip" "postfix_static_ip" {
 }
 
 resource "aws_instance" "postfix" {
-  count = length(module.postfix_vpc.private_subnets)
+  count = 0 #length(module.postfix_vpc.private_subnets)
 
   ami           = data.aws_ami.amazon_linux_2.id
   instance_type = "t2.medium"
