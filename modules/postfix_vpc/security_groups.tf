@@ -73,7 +73,6 @@ resource "aws_security_group_rule" "allow_smtp_to_instance_from_private_subnets"
   )
 }
 
-
 resource "aws_security_group_rule" "allow_smtps_to_instance_from_private_subnets" {
   description = "Allow SMTPS ingress from Private Subnets"
 
@@ -293,15 +292,28 @@ resource "aws_security_group" "postfix_container" {
   )
 }
 
-resource "aws_security_group" "postfix_nlb" {
-  description = "Postfix ECS Network lb security group"
-  name        = "${var.name}-postfix-nlb"
-  vpc_id      = module.postfix_vpc.vpc_id
+resource "aws_security_group_rule" "allow_smtps_ingress_from_vpc_to_postfix_container" {
+  description       = "Allow postfix smtps access to postfix container"
+  from_port         = 4545
+  protocol          = "tcp"
+  to_port           = 4545
+  type              = "ingress"
+  security_group_id = aws_security_group.postfix_container.id
 
-  tags = merge(
-    var.tags,
-    {
-      Name = "${var.name}-postfix-nlb"
-    }
+  cidr_blocks = concat(
+    module.postfix_vpc.private_subnets_cidr_blocks
+  )
+}
+
+resource "aws_security_group_rule" "allow_smtp_ingress_from_vpc_to_postfix_container" {
+  description       = "Allow postfix smtp access to postfix container"
+  from_port         = 2525
+  protocol          = "tcp"
+  to_port           = 2525
+  type              = "ingress"
+  security_group_id = aws_security_group.postfix_container.id
+
+  cidr_blocks = concat(
+    module.postfix_vpc.private_subnets_cidr_blocks
   )
 }
