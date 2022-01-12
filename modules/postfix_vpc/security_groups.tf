@@ -317,3 +317,17 @@ resource "aws_security_group_rule" "allow_smtp_ingress_from_vpc_to_postfix_conta
     module.postfix_vpc.private_subnets_cidr_blocks
   )
 }
+
+resource "aws_security_group_rule" "allow_smtps_from_container_to_cjsm_net" {
+  description = "Allow SMTP Egress to CJSM"
+
+  from_port = 4545
+  to_port   = 4545
+  protocol  = "tcp"
+  type      = "egress"
+
+  security_group_id = aws_security_group.postfix_container.id
+  cidr_blocks = [
+    local.cjsm_mail_server_address
+  ]
+}
