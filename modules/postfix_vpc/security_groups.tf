@@ -4,7 +4,12 @@ resource "aws_security_group" "postfix_instance" {
   description = "All postfix instance traffic"
   vpc_id      = module.postfix_vpc.vpc_id
 
-  tags = var.tags
+  tags = merge(
+    var.tags,
+    {
+      name = "${var.name}-postfix"
+    }
+  )
 }
 
 resource "aws_security_group_rule" "allow_https_egress" {
@@ -157,7 +162,12 @@ resource "aws_security_group" "bastion" {
   description = "All bastion instance traffic"
   vpc_id      = module.postfix_vpc.vpc_id
 
-  tags = var.tags
+  tags = merge(
+    var.tags,
+    {
+      name = "${var.name}-bastion"
+    }
+  )
 }
 
 resource "aws_security_group_rule" "allow_ssh_ingress_from_world_bastion_instance" {
@@ -203,7 +213,12 @@ resource "aws_security_group" "postfix_vpce" {
   name        = "${var.name}-postfix-vpce"
   vpc_id      = module.postfix_vpc.vpc_id
 
-  tags = var.tags
+  tags = merge(
+    var.tags,
+    {
+      name = "${var.name}-postfix-vpce"
+    }
+  )
 }
 
 resource "aws_security_group_rule" "allow_postfix_vpce_smtp_egress" {
