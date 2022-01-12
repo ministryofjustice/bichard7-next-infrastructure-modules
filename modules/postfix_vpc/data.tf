@@ -143,7 +143,7 @@ data "template_file" "postfix_ecs_task" {
 
   vars = {
     postfix_image = "${var.postfix_repository_arn}@${var.postfix_image_hash}"
-    cpu_units     = 2048
+    cpu_units     = 1024
     memory_units  = 4096
     mail_hostname = aws_route53_record.mail.fqdn
     mail_domain   = data.aws_route53_zone.public.name
