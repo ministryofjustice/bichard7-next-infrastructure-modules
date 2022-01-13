@@ -7,8 +7,32 @@ resource "aws_iam_role" "assume_aws_nuke_access" {
   tags = var.tags
 }
 
-resource "aws_iam_role_policy_attachment" "assume_nuke_access_admin_access" {
-  count      = (var.create_nuke_user == true) ? 1 : 0
-  policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
-  role       = aws_iam_role.assume_aws_nuke_access[count.index].name
+resource "aws_iam_role_policy" "nuke_policy_1" {
+  count  = (var.create_nuke_user == true) ? 1 : 0
+  name   = "NukePolicy1"
+  role   = aws_iam_role.assume_aws_nuke_access[count.index].id
+  policy = file("${path.module}/policies/allow_nuke_part1.json")
 }
+
+# tfsec:ignore:aws-iam-no-policy-wildcards
+resource "aws_iam_role_policy" "nuke_policy_2" {
+  count  = (var.create_nuke_user == true) ? 1 : 0
+  name   = "NukePolicy2"
+  role   = aws_iam_role.assume_aws_nuke_access[count.index].id
+  policy = file("${path.module}/policies/allow_nuke_part2.json")
+}
+
+resource "aws_iam_role_policy" "nuke_policy_3" {
+  count  = (var.create_nuke_user == true) ? 1 : 0
+  name   = "NukePolicy3"
+  role   = aws_iam_role.assume_aws_nuke_access[count.index].id
+  policy = file("${path.module}/policies/allow_nuke_part3.json")
+}
+
+resource "aws_iam_role_policy" "nuke_policy_4" {
+  count  = (var.create_nuke_user == true) ? 1 : 0
+  name   = "NukePolicy4"
+  role   = aws_iam_role.assume_aws_nuke_access[count.index].id
+  policy = file("${path.module}/policies/allow_nuke_part4.json")
+}
+
