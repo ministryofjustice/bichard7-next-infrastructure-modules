@@ -37,7 +37,7 @@ resource "aws_ecs_task_definition" "prometheus_tasks" {
     name = "${var.name}-prometheus-data"
     efs_volume_configuration {
       file_system_id     = var.prometheus_efs_filesystem_id
-      root_directory     = "/data"
+      root_directory     = "/"
       transit_encryption = "ENABLED"
       authorization_config {
         access_point_id = var.efs_access_points.prometheus.id
