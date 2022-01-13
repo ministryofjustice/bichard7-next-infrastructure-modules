@@ -29,6 +29,7 @@ The `postfix_ecs` variable is a map in the following format
 | Name | Version |
 |------|---------|
 | <a name="provider_aws"></a> [aws](#provider\_aws) | 3.56.0 |
+| <a name="provider_random"></a> [random](#provider\_random) | 3.1.0 |
 | <a name="provider_template"></a> [template](#provider\_template) | 2.2.0 |
 | <a name="provider_tls"></a> [tls](#provider\_tls) | 3.1.0 |
 
@@ -66,9 +67,12 @@ The `postfix_ecs` variable is a map in the following format
 | [aws_security_group_rule.allow_smtps_ingress_from_vpc_to_postfix_container](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.allow_vpc_endpoint_secure_smtp_ingress](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.allow_vpc_endpoint_smtp_ingress](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/security_group_rule) | resource |
+| [aws_ssm_parameter.postfix_remote_password](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ssm_parameter) | resource |
+| [aws_ssm_parameter.postfix_remote_user](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ssm_parameter) | resource |
 | [aws_ssm_parameter.public_domain_signing_key](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ssm_parameter) | resource |
 | [aws_ssm_parameter.public_domain_smtp_csr](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ssm_parameter) | resource |
 | [aws_vpc_endpoint_service.postfix](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/vpc_endpoint_service) | resource |
+| [random_password.postfix_remote_password](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password) | resource |
 | [tls_cert_request.public_domain_signing_certificate](https://registry.terraform.io/providers/hashicorp/tls/3.1.0/docs/resources/cert_request) | resource |
 | [tls_private_key.public_domain_signing_key](https://registry.terraform.io/providers/hashicorp/tls/3.1.0/docs/resources/private_key) | resource |
 | [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/data-sources/caller_identity) | data source |

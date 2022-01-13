@@ -1,3 +1,24 @@
+# Postfix smtp user
+resource "aws_ssm_parameter" "postfix_remote_user" {
+  name  = "/${var.name}/smtp/postfix_user"
+  type  = "SecureString"
+  value = "smtpd.${terraform.workspace}"
+
+  tags = var.tags
+}
+
+resource "random_password" "postfix_remote_password" {
+  length  = 24
+  special = false
+}
+
+resource "aws_ssm_parameter" "postfix_remote_password" {
+  name  = "/${var.name}/smtp/postfix_password"
+  type  = "SecureString"
+  value = random_password.postfix_remote_password.result
+
+  tags = var.tags
+}
 # VPC Endpoint Service
 resource "aws_vpc_endpoint_service" "postfix" {
   acceptance_required = false
