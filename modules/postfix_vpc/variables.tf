@@ -18,13 +18,6 @@ variable "vpc_cidr_block" {
   type        = string
   default     = null
 }
-
-variable "bastion_count" {
-  description = "How many bastion instances do we want"
-  type        = number
-  default     = 1
-}
-
 variable "ingress_cidr_blocks" {
   description = "A list of ingress cidr blocks to route to our private cidrs"
   type        = list(string)
@@ -43,4 +36,9 @@ variable "application_cidr" {
 variable "cloudwatch_notifications_arn" {
   description = "The arn of our cloudwatch sns notifications arn"
   type        = string
+}
+
+variable "postfix_ecs" {
+  description = "A map of postfix ecr values"
+  type        = map(string)
 }
