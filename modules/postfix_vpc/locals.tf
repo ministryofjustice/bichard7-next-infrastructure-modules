@@ -3,9 +3,6 @@ locals {
   cidr_sub_blocks = cidrsubnets(local.cidr_block, 8, 8, 8, 8, 8, 8)
   env             = replace(terraform.workspace, "_", "")
 
-  # We need to convert the object into a list of route table ids
-  //  remote_rtb_ids = [for rtb in data.aws_route_table.infra_to_postfix_subnet_route_table : rtb.id]
-
   ### CSJM remote IP address
   cjsm_mail_server_address = "51.140.32.204/32"
   cjsm_mail_server_dns     = "mail.cjsm.net"
@@ -13,4 +10,14 @@ locals {
   postfix_fqdn = "mail.${data.aws_route53_zone.public.name}"
 
   log_retention = (lookup(var.tags, "is-production", false) == false) ? 90 : 731
+
+  # Cloudwatch alarm values
+  cpu_threshold            = 75
+  mem_threshold            = 75
+  evaluation_threshold     = 5
+  evaluation_seconds       = 60
+  ecs_evaluation_threshold = 5
+  ecs_evaluation_seconds   = 60
+  postfix_tasks            = 3
+  min_postfix_tasks        = 1
 }

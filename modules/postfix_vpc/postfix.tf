@@ -137,7 +137,7 @@ module "postfix_ecs_cluster" {
   service_subnets          = module.postfix_vpc.private_subnets
   tags                     = var.tags
 
-  container_count        = 3
+  container_count        = local.postfix_tasks
   enable_execute_command = true
   ssm_resources = [
     data.aws_ssm_parameter.cjse_client_certificate.arn,

@@ -49,6 +49,10 @@ The `postfix_ecs` variable is a map in the following format
 | [aws_alb_listener.postfix_ecs_smtps](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/alb_listener) | resource |
 | [aws_alb_target_group.postfix_smtps](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/alb_target_group) | resource |
 | [aws_cloudwatch_log_group.postfix_log_group](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/cloudwatch_log_group) | resource |
+| [aws_cloudwatch_metric_alarm.postfix_cluster_cpu_usage](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/cloudwatch_metric_alarm) | resource |
+| [aws_cloudwatch_metric_alarm.postfix_cluster_memory_usage](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/cloudwatch_metric_alarm) | resource |
+| [aws_cloudwatch_metric_alarm.postfix_service_running_containers](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/cloudwatch_metric_alarm) | resource |
+| [aws_cloudwatch_metric_alarm.postfix_service_running_tasks](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/cloudwatch_metric_alarm) | resource |
 | [aws_eip.nat_gateway_static_ip](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/eip) | resource |
 | [aws_kms_alias.logging_encryption_key_alias](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/kms_alias) | resource |
 | [aws_kms_key.logging_encryption_key](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/kms_key) | resource |
