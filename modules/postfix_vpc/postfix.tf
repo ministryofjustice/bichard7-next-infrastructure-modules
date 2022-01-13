@@ -155,4 +155,8 @@ module "postfix_ecs_cluster" {
       container_port   = module.postfix_nlb.target_group.port
     }
   ]
+
+  depends_on = [
+    aws_security_group.postfix_container
+  ]
 }
