@@ -270,7 +270,7 @@ resource "aws_lb_target_group_attachment" "postfix_prometheus_postfix_exporter" 
 resource "aws_vpc_endpoint_service" "postfix" {
   acceptance_required = false
   network_load_balancer_arns = [
-    aws_lb.postfix_nlb.arn,
+    #    aws_lb.postfix_nlb.arn,
     module.postfix_nlb.load_balancer.arn
   ]
 
