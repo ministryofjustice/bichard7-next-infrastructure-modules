@@ -35,8 +35,8 @@ data "template_file" "postfix_ecs_task" {
 
   vars = {
     postfix_image = "${var.postfix_ecs.repository_url}@${var.postfix_ecs.image_hash}"
-    cpu_units     = 1024
-    memory_units  = 4096
+    cpu_units     = local.cpu_units
+    memory_units  = local.memory_units
     mail_hostname = aws_route53_record.mail.fqdn
     mail_domain   = data.aws_route53_zone.public.name
     allowed_cidrs = join(" ", var.application_cidr)

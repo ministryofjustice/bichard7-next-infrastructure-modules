@@ -125,8 +125,11 @@ resource "aws_alb_listener" "postfix_ecs_smtps" {
 }
 
 module "postfix_ecs_cluster" {
-  source       = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster"
-  cluster_name = "${var.name}-postfix"
+  source = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster"
+
+  cluster_name   = local.cluster_name
+  fargate_memory = local.memory_units
+  fargate_cpu    = local.cpu_units
 
   ecr_repository_arns = [
     var.postfix_ecs.repository_arn

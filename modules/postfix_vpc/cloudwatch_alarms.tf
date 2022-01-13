@@ -19,7 +19,7 @@ resource "aws_cloudwatch_metric_alarm" "postfix_cluster_cpu_usage" {
 
   dimensions = {
     ServiceName = module.postfix_ecs_cluster.ecs_service.name
-    ClusterName = module.postfix_ecs_cluster.ecs_cluster
+    ClusterName = local.cluster_name
   }
 
   tags = var.tags
@@ -46,7 +46,7 @@ resource "aws_cloudwatch_metric_alarm" "postfix_cluster_memory_usage" {
 
   dimensions = {
     ServiceName = module.postfix_ecs_cluster.ecs_service.name
-    ClusterName = module.postfix_ecs_cluster.ecs_cluster
+    ClusterName = local.cluster_name
   }
 
   tags = var.tags
@@ -74,7 +74,7 @@ resource "aws_cloudwatch_metric_alarm" "postfix_service_running_tasks" {
 
   dimensions = {
     ServiceName = module.postfix_ecs_cluster.ecs_service.name
-    ClusterName = module.postfix_ecs_cluster.ecs_cluster
+    ClusterName = local.cluster_name
   }
 
   tags = var.tags
@@ -87,7 +87,7 @@ resource "aws_cloudwatch_metric_alarm" "postfix_service_running_containers" {
   period              = local.ecs_evaluation_seconds
   threshold           = local.min_postfix_tasks
   treat_missing_data  = "ignore"
-  namespace           = "AWS/ApplicationELB"
+  namespace           = "AWS/NetworkELB"
   metric_name         = "HealthyHostCount"
   statistic           = "Average"
   comparison_operator = "LessThanThreshold"
@@ -95,7 +95,7 @@ resource "aws_cloudwatch_metric_alarm" "postfix_service_running_containers" {
 
   dimensions = {
     TargetGroup  = module.postfix_nlb.target_group.name
-    LoadBalancer = module.postfix_nlb.load_balancer.name
+    LoadBalancer = module.postfix_nlb.load_balancer
   }
 
   alarm_actions = [

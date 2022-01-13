@@ -11,6 +11,12 @@ locals {
 
   log_retention = (lookup(var.tags, "is-production", false) == false) ? 90 : 731
 
+  # Cluster config
+  cluster_name  = "${var.name}-postfix"
+  postfix_tasks = 3
+  cpu_units     = 1024
+  memory_units  = 4096
+
   # Cloudwatch alarm values
   cpu_threshold            = 75
   mem_threshold            = 75
@@ -18,6 +24,5 @@ locals {
   evaluation_seconds       = 60
   ecs_evaluation_threshold = 5
   ecs_evaluation_seconds   = 60
-  postfix_tasks            = 3
   min_postfix_tasks        = 1
 }
