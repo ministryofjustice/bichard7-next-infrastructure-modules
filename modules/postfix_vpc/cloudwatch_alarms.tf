@@ -94,8 +94,8 @@ resource "aws_cloudwatch_metric_alarm" "postfix_service_running_containers" {
   alarm_description   = "Postfix healthy containers under threshold of ${local.min_postfix_tasks} on loadbalancer ${module.postfix_nlb.load_balancer.name} in ${terraform.workspace} environment"
 
   dimensions = {
-    TargetGroup  = module.postfix_nlb.target_group.name
-    LoadBalancer = module.postfix_nlb.load_balancer
+    TargetGroup  = module.postfix_nlb.target_group.arn_suffix
+    LoadBalancer = module.postfix_nlb.load_balancer.arn_suffix
   }
 
   alarm_actions = [
