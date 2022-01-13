@@ -58,6 +58,7 @@ The `postfix_ecs` variable is a map in the following format
 | [aws_security_group.postfix_container](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/security_group) | resource |
 | [aws_security_group.postfix_vpc_sg](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/security_group) | resource |
 | [aws_security_group.postfix_vpce](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/security_group) | resource |
+| [aws_security_group_rule.allow_https_egress](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.allow_postfix_vpce_smtp_egress](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.allow_postfix_vpce_smtps_egress](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.allow_smtp_ingress_from_the_application](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/security_group_rule) | resource |

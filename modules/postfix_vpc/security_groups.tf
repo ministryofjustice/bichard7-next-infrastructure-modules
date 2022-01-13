@@ -113,3 +113,15 @@ resource "aws_security_group_rule" "allow_smtps_from_container_to_cjsm_net" {
     local.cjsm_mail_server_address
   ]
 }
+
+resource "aws_security_group_rule" "allow_https_egress" {
+  description = "All https egress from containers"
+
+  from_port = 443
+  to_port   = 443
+  protocol  = "tcp"
+  type      = "egress"
+
+  security_group_id = aws_security_group.postfix_container.id
+  cidr_blocks       = ["0.0.0.0/0"] # tfsec:ignore:AWS007
+}
