@@ -11,14 +11,14 @@ The CI username needs to be created as a ssm parameter on the parent account und
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | = 3.56.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | = 3.72.0 |
 | <a name="requirement_template"></a> [template](#requirement\_template) | = 2.2.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.56.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.72.0 |
 | <a name="provider_template"></a> [template](#provider\_template) | 2.2.0 |
 
 ## Modules
@@ -31,32 +31,32 @@ The CI username needs to be created as a ssm parameter on the parent account und
 
 | Name | Type |
 |------|------|
-| [aws_iam_policy.ci_permissions_policy_part1](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/iam_policy) | resource |
-| [aws_iam_policy.ci_permissions_policy_part2](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/iam_policy) | resource |
-| [aws_iam_policy.ci_policy](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/iam_policy) | resource |
-| [aws_iam_policy.ci_to_parent_policy](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/iam_policy) | resource |
-| [aws_iam_role.assume_administrator_access](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/iam_role) | resource |
-| [aws_iam_role.assume_aws_nuke_access](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/iam_role) | resource |
-| [aws_iam_role.assume_ci_access](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/iam_role) | resource |
-| [aws_iam_role.assume_readonly_access](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/iam_role) | resource |
-| [aws_iam_role.portal_host_lambda_role](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/iam_role) | resource |
-| [aws_iam_role_policy.allow_role_scoutsuite_read](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/iam_role_policy) | resource |
-| [aws_iam_role_policy.nuke_policy_1](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/iam_role_policy) | resource |
-| [aws_iam_role_policy.nuke_policy_2](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/iam_role_policy) | resource |
-| [aws_iam_role_policy.nuke_policy_3](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/iam_role_policy) | resource |
-| [aws_iam_role_policy.nuke_policy_4](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/iam_role_policy) | resource |
-| [aws_iam_role_policy_attachment.administrator_access_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/iam_role_policy_attachment) | resource |
-| [aws_iam_role_policy_attachment.ci_access_policy_attachment_part1](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/iam_role_policy_attachment) | resource |
-| [aws_iam_role_policy_attachment.ci_access_policy_attachment_part2](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/iam_role_policy_attachment) | resource |
-| [aws_iam_role_policy_attachment.ci_parent_access_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/iam_role_policy_attachment) | resource |
-| [aws_iam_role_policy_attachment.ci_policies](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/iam_role_policy_attachment) | resource |
-| [aws_iam_role_policy_attachment.readonly_access_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/iam_role_policy_attachment) | resource |
-| [aws_iam_service_linked_role.es_service_role](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/iam_service_linked_role) | resource |
-| [aws_s3_bucket.account_logging_bucket](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/s3_bucket) | resource |
-| [aws_s3_bucket_policy.account_logging_bucket](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/s3_bucket_policy) | resource |
-| [aws_s3_bucket_public_access_block.account_logging_bucket](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/s3_bucket_public_access_block) | resource |
-| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/data-sources/caller_identity) | data source |
-| [aws_region.current_region](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/data-sources/region) | data source |
+| [aws_iam_policy.ci_permissions_policy_part1](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_policy) | resource |
+| [aws_iam_policy.ci_permissions_policy_part2](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_policy) | resource |
+| [aws_iam_policy.ci_policy](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_policy) | resource |
+| [aws_iam_policy.ci_to_parent_policy](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_policy) | resource |
+| [aws_iam_role.assume_administrator_access](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role) | resource |
+| [aws_iam_role.assume_aws_nuke_access](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role) | resource |
+| [aws_iam_role.assume_ci_access](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role) | resource |
+| [aws_iam_role.assume_readonly_access](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role) | resource |
+| [aws_iam_role.portal_host_lambda_role](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role) | resource |
+| [aws_iam_role_policy.allow_role_scoutsuite_read](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy) | resource |
+| [aws_iam_role_policy.nuke_policy_1](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy) | resource |
+| [aws_iam_role_policy.nuke_policy_2](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy) | resource |
+| [aws_iam_role_policy.nuke_policy_3](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy) | resource |
+| [aws_iam_role_policy.nuke_policy_4](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy) | resource |
+| [aws_iam_role_policy_attachment.administrator_access_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_iam_role_policy_attachment.ci_access_policy_attachment_part1](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_iam_role_policy_attachment.ci_access_policy_attachment_part2](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_iam_role_policy_attachment.ci_parent_access_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_iam_role_policy_attachment.ci_policies](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_iam_role_policy_attachment.readonly_access_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_iam_service_linked_role.es_service_role](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_service_linked_role) | resource |
+| [aws_s3_bucket.account_logging_bucket](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/s3_bucket) | resource |
+| [aws_s3_bucket_policy.account_logging_bucket](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/s3_bucket_policy) | resource |
+| [aws_s3_bucket_public_access_block.account_logging_bucket](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/s3_bucket_public_access_block) | resource |
+| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/caller_identity) | data source |
+| [aws_region.current_region](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/region) | data source |
 | [template_file.allow_assume_administrator_access_template](https://registry.terraform.io/providers/hashicorp/template/2.2.0/docs/data-sources/file) | data source |
 | [template_file.allow_assume_aws_nuke_access](https://registry.terraform.io/providers/hashicorp/template/2.2.0/docs/data-sources/file) | data source |
 | [template_file.allow_assume_ci_access_template](https://registry.terraform.io/providers/hashicorp/template/2.2.0/docs/data-sources/file) | data source |

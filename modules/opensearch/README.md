@@ -9,7 +9,7 @@ Module to provision opensearch and using the opensearch api create a basic index
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13 |
 | <a name="requirement_archive"></a> [archive](#requirement\_archive) | = 2.0.0 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | = 3.56.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | = 3.72.0 |
 | <a name="requirement_elasticsearch"></a> [elasticsearch](#requirement\_elasticsearch) | = 2.0.0-beta.2 |
 | <a name="requirement_random"></a> [random](#requirement\_random) | = 3.0.1 |
 | <a name="requirement_time"></a> [time](#requirement\_time) | 0.7.2 |
@@ -18,7 +18,7 @@ Module to provision opensearch and using the opensearch api create a basic index
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.56.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.72.0 |
 | <a name="provider_elasticsearch"></a> [elasticsearch](#provider\_elasticsearch) | 2.0.0-beta.2 |
 | <a name="provider_random"></a> [random](#provider\_random) | 3.0.1 |
 | <a name="provider_template"></a> [template](#provider\_template) | 2.2.0 |
@@ -32,22 +32,22 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [aws_cloudwatch_log_resource_policy.elasticsearch_logs_policy](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/cloudwatch_log_resource_policy) | resource |
-| [aws_elasticsearch_domain.es](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/elasticsearch_domain) | resource |
-| [aws_route53_record.elasticsearch](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/route53_record) | resource |
-| [aws_security_group_rule.elasticsearch_egress_to_vpc](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.elasticsearch_ingress_from_vpc](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/security_group_rule) | resource |
-| [aws_ssm_parameter.es_password](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ssm_parameter) | resource |
-| [aws_ssm_parameter.es_user](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ssm_parameter) | resource |
+| [aws_cloudwatch_log_resource_policy.elasticsearch_logs_policy](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/cloudwatch_log_resource_policy) | resource |
+| [aws_elasticsearch_domain.es](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/elasticsearch_domain) | resource |
+| [aws_route53_record.elasticsearch](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/route53_record) | resource |
+| [aws_security_group_rule.elasticsearch_egress_to_vpc](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.elasticsearch_ingress_from_vpc](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
+| [aws_ssm_parameter.es_password](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ssm_parameter) | resource |
+| [aws_ssm_parameter.es_user](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ssm_parameter) | resource |
 | [elasticsearch_kibana_object.cloudwatch_index_pattern](https://registry.terraform.io/providers/phillbaker/elasticsearch/2.0.0-beta.2/docs/resources/kibana_object) | resource |
 | [elasticsearch_opendistro_ism_policy.prune_indices_after_n_days](https://registry.terraform.io/providers/phillbaker/elasticsearch/2.0.0-beta.2/docs/resources/opendistro_ism_policy) | resource |
 | [elasticsearch_opendistro_role.writer](https://registry.terraform.io/providers/phillbaker/elasticsearch/2.0.0-beta.2/docs/resources/opendistro_role) | resource |
 | [random_password.es](https://registry.terraform.io/providers/hashicorp/random/3.0.1/docs/resources/password) | resource |
 | [time_sleep.wait_for_log_group](https://registry.terraform.io/providers/hashicorp/time/0.7.2/docs/resources/sleep) | resource |
-| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/data-sources/caller_identity) | data source |
-| [aws_cloudwatch_log_group.es_log_group](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/data-sources/cloudwatch_log_group) | data source |
-| [aws_region.current](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/data-sources/region) | data source |
-| [aws_security_group.es](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/data-sources/security_group) | data source |
+| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/caller_identity) | data source |
+| [aws_cloudwatch_log_group.es_log_group](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/cloudwatch_log_group) | data source |
+| [aws_region.current](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/region) | data source |
+| [aws_security_group.es](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/security_group) | data source |
 | [template_file.elasticsearch_access_policy](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) | data source |
 | [template_file.opensearch_ism_prune_policy](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) | data source |
 
