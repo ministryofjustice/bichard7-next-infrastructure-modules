@@ -1,7 +1,6 @@
 {
   "policy": {
     "description": "Changes replica count and deletes.",
-    "schema_version": 1,
     "default_state": "current",
     "states": [
       {

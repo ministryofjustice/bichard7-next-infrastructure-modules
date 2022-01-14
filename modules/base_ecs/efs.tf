@@ -52,4 +52,6 @@ resource "aws_efs_access_point" "prometheus_data" {
       permissions = "0777"
     }
   }
+
+  tags = var.tags
 }

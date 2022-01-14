@@ -5,7 +5,7 @@
       "essential": true,
       "cpu":${application_cpu},
       "memory":${application_memory},
-      "dependsOn": [],
+      "volumesFrom": [],
       "mountPoints": [
         {
           "sourceVolume": "${data_volume}",
@@ -33,10 +33,6 @@
         {
           "name": "CJSE_FQDN_SUFFIX",
           "value": "${public_zone_name}"
-        },
-        {
-          "name": "RETENTION_DAYS",
-          "value": "${retention_days}"
         },
         {
           "name": "LOG_LEVEL",
