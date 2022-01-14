@@ -95,6 +95,8 @@ resource "aws_kms_alias" "aurora_cluster_encryption_key_alias" {
 resource "aws_rds_cluster" "grafana_db" {
   cluster_identifier = "${var.name}-grafana"
 
+  enable_global_write_forwarding = false
+
   engine         = "aurora-postgresql"
   engine_version = "13.4"
 

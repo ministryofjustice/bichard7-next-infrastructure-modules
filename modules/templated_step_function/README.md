@@ -8,14 +8,14 @@ Creates a step function based on deployed lambdas
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | = 3.56.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | = 3.72.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.56.0 |
-| <a name="provider_aws.parent"></a> [aws.parent](#provider\_aws.parent) | 3.56.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.72.0 |
+| <a name="provider_aws.parent"></a> [aws.parent](#provider\_aws.parent) | 3.72.0 |
 | <a name="provider_template"></a> [template](#provider\_template) | 2.2.0 |
 
 ## Modules
@@ -26,8 +26,8 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [aws_sfn_state_machine.step_function](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/sfn_state_machine) | resource |
-| [aws_s3_bucket_object.state_machine_definition_template](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/data-sources/s3_bucket_object) | data source |
+| [aws_sfn_state_machine.step_function](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/sfn_state_machine) | resource |
+| [aws_s3_bucket_object.state_machine_definition_template](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/s3_bucket_object) | data source |
 | [template_file.state_machine_definition](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) | data source |
 
 ## Inputs

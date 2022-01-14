@@ -8,13 +8,13 @@ Creates a bucket to use with Lambda Cloudtrails
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | = 3.56.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | = 3.72.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.56.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.72.0 |
 | <a name="provider_template"></a> [template](#provider\_template) | 2.2.0 |
 
 ## Modules
@@ -25,12 +25,12 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [aws_cloudtrail.lambda_trail](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/cloudtrail) | resource |
-| [aws_kms_alias.lambda_trail_encryption](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/kms_alias) | resource |
-| [aws_kms_key.lambda_trail_encryption](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/kms_key) | resource |
-| [aws_s3_bucket.lambda_logs_bucket](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/s3_bucket) | resource |
-| [aws_s3_bucket_public_access_block.lambda_logs_bucket](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/s3_bucket_public_access_block) | resource |
-| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/data-sources/caller_identity) | data source |
+| [aws_cloudtrail.lambda_trail](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/cloudtrail) | resource |
+| [aws_kms_alias.lambda_trail_encryption](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/kms_alias) | resource |
+| [aws_kms_key.lambda_trail_encryption](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/kms_key) | resource |
+| [aws_s3_bucket.lambda_logs_bucket](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/s3_bucket) | resource |
+| [aws_s3_bucket_public_access_block.lambda_logs_bucket](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/s3_bucket_public_access_block) | resource |
+| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/caller_identity) | data source |
 | [template_file.lambda_cloudtrail_policy](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) | data source |
 | [template_file.lambda_logging_bucket](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) | data source |
 

@@ -36,14 +36,14 @@ The `postfix_ecs` variable is a map in the following format
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | = 3.56.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | = 3.72.0 |
 | <a name="requirement_tls"></a> [tls](#requirement\_tls) | = 3.1.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.56.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.72.0 |
 | <a name="provider_random"></a> [random](#provider\_random) | 3.1.0 |
 | <a name="provider_template"></a> [template](#provider\_template) | 2.2.0 |
 | <a name="provider_tls"></a> [tls](#provider\_tls) | 3.1.0 |
@@ -61,48 +61,48 @@ The `postfix_ecs` variable is a map in the following format
 
 | Name | Type |
 |------|------|
-| [aws_alb_listener.postfix_ecs_smtps](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/alb_listener) | resource |
-| [aws_alb_target_group.postfix_smtps](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/alb_target_group) | resource |
-| [aws_cloudwatch_log_group.postfix_log_group](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/cloudwatch_log_group) | resource |
-| [aws_cloudwatch_metric_alarm.postfix_cluster_cpu_usage](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/cloudwatch_metric_alarm) | resource |
-| [aws_cloudwatch_metric_alarm.postfix_cluster_memory_usage](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/cloudwatch_metric_alarm) | resource |
-| [aws_cloudwatch_metric_alarm.postfix_service_running_containers](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/cloudwatch_metric_alarm) | resource |
-| [aws_cloudwatch_metric_alarm.postfix_service_running_tasks](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/cloudwatch_metric_alarm) | resource |
-| [aws_eip.nat_gateway_static_ip](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/eip) | resource |
-| [aws_kms_alias.logging_encryption_key_alias](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/kms_alias) | resource |
-| [aws_kms_key.logging_encryption_key](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/kms_key) | resource |
-| [aws_route53_record.mail](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/route53_record) | resource |
-| [aws_s3_bucket.vpc_flow_logs_bucket](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/s3_bucket) | resource |
-| [aws_s3_bucket_public_access_block.vpc_flow_logs_bucket](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/s3_bucket_public_access_block) | resource |
-| [aws_security_group.postfix_container](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/security_group) | resource |
-| [aws_security_group.postfix_vpc_sg](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/security_group) | resource |
-| [aws_security_group.postfix_vpce](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/security_group) | resource |
-| [aws_security_group_rule.allow_https_egress](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.allow_postfix_vpce_smtp_egress](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.allow_postfix_vpce_smtps_egress](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.allow_smtp_ingress_from_the_application](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.allow_smtp_ingress_from_vpc_to_postfix_container](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.allow_smtps_from_container_to_cjsm_net](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.allow_smtps_ingress_from_the_application](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.allow_smtps_ingress_from_vpc_to_postfix_container](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.allow_vpc_endpoint_secure_smtp_ingress](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.allow_vpc_endpoint_smtp_ingress](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/security_group_rule) | resource |
-| [aws_ssm_parameter.postfix_remote_password](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ssm_parameter) | resource |
-| [aws_ssm_parameter.postfix_remote_user](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ssm_parameter) | resource |
-| [aws_ssm_parameter.public_domain_signing_key](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ssm_parameter) | resource |
-| [aws_ssm_parameter.public_domain_smtp_csr](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/ssm_parameter) | resource |
-| [aws_vpc_endpoint_service.postfix](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/vpc_endpoint_service) | resource |
+| [aws_alb_listener.postfix_ecs_smtps](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/alb_listener) | resource |
+| [aws_alb_target_group.postfix_smtps](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/alb_target_group) | resource |
+| [aws_cloudwatch_log_group.postfix_log_group](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/cloudwatch_log_group) | resource |
+| [aws_cloudwatch_metric_alarm.postfix_cluster_cpu_usage](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/cloudwatch_metric_alarm) | resource |
+| [aws_cloudwatch_metric_alarm.postfix_cluster_memory_usage](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/cloudwatch_metric_alarm) | resource |
+| [aws_cloudwatch_metric_alarm.postfix_service_running_containers](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/cloudwatch_metric_alarm) | resource |
+| [aws_cloudwatch_metric_alarm.postfix_service_running_tasks](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/cloudwatch_metric_alarm) | resource |
+| [aws_eip.nat_gateway_static_ip](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/eip) | resource |
+| [aws_kms_alias.logging_encryption_key_alias](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/kms_alias) | resource |
+| [aws_kms_key.logging_encryption_key](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/kms_key) | resource |
+| [aws_route53_record.mail](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/route53_record) | resource |
+| [aws_s3_bucket.vpc_flow_logs_bucket](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/s3_bucket) | resource |
+| [aws_s3_bucket_public_access_block.vpc_flow_logs_bucket](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/s3_bucket_public_access_block) | resource |
+| [aws_security_group.postfix_container](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group) | resource |
+| [aws_security_group.postfix_vpc_sg](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group) | resource |
+| [aws_security_group.postfix_vpce](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group) | resource |
+| [aws_security_group_rule.allow_https_egress](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.allow_postfix_vpce_smtp_egress](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.allow_postfix_vpce_smtps_egress](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.allow_smtp_ingress_from_the_application](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.allow_smtp_ingress_from_vpc_to_postfix_container](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.allow_smtps_from_container_to_cjsm_net](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.allow_smtps_ingress_from_the_application](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.allow_smtps_ingress_from_vpc_to_postfix_container](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.allow_vpc_endpoint_secure_smtp_ingress](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.allow_vpc_endpoint_smtp_ingress](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
+| [aws_ssm_parameter.postfix_remote_password](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ssm_parameter) | resource |
+| [aws_ssm_parameter.postfix_remote_user](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ssm_parameter) | resource |
+| [aws_ssm_parameter.public_domain_signing_key](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ssm_parameter) | resource |
+| [aws_ssm_parameter.public_domain_smtp_csr](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ssm_parameter) | resource |
+| [aws_vpc_endpoint_service.postfix](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/vpc_endpoint_service) | resource |
 | [random_password.postfix_remote_password](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password) | resource |
 | [tls_cert_request.public_domain_signing_certificate](https://registry.terraform.io/providers/hashicorp/tls/3.1.0/docs/resources/cert_request) | resource |
 | [tls_private_key.public_domain_signing_key](https://registry.terraform.io/providers/hashicorp/tls/3.1.0/docs/resources/private_key) | resource |
-| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/data-sources/caller_identity) | data source |
-| [aws_region.current](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/data-sources/region) | data source |
-| [aws_route53_zone.public](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/data-sources/route53_zone) | data source |
-| [aws_security_group.user_service_container](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/data-sources/security_group) | data source |
-| [aws_ssm_parameter.cjse_client_certificate](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/data-sources/ssm_parameter) | data source |
-| [aws_ssm_parameter.cjse_relay_password](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/data-sources/ssm_parameter) | data source |
-| [aws_ssm_parameter.cjse_relay_user](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/data-sources/ssm_parameter) | data source |
-| [aws_ssm_parameter.cjse_root_certificate](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/data-sources/ssm_parameter) | data source |
+| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/caller_identity) | data source |
+| [aws_region.current](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/region) | data source |
+| [aws_route53_zone.public](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/route53_zone) | data source |
+| [aws_security_group.user_service_container](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/security_group) | data source |
+| [aws_ssm_parameter.cjse_client_certificate](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/ssm_parameter) | data source |
+| [aws_ssm_parameter.cjse_relay_password](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/ssm_parameter) | data source |
+| [aws_ssm_parameter.cjse_relay_user](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/ssm_parameter) | data source |
+| [aws_ssm_parameter.cjse_root_certificate](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/ssm_parameter) | data source |
 | [template_file.allow_kms](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) | data source |
 | [template_file.postfix_ecs_task](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) | data source |
 

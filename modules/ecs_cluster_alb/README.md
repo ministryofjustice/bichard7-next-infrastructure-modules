@@ -8,14 +8,14 @@ Module to bind an alb/nlb with listeners to a cluster
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | = 3.56.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | = 3.72.0 |
 | <a name="requirement_template"></a> [template](#requirement\_template) | = 2.2.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.56.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.72.0 |
 
 ## Modules
 
@@ -25,12 +25,12 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [aws_alb.alb](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/alb) | resource |
-| [aws_lb_listener.alb_listener](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/lb_listener) | resource |
-| [aws_lb_target_group.alb_target_group](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/lb_target_group) | resource |
-| [aws_lb_target_group.sticky_alb_target_group](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/resources/lb_target_group) | resource |
-| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/data-sources/caller_identity) | data source |
-| [aws_region.current](https://registry.terraform.io/providers/hashicorp/aws/3.56.0/docs/data-sources/region) | data source |
+| [aws_alb.alb](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/alb) | resource |
+| [aws_lb_listener.alb_listener](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/lb_listener) | resource |
+| [aws_lb_target_group.alb_target_group](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/lb_target_group) | resource |
+| [aws_lb_target_group.sticky_alb_target_group](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/lb_target_group) | resource |
+| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/caller_identity) | data source |
+| [aws_region.current](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/region) | data source |
 
 ## Inputs
 
