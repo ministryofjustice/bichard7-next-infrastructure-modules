@@ -217,42 +217,122 @@ resource "aws_security_group_rule" "prometheus_cloudwatch_exporter_egress_to_alb
 }
 
 ###EFS/NFS SG
-resource "aws_security_group_rule" "nfs_ingress" {
+resource "aws_security_group_rule" "nfs_ingress_tcp" {
   description              = "Allow NFS traffic into mount target from ECS"
   type                     = "ingress"
-  from_port                = 0
-  to_port                  = 0
-  protocol                 = "-1"
+  from_port                = 2049
+  to_port                  = 2049
+  protocol                 = "tcp"
   security_group_id        = var.ecs_to_efs_sg_id
   source_security_group_id = data.aws_security_group.prometheus_security_group.id
 }
 
-resource "aws_security_group_rule" "nfs_egress" {
+resource "aws_security_group_rule" "nfs_egress_tcp" {
   description              = "Allow NFS traffic from mount target into ECS"
   type                     = "egress"
-  from_port                = 0
-  to_port                  = 0
-  protocol                 = "-1"
+  from_port                = 2049
+  to_port                  = 2049
+  protocol                 = "tcp"
   security_group_id        = var.ecs_to_efs_sg_id
   source_security_group_id = data.aws_security_group.prometheus_security_group.id
 }
 
-resource "aws_security_group_rule" "prometheus_nfs_ingress" {
+resource "aws_security_group_rule" "prometheus_nfs_ingress_tcp" {
   description              = "Allow NFS into ECS from mount target"
   type                     = "ingress"
-  from_port                = 0
-  to_port                  = 0
-  protocol                 = "-1"
+  from_port                = 2049
+  to_port                  = 2049
+  protocol                 = "tcp"
   security_group_id        = data.aws_security_group.prometheus_security_group.id
   source_security_group_id = var.ecs_to_efs_sg_id
 }
 
-resource "aws_security_group_rule" "prometheus_nfs_egress" {
+resource "aws_security_group_rule" "prometheus_nfs_egress_tcp" {
   description              = "Allow NFS from ECS to mount target"
   type                     = "egress"
-  from_port                = 0
-  to_port                  = 0
-  protocol                 = "-1"
+  from_port                = 2049
+  to_port                  = 2049
+  protocol                 = "tcp"
+  security_group_id        = data.aws_security_group.prometheus_security_group.id
+  source_security_group_id = var.ecs_to_efs_sg_id
+}
+
+resource "aws_security_group_rule" "nfs_ingress_udp" {
+  description              = "Allow NFS traffic into mount target from ECS"
+  type                     = "ingress"
+  from_port                = 2049
+  to_port                  = 2049
+  protocol                 = "udp"
+  security_group_id        = var.ecs_to_efs_sg_id
+  source_security_group_id = data.aws_security_group.prometheus_security_group.id
+}
+
+resource "aws_security_group_rule" "nfs_egress_udp" {
+  description              = "Allow NFS traffic from mount target into ECS"
+  type                     = "egress"
+  from_port                = 2049
+  to_port                  = 2049
+  protocol                 = "udp"
+  security_group_id        = var.ecs_to_efs_sg_id
+  source_security_group_id = data.aws_security_group.prometheus_security_group.id
+}
+
+resource "aws_security_group_rule" "prometheus_nfs_ingress_udp" {
+  description              = "Allow NFS into ECS from mount target"
+  type                     = "ingress"
+  from_port                = 2049
+  to_port                  = 2049
+  protocol                 = "udp"
+  security_group_id        = data.aws_security_group.prometheus_security_group.id
+  source_security_group_id = var.ecs_to_efs_sg_id
+}
+
+resource "aws_security_group_rule" "prometheus_nfs_egress_udp" {
+  description              = "Allow NFS from ECS to mount target"
+  type                     = "egress"
+  from_port                = 2049
+  to_port                  = 2049
+  protocol                 = "udp"
+  security_group_id        = data.aws_security_group.prometheus_security_group.id
+  source_security_group_id = var.ecs_to_efs_sg_id
+}
+
+resource "aws_security_group_rule" "nfs_secure_ingress_tcp" {
+  description              = "Allow NFS traffic into mount target from ECS"
+  type                     = "ingress"
+  from_port                = 2149
+  to_port                  = 2149
+  protocol                 = "tcp"
+  security_group_id        = var.ecs_to_efs_sg_id
+  source_security_group_id = data.aws_security_group.prometheus_security_group.id
+}
+
+resource "aws_security_group_rule" "nfs_secure_egress_tcp" {
+  description              = "Allow NFS traffic from mount target into ECS"
+  type                     = "egress"
+  from_port                = 2149
+  to_port                  = 2149
+  protocol                 = "tcp"
+  security_group_id        = var.ecs_to_efs_sg_id
+  source_security_group_id = data.aws_security_group.prometheus_security_group.id
+}
+
+resource "aws_security_group_rule" "prometheus_nfs_secure_ingress_tcp" {
+  description              = "Allow NFS into ECS from mount target"
+  type                     = "ingress"
+  from_port                = 2149
+  to_port                  = 2149
+  protocol                 = "tcp"
+  security_group_id        = data.aws_security_group.prometheus_security_group.id
+  source_security_group_id = var.ecs_to_efs_sg_id
+}
+
+resource "aws_security_group_rule" "prometheus_nfs_secure_egress_tcp" {
+  description              = "Allow NFS from ECS to mount target"
+  type                     = "egress"
+  from_port                = 2149
+  to_port                  = 2149
+  protocol                 = "tcp"
   security_group_id        = data.aws_security_group.prometheus_security_group.id
   source_security_group_id = var.ecs_to_efs_sg_id
 }
