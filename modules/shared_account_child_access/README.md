@@ -35,6 +35,7 @@ The CI username needs to be created as a ssm parameter on the parent account und
 | [aws_iam_policy.ci_permissions_policy_part2](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_policy) | resource |
 | [aws_iam_policy.ci_policy](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_policy) | resource |
 | [aws_iam_policy.ci_to_parent_policy](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_policy) | resource |
+| [aws_iam_policy.deny_ci_permissions_policy](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_policy) | resource |
 | [aws_iam_role.assume_administrator_access](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role) | resource |
 | [aws_iam_role.assume_aws_nuke_access](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role) | resource |
 | [aws_iam_role.assume_ci_access](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role) | resource |
@@ -50,6 +51,7 @@ The CI username needs to be created as a ssm parameter on the parent account und
 | [aws_iam_role_policy_attachment.ci_access_policy_attachment_part2](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.ci_parent_access_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.ci_policies](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_iam_role_policy_attachment.deny_ci_permissions_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.readonly_access_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_service_linked_role.es_service_role](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_service_linked_role) | resource |
 | [aws_s3_bucket.account_logging_bucket](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/s3_bucket) | resource |
@@ -64,6 +66,7 @@ The CI username needs to be created as a ssm parameter on the parent account und
 | [template_file.ci_policy_document_part1](https://registry.terraform.io/providers/hashicorp/template/2.2.0/docs/data-sources/file) | data source |
 | [template_file.ci_policy_document_part2](https://registry.terraform.io/providers/hashicorp/template/2.2.0/docs/data-sources/file) | data source |
 | [template_file.ci_to_parent_policy_template](https://registry.terraform.io/providers/hashicorp/template/2.2.0/docs/data-sources/file) | data source |
+| [template_file.deny_ci_permissions_policy](https://registry.terraform.io/providers/hashicorp/template/2.2.0/docs/data-sources/file) | data source |
 | [template_file.deny_non_tls_s3_comms_on_logging_bucket](https://registry.terraform.io/providers/hashicorp/template/2.2.0/docs/data-sources/file) | data source |
 
 ## Inputs

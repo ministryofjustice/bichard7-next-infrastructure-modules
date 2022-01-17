@@ -38,3 +38,8 @@ variable "aws_nuke_access_arn" {
   type        = string
   default     = null
 }
+
+variable "tags" {
+  description = "A map of tags to apply to our resources"
+  type        = map(string)
+}

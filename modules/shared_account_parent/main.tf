@@ -18,6 +18,8 @@ resource "aws_iam_group" "mfa_group" {
 resource "aws_iam_policy" "mfa_policy" {
   name   = "EnforceMFAOnUsers"
   policy = file("${path.module}/policies/enforce_mfa.json")
+
+  tags = var.tags
 }
 
 resource "aws_iam_group_policy_attachment" "force_mfa" {
@@ -38,6 +40,8 @@ resource "aws_iam_group_policy_attachment" "readonly_user_policy" {
 resource "aws_iam_policy" "ci_policy" {
   name   = "CIAccessPolicy"
   policy = data.template_file.parent_account_ci_policy.rendered
+
+  tags = var.tags
 }
 
 resource "aws_iam_group_policy_attachment" "ci_group_policy" {

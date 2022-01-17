@@ -52,6 +52,7 @@ No modules.
 | <a name="input_ci_access_group_name"></a> [ci\_access\_group\_name](#input\_ci\_access\_group\_name) | The name of the CI group | `string` | n/a | yes |
 | <a name="input_readonly_access_arn"></a> [readonly\_access\_arn](#input\_readonly\_access\_arn) | The child readonly assume role arn | `string` | n/a | yes |
 | <a name="input_readonly_access_group_name"></a> [readonly\_access\_group\_name](#input\_readonly\_access\_group\_name) | The name of the readonly group | `string` | n/a | yes |
+| <a name="input_tags"></a> [tags](#input\_tags) | A map of tags to apply to our resources | `map(string)` | n/a | yes |
 
 ## Outputs
 

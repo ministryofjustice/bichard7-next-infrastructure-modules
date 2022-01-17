@@ -62,6 +62,8 @@ resource "aws_s3_bucket" "account_logging_bucket" {
   logging {
     target_bucket = module.aws_logs.aws_logs_bucket
   }
+
+  tags = var.tags
 }
 
 resource "aws_s3_bucket_policy" "account_logging_bucket" {

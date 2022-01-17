@@ -27,7 +27,6 @@
         "iam:*PolicyVersion",
         "iam:ListRoleTags",
         "iam:CreateRole",
-        "iam:*RolePolicy",
         "iam:ListAttachedRolePolicies",
         "iam:ListRolePolicies",
         "iam:GetRole",
@@ -78,6 +77,26 @@
         "arn:aws:iam::${account_id}:group/*",
         "arn:aws:iam::${account_id}:role/*",
         "arn:aws:iam::${account_id}:server-certificate/*"
+      ]
+    },
+    {
+      "Sid": "RolePolicies",
+      "Effect": "Allow",
+      "Action": [
+        "iam:DetachRolePolicy",
+        "iam:DeleteRolePolicy",
+        "iam:AttachRolePolicy",
+        "iam:PutRolePolicy",
+        "iam:GetRolePolicy"
+      ],
+      "Resource": [
+        "arn:aws:iam::${account_id}:role/bichard-7-*",
+        "arn:aws:iam::${account_id}:role/cjse-*",
+        "arn:aws:iam::${account_id}:role/vpc-flow-logs-role-cjse-*",
+        "arn:aws:iam::${account_id}:role/Bichard7-Administrator-Access",
+        "arn:aws:iam::${account_id}:policy/bichard-7-*",
+        "arn:aws:iam::${account_id}:policy/cjse-*",
+        "arn:aws:iam::${account_id}:policy/vpc-flow-logs-role-cjse-*"
       ]
     },
     {
