@@ -9,16 +9,34 @@ resource "aws_iam_role" "assume_ci_access" {
 resource "aws_iam_policy" "ci_to_parent_policy" {
   name   = "CIAccessToParent"
   policy = data.template_file.ci_to_parent_policy_template.rendered
+
+  tags = var.tags
 }
 
 resource "aws_iam_policy" "ci_permissions_policy_part1" {
   name   = "CIPolicyPart1"
   policy = data.template_file.ci_policy_document_part1.rendered
+
+  tags = var.tags
 }
 
 resource "aws_iam_policy" "ci_permissions_policy_part2" {
   name   = "CIPolicyPart2"
   policy = data.template_file.ci_policy_document_part2.rendered
+
+  tags = var.tags
+}
+
+resource "aws_iam_policy" "deny_ci_permissions_policy" {
+  name   = "DenyCIActions"
+  policy = data.template_file.deny_ci_permissions_policy.rendered
+
+  tags = var.tags
+}
+
+resource "aws_iam_role_policy_attachment" "deny_ci_permissions_policy_attachment" {
+  policy_arn = aws_iam_policy.deny_ci_permissions_policy.arn
+  role       = aws_iam_role.assume_ci_access.name
 }
 
 resource "aws_iam_role_policy_attachment" "ci_parent_access_policy_attachment" {
@@ -41,6 +59,8 @@ resource "aws_iam_role_policy_attachment" "ci_access_policy_attachment_part2" {
 resource "aws_iam_policy" "ci_policy" {
   name   = "ManagedCIPolicy"
   policy = file("${path.module}/policies/child_ci_policy_part3.json")
+
+  tags = var.tags
 }
 
 resource "aws_iam_role_policy_attachment" "ci_policies" {

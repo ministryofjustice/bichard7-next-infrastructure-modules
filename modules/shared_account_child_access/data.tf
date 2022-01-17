@@ -31,6 +31,13 @@ data "template_file" "ci_policy_document_part2" {
   }
 }
 
+data "template_file" "deny_ci_permissions_policy" {
+  template = file("${path.module}/policies/deny_attach_policy_to_ci.json.tpl")
+  vars = {
+    account_id = data.aws_caller_identity.current.account_id
+  }
+}
+
 data "template_file" "allow_assume_ci_access_template" {
   template = file("${path.module}/policies/${local.no_mfa_access_template}")
 
