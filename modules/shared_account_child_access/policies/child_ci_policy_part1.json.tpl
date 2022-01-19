@@ -69,7 +69,9 @@
         "iam:UpdateServiceSpecificCredential",
         "iam:ListAttachedUserPolicies",
         "iam:*ServerCertificate",
-        "iam:*ServerCertificateTags"
+        "iam:*ServerCertificateTags",
+        "iam:TagPolicy",
+        "iam:UntagPolicy"
       ],
       "Resource": [
         "arn:aws:iam::${account_id}:policy/*",
