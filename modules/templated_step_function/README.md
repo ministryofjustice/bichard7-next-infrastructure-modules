@@ -14,9 +14,9 @@ Creates a step function based on deployed lambdas
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.72.0 |
-| <a name="provider_aws.parent"></a> [aws.parent](#provider\_aws.parent) | 3.72.0 |
-| <a name="provider_template"></a> [template](#provider\_template) | 2.2.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | = 3.72.0 |
+| <a name="provider_aws.parent"></a> [aws.parent](#provider\_aws.parent) | = 3.72.0 |
+| <a name="provider_template"></a> [template](#provider\_template) | n/a |
 
 ## Modules
 

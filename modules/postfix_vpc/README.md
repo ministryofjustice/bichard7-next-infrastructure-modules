@@ -43,10 +43,10 @@ The `postfix_ecs` variable is a map in the following format
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.72.0 |
-| <a name="provider_random"></a> [random](#provider\_random) | 3.1.0 |
-| <a name="provider_template"></a> [template](#provider\_template) | 2.2.0 |
-| <a name="provider_tls"></a> [tls](#provider\_tls) | 3.1.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | = 3.72.0 |
+| <a name="provider_random"></a> [random](#provider\_random) | n/a |
+| <a name="provider_template"></a> [template](#provider\_template) | n/a |
+| <a name="provider_tls"></a> [tls](#provider\_tls) | = 3.1.0 |
 
 ## Modules
 
