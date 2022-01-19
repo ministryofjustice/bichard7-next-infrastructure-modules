@@ -23,6 +23,11 @@ output "vpc_endpoint_dynamodb_prefix_list_id" {
   value       = module.vpc_endpoints.endpoints.*.dynamodb[0].prefix_list_id
 }
 
+output "vpc_endpoint_execute_api_prefix_list_id" {
+  description = "The id for the execute API prefix list"
+  value       = module.vpc_endpoints.endpoints.*.execute_api[0].prefix_list_id
+}
+
 output "security_group_ids" {
   description = "A map of security group ids"
   value = {
