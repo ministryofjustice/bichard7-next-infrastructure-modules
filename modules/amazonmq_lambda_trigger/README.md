@@ -15,7 +15,7 @@ Configures a lambda to be a consumer of an AmazonMQ queue
 
 | Name | Version |
 |------|---------|
-| <a name="provider_null"></a> [null](#provider\_null) | 3.0.0 |
+| <a name="provider_null"></a> [null](#provider\_null) | = 3.0.0 |
 
 ## Modules
 
