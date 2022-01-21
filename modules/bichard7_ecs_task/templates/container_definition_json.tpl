@@ -78,7 +78,28 @@
         {
           "name": "AUDIT_LOGGING_API_URL",
           "value": "${AUDIT_LOGGING_API_URL}"
+        },
+        {
+           "name": "WLP_LOGGING_CONSOLE_LOGLEVEL",
+           "value": "${LOG_LEVEL_PARAMETER}"
+        },
+        {
+           "name": "WLP_LOGGING_MESSAGE_FORMAT",
+           "value": "json"
+        },
+        {
+           "name": "WLP_LOGGING_MESSAGE_SOURCE",
+           "value": ""
+        },
+        {
+           "name": "WLP_LOGGING_CONSOLE_FORMAT",
+           "value": "json"
+        },
+        {
+           "name": "WLP_LOGGING_CONSOLE_SOURCE",
+           "value": "message,trace,accessLog,ffdc,audit"
         }
+
 ],
       "secrets": ${SECRETS},
       "logConfiguration": {

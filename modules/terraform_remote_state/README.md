@@ -14,7 +14,7 @@ Creates a dynamodb table and s3 bucket to handle terraform remote state
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.72.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | = 3.72.0 |
 
 ## Modules
 

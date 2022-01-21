@@ -14,7 +14,7 @@ Module that allows codebuild to create a github webhook
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.72.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | = 3.72.0 |
 
 ## Modules
 
