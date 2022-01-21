@@ -23,8 +23,8 @@ output "vpc_endpoint_dynamodb_prefix_list_id" {
   value       = module.vpc_endpoints.endpoints.*.dynamodb[0].prefix_list_id
 }
 
-output "vpc_endpoint_execute_api_prefix_list_id" {
-  description = "The id for the execute API prefix list"
+output "vpc_endpoint_audit_log_api_prefix_list_id" {
+  description = "The id for the audit log API gateway prefix list"
   value       = module.vpc_endpoints.endpoints.*.execute_api[0].prefix_list_id
 }
 
