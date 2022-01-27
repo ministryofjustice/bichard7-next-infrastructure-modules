@@ -251,6 +251,14 @@
         "ec2:ModifyVpcPeeringConnectionOptions"
       ],
      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "codepipeline:Get*",
+        "codepipeline:List*"
+      ],
+      "Resource": "arn:aws:codepipeline:*:${root_account_id}:*"
     }
   ]
 }
