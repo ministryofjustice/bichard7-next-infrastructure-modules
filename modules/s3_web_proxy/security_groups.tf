@@ -3,7 +3,12 @@ resource "aws_security_group" "s3_web_proxy_alb" {
   description = "Allow access to our alb"
   vpc_id      = var.vpc_id
 
-  tags = var.tags
+  tags = merge(
+    var.tags,
+    {
+      name = "${var.name}-scanning-portal-alb"
+    }
+  )
 }
 
 resource "aws_security_group" "s3_web_proxy_container" {
@@ -11,7 +16,12 @@ resource "aws_security_group" "s3_web_proxy_container" {
   description = "Allow access to our ecs containers"
   vpc_id      = var.vpc_id
 
-  tags = var.tags
+  tags = merge(
+    var.tags,
+    {
+      name = "${var.name}-scanning-portal-ecs"
+    }
+  )
 }
 
 resource "aws_security_group_rule" "allow_alb_https_egress_to_ecs" {
