@@ -99,7 +99,12 @@ resource "aws_security_group" "codebuild_vpc_sg" {
   name_prefix = var.name
 
   vpc_id = module.vpc.vpc_id
-  tags   = var.tags
+  tags = merge(
+    var.tags,
+    {
+      name = "${var.name}-codebuild-vpc"
+    }
+  )
 }
 
 resource "aws_security_group_rule" "allow_all_github_ssl" {
