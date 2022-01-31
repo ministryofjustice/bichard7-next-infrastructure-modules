@@ -207,3 +207,8 @@ output "postfix_ecr" {
   description = "The Postfix ECR repository details"
   value       = aws_ecr_repository.postfix
 }
+
+output "codebuild_base" {
+  description = "The ecr repository for our codebuild image"
+  value       = aws_ecr_repository.codebuild_base
+}
