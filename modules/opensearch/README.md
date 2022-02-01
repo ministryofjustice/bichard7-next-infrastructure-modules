@@ -18,10 +18,10 @@ Module to provision opensearch and using the opensearch api create a basic index
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | = 3.72.0 |
-| <a name="provider_elasticsearch"></a> [elasticsearch](#provider\_elasticsearch) | = 2.0.0-beta.3 |
-| <a name="provider_random"></a> [random](#provider\_random) | = 3.0.1 |
-| <a name="provider_template"></a> [template](#provider\_template) | n/a |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.72.0 |
+| <a name="provider_elasticsearch"></a> [elasticsearch](#provider\_elasticsearch) | 2.0.0-beta.3 |
+| <a name="provider_random"></a> [random](#provider\_random) | 3.0.1 |
+| <a name="provider_template"></a> [template](#provider\_template) | 2.2.0 |
 | <a name="provider_time"></a> [time](#provider\_time) | 0.7.2 |
 
 ## Modules

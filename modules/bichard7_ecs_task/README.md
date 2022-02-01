@@ -17,8 +17,8 @@ Module to configure Bichard7 on ECS, can be configured to be a web facing or bac
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | = 3.72.0 |
-| <a name="provider_template"></a> [template](#provider\_template) | = 2.2.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.72.0 |
+| <a name="provider_template"></a> [template](#provider\_template) | 2.2.0 |
 
 ## Modules
 

@@ -128,6 +128,7 @@ resource "aws_rds_cluster" "grafana_db" {
   tags = var.tags
 }
 
+# tfsec:ignore:aws-rds-enable-performance-insights
 resource "aws_rds_cluster_instance" "grafana_db_instance" {
   count = 3
 

@@ -10,6 +10,7 @@ resource "aws_security_group_rule" "allow_nlb_from_vpc" {
   cidr_blocks = var.admin_allowed_cidr
 }
 
+# tfsec:ignore:aws-vpc-no-public-egress-sgr
 resource "aws_security_group_rule" "allow_all_outbound" {
   description = "Allow all outbound traffic to our VPC"
 

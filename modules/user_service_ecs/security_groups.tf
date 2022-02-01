@@ -22,6 +22,7 @@ resource "aws_security_group_rule" "allow_http_from_alb_to_containers" {
   source_security_group_id = data.aws_security_group.user_service_alb.id
 }
 
+# tfsec:ignore:aws-vpc-no-public-egress-sgr
 resource "aws_security_group_rule" "allow_containers_all_outbound" {
   description = "Allow all outbound from containers to our VPC"
 

@@ -22,7 +22,7 @@ resource "aws_security_group_rule" "alb_allow_egress_to_instance" {
   source_security_group_id = data.aws_security_group.bichard.id
 }
 
-
+# tfsec:ignore:aws-vpc-no-public-egress-sgr
 resource "aws_security_group_rule" "allow_all_outbound" {
   description = "Allow all outbound traffic to our VPC"
 

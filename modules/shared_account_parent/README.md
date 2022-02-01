@@ -21,8 +21,8 @@ If you want to create a user for AWS Nuke, the variable create_nuke_user needs t
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | = 3.72.0 |
-| <a name="provider_template"></a> [template](#provider\_template) | = 2.2.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.72.0 |
+| <a name="provider_template"></a> [template](#provider\_template) | 2.2.0 |
 
 ## Modules
 

@@ -86,6 +86,7 @@ resource "aws_rds_cluster" "aurora_cluster" {
   }
 }
 
+# tfsec:ignore:aws-rds-enable-performance-insights
 resource "aws_rds_cluster_instance" "aurora_cluster_instance" {
 
   count = length(var.private_subnet_ids)
