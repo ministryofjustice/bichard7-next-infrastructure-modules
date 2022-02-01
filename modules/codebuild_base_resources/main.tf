@@ -152,6 +152,7 @@ resource "aws_s3_bucket_policy" "allow_access_to_codebuild_bucket" {
   EOF
 }
 
+# tfsec:ignore:aws-dynamodb-table-customer-key
 resource "aws_dynamodb_table" "codebuild_lock_table" {
   hash_key       = "project_name"
   name           = "${var.name}-codebuild-concurrency"

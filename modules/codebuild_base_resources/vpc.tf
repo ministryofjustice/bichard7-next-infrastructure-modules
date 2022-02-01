@@ -107,6 +107,7 @@ resource "aws_security_group" "codebuild_vpc_sg" {
   )
 }
 
+# tfsec:ignore:aws-vpc-no-public-egress-sgr
 resource "aws_security_group_rule" "allow_all_github_ssl" {
   description = "Allow outbound ssl traffic"
 
@@ -119,6 +120,7 @@ resource "aws_security_group_rule" "allow_all_github_ssl" {
   cidr_blocks = ["0.0.0.0/0"] # tfsec:ignore:AWS007
 }
 
+# tfsec:ignore:aws-vpc-no-public-egress-sgr
 resource "aws_security_group_rule" "allow_all_github_ssh" {
   description = "Allow outbound ssh traffic"
 
@@ -131,6 +133,7 @@ resource "aws_security_group_rule" "allow_all_github_ssh" {
   cidr_blocks = ["0.0.0.0/0"] # tfsec:ignore:AWS007
 }
 
+# tfsec:ignore:aws-vpc-no-public-egress-sgr
 resource "aws_security_group_rule" "allow_all_github_http" {
   description = "Allow outbound http traffic"
 
@@ -143,6 +146,7 @@ resource "aws_security_group_rule" "allow_all_github_http" {
   cidr_blocks = ["0.0.0.0/0"] # tfsec:ignore:AWS007
 }
 
+# tfsec:ignore:aws-vpc-no-public-egress-sgr
 resource "aws_security_group_rule" "allow_all_github_git" {
   description = "Allow outbound git traffic"
 
@@ -155,7 +159,7 @@ resource "aws_security_group_rule" "allow_all_github_git" {
   cidr_blocks = ["0.0.0.0/0"] # tfsec:ignore:AWS007
 }
 
-
+# tfsec:ignore:aws-vpc-no-public-egress-sgr
 resource "aws_security_group_rule" "allow_outbound_gpg_server_traffic" {
   description = "Allow outbound gpg server traffic"
 
@@ -168,6 +172,7 @@ resource "aws_security_group_rule" "allow_outbound_gpg_server_traffic" {
   cidr_blocks = ["0.0.0.0/0"] # tfsec:ignore:AWS007
 }
 
+# tfsec:ignore:aws-vpc-no-public-ingress-sgr
 resource "aws_security_group_rule" "allow_github_http_ingress" {
   description = "Allow http traffic from github to ingress"
 
@@ -186,6 +191,7 @@ resource "aws_security_group_rule" "allow_github_http_ingress" {
   ]
 }
 
+# tfsec:ignore:aws-vpc-no-public-ingress-sgr
 resource "aws_security_group_rule" "allow_github_ssl_ingress" {
   description = "Allow outbound ssl traffic"
 

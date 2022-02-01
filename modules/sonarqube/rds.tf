@@ -72,6 +72,7 @@ resource "null_resource" "update_password_for_admin_user" {
   }
 }
 
+# tfsec:ignore:aws-rds-enable-performance-insights
 resource "aws_db_instance" "sonar_db" {
   identifier               = "sonardb"
   allocated_storage        = 10

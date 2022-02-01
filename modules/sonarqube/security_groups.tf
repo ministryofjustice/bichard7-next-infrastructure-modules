@@ -134,6 +134,7 @@ resource "aws_security_group" "sonar_alb" {
   }
 }
 
+# tfsec:ignore:aws-vpc-no-public-ingress-sgr
 resource "aws_security_group_rule" "allow_http_ingress" {
   description = "Allow http inbound to ALB"
 
@@ -146,6 +147,7 @@ resource "aws_security_group_rule" "allow_http_ingress" {
   cidr_blocks = ["0.0.0.0/0"] #tfsec:ignore:AWS006
 }
 
+# tfsec:ignore:aws-vpc-no-public-egress-sgr
 resource "aws_security_group_rule" "allow_http_egress" {
   description = "Allow http outbound from ALB"
 
@@ -158,6 +160,7 @@ resource "aws_security_group_rule" "allow_http_egress" {
   cidr_blocks = ["0.0.0.0/0"] #tfsec:ignore:AWS007
 }
 
+# tfsec:ignore:aws-vpc-no-public-ingress-sgr
 resource "aws_security_group_rule" "allow_https_ingress" {
   description = "Allow https inbound to ALB"
 
@@ -170,6 +173,7 @@ resource "aws_security_group_rule" "allow_https_ingress" {
   cidr_blocks = ["0.0.0.0/0"] #tfsec:ignore:AWS006
 }
 
+# tfsec:ignore:aws-vpc-no-public-egress-sgr
 resource "aws_security_group_rule" "allow_https_egress" {
   description = "Allow https outbound from ALB"
 

@@ -14,8 +14,8 @@ Deploys lambda functions from a s3 bucket
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | = 3.72.0 |
-| <a name="provider_aws.parent"></a> [aws.parent](#provider\_aws.parent) | = 3.72.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.72.0 |
+| <a name="provider_aws.parent"></a> [aws.parent](#provider\_aws.parent) | 3.72.0 |
 
 ## Modules
 
