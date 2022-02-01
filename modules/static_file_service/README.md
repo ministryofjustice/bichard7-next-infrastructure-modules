@@ -12,7 +12,7 @@ No requirements.
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.72.0 |
 
 ## Modules
 
@@ -48,5 +48,6 @@ No requirements.
 | Name | Description |
 |------|-------------|
 | <a name="output_alb_dns"></a> [alb\_dns](#output\_alb\_dns) | DNS entry for load balancer |
+| <a name="output_bucket_name"></a> [bucket\_name](#output\_bucket\_name) | The name of the static file service s3 bucket |
 | <a name="output_fqdn"></a> [fqdn](#output\_fqdn) | The public fqdn for the alb |
 <!-- END_TF_DOCS -->
