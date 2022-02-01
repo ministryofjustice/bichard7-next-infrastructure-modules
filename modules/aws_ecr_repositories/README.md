@@ -94,6 +94,7 @@ No modules.
 | [aws_ecr_repository_policy.allow_codebuild_amazon_linux_2_base](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecr_repository_policy) | resource |
 | [aws_ecr_repository_policy.allow_codebuild_audit_logging_portal](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecr_repository_policy) | resource |
 | [aws_ecr_repository_policy.allow_codebuild_beanconnect](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecr_repository_policy) | resource |
+| [aws_ecr_repository_policy.allow_codebuild_codebuild_base](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecr_repository_policy) | resource |
 | [aws_ecr_repository_policy.allow_codebuild_e2etests](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecr_repository_policy) | resource |
 | [aws_ecr_repository_policy.allow_codebuild_gradle_jdk11](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecr_repository_policy) | resource |
 | [aws_ecr_repository_policy.allow_codebuild_grafana](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecr_repository_policy) | resource |
