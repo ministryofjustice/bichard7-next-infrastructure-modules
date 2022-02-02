@@ -10,6 +10,7 @@ resource "aws_iam_role" "flow_log_role" {
   assume_role_policy = file("${path.module}/policies/flow_log_assume_role.json")
 }
 
+# tfsec:ignore:aws-iam-no-policy-wildcards
 resource "aws_iam_role_policy" "flow_log_role_policy" {
   name   = "vpc-flow-logs-role-policy-${var.vpc_name}"
   role   = aws_iam_role.flow_log_role.id
@@ -50,6 +51,8 @@ resource "aws_cloudwatch_metric_alarm" "flow_log_reject_alarm" {
   evaluation_periods  = 1
   datapoints_to_alarm = 1
   namespace           = var.vpc_name
+
+  tags = var.tags
 }
 
 resource "aws_cloudwatch_metric_alarm" "flow_log_denied_alarm" {
@@ -62,4 +65,6 @@ resource "aws_cloudwatch_metric_alarm" "flow_log_denied_alarm" {
   evaluation_periods  = 1
   datapoints_to_alarm = 1
   namespace           = var.vpc_name
+
+  tags = var.tags
 }
