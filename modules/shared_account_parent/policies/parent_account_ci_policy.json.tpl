@@ -259,6 +259,11 @@
         "codepipeline:List*"
       ],
       "Resource": "arn:aws:codepipeline:*:${root_account_id}:*"
+    },
+    {
+      "Effect": "Deny",
+      "Action": "iam:AttachRolePolicy",
+      "Resource": "arn:aws:iam::aws:policy/AdministratorAccess"
     }
   ]
 }
