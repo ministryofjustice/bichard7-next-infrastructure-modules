@@ -91,27 +91,5 @@ resource "aws_iam_user_policy" "allow_lock_table_access" {
   name = "AllowCIConcurrency"
   user = data.aws_iam_user.ci_user.user_name
 
-  policy = <<-EOF
-  {
-    "Version": "2012-10-17",
-    "Statement": [
-      {
-        "Effect": "Allow",
-        "Action": [
-            "dynamodb:DeleteItem",
-            "dynamodb:DescribeTable",
-            "dynamodb:GetItem",
-            "dynamodb:PutItem",
-            "dynamodb:Query",
-            "dynamodb:Scan",
-            "dynamodb:UpdateItem",
-            "dynamodb:DescribeTimeToLive"
-        ],
-        "Resource": [
-            "${aws_dynamodb_table.codebuild_lock_table.arn}"
-        ]
-      }
-    ]
-  }
-  EOF
+  policy = data.template_file.allow_dynamodb_lock_table_access.rendered
 }

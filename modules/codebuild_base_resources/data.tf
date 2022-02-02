@@ -98,3 +98,11 @@ data "template_file" "codebuild_bucket_policy" {
     ci_user_arn = data.aws_iam_user.ci_user.arn
   }
 }
+
+data "template_file" "allow_dynamodb_lock_table_access" {
+  template = file("${path.module}/policies/allow_dynamodb_lock_table_access.json.tpl")
+
+  vars = {
+    lock_table_arn = aws_dynamodb_table.codebuild_lock_table.arn
+  }
+}
