@@ -81,6 +81,7 @@ Module to create a set of base resources required for our CD/Codebuild environme
 | [aws_iam_user.ci_user](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/iam_user) | data source |
 | [aws_region.current](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/region) | data source |
 | [aws_ssm_parameter.slack_webhook](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/ssm_parameter) | data source |
+| [template_file.allow_access_to_scanning_results_bucket](https://registry.terraform.io/providers/hashicorp/template/2.2.0/docs/data-sources/file) | data source |
 | [template_file.allow_ci_slack_ssm](https://registry.terraform.io/providers/hashicorp/template/2.2.0/docs/data-sources/file) | data source |
 | [template_file.allow_codestar_kms](https://registry.terraform.io/providers/hashicorp/template/2.2.0/docs/data-sources/file) | data source |
 | [template_file.allow_dynamodb_lock_table_access](https://registry.terraform.io/providers/hashicorp/template/2.2.0/docs/data-sources/file) | data source |

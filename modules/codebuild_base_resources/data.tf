@@ -106,3 +106,35 @@ data "template_file" "allow_dynamodb_lock_table_access" {
     lock_table_arn = aws_dynamodb_table.codebuild_lock_table.arn
   }
 }
+
+data "template_file" "allow_access_to_scanning_results_bucket" {
+
+  template = file("${path.module}/policies/allow_access_to_scanning_results_bucket.json.tpl")
+  vars = {
+    scanning_bucket_arn  = aws_s3_bucket.scanning_results_bucket.arn
+    allowed_account_arns = jsonencode(sort(formatlist("arn:aws:iam::%s:root", var.allow_accounts)))
+    account_id           = data.aws_caller_identity.current.account_id
+    ci_user_arn          = data.aws_iam_user.ci_user.arn
+  }
+}
+
+# Lambdas
+data "archive_file" "codebuild_notification" {
+  output_path = "/tmp/codebuild_notification_rule.zip"
+  type        = "zip"
+
+  source {
+    content  = data.template_file.webhook_source.rendered
+    filename = "webhook.py"
+  }
+}
+
+data "archive_file" "scanning_notification" {
+  output_path = "/tmp/scanning_notification_rule.zip"
+  type        = "zip"
+
+  source {
+    content  = data.template_file.scanning_webhook_source.rendered
+    filename = "webhook.py"
+  }
+}
