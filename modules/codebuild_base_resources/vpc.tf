@@ -26,30 +26,7 @@ resource "aws_s3_bucket" "codebuild_flow_logs_bucket" {
 
 resource "aws_s3_bucket_policy" "codebuild_flow_logs_bucket" {
   bucket = aws_s3_bucket.codebuild_flow_logs_bucket.bucket
-  policy = <<-EOF
-  {
-    "Version": "2012-10-17",
-    "Statement": [
-      {
-        "Sid": "DenyNonTLSComms",
-        "Effect": "Deny",
-        "Action": "s3:*",
-        "Resource": [
-          "${aws_s3_bucket.codebuild_flow_logs_bucket.arn}",
-          "${aws_s3_bucket.codebuild_flow_logs_bucket.arn}/*"
-        ],
-         "Condition": {
-          "Bool" : {
-            "aws:SecureTransport": false
-          }
-        },
-        "Principal": {
-          "AWS": "*"
-        }
-      }
-    ]
-  }
-  EOF
+  policy = data.template_file.codebuild_flow_logs_bucket.rendered
 }
 
 resource "aws_s3_bucket_public_access_block" "codebuild_flow_logs_bucket" {
@@ -99,79 +76,89 @@ resource "aws_security_group" "codebuild_vpc_sg" {
   name_prefix = var.name
 
   vpc_id = module.vpc.vpc_id
-  tags   = var.tags
+  tags = merge(
+    var.tags,
+    {
+      name = "${var.name}-codebuild-vpc"
+    }
+  )
 }
 
+# tfsec:ignore:aws-vpc-no-public-egress-sgr
 resource "aws_security_group_rule" "allow_all_github_ssl" {
   description = "Allow outbound ssl traffic"
 
-  from_port         = 443
-  to_port           = 443
-  protocol          = "tcp"
-  security_group_id = aws_security_group.codebuild_vpc_sg.id
-  type              = "egress"
+  from_port = 443
+  to_port   = 443
+  protocol  = "tcp"
+  type      = "egress"
 
-  cidr_blocks = ["0.0.0.0/0"] # tfsec:ignore:AWS007
+  security_group_id = aws_security_group.codebuild_vpc_sg.id
+  cidr_blocks       = ["0.0.0.0/0"] # tfsec:ignore:AWS007
 }
 
+# tfsec:ignore:aws-vpc-no-public-egress-sgr
 resource "aws_security_group_rule" "allow_all_github_ssh" {
   description = "Allow outbound ssh traffic"
 
-  from_port         = 22
-  to_port           = 22
-  protocol          = "tcp"
-  security_group_id = aws_security_group.codebuild_vpc_sg.id
-  type              = "egress"
+  from_port = 22
+  to_port   = 22
+  protocol  = "tcp"
+  type      = "egress"
 
-  cidr_blocks = ["0.0.0.0/0"] # tfsec:ignore:AWS007
+  security_group_id = aws_security_group.codebuild_vpc_sg.id
+  cidr_blocks       = ["0.0.0.0/0"] # tfsec:ignore:AWS007
 }
 
+# tfsec:ignore:aws-vpc-no-public-egress-sgr
 resource "aws_security_group_rule" "allow_all_github_http" {
   description = "Allow outbound http traffic"
 
-  from_port         = 80
-  to_port           = 80
-  protocol          = "tcp"
-  security_group_id = aws_security_group.codebuild_vpc_sg.id
-  type              = "egress"
+  from_port = 80
+  to_port   = 80
+  protocol  = "tcp"
+  type      = "egress"
 
-  cidr_blocks = ["0.0.0.0/0"] # tfsec:ignore:AWS007
+  security_group_id = aws_security_group.codebuild_vpc_sg.id
+  cidr_blocks       = ["0.0.0.0/0"] # tfsec:ignore:AWS007
 }
 
+# tfsec:ignore:aws-vpc-no-public-egress-sgr
 resource "aws_security_group_rule" "allow_all_github_git" {
   description = "Allow outbound git traffic"
 
-  from_port         = 9418
-  to_port           = 9418
-  protocol          = "tcp"
-  security_group_id = aws_security_group.codebuild_vpc_sg.id
-  type              = "egress"
+  from_port = 9418
+  to_port   = 9418
+  protocol  = "tcp"
+  type      = "egress"
 
-  cidr_blocks = ["0.0.0.0/0"] # tfsec:ignore:AWS007
+  security_group_id = aws_security_group.codebuild_vpc_sg.id
+  cidr_blocks       = ["0.0.0.0/0"] # tfsec:ignore:AWS007
 }
 
-
+# tfsec:ignore:aws-vpc-no-public-egress-sgr
 resource "aws_security_group_rule" "allow_outbound_gpg_server_traffic" {
   description = "Allow outbound gpg server traffic"
 
-  from_port         = 11371
-  to_port           = 11371
-  protocol          = "tcp"
-  security_group_id = aws_security_group.codebuild_vpc_sg.id
-  type              = "egress"
+  from_port = 11371
+  to_port   = 11371
+  protocol  = "tcp"
+  type      = "egress"
 
-  cidr_blocks = ["0.0.0.0/0"] # tfsec:ignore:AWS007
+  security_group_id = aws_security_group.codebuild_vpc_sg.id
+  cidr_blocks       = ["0.0.0.0/0"] # tfsec:ignore:AWS007
 }
 
+# tfsec:ignore:aws-vpc-no-public-ingress-sgr
 resource "aws_security_group_rule" "allow_github_http_ingress" {
   description = "Allow http traffic from github to ingress"
 
-  from_port         = 80
-  to_port           = 80
-  protocol          = "tcp"
-  security_group_id = aws_security_group.codebuild_vpc_sg.id
-  type              = "ingress"
+  from_port = 80
+  to_port   = 80
+  protocol  = "tcp"
+  type      = "ingress"
 
+  security_group_id = aws_security_group.codebuild_vpc_sg.id
   # Hook cidrs defined in https://api.github.com/meta
   cidr_blocks = [
     "192.30.252.0/22",
@@ -181,15 +168,16 @@ resource "aws_security_group_rule" "allow_github_http_ingress" {
   ]
 }
 
+# tfsec:ignore:aws-vpc-no-public-ingress-sgr
 resource "aws_security_group_rule" "allow_github_ssl_ingress" {
   description = "Allow outbound ssl traffic"
 
-  from_port         = 443
-  to_port           = 443
-  protocol          = "tcp"
-  security_group_id = aws_security_group.codebuild_vpc_sg.id
-  type              = "ingress"
+  from_port = 443
+  to_port   = 443
+  protocol  = "tcp"
+  type      = "ingress"
 
+  security_group_id = aws_security_group.codebuild_vpc_sg.id
   # Hook cidrs defined in https://api.github.com/meta
   cidr_blocks = [
     "192.30.252.0/22",
@@ -213,23 +201,23 @@ resource "aws_vpc_endpoint" "codepipeline_vpc_endpoint" {
 resource "aws_security_group_rule" "vpc_to_cb_vpce_egress" {
   description = "Allow VPC to talk to vpce endpoints"
 
-  from_port         = 443
-  to_port           = 443
-  protocol          = "tcp"
-  security_group_id = aws_security_group.codebuild_vpc_sg.id
-  type              = "egress"
+  from_port = 443
+  to_port   = 443
+  protocol  = "tcp"
+  type      = "egress"
 
-  cidr_blocks = [module.vpc.vpc_cidr_block]
+  security_group_id = aws_security_group.codebuild_vpc_sg.id
+  cidr_blocks       = [module.vpc.vpc_cidr_block]
 }
 
 resource "aws_security_group_rule" "vpce_to_cb_vpc_ingress" {
   description = "Allow vpce to talk to vpc"
 
-  from_port         = 443
-  to_port           = 443
-  protocol          = "tcp"
-  security_group_id = aws_security_group.codebuild_vpc_sg.id
-  type              = "ingress"
+  from_port = 443
+  to_port   = 443
+  protocol  = "tcp"
+  type      = "ingress"
 
-  cidr_blocks = [module.vpc.vpc_cidr_block]
+  security_group_id = aws_security_group.codebuild_vpc_sg.id
+  cidr_blocks       = [module.vpc.vpc_cidr_block]
 }

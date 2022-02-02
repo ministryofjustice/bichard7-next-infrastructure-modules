@@ -1,4 +1,3 @@
-
 resource "aws_ecs_task_definition" "sonar_tasks" {
   family             = "${var.name}-sonar"
   execution_role_arn = aws_iam_role.sonarqube_task_role.arn
@@ -103,6 +102,8 @@ resource "aws_lb_listener" "sonar_http_listener" {
       status_code = "HTTP_301"
     }
   }
+
+  tags = var.tags
 }
 
 resource "aws_lb_listener" "sonar_https_listener" {
@@ -116,4 +117,6 @@ resource "aws_lb_listener" "sonar_https_listener" {
     target_group_arn = aws_lb_target_group.sonar_alb.arn
     type             = "forward"
   }
+
+  tags = var.tags
 }

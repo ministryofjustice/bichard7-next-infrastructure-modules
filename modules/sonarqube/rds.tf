@@ -7,12 +7,16 @@ resource "aws_ssm_parameter" "sonar_db_password" {
   name  = "/sonarqube/rds/db_password"
   type  = "SecureString"
   value = random_password.sonar_db_password.result
+
+  tags = var.tags
 }
 
 resource "aws_ssm_parameter" "sonar_db_user" {
   name  = "/sonarqube/rds/db_user"
   type  = "SecureString"
   value = "sonar${random_id.sonar_user_suffix.id}"
+
+  tags = var.tags
 }
 
 resource "random_id" "sonar_user_suffix" {
@@ -28,12 +32,16 @@ resource "aws_ssm_parameter" "sonar_admin_user_login" {
   name  = "/sonarqube/rds/sonar_admin_login"
   type  = "SecureString"
   value = "bichard-admin${random_id.sonar_user_suffix.id}"
+
+  tags = var.tags
 }
 
 resource "aws_ssm_parameter" "sonar_admin_user_password" {
   name  = "/sonarqube/rds/sonar_admin_password"
   type  = "SecureString"
   value = random_password.sonar_admin_user_password.result
+
+  tags = var.tags
 }
 
 # set to count 0 because we are going to set up vpc peering
@@ -72,6 +80,19 @@ resource "null_resource" "update_password_for_admin_user" {
   }
 }
 
+resource "aws_kms_key" "sonarqube_db_encryption_key" {
+  description             = "sonarqube-db-key"
+  deletion_window_in_days = 10
+  enable_key_rotation     = true
+
+  tags = var.tags
+}
+
+resource "aws_kms_alias" "aurora_cluster_encryption_key_alias" {
+  target_key_id = aws_kms_key.sonarqube_db_encryption_key.id
+  name          = "alias/sonarqube-db"
+}
+
 resource "aws_db_instance" "sonar_db" {
   identifier               = "sonardb"
   allocated_storage        = 10
@@ -87,6 +108,11 @@ resource "aws_db_instance" "sonar_db" {
   db_subnet_group_name     = module.vpc.database_subnet_group_name
   storage_encrypted        = true
   backup_retention_period  = 14
+
+  kms_key_id = aws_kms_key.sonarqube_db_encryption_key.arn
+
+  performance_insights_enabled    = true
+  performance_insights_kms_key_id = aws_kms_key.sonarqube_db_encryption_key.arn
 
   tags = var.tags
 }

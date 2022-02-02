@@ -15,7 +15,8 @@ resource "aws_ssm_parameter" "es_user" {
   type      = "SecureString"
   value     = local.es_user_name
   overwrite = true
-  tags      = var.tags
+
+  tags = var.tags
 }
 
 resource "aws_ssm_parameter" "es_password" {
@@ -26,7 +27,6 @@ resource "aws_ssm_parameter" "es_password" {
 
   tags = var.tags
 }
-
 
 resource "aws_elasticsearch_domain" "es" {
   domain_name           = local.domain_name

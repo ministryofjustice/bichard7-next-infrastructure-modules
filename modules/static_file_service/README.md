@@ -13,6 +13,7 @@ No requirements.
 | Name | Version |
 |------|---------|
 | <a name="provider_aws"></a> [aws](#provider\_aws) | 3.72.0 |
+| <a name="provider_template"></a> [template](#provider\_template) | 2.2.0 |
 
 ## Modules
 
@@ -27,6 +28,7 @@ No requirements.
 | [aws_s3_bucket.static_file_bucket](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket) | resource |
 | [aws_s3_bucket_policy.static_file_bucket](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_policy) | resource |
 | [aws_s3_bucket_public_access_block.static_file_bucket](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_public_access_block) | resource |
+| [template_file.static_file_bucket](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) | data source |
 
 ## Inputs
 
@@ -48,5 +50,6 @@ No requirements.
 | Name | Description |
 |------|-------------|
 | <a name="output_alb_dns"></a> [alb\_dns](#output\_alb\_dns) | DNS entry for load balancer |
+| <a name="output_bucket_name"></a> [bucket\_name](#output\_bucket\_name) | The name of the static file service s3 bucket |
 | <a name="output_fqdn"></a> [fqdn](#output\_fqdn) | The public fqdn for the alb |
 <!-- END_TF_DOCS -->

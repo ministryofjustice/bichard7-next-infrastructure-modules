@@ -18,7 +18,7 @@ terraform {
     }
     elasticsearch = {
       source  = "phillbaker/elasticsearch"
-      version = "= 2.0.0-beta.2"
+      version = "= 2.0.0-beta.3"
     }
   }
   required_version = ">= 0.13"

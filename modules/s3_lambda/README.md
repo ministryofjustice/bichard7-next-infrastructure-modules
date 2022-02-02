@@ -50,5 +50,6 @@ No modules.
 | Name | Description |
 |------|-------------|
 | <a name="output_function_name"></a> [function\_name](#output\_function\_name) | The name of the Lambda Function |
+| <a name="output_function_name_without_prefix"></a> [function\_name\_without\_prefix](#output\_function\_name\_without\_prefix) | The name of the Lambda Function without the prefix |
 | <a name="output_lambda_arn"></a> [lambda\_arn](#output\_lambda\_arn) | The ARN of the Lambda Function |
 <!-- END_TF_DOCS -->

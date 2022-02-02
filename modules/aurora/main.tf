@@ -10,7 +10,8 @@ resource "aws_ssm_parameter" "db_password" {
   type      = "SecureString"
   value     = random_password.db.result
   overwrite = true
-  tags      = var.tags
+
+  tags = var.tags
 }
 
 resource "aws_kms_key" "aurora_cluster_encryption_key" {
@@ -79,11 +80,11 @@ resource "aws_rds_cluster" "aurora_cluster" {
   kms_key_id        = aws_kms_key.aurora_cluster_encryption_key.arn
   storage_encrypted = true
 
-  tags = var.tags
-
   lifecycle {
     create_before_destroy = true
   }
+
+  tags = var.tags
 }
 
 resource "aws_rds_cluster_instance" "aurora_cluster_instance" {
@@ -99,11 +100,15 @@ resource "aws_rds_cluster_instance" "aurora_cluster_instance" {
   publicly_accessible  = false
   apply_immediately    = (lookup(var.tags, "is-production", false) == false) ? true : false
 
-  tags = var.tags
+  performance_insights_enabled          = true
+  performance_insights_kms_key_id       = aws_kms_key.aurora_cluster_encryption_key.arn
+  performance_insights_retention_period = (lower(var.tags["is-production"]) == "true") ? 731 : 7
 
   lifecycle {
     create_before_destroy = true
   }
+
+  tags = var.tags
 }
 
 resource "aws_db_subnet_group" "aurora_subnet_group" {
@@ -111,7 +116,8 @@ resource "aws_db_subnet_group" "aurora_subnet_group" {
   name        = "${var.environment_name}_aurora_db_subnet_group"
   description = "Allowed subnets for Aurora DB cluster instances"
   subnet_ids  = var.private_subnet_ids
-  tags        = var.tags
+
+  tags = var.tags
 }
 
 resource "aws_route53_record" "db" {

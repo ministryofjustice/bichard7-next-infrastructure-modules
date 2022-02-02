@@ -1,15 +1,19 @@
+# tfsec:ignore:aws-iam-enforce-mfa
 resource "aws_iam_group" "administrator_access_group" {
   name = "AdminAccess"
 }
 
+# tfsec:ignore:aws-iam-enforce-mfa
 resource "aws_iam_group" "readonly_access_group" {
   name = "ReadOnlyAccess"
 }
 
+# tfsec:ignore:aws-iam-enforce-mfa
 resource "aws_iam_group" "ci_access_group" {
   name = "CIAccess"
 }
 
+# tfsec:ignore:aws-iam-enforce-mfa
 resource "aws_iam_group" "mfa_group" {
   name = "EnforceMFA"
 }

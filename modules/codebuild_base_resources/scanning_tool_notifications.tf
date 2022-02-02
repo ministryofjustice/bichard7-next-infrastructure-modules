@@ -25,16 +25,6 @@ resource "aws_sns_topic_policy" "scanning_notifications" {
   policy = data.template_file.allow_scanning_sns_publish_policy.rendered
 }
 
-data "archive_file" "scanning_notification" {
-  output_path = "/tmp/scanning_notification_rule.zip"
-  type        = "zip"
-
-  source {
-    content  = data.template_file.scanning_webhook_source.rendered
-    filename = "webhook.py"
-  }
-}
-
 resource "aws_iam_role" "scanning_notification" {
   name               = "AllowScanningNotifications"
   assume_role_policy = file("${path.module}/policies/allow_codebuild_notification.json")
@@ -81,6 +71,8 @@ resource "aws_iam_policy" "scanning_lambda_logging" {
   path        = "/"
   description = "IAM policy for logging from a lambda"
   policy      = file("${path.module}/policies/allow_lambda_logging.json")
+
+  tags = var.tags
 }
 
 resource "aws_iam_role_policy_attachment" "scanning_lambda_logs" {

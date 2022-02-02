@@ -91,6 +91,8 @@ resource "aws_lb_listener" "prometheus_blackbox_exporter_https_listener" {
     target_group_arn = aws_lb_target_group.prometheus_blackbox_exporter_alb.arn
     type             = "forward"
   }
+
+  tags = var.tags
 }
 
 resource "aws_route53_record" "prometheus_blackbox_exporter_private_dns" {

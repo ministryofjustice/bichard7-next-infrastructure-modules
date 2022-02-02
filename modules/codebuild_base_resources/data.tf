@@ -72,3 +72,77 @@ data "template_file" "allow_ci_slack_ssm" {
     slack_webhook_arn = aws_ssm_parameter.slack_webhook.arn
   }
 }
+
+data "template_file" "codebuild_bucket_policy" {
+  template = file("${path.module}/policies/codebuild_bucket_policy.json.tpl")
+
+  vars = {
+    bucket_arn = aws_s3_bucket.codebuild_artifact_bucket.arn
+    account_id = data.aws_caller_identity.current.account_id
+    allowed_principals = jsonencode(
+      sort(
+        concat(
+          formatlist("arn:aws:iam::%s:root", var.allow_accounts),
+          formatlist("arn:aws:iam::%s:role/Bichard7-CI-Access", local.child_accounts)
+        )
+      )
+    )
+    allowed_principals_with_lambda = jsonencode(
+      sort(
+        concat(
+          formatlist("arn:aws:iam::%s:role/portal-host-lambda-role", local.child_accounts),
+          formatlist("arn:aws:iam::%s:role/Bichard7-CI-Access", local.child_accounts)
+        )
+      )
+    )
+    ci_user_arn = data.aws_iam_user.ci_user.arn
+  }
+}
+
+data "template_file" "allow_dynamodb_lock_table_access" {
+  template = file("${path.module}/policies/allow_dynamodb_lock_table_access.json.tpl")
+
+  vars = {
+    lock_table_arn = aws_dynamodb_table.codebuild_lock_table.arn
+  }
+}
+
+data "template_file" "allow_access_to_scanning_results_bucket" {
+  template = file("${path.module}/policies/allow_access_to_scanning_results_bucket.json.tpl")
+
+  vars = {
+    scanning_bucket_arn  = aws_s3_bucket.scanning_results_bucket.arn
+    allowed_account_arns = jsonencode(sort(formatlist("arn:aws:iam::%s:root", var.allow_accounts)))
+    account_id           = data.aws_caller_identity.current.account_id
+    ci_user_arn          = data.aws_iam_user.ci_user.arn
+  }
+}
+
+data "template_file" "codebuild_flow_logs_bucket" {
+  template = file("${path.module}/policies/codebuild_flow_logs_bucket.json.tpl")
+
+  vars = {
+    codebuild_flow_logs_bucket_arn = aws_s3_bucket.codebuild_flow_logs_bucket.arn
+  }
+}
+
+# Lambdas
+data "archive_file" "codebuild_notification" {
+  output_path = "/tmp/codebuild_notification_rule.zip"
+  type        = "zip"
+
+  source {
+    content  = data.template_file.webhook_source.rendered
+    filename = "webhook.py"
+  }
+}
+
+data "archive_file" "scanning_notification" {
+  output_path = "/tmp/scanning_notification_rule.zip"
+  type        = "zip"
+
+  source {
+    content  = data.template_file.scanning_webhook_source.rendered
+    filename = "webhook.py"
+  }
+}

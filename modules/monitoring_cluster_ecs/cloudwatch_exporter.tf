@@ -91,6 +91,8 @@ resource "aws_lb_listener" "prometheus_cloudwatch_exporter_https_listener" {
     target_group_arn = aws_lb_target_group.prometheus_cloudwatch_exporter_alb.arn
     type             = "forward"
   }
+
+  tags = var.tags
 }
 
 resource "aws_route53_record" "prometheus_cloudwatch_exporter_private_dns" {

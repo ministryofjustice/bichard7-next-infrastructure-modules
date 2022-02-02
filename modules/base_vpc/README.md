@@ -47,6 +47,7 @@ Opinionated model to set up a private vpc with service endpoints
 | <a name="output_private_subnet_cidrs"></a> [private\_subnet\_cidrs](#output\_private\_subnet\_cidrs) | A list of private cidr blocks |
 | <a name="output_private_subnet_ids"></a> [private\_subnet\_ids](#output\_private\_subnet\_ids) | A list of private subnets |
 | <a name="output_security_group_ids"></a> [security\_group\_ids](#output\_security\_group\_ids) | A map of security group ids |
+| <a name="output_vpc_endpoint_audit_log_api_prefix_list_id"></a> [vpc\_endpoint\_audit\_log\_api\_prefix\_list\_id](#output\_vpc\_endpoint\_audit\_log\_api\_prefix\_list\_id) | The id for the audit log API gateway prefix list |
 | <a name="output_vpc_endpoint_dynamodb_prefix_list_id"></a> [vpc\_endpoint\_dynamodb\_prefix\_list\_id](#output\_vpc\_endpoint\_dynamodb\_prefix\_list\_id) | The id for the dynamodb prefix list |
 | <a name="output_vpc_endpoint_s3_prefix_list_id"></a> [vpc\_endpoint\_s3\_prefix\_list\_id](#output\_vpc\_endpoint\_s3\_prefix\_list\_id) | The id for the s3 prefix list |
 | <a name="output_vpc_endpoints"></a> [vpc\_endpoints](#output\_vpc\_endpoints) | A map of our vpc endpoints |

@@ -68,7 +68,12 @@ resource "aws_security_group" "postfix_vpc_sg" {
 
   vpc_id = module.postfix_vpc.vpc_id
 
-  tags = var.tags
+  tags = merge(
+    var.tags,
+    {
+      name = "${var.name}-postfix-vpc"
+    }
+  )
 }
 
 resource "aws_security_group_rule" "allow_vpc_endpoint_smtp_ingress" {

@@ -36,6 +36,7 @@ No modules.
 | [aws_ecr_lifecycle_policy.audit_logging_portal](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecr_lifecycle_policy) | resource |
 | [aws_ecr_lifecycle_policy.beanconnect](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecr_lifecycle_policy) | resource |
 | [aws_ecr_lifecycle_policy.bichard7_liberty](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecr_lifecycle_policy) | resource |
+| [aws_ecr_lifecycle_policy.codebuild_base](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecr_lifecycle_policy) | resource |
 | [aws_ecr_lifecycle_policy.e2etests](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecr_lifecycle_policy) | resource |
 | [aws_ecr_lifecycle_policy.gradle_jdk11](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecr_lifecycle_policy) | resource |
 | [aws_ecr_lifecycle_policy.grafana](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecr_lifecycle_policy) | resource |
@@ -64,6 +65,7 @@ No modules.
 | [aws_ecr_repository.audit_logging_portal](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecr_repository) | resource |
 | [aws_ecr_repository.beanconnect](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecr_repository) | resource |
 | [aws_ecr_repository.bichard7_liberty](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecr_repository) | resource |
+| [aws_ecr_repository.codebuild_base](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecr_repository) | resource |
 | [aws_ecr_repository.e2etests](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecr_repository) | resource |
 | [aws_ecr_repository.gradle_jdk11](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecr_repository) | resource |
 | [aws_ecr_repository.grafana](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecr_repository) | resource |
@@ -92,6 +94,7 @@ No modules.
 | [aws_ecr_repository_policy.allow_codebuild_amazon_linux_2_base](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecr_repository_policy) | resource |
 | [aws_ecr_repository_policy.allow_codebuild_audit_logging_portal](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecr_repository_policy) | resource |
 | [aws_ecr_repository_policy.allow_codebuild_beanconnect](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecr_repository_policy) | resource |
+| [aws_ecr_repository_policy.allow_codebuild_codebuild_base](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecr_repository_policy) | resource |
 | [aws_ecr_repository_policy.allow_codebuild_e2etests](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecr_repository_policy) | resource |
 | [aws_ecr_repository_policy.allow_codebuild_gradle_jdk11](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecr_repository_policy) | resource |
 | [aws_ecr_repository_policy.allow_codebuild_grafana](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecr_repository_policy) | resource |
@@ -171,6 +174,7 @@ No modules.
 | <a name="output_audit_logging_portal"></a> [audit\_logging\_portal](#output\_audit\_logging\_portal) | The outputs of the audit logging portal ecr repository |
 | <a name="output_audit_logging_portal_arn"></a> [audit\_logging\_portal\_arn](#output\_audit\_logging\_portal\_arn) | The repository arn for our audit logging portal image |
 | <a name="output_bichard_liberty_ecr"></a> [bichard\_liberty\_ecr](#output\_bichard\_liberty\_ecr) | The Bichard Liberty ecr repository details |
+| <a name="output_codebuild_base"></a> [codebuild\_base](#output\_codebuild\_base) | The ecr repository for our codebuild image |
 | <a name="output_gradle_jdk11_docker_image"></a> [gradle\_jdk11\_docker\_image](#output\_gradle\_jdk11\_docker\_image) | The image hash for our ecs deployment |
 | <a name="output_gradle_jdk11_repository_arn"></a> [gradle\_jdk11\_repository\_arn](#output\_gradle\_jdk11\_repository\_arn) | The repository arn for our gradle\_jdk11 image |
 | <a name="output_gradle_jdk11_repository_url"></a> [gradle\_jdk11\_repository\_url](#output\_gradle\_jdk11\_repository\_url) | The repository url for our gradle\_jdk11 image |

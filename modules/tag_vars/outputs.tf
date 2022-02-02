@@ -1,7 +1,6 @@
 output "business_unit" {
   description = "The name of our Business Unit"
   value       = "CJSE"
-
 }
 
 output "application" {

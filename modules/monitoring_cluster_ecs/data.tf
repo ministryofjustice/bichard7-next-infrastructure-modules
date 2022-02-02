@@ -354,3 +354,14 @@ data "template_file" "allow_notifications_kms_access" {
     kms_key_arn = aws_kms_key.alert_notifications_key.arn
   }
 }
+
+### Alerts Lambda
+data "archive_file" "alert_archive" {
+  output_path = "/tmp/alert_notification.zip"
+  type        = "zip"
+
+  source {
+    content  = data.template_file.alert_webhook_source.rendered
+    filename = "alert.py"
+  }
+}

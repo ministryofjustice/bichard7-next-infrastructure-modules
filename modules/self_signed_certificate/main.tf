@@ -66,6 +66,7 @@ resource "tls_self_signed_cert" "self_signed_certificate" {
     "*.cjse.org"
   ]
 }
+
 resource "aws_ssm_parameter" "self_signed_certificate" {
   name      = "/${var.tags["Name"]}/self_signed_certificate"
   type      = "SecureString"

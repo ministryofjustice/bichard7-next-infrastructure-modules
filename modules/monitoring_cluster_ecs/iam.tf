@@ -1,6 +1,9 @@
+## Prometheus ECS Task
 resource "aws_iam_role" "prometheus_task_role" {
   name               = "${var.name}-Prometheus-Task"
   assume_role_policy = file("${path.module}/policies/ecs_task_role.json")
+
+  tags = var.tags
 }
 
 resource "aws_iam_role_policy_attachment" "attach_ecs_code_deploy_role_for_ecs" {
@@ -18,9 +21,12 @@ resource "aws_iam_role_policy_attachment" "attach_cloudwatch_readonly" {
   policy_arn = "arn:aws:iam::aws:policy/CloudWatchReadOnlyAccess"
 }
 
+## Prometheus Cloudwatch SSM
 resource "aws_iam_policy" "prometheus_cloudwatch_ssm" {
   policy = data.template_file.allow_ssm.rendered
-  name   = "PrometheusAllowSSM-${var.name}"
+
+  name = "PrometheusAllowSSM-${var.name}"
+  tags = var.tags
 }
 
 resource "aws_iam_role_policy_attachment" "prometheus_cloudwatch_ssm_attachment" {

@@ -71,6 +71,7 @@ variable "tags" {
   default     = {}
 }
 
+# tfsec:ignore:general-secrets-no-plaintext-exposure
 variable "token_expires_in" {
   description = "How long the authentication tokens should be valid for after logging in"
   type        = string

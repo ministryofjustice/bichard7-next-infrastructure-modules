@@ -70,6 +70,8 @@ resource "aws_iam_role_policy_attachment" "ci_policies" {
 
 resource "aws_iam_service_linked_role" "es_service_role" {
   aws_service_name = "es.amazonaws.com"
+
+  tags = var.tags
 }
 
 # tfsec:ignore:aws-iam-block-kms-policy-wildcard

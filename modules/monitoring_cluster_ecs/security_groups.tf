@@ -1,3 +1,4 @@
+# tfsec:ignore:aws-vpc-no-public-egress-sgr
 resource "aws_security_group_rule" "allow_all_outbound" {
   description = "Allow all outbound traffic"
 
@@ -102,6 +103,7 @@ resource "aws_security_group_rule" "prometheus_alb_egress_to_alb" {
   source_security_group_id = data.aws_security_group.prometheus_alb.id
 }
 
+# tfsec:ignore:aws-vpc-no-public-egress-sgr
 resource "aws_security_group_rule" "allow_all_prometheus_outbound" {
   description = "Allow all outbound traffic"
 
@@ -351,6 +353,7 @@ resource "aws_security_group_rule" "grafana_containers_to_db" {
 }
 
 ### Grafana Containers
+# tfsec:ignore:aws-vpc-no-public-egress-sgr
 resource "aws_security_group_rule" "grafana_to_world_https" {
   description = "All Grafana Containers HTTPS to world"
 
@@ -543,6 +546,7 @@ resource "aws_security_group_rule" "allow_logstash_alb_ingress_to_logstash" {
   source_security_group_id = data.aws_security_group.logstash_alb_security_group.id
 }
 
+# tfsec:ignore:aws-vpc-no-public-egress-sgr
 resource "aws_security_group_rule" "allow_logstash_egress_to_world" {
   description = "Allow Logstash ingress from ALB"
 
@@ -658,6 +662,7 @@ resource "aws_security_group_rule" "allow_black_box_exporter_alb_egress" {
   security_group_id        = data.aws_security_group.prometheus_blackbox_exporter_alb.id
 }
 
+# tfsec:ignore:aws-vpc-no-public-egress-sgr
 resource "aws_security_group_rule" "allow_bbe_containers_https_egress" {
   description = "Allow BBE containers egress to world"
 

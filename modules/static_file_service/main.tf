@@ -1,7 +1,3 @@
-locals {
-  static_files_bucket_name = (length("${var.name}-static-files") > 63) ? trim(substr("${var.name}-static-files", 0, 63), "-") : "${var.name}-static-files"
-}
-
 resource "aws_s3_bucket" "static_file_bucket" {
   bucket = local.static_files_bucket_name
   acl    = "private"
@@ -30,30 +26,7 @@ resource "aws_s3_bucket" "static_file_bucket" {
 
 resource "aws_s3_bucket_policy" "static_file_bucket" {
   bucket = aws_s3_bucket.static_file_bucket.bucket
-  policy = <<-EOF
-  {
-    "Version": "2012-10-17",
-    "Statement": [
-      {
-        "Sid": "DenyNonTLSComms",
-        "Effect": "Deny",
-        "Action": "s3:*",
-        "Resource": [
-          "${aws_s3_bucket.static_file_bucket.arn}",
-          "${aws_s3_bucket.static_file_bucket.arn}/*"
-        ],
-         "Condition": {
-          "Bool" : {
-            "aws:SecureTransport": false
-          }
-        },
-        "Principal": {
-          "AWS": "*"
-        }
-      }
-    ]
-  }
-  EOF
+  policy = data.template_file.static_file_bucket.rendered
 }
 
 resource "aws_s3_bucket_public_access_block" "static_file_bucket" {

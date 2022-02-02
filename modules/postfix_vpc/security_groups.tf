@@ -114,6 +114,7 @@ resource "aws_security_group_rule" "allow_smtps_from_container_to_cjsm_net" {
   ]
 }
 
+# tfsec:ignore:aws-vpc-no-public-egress-sgr
 resource "aws_security_group_rule" "allow_https_egress" {
   description = "All https egress from containers"
 

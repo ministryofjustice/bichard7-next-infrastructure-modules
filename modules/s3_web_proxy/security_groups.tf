@@ -3,7 +3,12 @@ resource "aws_security_group" "s3_web_proxy_alb" {
   description = "Allow access to our alb"
   vpc_id      = var.vpc_id
 
-  tags = var.tags
+  tags = merge(
+    var.tags,
+    {
+      name = "${var.name}-scanning-portal-alb"
+    }
+  )
 }
 
 resource "aws_security_group" "s3_web_proxy_container" {
@@ -11,7 +16,12 @@ resource "aws_security_group" "s3_web_proxy_container" {
   description = "Allow access to our ecs containers"
   vpc_id      = var.vpc_id
 
-  tags = var.tags
+  tags = merge(
+    var.tags,
+    {
+      name = "${var.name}-scanning-portal-ecs"
+    }
+  )
 }
 
 resource "aws_security_group_rule" "allow_alb_https_egress_to_ecs" {
@@ -38,6 +48,7 @@ resource "aws_security_group_rule" "allow_https_ingress_on_container_from_alb" {
   source_security_group_id = aws_security_group.s3_web_proxy_alb.id
 }
 
+# tfsec:ignore:aws-vpc-no-public-ingress-sgr
 resource "aws_security_group_rule" "allow_https_ingress_on_alb_from_world" {
   description = "Allow https access to our alb"
 
@@ -50,6 +61,7 @@ resource "aws_security_group_rule" "allow_https_ingress_on_alb_from_world" {
   cidr_blocks       = ["0.0.0.0/0"] #tfsec:ignore:AWS006
 }
 
+# tfsec:ignore:aws-vpc-no-public-ingress-sgr
 resource "aws_security_group_rule" "allow_http_ingress_on_alb_from_world" {
   description = "Allow http access to our alb"
 
@@ -62,6 +74,7 @@ resource "aws_security_group_rule" "allow_http_ingress_on_alb_from_world" {
   cidr_blocks       = ["0.0.0.0/0"] #tfsec:ignore:AWS006
 }
 
+# tfsec:ignore:aws-vpc-no-public-egress-sgr
 resource "aws_security_group_rule" "allow_https_egress_from_container_to_world" {
   description = "Allow https access to our ecs containers"
 
