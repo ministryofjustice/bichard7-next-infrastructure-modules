@@ -15,11 +15,11 @@ data "template_file" "bichard_fargate" {
     MEMORY                = var.fargate_memory
     LOG_GROUP             = var.bichard7_log_group.name
     LOG_STREAM_PREFIX     = "Bichard-WAS"
-    DB_USER_PARAMETER     = "bichard"
-    MQ_USER_PARAMETER     = var.mq_user
-    MQ_CONN_STR_PARAMETER = var.mq_conn_str
-    LOG_LEVEL_PARAMETER   = var.log_level
-    DB_HOST_PARAMETER     = var.db_host
+    DB_USER               = "bichard"
+    MQ_USER               = var.mq_user
+    MQ_CONN_STR           = var.mq_conn_str
+    LOG_LEVEL             = var.log_level
+    DB_HOST               = var.db_host
     DB_SSL                = var.db_ssl
     DB_SSL_MODE           = var.db_ssl_mode
     SECRETS               = jsonencode([for k, v in local.secrets : { name = k, valueFrom = v } if v != null])
@@ -29,6 +29,7 @@ data "template_file" "bichard_fargate" {
     DISABLE_MDB           = var.service_type == "web" ? "true" : ""
     BC_PROXY_URL          = var.service_type == "web" ? "oltp://disabled:0/disabled" : "oltp://bc.cjse.org:31004/BCU31004"
     AUDIT_LOGGING_API_URL = var.audit_api_url
+    LOG_PNC_REQUESTS      = (terraform.workspace == "production") ? "false" : "true"
   }
 }
 
