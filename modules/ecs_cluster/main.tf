@@ -16,7 +16,6 @@ resource "aws_iam_role_policy" "allow_admin_role_cmk_access" {
   name   = "${local.service_name}-allow-admin-cmk-access"
   policy = data.template_file.allow_admin_cmk_access[count.index].rendered
   role   = data.aws_iam_role.admin_role.name
-
 }
 
 resource "aws_ecs_cluster" "cluster" {
@@ -113,6 +112,8 @@ resource "aws_cloudwatch_log_stream" "log_stream" {
 resource "aws_iam_role" "ecs_service_role" {
   name               = "${local.service_name}-Ecs-Task"
   assume_role_policy = file("${path.module}/policies/assume_role.json")
+
+  tags = var.tags
 }
 
 resource "aws_iam_role_policy" "allow_ecr" {
@@ -150,7 +151,6 @@ resource "aws_iam_role_policy" "allow_ssm_messages_external_kms" {
   policy = data.template_file.allow_ssm_messages_external_kms[0].rendered
   role   = aws_iam_role.ecs_service_role.id
 }
-
 
 resource "aws_iam_role_policy_attachment" "attach_ecs_code_deploy_role_for_ecs" {
   role       = aws_iam_role.ecs_service_role.name
