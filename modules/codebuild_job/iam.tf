@@ -1,6 +1,8 @@
 resource "aws_iam_policy" "codebuild_allow_ecr" {
   name   = "${var.name}-ecr"
   policy = data.template_file.allow_resources.rendered
+
+  tags = local.tags
 }
 
 resource "aws_iam_role_policy_attachment" "codebuild_allow_ecr" {
