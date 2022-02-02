@@ -1,5 +1,3 @@
-## This entire comment block will be needed later when we set grafana up to use the db
-
 resource "random_string" "grafana_admin_suffix" {
   special = false
   length  = 12
@@ -128,7 +126,6 @@ resource "aws_rds_cluster" "grafana_db" {
   tags = var.tags
 }
 
-# tfsec:ignore:aws-rds-enable-performance-insights
 resource "aws_rds_cluster_instance" "grafana_db_instance" {
   count = 3
 
@@ -140,6 +137,10 @@ resource "aws_rds_cluster_instance" "grafana_db_instance" {
 
   auto_minor_version_upgrade   = true
   preferred_maintenance_window = aws_rds_cluster.grafana_db.preferred_maintenance_window
+
+  performance_insights_enabled          = true
+  performance_insights_kms_key_id       = aws_kms_key.aurora_cluster_encryption_key.arn
+  performance_insights_retention_period = (lower(var.tags["is-production"]) == "true") ? 7 : 731
 
   tags = var.tags
 }
@@ -239,6 +240,8 @@ resource "aws_lb_listener" "grafana_https_listener" {
     target_group_arn = aws_lb_target_group.grafana_alb_target_group.arn
     type             = "forward"
   }
+
+  tags = var.tags
 }
 
 resource "aws_lb_listener" "grafana_http_listener" {
@@ -255,6 +258,8 @@ resource "aws_lb_listener" "grafana_http_listener" {
       status_code = "HTTP_301"
     }
   }
+
+  tags = var.tags
 }
 
 resource "aws_route53_record" "db_internal" {

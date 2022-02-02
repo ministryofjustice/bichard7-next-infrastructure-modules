@@ -91,6 +91,8 @@ resource "aws_lb_listener" "logstash_https_listener" {
     target_group_arn = aws_lb_target_group.logstash_alb.arn
     type             = "forward"
   }
+
+  tags = var.tags
 }
 
 resource "aws_route53_record" "logstash_private_dns" {
