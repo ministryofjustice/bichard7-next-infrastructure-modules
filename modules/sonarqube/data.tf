@@ -52,3 +52,21 @@ data "terraform_remote_state" "account_resources" {
     region         = "eu-west-2"
   }
 }
+
+data "template_file" "allow_ssm" {
+  template = file("${path.module}/policies/allow_ssm.json.tpl")
+
+  vars = {
+    sonar_db_password_arn = aws_ssm_parameter.sonar_db_password.arn
+    sonar_db_user_arn     = aws_ssm_parameter.sonar_db_user.arn
+  }
+}
+
+data "template_file" "cloudwatch_encryption" {
+  template = file("${path.module}/policies/cloudwatch_encryption.json.tpl")
+
+  vars = {
+    account_id = data.aws_caller_identity.current.account_id
+    region     = data.aws_region.current.name
+  }
+}

@@ -7,12 +7,16 @@ resource "aws_ssm_parameter" "sonar_db_password" {
   name  = "/sonarqube/rds/db_password"
   type  = "SecureString"
   value = random_password.sonar_db_password.result
+
+  tags = var.tags
 }
 
 resource "aws_ssm_parameter" "sonar_db_user" {
   name  = "/sonarqube/rds/db_user"
   type  = "SecureString"
   value = "sonar${random_id.sonar_user_suffix.id}"
+
+  tags = var.tags
 }
 
 resource "random_id" "sonar_user_suffix" {
@@ -28,12 +32,16 @@ resource "aws_ssm_parameter" "sonar_admin_user_login" {
   name  = "/sonarqube/rds/sonar_admin_login"
   type  = "SecureString"
   value = "bichard-admin${random_id.sonar_user_suffix.id}"
+
+  tags = var.tags
 }
 
 resource "aws_ssm_parameter" "sonar_admin_user_password" {
   name  = "/sonarqube/rds/sonar_admin_password"
   type  = "SecureString"
   value = random_password.sonar_admin_user_password.result
+
+  tags = var.tags
 }
 
 # set to count 0 because we are going to set up vpc peering
