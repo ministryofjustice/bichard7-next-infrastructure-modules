@@ -140,7 +140,7 @@ resource "aws_rds_cluster_instance" "grafana_db_instance" {
 
   performance_insights_enabled          = true
   performance_insights_kms_key_id       = aws_kms_key.aurora_cluster_encryption_key.arn
-  performance_insights_retention_period = (lower(var.tags["is-production"]) == "true") ? 7 : 731
+  performance_insights_retention_period = (lower(var.tags["is-production"]) == "true") ? 731 : 7
 
   tags = var.tags
 }
