@@ -21,19 +21,19 @@
       "environment": [
         {
            "name": "DB_USER",
-           "value": "${DB_USER_PARAMETER}"
+           "value": "${DB_USER}"
         },
         {
            "name": "DB_HOST",
-           "value": "${DB_HOST_PARAMETER}"
+           "value": "${DB_HOST}"
         },
         {
            "name": "MQ_USER",
-           "value": "${MQ_USER_PARAMETER}"
+           "value": "${MQ_USER}"
         },
         {
            "name": "MQ_CONN_STR",
-           "value": "${MQ_CONN_STR_PARAMETER}"
+           "value": "${MQ_CONN_STR}"
         },
         {
            "name": "MQ_TYPE",
@@ -41,7 +41,11 @@
         },
         {
            "name": "LOG_LEVEL",
-           "value": "${LOG_LEVEL_PARAMETER}"
+           "value": "${LOG_LEVEL}"
+        },
+        {
+           "name": "LOG_PNC_REQUESTS",
+           "value": "${LOG_PNC_REQUESTS}"
         },
         {
           "name": "DB_SSL",
