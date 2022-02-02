@@ -183,6 +183,8 @@ resource "aws_lb_listener" "prometheus_http_listener" {
       status_code = "HTTP_301"
     }
   }
+
+  tags = var.tags
 }
 
 resource "aws_lb_listener" "prometheus_https_listener" {
@@ -196,6 +198,8 @@ resource "aws_lb_listener" "prometheus_https_listener" {
     target_group_arn = aws_lb_target_group.prometheus_alb.arn
     type             = "forward"
   }
+
+  tags = var.tags
 }
 
 resource "aws_lb_listener" "prometheus_alert_manager_https_listener" {
@@ -209,6 +213,8 @@ resource "aws_lb_listener" "prometheus_alert_manager_https_listener" {
     target_group_arn = aws_lb_target_group.prometheus_alert_manager_alb.arn
     type             = "forward"
   }
+
+  tags = var.tags
 }
 
 resource "aws_route53_record" "prometheus_public_record" {

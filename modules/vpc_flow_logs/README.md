@@ -36,6 +36,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_tags"></a> [tags](#input\_tags) | A map of tags to apply to this resource | `map(string)` | n/a | yes |
 | <a name="input_vpc_flow_log_group"></a> [vpc\_flow\_log\_group](#input\_vpc\_flow\_log\_group) | The outputs from the creation of our vpc\_flow\_logs log group | `any` | n/a | yes |
 | <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | VPC ID to attach to. | `string` | n/a | yes |
 | <a name="input_vpc_name"></a> [vpc\_name](#input\_vpc\_name) | The VPC name is used to name the flow log resources. | `string` | n/a | yes |

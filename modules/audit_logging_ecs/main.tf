@@ -103,6 +103,7 @@ module "audit_logging_portal_service" {
       name = "data"
     }
   ]
+
   tags = local.tags
 }
 

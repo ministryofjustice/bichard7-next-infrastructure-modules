@@ -32,16 +32,6 @@ resource "aws_iam_role" "scanning_notification" {
   tags = var.tags
 }
 
-data "archive_file" "alert_archive" {
-  output_path = "/tmp/alert_notification.zip"
-  type        = "zip"
-
-  source {
-    content  = data.template_file.alert_webhook_source.rendered
-    filename = "alert.py"
-  }
-}
-
 resource "aws_lambda_function" "prometheus_alerts" {
   count = local.provision_alerts
 
@@ -80,11 +70,14 @@ resource "aws_sns_topic_subscription" "prometheus_alerts_subscription" {
   topic_arn = aws_sns_topic.alert_notifications.arn
 }
 
+# tfsec:ignore:aws-iam-no-policy-wildcards
 resource "aws_iam_policy" "prometheus_alerts_logging" {
   name        = "${var.name}-AllowAlertLambdaLogging"
   path        = "/"
   description = "IAM policy for logging from a lambda"
-  policy      = file("${path.module}/policies/allow_lambda_logging.json") # tfsec:ignore:aws-iam-no-policy-wildcards
+  policy      = file("${path.module}/policies/allow_lambda_logging.json")
+
+  tags = var.tags
 }
 
 resource "aws_iam_role_policy_attachment" "scanning_lambda_logs" {

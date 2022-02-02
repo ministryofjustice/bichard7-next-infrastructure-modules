@@ -16,6 +16,8 @@ resource "aws_ssm_parameter" "slack_webhook" {
 resource "aws_iam_policy" "allow_ci_ssm_access" {
   name   = "${var.name}-allow-ci-slack-ssm"
   policy = data.template_file.allow_ci_slack_ssm.rendered
+
+  tags = var.tags
 }
 
 resource "aws_iam_user_policy_attachment" "allow_ci_ssm_access" {
@@ -48,16 +50,6 @@ resource "aws_sns_topic" "build_notifications" {
 resource "aws_sns_topic_policy" "default" {
   arn    = aws_sns_topic.build_notifications.arn
   policy = data.template_file.allow_sns_publish_policy.rendered
-}
-
-data "archive_file" "codebuild_notification" {
-  output_path = "/tmp/codebuild_notification_rule.zip"
-  type        = "zip"
-
-  source {
-    content  = data.template_file.webhook_source.rendered
-    filename = "webhook.py"
-  }
 }
 
 resource "aws_iam_role" "codebuild_notification" {
@@ -106,6 +98,8 @@ resource "aws_iam_policy" "lambda_logging" {
   path        = "/"
   description = "IAM policy for logging from a lambda"
   policy      = file("${path.module}/policies/allow_lambda_logging.json")
+
+  tags = var.tags
 }
 
 resource "aws_iam_role_policy_attachment" "lambda_logs" {

@@ -8,7 +8,8 @@ resource "aws_ssm_parameter" "amq_password" {
   type      = "SecureString"
   value     = random_password.amq.result
   overwrite = true
-  tags      = var.tags
+
+  tags = var.tags
 }
 
 resource "aws_kms_key" "amq_encryption_key" {

@@ -38,3 +38,21 @@ data "external" "scanning_portal_latest_image" {
     "--query", "{\"tags\": to_string(sort_by(imageDetails,& imagePushedAt)[-1].imageDigest)}",
   ]
 }
+
+data "template_file" "cloudwatch_encryption" {
+  template = file("${path.module}/policies/cloudwatch_encryption.json.tpl")
+
+  vars = {
+    account_id               = data.aws_caller_identity.current.account_id
+    region                   = data.aws_region.current.name
+    scanning_bucket_user_arn = aws_iam_user.scanning_bucket_user.arn
+  }
+}
+
+data "template_file" "scanning_user_policy" {
+  template = file("${path.module}/policies/scanning_user_policy.json.tpl")
+
+  vars = {
+    scanning_bucket_name = var.scanning_bucket_name
+  }
+}

@@ -15,6 +15,8 @@ resource "aws_codestarnotifications_notification_rule" "codebuild_notification_r
 resource "aws_iam_policy" "allow_codebuild_sns_kms" {
   name_prefix = "AllowCodebuildSNSAccess-${var.name}"
   policy      = data.template_file.allow_kms_access.rendered
+
+  tags = var.tags
 }
 
 resource "aws_iam_role_policy_attachment" "codebuild_sns_kms_policy_attachment" {

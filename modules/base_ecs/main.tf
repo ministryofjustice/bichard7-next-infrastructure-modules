@@ -45,4 +45,6 @@ resource "aws_ssm_parameter" "bichard7_deploy_tag" {
   type      = "SecureString"
   value     = var.bichard_deploy_tag
   overwrite = var.override_deploy_tags
+
+  tags = var.tags
 }
