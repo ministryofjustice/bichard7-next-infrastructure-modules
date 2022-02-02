@@ -82,6 +82,8 @@ resource "aws_lb_listener" "alb_listener_https" {
     type             = "forward"
     target_group_arn = aws_lb_target_group.alb_target_group_https.arn
   }
+
+  tags = var.tags
 }
 
 resource "aws_lb_listener" "alb_listener_http" {
@@ -93,4 +95,6 @@ resource "aws_lb_listener" "alb_listener_http" {
     type             = "forward"
     target_group_arn = aws_lb_target_group.alb_target_group_http.arn
   }
+
+  tags = var.tags
 }
