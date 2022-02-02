@@ -48,8 +48,10 @@ Module for creating sonarqube cluster on the dev environment
 | [aws_iam_role_policy_attachment.attach_ecs_code_deploy_role_for_ecs](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.attach_ecs_task_execution](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.sonarqube_allow_ecr_attachment](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_kms_alias.aurora_cluster_encryption_key_alias](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/kms_alias) | resource |
 | [aws_kms_alias.cloudwatch_kms_alias](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/kms_alias) | resource |
 | [aws_kms_key.cloudwatch_encryption](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/kms_key) | resource |
+| [aws_kms_key.sonarqube_db_encryption_key](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/kms_key) | resource |
 | [aws_lb_listener.sonar_http_listener](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/lb_listener) | resource |
 | [aws_lb_listener.sonar_https_listener](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/lb_listener) | resource |
 | [aws_lb_target_group.sonar_alb](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/lb_target_group) | resource |

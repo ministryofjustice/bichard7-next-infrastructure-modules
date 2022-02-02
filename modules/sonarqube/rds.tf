@@ -80,7 +80,19 @@ resource "null_resource" "update_password_for_admin_user" {
   }
 }
 
-# tfsec:ignore:aws-rds-enable-performance-insights
+resource "aws_kms_key" "sonarqube_db_encryption_key" {
+  description             = "sonarqube-db-key"
+  deletion_window_in_days = 10
+  enable_key_rotation     = true
+
+  tags = var.tags
+}
+
+resource "aws_kms_alias" "aurora_cluster_encryption_key_alias" {
+  target_key_id = aws_kms_key.sonarqube_db_encryption_key.id
+  name          = "alias/sonarqube-db"
+}
+
 resource "aws_db_instance" "sonar_db" {
   identifier               = "sonardb"
   allocated_storage        = 10
@@ -96,6 +108,11 @@ resource "aws_db_instance" "sonar_db" {
   db_subnet_group_name     = module.vpc.database_subnet_group_name
   storage_encrypted        = true
   backup_retention_period  = 14
+
+  kms_key_id = aws_kms_key.sonarqube_db_encryption_key.arn
+
+  performance_insights_enabled    = true
+  performance_insights_kms_key_id = aws_kms_key.sonarqube_db_encryption_key.arn
 
   tags = var.tags
 }
