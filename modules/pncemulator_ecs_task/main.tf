@@ -90,4 +90,6 @@ resource "aws_lb_listener" "pncemulator_api_listener" {
     target_group_arn = aws_lb_target_group.pncemulator_api.arn
     type             = "forward"
   }
+
+  tags = local.tags
 }
