@@ -135,7 +135,9 @@
 | [aws_region.current](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/region) | data source |
 | [aws_route53_zone.public](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/route53_zone) | data source |
 | [external_external.scanning_portal_latest_image](https://registry.terraform.io/providers/hashicorp/external/2.1.0/docs/data-sources/external) | data source |
+| [template_file.cloudwatch_encryption](https://registry.terraform.io/providers/hashicorp/template/2.2.0/docs/data-sources/file) | data source |
 | [template_file.scanning_reults_portal_fargate](https://registry.terraform.io/providers/hashicorp/template/2.2.0/docs/data-sources/file) | data source |
+| [template_file.scanning_user_policy](https://registry.terraform.io/providers/hashicorp/template/2.2.0/docs/data-sources/file) | data source |
 
 ## Inputs
 
