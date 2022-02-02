@@ -41,8 +41,10 @@ Module to create a set of base resources required for our CD/Codebuild environme
 | [aws_iam_user_policy.allow_lock_table_access](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_user_policy) | resource |
 | [aws_iam_user_policy_attachment.allow_ci_ssm_access](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_user_policy_attachment) | resource |
 | [aws_kms_alias.build_notifications_key_alias](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/kms_alias) | resource |
+| [aws_kms_alias.remote_state_key_alias](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/kms_alias) | resource |
 | [aws_kms_alias.scanning_notifications_key_alias](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/kms_alias) | resource |
 | [aws_kms_key.build_notifications_key](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/kms_key) | resource |
+| [aws_kms_key.codebuild_lock_table](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/kms_key) | resource |
 | [aws_kms_key.scanning_notifications_key](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/kms_key) | resource |
 | [aws_lambda_function.codebuild_notification](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/lambda_function) | resource |
 | [aws_lambda_function.scanning_notification](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/lambda_function) | resource |

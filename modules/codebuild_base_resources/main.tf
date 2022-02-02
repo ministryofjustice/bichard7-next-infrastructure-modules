@@ -44,6 +44,19 @@ resource "aws_s3_bucket_policy" "allow_access_to_codebuild_bucket" {
   policy = data.template_file.codebuild_bucket_policy.rendered
 }
 
+resource "aws_kms_key" "codebuild_lock_table" {
+  description             = "${var.name}-codebuild-lock-table"
+  deletion_window_in_days = 10
+  enable_key_rotation     = true
+
+  tags = var.tags
+}
+
+resource "aws_kms_alias" "remote_state_key_alias" {
+  target_key_id = aws_kms_key.codebuild_lock_table.id
+  name          = "alias/${var.name}-codebuild-lock"
+}
+
 resource "aws_dynamodb_table" "codebuild_lock_table" {
   hash_key       = "project_name"
   name           = "${var.name}-codebuild-concurrency"
@@ -54,9 +67,10 @@ resource "aws_dynamodb_table" "codebuild_lock_table" {
     enabled = true
   }
 
-  # tfsec:ignore:aws-dynamodb-table-customer-key
+
   server_side_encryption {
-    enabled = true
+    enabled     = true
+    kms_key_arn = aws_kms_key.codebuild_lock_table.arn
   }
 
   attribute {
