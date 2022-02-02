@@ -72,3 +72,29 @@ data "template_file" "allow_ci_slack_ssm" {
     slack_webhook_arn = aws_ssm_parameter.slack_webhook.arn
   }
 }
+
+data "template_file" "codebuild_bucket_policy" {
+  template = file("${path.module}/policies/codebuild_bucket_policy.json.tpl")
+
+  vars = {
+    bucket_arn = aws_s3_bucket.codebuild_artifact_bucket.arn
+    account_id = data.aws_caller_identity.current.account_id
+    allowed_principals = jsonencode(
+      sort(
+        concat(
+          formatlist("arn:aws:iam::%s:root", var.allow_accounts),
+          formatlist("arn:aws:iam::%s:role/Bichard7-CI-Access", local.child_accounts)
+        )
+      )
+    )
+    allowed_principals_with_lambda = jsonencode(
+      sort(
+        concat(
+          formatlist("arn:aws:iam::%s:role/portal-host-lambda-role", local.child_accounts),
+          formatlist("arn:aws:iam::%s:role/Bichard7-CI-Access", local.child_accounts)
+        )
+      )
+    )
+    ci_user_arn = data.aws_iam_user.ci_user.arn
+  }
+}

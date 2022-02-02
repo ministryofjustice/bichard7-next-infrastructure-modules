@@ -41,118 +41,9 @@ locals {
 resource "aws_s3_bucket_policy" "allow_access_to_codebuild_bucket" {
   bucket = aws_s3_bucket.codebuild_artifact_bucket.bucket
 
-  policy = <<-EOF
-  {
-    "Version": "2012-10-17",
-    "Statement": [
-      {
-        "Sid": "ListObjectsInBucket",
-        "Effect": "Allow",
-        "Action": [
-          "s3:ListBucket",
-          "s3:GetBucketAcl",
-          "s3:ListBucketVersions",
-          "s3:GetBucketVersioning",
-          "s3:GetBucketPublicAccessBlock"
-        ],
-        "Resource": ["${aws_s3_bucket.codebuild_artifact_bucket.arn}"],
-        "Principal": {
-          "AWS": ${jsonencode(sort(concat(formatlist("arn:aws:iam::%s:root", var.allow_accounts), formatlist("arn:aws:iam::%s:role/Bichard7-CI-Access", local.child_accounts))))}
-        }
-      },
-      {
-        "Sid": "AllObjectActions",
-        "Effect": "Allow",
-        "Action": [
-          "s3:*Object",
-          "s3:GetObjectAcl",
-          "s3:GetObjectVersion",
-          "s3:GetObjectVersionAcl"
-        ],
-        "Resource": ["${aws_s3_bucket.codebuild_artifact_bucket.arn}/*"],
-        "Principal": {
-          "AWS": ${jsonencode(sort(concat(formatlist("arn:aws:iam::%s:root", var.allow_accounts), formatlist("arn:aws:iam::%s:role/Bichard7-CI-Access", local.child_accounts))))}
-        }
-      },
-      {
-        "Sid": "LambdaGet",
-        "Effect": "Allow",
-        "Action": [
-          "s3:Get*",
-          "s3:ListBucket",
-          "s3:GetObjectAcl",
-          "s3:GetObjectVersion",
-          "s3:GetObjectVersionAcl",
-          "s3:ListBucketVersions",
-          "s3:GetBucketVersioning"
-        ],
-        "Resource": [
-          "${aws_s3_bucket.codebuild_artifact_bucket.arn}/*",
-          "${aws_s3_bucket.codebuild_artifact_bucket.arn}"
-        ],
-        "Principal": {
-          "AWS": ${jsonencode(sort(concat(formatlist("arn:aws:iam::%s:role/portal-host-lambda-role", local.child_accounts), formatlist("arn:aws:iam::%s:role/Bichard7-CI-Access", local.child_accounts))))}
-        }
-      },
-      {
-        "Sid": "AllActions",
-        "Effect": "Allow",
-        "Action": "s3:*",
-        "Resource": ["${aws_s3_bucket.codebuild_artifact_bucket.arn}/*"],
-        "Principal": {
-          "AWS": "arn:aws:iam::${data.aws_caller_identity.current.account_id}:root"
-        }
-      },
-      {
-        "Sid": "AllActionsCodeBuild",
-        "Effect": "Allow",
-        "Action": "s3:*",
-        "Resource": [
-          "${aws_s3_bucket.codebuild_artifact_bucket.arn}/*",
-          "${aws_s3_bucket.codebuild_artifact_bucket.arn}"
-        ],
-        "Principal": {
-          "AWS": "${data.aws_iam_user.ci_user.arn}"
-        }
-      },
-      {
-          "Sid": "AWSCloudTrailRead",
-          "Effect": "Allow",
-          "Action": "s3:GetObject*",
-          "Principal": {
-            "Service": "cloudtrail.amazonaws.com"
-          },
-          "Resource": [
-            "${aws_s3_bucket.codebuild_artifact_bucket.arn}/semaphores/*"
-          ]
-      },
-      {
-          "Effect": "Allow",
-          "Principal": {
-              "Service": "cloudtrail.amazonaws.com"
-          },
-          "Action": "s3:GetBucketAcl",
-          "Resource": "${aws_s3_bucket.codebuild_artifact_bucket.arn}"
-      },
-      {
-          "Effect": "Allow",
-          "Principal": {
-              "Service": "cloudtrail.amazonaws.com"
-          },
-          "Action": "s3:PutObject",
-          "Resource": "${aws_s3_bucket.codebuild_artifact_bucket.arn}/AWSLogs/${data.aws_caller_identity.current.account_id}/*",
-          "Condition": {
-              "StringEquals": {
-                  "s3:x-amz-acl": "bucket-owner-full-control"
-              }
-          }
-      }
-    ]
-  }
-  EOF
+  policy = data.template_file.codebuild_bucket_policy.rendered
 }
 
-# tfsec:ignore:aws-dynamodb-table-customer-key
 resource "aws_dynamodb_table" "codebuild_lock_table" {
   hash_key       = "project_name"
   name           = "${var.name}-codebuild-concurrency"
@@ -163,6 +54,7 @@ resource "aws_dynamodb_table" "codebuild_lock_table" {
     enabled = true
   }
 
+  # tfsec:ignore:aws-dynamodb-table-customer-key
   server_side_encryption {
     enabled = true
   }
