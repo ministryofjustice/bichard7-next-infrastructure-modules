@@ -85,7 +85,7 @@
         },
         {
            "name": "WLP_LOGGING_CONSOLE_LOGLEVEL",
-           "value": "${LOG_LEVEL_PARAMETER}"
+           "value": "${LOG_LEVEL}"
         },
         {
            "name": "WLP_LOGGING_MESSAGE_FORMAT",
