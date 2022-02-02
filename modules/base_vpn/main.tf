@@ -2,7 +2,8 @@ resource "aws_acm_certificate" "client_cert" {
   private_key       = local.user_private_key
   certificate_body  = local.user_certificate_body
   certificate_chain = local.certificate_chain
-  tags              = var.tags
+
+  tags = var.tags
 }
 
 resource "aws_ssm_parameter" "vpn_user_private_key" {
@@ -10,7 +11,8 @@ resource "aws_ssm_parameter" "vpn_user_private_key" {
   type      = "SecureString"
   value     = local.user_private_key
   overwrite = true
-  tags      = var.tags
+
+  tags = var.tags
 }
 
 resource "aws_ssm_parameter" "vpn_user_crt" {
@@ -18,8 +20,9 @@ resource "aws_ssm_parameter" "vpn_user_crt" {
   type      = "SecureString"
   value     = local.user_certificate_body
   overwrite = true
-  tags      = var.tags
   tier      = "Advanced"
+
+  tags = var.tags
 }
 
 resource "aws_ssm_parameter" "vpn_crt" {
@@ -27,7 +30,8 @@ resource "aws_ssm_parameter" "vpn_crt" {
   type      = "SecureString"
   value     = local.certificate_chain
   overwrite = true
-  tags      = var.tags
+
+  tags = var.tags
 }
 
 
@@ -35,7 +39,8 @@ resource "aws_acm_certificate" "server_cert" {
   private_key       = file("${var.cert_dir}/server.key")
   certificate_chain = file("${var.cert_dir}/ca.crt")
   certificate_body  = file("${var.cert_dir}/server.crt")
-  tags              = var.tags
+
+  tags = var.tags
 }
 
 
@@ -154,7 +159,8 @@ resource "aws_ssm_parameter" "vpn_config" {
   value       = data.template_file.openvpn.rendered
   overwrite   = true
   description = "open vpn config for vpn"
-  tags        = var.tags
+
+  tags = var.tags
 }
 
 resource "local_file" "config" {
