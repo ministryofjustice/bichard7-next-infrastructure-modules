@@ -108,13 +108,21 @@ data "template_file" "allow_dynamodb_lock_table_access" {
 }
 
 data "template_file" "allow_access_to_scanning_results_bucket" {
-
   template = file("${path.module}/policies/allow_access_to_scanning_results_bucket.json.tpl")
+
   vars = {
     scanning_bucket_arn  = aws_s3_bucket.scanning_results_bucket.arn
     allowed_account_arns = jsonencode(sort(formatlist("arn:aws:iam::%s:root", var.allow_accounts)))
     account_id           = data.aws_caller_identity.current.account_id
     ci_user_arn          = data.aws_iam_user.ci_user.arn
+  }
+}
+
+data "template_file" "codebuild_flow_logs_bucket" {
+  template = file("${path.module}/policies/codebuild_flow_logs_bucket.json.tpl")
+
+  vars = {
+    codebuild_flow_logs_bucket_arn = aws_s3_bucket.codebuild_flow_logs_bucket.arn
   }
 }
 
