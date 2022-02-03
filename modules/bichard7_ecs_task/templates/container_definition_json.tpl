@@ -93,7 +93,7 @@
         },
         {
            "name": "WLP_LOGGING_MESSAGE_SOURCE",
-           "value": ""
+           "value": "message,trace,accessLog,ffdc,audit"
         },
         {
            "name": "WLP_LOGGING_CONSOLE_FORMAT",
@@ -102,7 +102,15 @@
         {
            "name": "WLP_LOGGING_CONSOLE_SOURCE",
            "value": "message,trace,accessLog,ffdc,audit"
-        }
+        },
+        {
+           "name": "WLP_LOGGING_APPS_WRITE_JSON",
+           "value": "true"
+        },
+        {
+           "name": "LOG_PNC_REQUESTS",
+           "value": "true"
+        },
 
 ],
       "secrets": ${SECRETS},
