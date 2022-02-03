@@ -59,3 +59,20 @@ variable "server_certificate_arn" {
   description = "The arn of our public ssl certificate"
   type        = string
 }
+
+variable "aws_logs_bucket" {
+  description = "Our account logging bucket for s3 logs"
+  type        = string
+}
+
+variable "s3_snapshots_schedule_expression" {
+  description = "The scheduling expression for running the S3 based OpenSearch snapshot Lambda"
+  type        = string
+  default     = "rate(1 hour)"
+}
+
+variable "s3_snapshots_retention_period" {
+  description = "The amount of days we want to keep our snapshots for"
+  type        = number
+  default     = 365
+}
