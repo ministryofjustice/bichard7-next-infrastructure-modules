@@ -110,9 +110,8 @@
         {
            "name": "LOG_PNC_REQUESTS",
            "value": "true"
-        },
-
-],
+        }
+      ],
       "secrets": ${SECRETS},
       "logConfiguration": {
           "logDriver": "awslogs",
