@@ -68,7 +68,13 @@ variable "memory_size" {
 }
 
 variable "lambda_runtime" {
-  description = "The runtime we want use for the labmda"
+  description = "The runtime we want use for the lambda"
   type        = string
   default     = "nodejs14.x"
+}
+
+variable "override_function_name" {
+  description = "Do we want to override the generated function name"
+  type        = bool
+  default     = false
 }
