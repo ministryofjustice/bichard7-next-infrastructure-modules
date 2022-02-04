@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
-pip3 install --target ./compiled_function -r ./functions/requirements.txt
+cd ${MODULE_PATH}
+rm snapshot_lambda.zip || true
+rm -rf ./compiled_function || true
+pip3 install --upgrade --target ./compiled_function -r ./functions/requirements.txt
 cp ./functions/snapshot.py ./compiled_function/snapshot.py
-cd compiled_function
+cd ./compiled_function
 zip -r ../snapshot_lambda.zip .
-cd ../
-rm -rf compiled_function
+rm -rf ./compiled_function
