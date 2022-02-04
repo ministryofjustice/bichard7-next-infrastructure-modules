@@ -71,7 +71,7 @@ def lambda_handler(event, context):
 
         es.snapshot.create_repository(repository_name, json.dumps(payload))
 
-    except (ElasticsearchException) as e:
+    except ElasticsearchException as e:
         print(e)
         raise
 
@@ -86,7 +86,7 @@ def lambda_handler(event, context):
         curator.DeleteSnapshots(
             snapshot_list, retry_interval=30, retry_count=3).do_action()
 
-    except (curator.exceptions.NoSnapshots) as e:
+    except curator.exceptions.NoSnapshots as e:
         # This is fine
         print(e)
     except (curator.exceptions.SnapshotInProgress, curator.exceptions.FailedExecution) as e:

@@ -53,3 +53,6 @@ packer.log
 
 scripts/library/semvertag/build/
 scripts/library/semvertag/semvertag.egg-info/
+./modules/opensearch/compiled_function/*
+./modules/opensearch/compiled_function
+modules/opensearch/compiled_function

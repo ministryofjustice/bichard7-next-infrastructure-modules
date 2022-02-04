@@ -59,18 +59,8 @@ resource "aws_iam_role_policy" "snapshot_lambda" {
   policy = data.template_file.snapshot_s3_lambda_policy.rendered
 }
 
-resource "null_resource" "install_lambda_deps" {
-  provisioner "local-exec" {
-    command = <<-EOF
-      pip3 install --target \
-        ${path.module}/functions/ \
-        -r ${path.module}/functions/requirements.txt
-    EOF
-  }
-}
-
 resource "aws_lambda_function" "snapshot_lambda" {
-  function_name = "${var.name}-opensearch-lambda"
+  function_name = local.lambda_function_name
   description   = "Function to create S3-based OpenSearch snapshots"
 
   runtime          = "python3.8"
@@ -78,7 +68,7 @@ resource "aws_lambda_function" "snapshot_lambda" {
   filename         = "${path.module}/snapshot_lambda.zip"
   source_code_hash = filebase64sha256("${path.module}/snapshot_lambda.zip")
   role             = aws_iam_role.snapshot_lambda.arn
-  timeout          = 180
+  timeout          = 1800
 
   environment {
     variables = {
@@ -103,10 +93,6 @@ resource "aws_lambda_function" "snapshot_lambda" {
   tracing_config {
     mode = "PassThrough"
   }
-
-  depends_on = [
-    data.archive_file.snapshot_lambda
-  ]
 
   tags = var.tags
 }

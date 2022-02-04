@@ -2,6 +2,16 @@
 
 Module to provision opensearch and using the opensearch api create a basic index and index policy
 
+
+### To update s3 archive lambda.
+
+Ensure you have python3 and pip3 installed.
+
+From the module directory run the following to install new dependencies and update the deployable zip artifact
+```shell
+$ ./scripts/update_lambda.sh
+```
+
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
@@ -19,10 +29,8 @@ Module to provision opensearch and using the opensearch api create a basic index
 
 | Name | Version |
 |------|---------|
-| <a name="provider_archive"></a> [archive](#provider\_archive) | 2.0.0 |
 | <a name="provider_aws"></a> [aws](#provider\_aws) | 3.72.0 |
 | <a name="provider_elasticsearch"></a> [elasticsearch](#provider\_elasticsearch) | 2.0.0-beta.3 |
-| <a name="provider_null"></a> [null](#provider\_null) | 3.0.0 |
 | <a name="provider_random"></a> [random](#provider\_random) | 3.0.1 |
 | <a name="provider_template"></a> [template](#provider\_template) | 2.2.0 |
 | <a name="provider_time"></a> [time](#provider\_time) | 0.7.2 |
@@ -57,10 +65,8 @@ No modules.
 | [elasticsearch_kibana_object.cloudwatch_index_pattern](https://registry.terraform.io/providers/phillbaker/elasticsearch/2.0.0-beta.3/docs/resources/kibana_object) | resource |
 | [elasticsearch_opendistro_ism_policy.prune_indices_after_n_days](https://registry.terraform.io/providers/phillbaker/elasticsearch/2.0.0-beta.3/docs/resources/opendistro_ism_policy) | resource |
 | [elasticsearch_opendistro_role.writer](https://registry.terraform.io/providers/phillbaker/elasticsearch/2.0.0-beta.3/docs/resources/opendistro_role) | resource |
-| [null_resource.install_lambda_deps](https://registry.terraform.io/providers/hashicorp/null/3.0.0/docs/resources/resource) | resource |
 | [random_password.es](https://registry.terraform.io/providers/hashicorp/random/3.0.1/docs/resources/password) | resource |
 | [time_sleep.wait_for_log_group](https://registry.terraform.io/providers/hashicorp/time/0.7.2/docs/resources/sleep) | resource |
-| [archive_file.snapshot_lambda](https://registry.terraform.io/providers/hashicorp/archive/2.0.0/docs/data-sources/file) | data source |
 | [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/caller_identity) | data source |
 | [aws_cloudwatch_log_group.es_log_group](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/cloudwatch_log_group) | data source |
 | [aws_cloudwatch_log_group.opensearch_snapshot_lambda](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/cloudwatch_log_group) | data source |

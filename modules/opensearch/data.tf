@@ -59,13 +59,3 @@ data "template_file" "snapshot_s3_lambda_policy" {
     )
   }
 }
-
-data "archive_file" "snapshot_lambda" {
-  type        = "zip"
-  output_path = "${path.module}/snapshot_lambda.zip"
-  source_dir  = "${path.module}/functions/"
-
-  depends_on = [
-    null_resource.install_lambda_deps
-  ]
-}
