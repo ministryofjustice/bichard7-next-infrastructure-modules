@@ -66,3 +66,9 @@ variable "memory_size" {
   type        = number
   default     = 128
 }
+
+variable "lambda_runtime" {
+  description = "The runtime we want use for the labmda"
+  type        = string
+  default     = "nodejs14.x"
+}

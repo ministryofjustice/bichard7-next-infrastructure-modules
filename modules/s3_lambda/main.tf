@@ -14,7 +14,7 @@ resource "aws_lambda_function" "lambda" {
   s3_key                         = data.aws_s3_bucket_object.file.key
   source_code_hash               = lookup(data.aws_s3_bucket_object.file.metadata, "Hash", "Hash not found in S3 Object's metadata")
   handler                        = "${var.filename}.default"
-  runtime                        = "nodejs14.x"
+  runtime                        = var.lambda_runtime
   timeout                        = var.timeout
   reserved_concurrent_executions = var.reserved_concurrent_executions
   memory_size                    = var.memory_size
