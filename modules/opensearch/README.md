@@ -5,12 +5,24 @@ Module to provision opensearch and using the opensearch api create a basic index
 
 ### To update s3 archive lambda.
 
-Ensure you have python3 and pip3 installed.
+Ensure you have the following packages installed:
+  - python3
+  - pip3
+  - openssl
 
 From the module directory run the following to install new dependencies and update the deployable zip artifact
 ```shell
 $ ./scripts/update_lambda.sh
 ```
+
+Once you have created the artifact you will need to upload it s3 using the following script
+```shell
+$ARTIFACT_BUCKET=xxx aws-vault exec your-shared-credentials -- ./scripts/upload_to_s3.sh
+```
+
+`$ARTIFACT_BUCKET` will be one of the following
+  - pathtolive-ci-codebuild
+  - sandbox-ci-codebuild
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
@@ -38,7 +50,9 @@ $ ./scripts/update_lambda.sh
 
 ## Modules
 
-No modules.
+| Name | Source | Version |
+|------|--------|---------|
+| <a name="module_snapshot_lambda"></a> [snapshot\_lambda](#module\_snapshot\_lambda) | github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/s3_lambda | n/a |
 
 ## Resources
 
@@ -52,7 +66,6 @@ No modules.
 | [aws_iam_role.snapshot_lambda](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role) | resource |
 | [aws_iam_role_policy.snapshot_create_policy](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy) | resource |
 | [aws_iam_role_policy.snapshot_lambda](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy) | resource |
-| [aws_lambda_function.snapshot_lambda](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/lambda_function) | resource |
 | [aws_lambda_permission.snapshot_lambda](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/lambda_permission) | resource |
 | [aws_route53_record.elasticsearch](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/route53_record) | resource |
 | [aws_s3_bucket.snapshot](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/s3_bucket) | resource |
@@ -85,6 +98,7 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_admin_allowed_cidr"></a> [admin\_allowed\_cidr](#input\_admin\_allowed\_cidr) | A list of cidrs that are allowed access | `list(string)` | n/a | yes |
+| <a name="input_artifact_bucket_name"></a> [artifact\_bucket\_name](#input\_artifact\_bucket\_name) | The bucket that will contain our lambda artifact | `string` | n/a | yes |
 | <a name="input_aws_logs_bucket"></a> [aws\_logs\_bucket](#input\_aws\_logs\_bucket) | Our account logging bucket for s3 logs | `string` | n/a | yes |
 | <a name="input_ebs_volume_size"></a> [ebs\_volume\_size](#input\_ebs\_volume\_size) | The size of our ebs instances | `number` | `1500` | no |
 | <a name="input_elasticsearch_log_group"></a> [elasticsearch\_log\_group](#input\_elasticsearch\_log\_group) | Our elasticsearch log group | `any` | n/a | yes |

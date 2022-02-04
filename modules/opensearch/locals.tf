@@ -16,4 +16,5 @@ locals {
   deletion_window         = (terraform.workspace != "production") ? "21d" : "90d"
 
   lambda_function_name = trim(substr(replace(replace(data.aws_cloudwatch_log_group.opensearch_snapshot_lambda.name, "/aws/lambda", ""), "/", ""), 0, 64), "-")
+
 }
