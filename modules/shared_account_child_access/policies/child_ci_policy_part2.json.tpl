@@ -92,6 +92,7 @@
         "events:*Rule",
         "events:*TagsForResource",
         "events:*Targets",
+        "events:TagResource",
         "cloudtrail:*",
         "states:*StateMachine",
         "states:*TagsForResource",

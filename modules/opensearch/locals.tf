@@ -14,4 +14,6 @@ locals {
 
   deploy_opendistro_roles = (terraform.workspace == "e2e-test" || terraform.workspace == "preprod" || terraform.workspace == "production") ? 1 : 0
   deletion_window         = (terraform.workspace != "production") ? "21d" : "90d"
+
+  lambda_function_name = trim(substr(replace(replace(data.aws_cloudwatch_log_group.opensearch_snapshot_lambda.name, "/aws/lambda", ""), "/", ""), 0, 64), "-")
 }
