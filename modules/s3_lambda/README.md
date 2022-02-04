@@ -38,6 +38,7 @@ No modules.
 | <a name="input_function_name"></a> [function\_name](#input\_function\_name) | The name of our lambda function | `string` | n/a | yes |
 | <a name="input_iam_role_arn"></a> [iam\_role\_arn](#input\_iam\_role\_arn) | The ARN of our lambda execution role | `string` | n/a | yes |
 | <a name="input_lambda_directory"></a> [lambda\_directory](#input\_lambda\_directory) | The directory where our artifacts are stored in S3 | `string` | n/a | yes |
+| <a name="input_lambda_runtime"></a> [lambda\_runtime](#input\_lambda\_runtime) | The runtime we want use for the labmda | `string` | `"nodejs14.x"` | no |
 | <a name="input_memory_size"></a> [memory\_size](#input\_memory\_size) | The memory size of the lambda | `number` | `128` | no |
 | <a name="input_reserved_concurrent_executions"></a> [reserved\_concurrent\_executions](#input\_reserved\_concurrent\_executions) | Amount of reserved concurrent executions for this lambda function | `number` | `-1` | no |
 | <a name="input_resource_prefix"></a> [resource\_prefix](#input\_resource\_prefix) | A prefix for our function name for multi environment deployments | `string` | n/a | yes |
