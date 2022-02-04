@@ -77,7 +77,7 @@ resource "null_resource" "create_zip_file" {
 module "snapshot_lambda" {
   source           = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/s3_lambda"
   bucket_name      = var.artifact_bucket_name
-  filename         = "snapshot_lambda.zip"
+  filename         = "snapshot_lambda"
   function_name    = local.lambda_function_name
   iam_role_arn     = aws_iam_role.snapshot_lambda.arn
   lambda_directory = "monitoring"
