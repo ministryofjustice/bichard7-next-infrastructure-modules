@@ -59,6 +59,16 @@ resource "aws_iam_role_policy" "snapshot_lambda" {
   policy = data.template_file.snapshot_s3_lambda_policy.rendered
 }
 
+resource "null_resource" "install_lambda_deps" {
+  provisioner "local-exec" {
+    command = <<-EOF
+      pip3 install --target \
+        ${path.module}/functions/ \
+        -r ${path.module}/functions/requirements.txt
+    EOF
+  }
+}
+
 resource "aws_lambda_function" "snapshot_lambda" {
   function_name = "${var.name}-opensearch-lambda"
   description   = "Function to create S3-based OpenSearch snapshots"
@@ -72,12 +82,14 @@ resource "aws_lambda_function" "snapshot_lambda" {
 
   environment {
     variables = {
-      BUCKET     = aws_s3_bucket.snapshot.id
-      HOST       = aws_elasticsearch_domain.es.endpoint
-      REGION     = data.aws_region.current.name
-      REPOSITORY = "s3-manual"
-      RETENTION  = var.s3_snapshots_retention_period
-      ROLE_ARN   = aws_iam_role.snapshot_create.arn
+      BUCKET        = aws_s3_bucket.snapshot.id
+      HOST          = aws_elasticsearch_domain.es.endpoint
+      REGION        = data.aws_region.current.name
+      REPOSITORY    = "s3-manual"
+      RETENTION     = var.s3_snapshots_retention_period
+      ROLE_ARN      = aws_iam_role.snapshot_create.arn
+      SSM_USER_PATH = aws_ssm_parameter.es_user.name
+      SSM_PASS_PATH = aws_ssm_parameter.es_password.name
     }
   }
 
