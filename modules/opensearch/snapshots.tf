@@ -59,6 +59,16 @@ resource "aws_iam_role_policy" "snapshot_lambda" {
   policy = data.template_file.snapshot_s3_lambda_policy.rendered
 }
 
+resource "null_resource" "create_zip_file" {
+  provisioner "local-exec" {
+    command = "./scripts/update_lambda.sh"
+  }
+
+  triggers = {
+    always_run = timestamp()
+  }
+}
+
 resource "aws_lambda_function" "snapshot_lambda" {
   function_name = local.lambda_function_name
   description   = "Function to create S3-based OpenSearch snapshots"
@@ -94,6 +104,10 @@ resource "aws_lambda_function" "snapshot_lambda" {
   tracing_config {
     mode = "PassThrough"
   }
+
+  depends_on = [
+    null_resource.create_zip_file
+  ]
 
   tags = var.tags
 }
