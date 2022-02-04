@@ -59,17 +59,33 @@ resource "aws_iam_role_policy" "snapshot_lambda" {
   policy = data.template_file.snapshot_s3_lambda_policy.rendered
 }
 
+resource "null_resource" "create_zip_file" {
+  provisioner "local-exec" {
+    command = "${path.module}/scripts/update_lambda.sh"
+
+    environment = {
+      MODULE_PATH = path.module
+    }
+  }
+
+
+  triggers = {
+    always_run = timestamp()
+  }
+}
+
 resource "aws_lambda_function" "snapshot_lambda" {
+
   function_name = local.lambda_function_name
   description   = "Function to create S3-based OpenSearch snapshots"
 
-  runtime          = "python3.8"
-  handler          = "snapshot.lambda_handler"
-  filename         = "${path.module}/snapshot_lambda.zip"
-  source_code_hash = filebase64sha256("${path.module}/snapshot_lambda.zip")
-  role             = aws_iam_role.snapshot_lambda.arn
-  timeout          = 900
-  memory_size      = 4096
+  runtime  = "python3.8"
+  handler  = "snapshot.lambda_handler"
+  filename = "${path.module}/snapshot_lambda.zip"
+  #  source_code_hash = filebase64sha256("${path.module}/snapshot_lambda.zip")
+  role        = aws_iam_role.snapshot_lambda.arn
+  timeout     = 900
+  memory_size = 4096
 
   environment {
     variables = {
@@ -94,6 +110,10 @@ resource "aws_lambda_function" "snapshot_lambda" {
   tracing_config {
     mode = "PassThrough"
   }
+
+  depends_on = [
+    null_resource.create_zip_file
+  ]
 
   tags = var.tags
 }
