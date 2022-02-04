@@ -78,3 +78,9 @@ variable "override_function_name" {
   type        = bool
   default     = false
 }
+
+variable "handler_name" {
+  description = "The name of the functions event handler, if null it will be filename.default"
+  type        = string
+  default     = null
+}
