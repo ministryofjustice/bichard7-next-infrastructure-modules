@@ -82,8 +82,10 @@ resource "aws_lambda_function" "snapshot_lambda" {
   }
 
   vpc_config {
-    security_group_ids = data.aws_security_group.snapshot_lambda.id
-    subnet_ids         = var.service_subnets
+    security_group_ids = [
+      data.aws_security_group.snapshot_lambda.id
+    ]
+    subnet_ids = var.service_subnets
   }
 
   tracing_config {

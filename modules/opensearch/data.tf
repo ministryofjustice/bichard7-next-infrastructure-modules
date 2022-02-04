@@ -7,7 +7,7 @@ data "aws_security_group" "es" {
 }
 
 data "aws_security_group" "snapshot_lambda" {
-  name = "${var.name}--opensearch-snapshot-lambda"
+  name = "${var.name}-opensearch-snapshot-lambda"
 }
 
 data "aws_cloudwatch_log_group" "es_log_group" {
@@ -15,7 +15,7 @@ data "aws_cloudwatch_log_group" "es_log_group" {
 }
 
 data "aws_cloudwatch_log_group" "opensearch_snapshot_lambda" {
-  name = "/aws/lambda/${var.name}-opensearch-snapshot-lambda"
+  name = "/aws/lambda/cjse-bichard7-${lower(var.tags["Environment"])}-base-infra-opensearch-snapshot-lambda"
 }
 
 data "template_file" "elasticsearch_access_policy" {
@@ -50,7 +50,7 @@ data "template_file" "snapshot_s3_lambda_policy" {
   vars = {
     es_role_arn              = aws_iam_role.snapshot_create.arn
     es_domain_arn            = aws_elasticsearch_domain.es.arn
-    cloudwatch_log_group_arn = data.aws_cloudwatch_log_group.opensearch_snapshot_lambda.name
+    cloudwatch_log_group_arn = data.aws_cloudwatch_log_group.opensearch_snapshot_lambda.arn
   }
 }
 

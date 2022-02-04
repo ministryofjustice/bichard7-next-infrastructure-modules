@@ -5,7 +5,7 @@
       "Action": [
         "s3:ListBucket"
       ],
-      "Resources": "${bucket_arn}",
+      "Resource": "${bucket_arn}",
       "Effect": "Allow"
     },
     {
@@ -14,7 +14,7 @@
         "s3:PutObject",
         "s3:DeleteObject"
       ],
-      "Resources": "${bucket_arn}/*",
+      "Resource": "${bucket_arn}/*",
       "Effect": "Allow"
     }
   ]
