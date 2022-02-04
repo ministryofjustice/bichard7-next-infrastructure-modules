@@ -68,7 +68,8 @@ resource "aws_lambda_function" "snapshot_lambda" {
   filename         = "${path.module}/snapshot_lambda.zip"
   source_code_hash = filebase64sha256("${path.module}/snapshot_lambda.zip")
   role             = aws_iam_role.snapshot_lambda.arn
-  timeout          = 1800
+  timeout          = 900
+  memory_size      = 4096
 
   environment {
     variables = {
