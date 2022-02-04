@@ -76,3 +76,8 @@ variable "s3_snapshots_retention_period" {
   type        = number
   default     = 365
 }
+
+variable "artifact_bucket_name" {
+  description = "The bucket that will contain our lambda artifact"
+  type        = string
+}

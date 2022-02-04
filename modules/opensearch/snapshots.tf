@@ -74,46 +74,34 @@ resource "null_resource" "create_zip_file" {
   }
 }
 
-resource "aws_lambda_function" "snapshot_lambda" {
+module "snapshot_lambda" {
+  source           = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/s3_lambda"
+  bucket_name      = var.artifact_bucket_name
+  filename         = "snapshot_lambda.zip"
+  function_name    = local.lambda_function_name
+  iam_role_arn     = aws_iam_role.snapshot_lambda.arn
+  lambda_directory = "monitoring"
+  resource_prefix  = ""
+  lambda_runtime   = "python3.8"
+  handler_name     = "snapshot.lambda_handler"
 
-  function_name = local.lambda_function_name
-  description   = "Function to create S3-based OpenSearch snapshots"
-
-  runtime  = "python3.8"
-  handler  = "snapshot.lambda_handler"
-  filename = "${path.module}/snapshot_lambda.zip"
-  #  source_code_hash = filebase64sha256("${path.module}/snapshot_lambda.zip")
-  role        = aws_iam_role.snapshot_lambda.arn
-  timeout     = 900
-  memory_size = 4096
-
-  environment {
-    variables = {
-      BUCKET        = aws_s3_bucket.snapshot.id
-      HOST          = aws_elasticsearch_domain.es.endpoint
-      REGION        = data.aws_region.current.name
-      REPOSITORY    = "s3-manual"
-      RETENTION     = var.s3_snapshots_retention_period
-      ROLE_ARN      = aws_iam_role.snapshot_create.arn
-      SSM_USER_PATH = aws_ssm_parameter.es_user.name
-      SSM_PASS_PATH = aws_ssm_parameter.es_password.name
-    }
-  }
-
-  vpc_config {
+  vpc_config = {
     security_group_ids = [
       data.aws_security_group.snapshot_lambda.id
     ]
     subnet_ids = var.service_subnets
   }
 
-  tracing_config {
-    mode = "PassThrough"
+  environment_variables = {
+    BUCKET        = aws_s3_bucket.snapshot.id
+    HOST          = aws_elasticsearch_domain.es.endpoint
+    REGION        = data.aws_region.current.name
+    REPOSITORY    = "s3-manual"
+    RETENTION     = var.s3_snapshots_retention_period
+    ROLE_ARN      = aws_iam_role.snapshot_create.arn
+    SSM_USER_PATH = aws_ssm_parameter.es_user.name
+    SSM_PASS_PATH = aws_ssm_parameter.es_password.name
   }
-
-  depends_on = [
-    null_resource.create_zip_file
-  ]
 
   tags = var.tags
 }
@@ -127,13 +115,13 @@ resource "aws_cloudwatch_event_rule" "snapshot_lambda" {
 resource "aws_cloudwatch_event_target" "snapshot_lambda" {
   rule      = aws_cloudwatch_event_rule.snapshot_lambda.name
   target_id = "${var.name}-opensearch-snapshot-rule"
-  arn       = aws_lambda_function.snapshot_lambda.arn
+  arn       = module.snapshot_lambda.lambda_arn
 }
 
 resource "aws_lambda_permission" "snapshot_lambda" {
   statement_id  = "AllowExecutionFromCloudWatch"
   action        = "lambda:InvokeFunction"
-  function_name = aws_lambda_function.snapshot_lambda.arn
+  function_name = module.snapshot_lambda.lambda_arn
   principal     = "events.amazonaws.com"
   source_arn    = aws_cloudwatch_event_rule.snapshot_lambda.arn
 }
