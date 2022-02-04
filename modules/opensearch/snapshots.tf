@@ -59,21 +59,6 @@ resource "aws_iam_role_policy" "snapshot_lambda" {
   policy = data.template_file.snapshot_s3_lambda_policy.rendered
 }
 
-resource "null_resource" "create_zip_file" {
-  provisioner "local-exec" {
-    command = "${path.module}/scripts/update_lambda.sh"
-
-    environment = {
-      MODULE_PATH = path.module
-    }
-  }
-
-
-  triggers = {
-    always_run = timestamp()
-  }
-}
-
 module "snapshot_lambda" {
   source           = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/s3_lambda"
   bucket_name      = var.artifact_bucket_name
