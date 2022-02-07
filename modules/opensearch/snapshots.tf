@@ -70,6 +70,8 @@ module "snapshot_lambda" {
   lambda_runtime   = "python3.8"
   handler_name     = "snapshot.lambda_handler"
 
+  function_description = "Lambda for archiving OpenSearch records to s3"
+
   vpc_config = {
     security_group_ids = [
       data.aws_security_group.snapshot_lambda.id
@@ -78,14 +80,12 @@ module "snapshot_lambda" {
   }
 
   environment_variables = {
-    BUCKET        = aws_s3_bucket.snapshot.id
-    HOST          = aws_elasticsearch_domain.es.endpoint
-    REGION        = data.aws_region.current.name
-    REPOSITORY    = "s3-manual"
-    RETENTION     = var.s3_snapshots_retention_period
-    ROLE_ARN      = aws_iam_role.snapshot_create.arn
-    SSM_USER_PATH = aws_ssm_parameter.es_user.name
-    SSM_PASS_PATH = aws_ssm_parameter.es_password.name
+    BUCKET     = aws_s3_bucket.snapshot.id
+    HOST       = aws_elasticsearch_domain.es.endpoint
+    REGION     = data.aws_region.current.name
+    REPOSITORY = "s3-manual"
+    RETENTION  = var.s3_snapshots_retention_period
+    ROLE_ARN   = aws_iam_role.snapshot_create.arn
   }
 
   tags = var.tags

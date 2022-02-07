@@ -5,7 +5,7 @@
 import boto3
 from datetime import datetime
 from requests_aws4auth import AWS4Auth
-from elasticsearch import Elasticsearch, ElasticsearchException, RequestsHttpConnection
+from opensearchpy import OpenSearch, OpenSearchException, RequestsHttpConnection
 import logging
 import curator
 import os
@@ -21,8 +21,6 @@ repository_name = os.environ.get('REPOSITORY')
 retention = os.environ.get('RETENTION')
 bucket = os.environ.get('BUCKET')
 role_arn = os.environ.get('ROLE_ARN')
-ssm_username_path = os.environ.get("SSM_USER_PATH")
-ssm_password_path = os.environ.get("SSM_PASS_PATH")
 service = 'es'
 credentials = boto3.Session().get_credentials()
 awsauth = AWS4Auth(credentials.access_key, credentials.secret_key,
@@ -35,22 +33,10 @@ def lambda_handler(event, context):
     snapshot_prefix = 'automatic-'
     snapshot_name = snapshot_prefix + now.strftime("%Y%m%d%H%M%S")
 
-    # Get the password value from ssm
-    ssm_client = boto3.client("ssm")
-    user_name_result = ssm_client.get_parameter(
-        Name=ssm_username_path,
-        WithDecryption=True
-    )
-    user_password_result = ssm_client.get_parameter(
-        Name=ssm_password_path,
-        WithDecryption=True
-    )
-
     # Build the Elasticsearch client.
-    es = Elasticsearch(
+    es = OpenSearch(
         hosts=[{'host': host, 'port': 443}],
-        http_auth=(
-            user_name_result.Parameter.Value, user_password_result.Parameter.Value),
+        http_auth=awsauth,
         use_ssl=True,
         verify_certs=True,
         connection_class=RequestsHttpConnection,
@@ -60,6 +46,7 @@ def lambda_handler(event, context):
 
     # REGISTER
     try:
+        print("Registering Repository")
         payload = {
             "type": "s3",
             "settings": {
@@ -69,14 +56,15 @@ def lambda_handler(event, context):
             }
         }
 
-        es.snapshot.create_repository(repository_name, json.dumps(payload))
+        es.snapshot.create_repository(repository=repository_name, body=json.dumps(payload))
 
-    except ElasticsearchException as e:
+    except OpenSearchException as e:
         print(e)
         raise
 
     # DELETE
     try:
+        print("Deleting old snapshots")
         snapshot_list = curator.SnapshotList(es, repository=repository_name)
         snapshot_list.filter_by_regex(kind='prefix', value=snapshot_prefix)
         snapshot_list.filter_by_age(
@@ -88,6 +76,7 @@ def lambda_handler(event, context):
 
     except curator.exceptions.NoSnapshots as e:
         # This is fine
+        print("No snapshots found")
         print(e)
     except (curator.exceptions.SnapshotInProgress, curator.exceptions.FailedExecution) as e:
         print(e)
@@ -95,6 +84,7 @@ def lambda_handler(event, context):
 
     # CREATE
     try:
+        print("Creating Snapshot")
         index_list = curator.IndexList(es)
 
         # Take a new snapshot. This operation can take a while, so we don't want to wait for it to complete.
@@ -104,3 +94,7 @@ def lambda_handler(event, context):
     except (curator.exceptions.SnapshotInProgress, curator.exceptions.FailedExecution) as e:
         print(e)
         raise
+
+
+if __name__ == '__main__':
+    lambda_handler(None, None)

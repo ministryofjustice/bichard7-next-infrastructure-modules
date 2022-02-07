@@ -35,6 +35,7 @@ No modules.
 | <a name="input_bucket_name"></a> [bucket\_name](#input\_bucket\_name) | The name of the bucket | `string` | n/a | yes |
 | <a name="input_environment_variables"></a> [environment\_variables](#input\_environment\_variables) | A map of environment variables | `map(string)` | `null` | no |
 | <a name="input_filename"></a> [filename](#input\_filename) | The filename of the lambda artifact in S3 | `string` | n/a | yes |
+| <a name="input_function_description"></a> [function\_description](#input\_function\_description) | The optional friendly description of the function | `string` | `""` | no |
 | <a name="input_function_name"></a> [function\_name](#input\_function\_name) | The name of our lambda function | `string` | n/a | yes |
 | <a name="input_handler_name"></a> [handler\_name](#input\_handler\_name) | The name of the functions event handler, if null it will be filename.default | `string` | `null` | no |
 | <a name="input_iam_role_arn"></a> [iam\_role\_arn](#input\_iam\_role\_arn) | The ARN of our lambda execution role | `string` | n/a | yes |

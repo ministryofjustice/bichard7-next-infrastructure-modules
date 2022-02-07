@@ -84,3 +84,9 @@ variable "handler_name" {
   type        = string
   default     = null
 }
+
+variable "function_description" {
+  description = "The optional friendly description of the function"
+  type        = string
+  default     = ""
+}
