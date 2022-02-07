@@ -5,7 +5,7 @@
 import boto3
 from datetime import datetime
 from requests_aws4auth import AWS4Auth
-from elasticsearch import Elasticsearch, ElasticsearchException, RequestsHttpConnection
+from opensearchpy import OpenSearch, OpenSearchException, RequestsHttpConnection
 import logging
 import curator
 import os
@@ -41,16 +41,11 @@ def lambda_handler(event, context):
         Name=ssm_username_path,
         WithDecryption=True
     )
-    user_password_result = ssm_client.get_parameter(
-        Name=ssm_password_path,
-        WithDecryption=True
-    )
 
     # Build the Elasticsearch client.
-    es = Elasticsearch(
+    es = OpenSearch(
         hosts=[{'host': host, 'port': 443}],
-        http_auth=(
-            user_name_result["Parameter"]["Value"], user_password_result["Parameter"]["Value"]),
+        http_auth=awsauth,
         use_ssl=True,
         verify_certs=True,
         connection_class=RequestsHttpConnection,
@@ -70,9 +65,9 @@ def lambda_handler(event, context):
             }
         }
 
-        es.snapshot.create_repository(repository_name, json.dumps(payload))
+        es.snapshot.create_repository(repository=repository_name, body=json.dumps(payload))
 
-    except ElasticsearchException as e:
+    except OpenSearchException as e:
         print(e)
         raise
 

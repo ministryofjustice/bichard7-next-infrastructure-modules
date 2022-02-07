@@ -77,7 +77,9 @@ $ARTIFACT_BUCKET=xxx aws-vault exec your-shared-credentials -- ./scripts/upload_
 | [aws_ssm_parameter.es_user](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ssm_parameter) | resource |
 | [elasticsearch_kibana_object.cloudwatch_index_pattern](https://registry.terraform.io/providers/phillbaker/elasticsearch/2.0.0-beta.3/docs/resources/kibana_object) | resource |
 | [elasticsearch_opendistro_ism_policy.prune_indices_after_n_days](https://registry.terraform.io/providers/phillbaker/elasticsearch/2.0.0-beta.3/docs/resources/opendistro_ism_policy) | resource |
+| [elasticsearch_opendistro_role.backup](https://registry.terraform.io/providers/phillbaker/elasticsearch/2.0.0-beta.3/docs/resources/opendistro_role) | resource |
 | [elasticsearch_opendistro_role.writer](https://registry.terraform.io/providers/phillbaker/elasticsearch/2.0.0-beta.3/docs/resources/opendistro_role) | resource |
+| [elasticsearch_opendistro_roles_mapping.s3_archiver](https://registry.terraform.io/providers/phillbaker/elasticsearch/2.0.0-beta.3/docs/resources/opendistro_roles_mapping) | resource |
 | [random_password.es](https://registry.terraform.io/providers/hashicorp/random/3.0.1/docs/resources/password) | resource |
 | [time_sleep.wait_for_log_group](https://registry.terraform.io/providers/hashicorp/time/0.7.2/docs/resources/sleep) | resource |
 | [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/caller_identity) | data source |

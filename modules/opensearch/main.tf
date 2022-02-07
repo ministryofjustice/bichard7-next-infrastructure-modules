@@ -169,3 +169,40 @@ resource "elasticsearch_opendistro_ism_policy" "prune_indices_after_n_days" {
   policy_id = "delete-after-${local.deletion_window}"
   body      = data.template_file.opensearch_ism_prune_policy.rendered
 }
+
+resource "elasticsearch_opendistro_role" "backup" {
+  count = local.deploy_opendistro_roles
+
+  role_name   = "s3_archive_writer"
+  description = "Read and archive our indices to s3"
+
+  cluster_permissions = ["*"]
+
+  index_permissions {
+    index_patterns  = ["*"]
+    allowed_actions = ["*"]
+  }
+
+  depends_on = [
+    aws_elasticsearch_domain.es,
+    elasticsearch_kibana_object.cloudwatch_index_pattern
+  ]
+}
+
+resource "elasticsearch_opendistro_roles_mapping" "s3_archiver" {
+  count = local.deploy_opendistro_roles
+
+  role_name = elasticsearch_opendistro_role.backup[count.index].role_name
+
+  description = "Allow user to archive data to s3"
+  backend_roles = [
+    aws_iam_role.snapshot_create.arn,
+    aws_iam_role.snapshot_lambda.arn,
+    "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/Bichard7-Administrator-Access",
+    "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/Bichard7-CI-Access"
+  ]
+
+  depends_on = [
+    aws_elasticsearch_domain.es
+  ]
+}
