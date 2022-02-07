@@ -60,7 +60,7 @@ be overridden. If the notifications variable is empty we won't create the notifi
 | <a name="input_deployment_name"></a> [deployment\_name](#input\_deployment\_name) | The deployment-name for CD usage, required only if is\_cd is true | `string` | `""` | no |
 | <a name="input_environment_variables"></a> [environment\_variables](#input\_environment\_variables) | A list of maps of our environment variables type can be unset | `list(map(string))` | `[]` | no |
 | <a name="input_event_type_ids"></a> [event\_type\_ids](#input\_event\_type\_ids) | A list of event types we want to notify on | `list(string)` | <pre>[<br>  "codebuild-project-build-state-failed"<br>]</pre> | no |
-| <a name="input_git_ref"></a> [git\_ref](#input\_git\_ref) | The git reference we want to use | `string` | `"master"` | no |
+| <a name="input_git_ref"></a> [git\_ref](#input\_git\_ref) | The git reference we want to use | `string` | `"main"` | no |
 | <a name="input_is_cd"></a> [is\_cd](#input\_is\_cd) | Is this a CI/CD environment | `bool` | `false` | no |
 | <a name="input_name"></a> [name](#input\_name) | Our resource name | `string` | n/a | yes |
 | <a name="input_report_build_status"></a> [report\_build\_status](#input\_report\_build\_status) | Do we want to report the build status upstream | `bool` | `false` | no |
