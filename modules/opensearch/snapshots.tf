@@ -69,6 +69,7 @@ module "snapshot_lambda" {
   resource_prefix  = ""
   lambda_runtime   = "python3.8"
   handler_name     = "snapshot.lambda_handler"
+  description      = "Lambda for archiving OpenSearch records to s3"
 
   vpc_config = {
     security_group_ids = [

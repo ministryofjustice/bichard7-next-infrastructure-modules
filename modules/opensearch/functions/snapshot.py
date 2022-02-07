@@ -50,7 +50,7 @@ def lambda_handler(event, context):
     es = Elasticsearch(
         hosts=[{'host': host, 'port': 443}],
         http_auth=(
-            user_name_result.Parameter.Value, user_password_result.Parameter.Value),
+            user_name_result["Parameter"]["Value"], user_password_result["Parameter"]["Value"]),
         use_ssl=True,
         verify_certs=True,
         connection_class=RequestsHttpConnection,
@@ -60,6 +60,7 @@ def lambda_handler(event, context):
 
     # REGISTER
     try:
+        print("Registering Repository")
         payload = {
             "type": "s3",
             "settings": {
@@ -77,6 +78,7 @@ def lambda_handler(event, context):
 
     # DELETE
     try:
+        print("Deleting old snapshots")
         snapshot_list = curator.SnapshotList(es, repository=repository_name)
         snapshot_list.filter_by_regex(kind='prefix', value=snapshot_prefix)
         snapshot_list.filter_by_age(
@@ -88,6 +90,7 @@ def lambda_handler(event, context):
 
     except curator.exceptions.NoSnapshots as e:
         # This is fine
+        print("No snapshots found")
         print(e)
     except (curator.exceptions.SnapshotInProgress, curator.exceptions.FailedExecution) as e:
         print(e)
@@ -95,6 +98,7 @@ def lambda_handler(event, context):
 
     # CREATE
     try:
+        print("Creating Snapshot")
         index_list = curator.IndexList(es)
 
         # Take a new snapshot. This operation can take a while, so we don't want to wait for it to complete.
@@ -104,3 +108,7 @@ def lambda_handler(event, context):
     except (curator.exceptions.SnapshotInProgress, curator.exceptions.FailedExecution) as e:
         print(e)
         raise
+
+
+if __name__ == '__main__':
+    lambda_handler(None, None)
