@@ -21,8 +21,6 @@ repository_name = os.environ.get('REPOSITORY')
 retention = os.environ.get('RETENTION')
 bucket = os.environ.get('BUCKET')
 role_arn = os.environ.get('ROLE_ARN')
-ssm_username_path = os.environ.get("SSM_USER_PATH")
-ssm_password_path = os.environ.get("SSM_PASS_PATH")
 service = 'es'
 credentials = boto3.Session().get_credentials()
 awsauth = AWS4Auth(credentials.access_key, credentials.secret_key,
@@ -34,13 +32,6 @@ def lambda_handler(event, context):
     now = datetime.now()
     snapshot_prefix = 'automatic-'
     snapshot_name = snapshot_prefix + now.strftime("%Y%m%d%H%M%S")
-
-    # Get the password value from ssm
-    ssm_client = boto3.client("ssm")
-    user_name_result = ssm_client.get_parameter(
-        Name=ssm_username_path,
-        WithDecryption=True
-    )
 
     # Build the Elasticsearch client.
     es = OpenSearch(
