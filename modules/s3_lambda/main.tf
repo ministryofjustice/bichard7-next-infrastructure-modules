@@ -10,6 +10,7 @@ data "aws_s3_bucket_object" "file" {
 resource "aws_lambda_function" "lambda" {
   role                           = var.iam_role_arn
   function_name                  = local.function_name
+  description                    = var.function_description
   s3_bucket                      = data.aws_s3_bucket_object.file.bucket
   s3_key                         = data.aws_s3_bucket_object.file.key
   source_code_hash               = lookup(data.aws_s3_bucket_object.file.metadata, "Hash", "Hash not found in S3 Object's metadata")
