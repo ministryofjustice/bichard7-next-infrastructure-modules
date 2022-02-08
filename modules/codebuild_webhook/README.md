@@ -33,7 +33,7 @@ No modules.
 | <a name="input_codebuild_project_name"></a> [codebuild\_project\_name](#input\_codebuild\_project\_name) | The name of the codebuild project we want to attach this webhook to | `string` | n/a | yes |
 | <a name="input_filter_event_pattern"></a> [filter\_event\_pattern](#input\_filter\_event\_pattern) | The pattern we're using to filter this event | `string` | `"PUSH"` | no |
 | <a name="input_filter_event_type"></a> [filter\_event\_type](#input\_filter\_event\_type) | The type of event we're triggering this webhook with | `string` | `"EVENT"` | no |
-| <a name="input_git_ref"></a> [git\_ref](#input\_git\_ref) | Our git ref that we want to use for our trigger | `string` | `"master"` | no |
+| <a name="input_git_ref"></a> [git\_ref](#input\_git\_ref) | Our git ref that we want to use for our trigger | `string` | `"main"` | no |
 
 ## Outputs
 
