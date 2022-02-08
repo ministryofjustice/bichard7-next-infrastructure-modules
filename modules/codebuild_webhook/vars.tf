@@ -6,7 +6,7 @@ variable "codebuild_project_name" {
 variable "git_ref" {
   description = "Our git ref that we want to use for our trigger"
   type        = string
-  default     = "master"
+  default     = "main"
 }
 
 variable "filter_event_type" {

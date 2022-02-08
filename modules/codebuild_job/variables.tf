@@ -16,7 +16,7 @@ variable "codepipeline_s3_bucket" {
 variable "git_ref" {
   description = "The git reference we want to use"
   type        = string
-  default     = "master"
+  default     = "main"
 }
 
 variable "sns_notification_arn" {
