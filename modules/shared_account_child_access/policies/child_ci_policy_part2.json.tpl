@@ -87,6 +87,7 @@
         "logs:CancelExportTask",
         "logs:DeleteLogDelivery",
         "logs:PutDestination",
+        "logs:PutSubscriptionFilter",
         "logs:DescribeResourcePolicies",
         "logs:DescribeDestinations",
         "events:*Rule",
