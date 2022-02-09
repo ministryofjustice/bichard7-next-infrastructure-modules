@@ -130,3 +130,14 @@ resource "aws_route53_record" "db" {
     aws_rds_cluster.aurora_cluster.endpoint
   ]
 }
+
+resource "aws_route53_record" "db_ro" {
+  name    = "rodb.${data.aws_route53_zone.cjse_dot_org.name}"
+  type    = "CNAME"
+  zone_id = var.private_zone_id
+  ttl     = 30
+
+  records = [
+    aws_rds_cluster.aurora_cluster.reader_endpoint
+  ]
+}

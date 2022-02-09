@@ -17,3 +17,8 @@ output "internal_fqdn" {
   description = "The internal FQDN of our db"
   value       = aws_route53_record.db.fqdn
 }
+
+output "internal_readonly_fqdn" {
+  description = "The internal readonly FQDN of our db"
+  value       = aws_route53_record.db_ro.fqdn
+}
