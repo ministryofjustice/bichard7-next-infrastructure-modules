@@ -34,6 +34,7 @@ No modules.
 | [aws_rds_cluster_instance.aurora_cluster_instance](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/rds_cluster_instance) | resource |
 | [aws_rds_cluster_parameter_group.default](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/rds_cluster_parameter_group) | resource |
 | [aws_route53_record.db](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/route53_record) | resource |
+| [aws_route53_record.db_ro](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/route53_record) | resource |
 | [aws_security_group_rule.db_egress_to_user_service_ecs](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.db_egress_to_was_backend](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.db_egress_to_was_web](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
@@ -70,6 +71,8 @@ No modules.
 | Name | Description |
 |------|-------------|
 | <a name="output_cluster_endpoint"></a> [cluster\_endpoint](#output\_cluster\_endpoint) | The cluster endpoint url |
+| <a name="output_cluster_readonly_endpoint"></a> [cluster\_readonly\_endpoint](#output\_cluster\_readonly\_endpoint) | The readonly endpoint for the cluster |
 | <a name="output_internal_fqdn"></a> [internal\_fqdn](#output\_internal\_fqdn) | The internal FQDN of our db |
+| <a name="output_internal_readonly_fqdn"></a> [internal\_readonly\_fqdn](#output\_internal\_readonly\_fqdn) | The internal readonly FQDN of our db |
 | <a name="output_password_arn"></a> [password\_arn](#output\_password\_arn) | The ARN for the password in SSM |
 <!-- END_TF_DOCS -->
