@@ -70,6 +70,7 @@ No modules.
 | Name | Description |
 |------|-------------|
 | <a name="output_cluster_endpoint"></a> [cluster\_endpoint](#output\_cluster\_endpoint) | The cluster endpoint url |
+| <a name="output_cluster_readonly_endpoint"></a> [cluster\_readonly\_endpoint](#output\_cluster\_readonly\_endpoint) | The readonly endpoint for the cluster |
 | <a name="output_internal_fqdn"></a> [internal\_fqdn](#output\_internal\_fqdn) | The internal FQDN of our db |
 | <a name="output_password_arn"></a> [password\_arn](#output\_password\_arn) | The ARN for the password in SSM |
 <!-- END_TF_DOCS -->

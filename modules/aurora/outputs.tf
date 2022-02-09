@@ -3,6 +3,11 @@ output "cluster_endpoint" {
   value       = aws_rds_cluster.aurora_cluster.endpoint
 }
 
+output "cluster_readonly_endpoint" {
+  description = "The readonly endpoint for the cluster"
+  value       = aws_rds_cluster.aurora_cluster.reader_endpoint
+}
+
 output "password_arn" {
   description = "The ARN for the password in SSM"
   value       = aws_ssm_parameter.db_password.arn
