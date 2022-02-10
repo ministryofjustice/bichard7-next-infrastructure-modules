@@ -3,6 +3,10 @@ resource "aws_flow_log" "vpc_flow_log" {
   iam_role_arn    = aws_iam_role.flow_log_role.arn
   vpc_id          = var.vpc_id
   traffic_type    = "ALL"
+
+  log_format = "$${version} $${account-id} $${interface-id} $${srcaddr} $${dstaddr} $${srcport} $${dstport} $${protocol} $${packets} $${bytes} $${start} $${end} $${action} $${log-status} $${vpc-id} $${subnet-id} $${tcp-flags} $${type} $${pkt-srcaddr} $${pkt-dstaddr} $${flow-direction} $${traffic-path}"
+
+  tags = var.tags
 }
 
 resource "aws_iam_role" "flow_log_role" {
