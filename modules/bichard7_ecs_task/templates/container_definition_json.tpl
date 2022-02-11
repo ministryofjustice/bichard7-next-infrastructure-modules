@@ -106,10 +106,6 @@
         {
            "name": "WLP_LOGGING_APPS_WRITE_JSON",
            "value": "true"
-        },
-        {
-           "name": "LOG_PNC_REQUESTS",
-           "value": "true"
         }
       ],
       "secrets": ${SECRETS},
