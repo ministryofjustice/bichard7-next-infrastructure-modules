@@ -46,7 +46,8 @@ resource "aws_alb" "logstash_alb" {
   security_groups = [
     data.aws_security_group.logstash_alb_security_group.id
   ]
-  internal = true
+  internal     = true
+  idle_timeout = var.idle_timeout
 
   access_logs {
     bucket  = var.logging_bucket_name

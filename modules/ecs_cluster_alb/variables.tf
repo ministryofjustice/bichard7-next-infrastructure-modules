@@ -108,3 +108,9 @@ variable "enable_alb_logging" {
   type        = bool
   default     = true
 }
+
+variable "idle_timeout" {
+  description = "How long in seconds before we terminate a connection"
+  type        = number
+  default     = 180
+}

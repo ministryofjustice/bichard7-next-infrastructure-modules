@@ -15,6 +15,7 @@ resource "aws_alb" "alb" {
 
   enable_deletion_protection = (lower(var.tags["is-production"]) == "true") ? true : false
   drop_invalid_header_fields = true
+  idle_timeout               = var.idle_timeout
 
   tags = var.tags
 }
@@ -22,12 +23,13 @@ resource "aws_alb" "alb" {
 resource "aws_lb_target_group" "alb_target_group" {
   count = (local.is_sticky == true) ? 0 : 1
 
-  name_prefix = var.alb_name_prefix
-  port        = var.alb_port
-  protocol    = var.alb_protocol
-  vpc_id      = var.vpc_id
-  target_type = var.alb_target_type
-  slow_start  = var.alb_slow_start
+  name_prefix            = var.alb_name_prefix
+  port                   = var.alb_port
+  protocol               = var.alb_protocol
+  vpc_id                 = var.vpc_id
+  target_type            = var.alb_target_type
+  slow_start             = var.alb_slow_start
+  connection_termination = true
 
   health_check {
     healthy_threshold   = lookup(var.alb_health_check, "healthy_threshold", null)
@@ -39,6 +41,7 @@ resource "aws_lb_target_group" "alb_target_group" {
     timeout             = lookup(var.alb_health_check, "timeout", null)
   }
 
+
   lifecycle {
     create_before_destroy = true
   }
@@ -49,12 +52,13 @@ resource "aws_lb_target_group" "alb_target_group" {
 resource "aws_lb_target_group" "sticky_alb_target_group" {
   count = (local.is_sticky == true) ? 1 : 0
 
-  name_prefix = var.alb_name_prefix
-  port        = var.alb_port
-  protocol    = var.alb_protocol
-  vpc_id      = var.vpc_id
-  target_type = var.alb_target_type
-  slow_start  = var.alb_slow_start
+  name_prefix            = var.alb_name_prefix
+  port                   = var.alb_port
+  protocol               = var.alb_protocol
+  vpc_id                 = var.vpc_id
+  target_type            = var.alb_target_type
+  slow_start             = var.alb_slow_start
+  connection_termination = true
 
   health_check {
     healthy_threshold   = lookup(var.alb_health_check, "healthy_threshold", null)
