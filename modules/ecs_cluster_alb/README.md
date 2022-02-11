@@ -48,6 +48,7 @@ No modules.
 | <a name="input_alb_target_type"></a> [alb\_target\_type](#input\_alb\_target\_type) | The target type our alb is using | `string` | `"ip"` | no |
 | <a name="input_default_action"></a> [default\_action](#input\_default\_action) | A list of list of maps of our default action | `any` | `[]` | no |
 | <a name="input_enable_alb_logging"></a> [enable\_alb\_logging](#input\_enable\_alb\_logging) | Do we want to enable alb logging (hint, yes, yes we do) | `bool` | `true` | no |
+| <a name="input_idle_timeout"></a> [idle\_timeout](#input\_idle\_timeout) | How long in seconds before we terminate a connection | `number` | `180` | no |
 | <a name="input_load_balancer_type"></a> [load\_balancer\_type](#input\_load\_balancer\_type) | The type of load balancer to create. Possible values are application, gateway, or network | `string` | `"application"` | no |
 | <a name="input_logging_bucket_name"></a> [logging\_bucket\_name](#input\_logging\_bucket\_name) | The name of our logging bucket to ship our alb access logs to | `string` | n/a | yes |
 | <a name="input_redirect_config"></a> [redirect\_config](#input\_redirect\_config) | A list of list of maps of our redirect configuration, order is important as we look this up based on the count index of the module | `any` | <pre>[<br>  []<br>]</pre> | no |
