@@ -29,7 +29,7 @@ resource "aws_lb_target_group" "alb_target_group" {
   vpc_id                 = var.vpc_id
   target_type            = var.alb_target_type
   slow_start             = var.alb_slow_start
-  connection_termination = true
+  connection_termination = (var.load_balancer_type == "network") ? true : false
 
   health_check {
     healthy_threshold   = lookup(var.alb_health_check, "healthy_threshold", null)
@@ -58,7 +58,7 @@ resource "aws_lb_target_group" "sticky_alb_target_group" {
   vpc_id                 = var.vpc_id
   target_type            = var.alb_target_type
   slow_start             = var.alb_slow_start
-  connection_termination = true
+  connection_termination = (var.load_balancer_type == "network") ? true : false
 
   health_check {
     healthy_threshold   = lookup(var.alb_health_check, "healthy_threshold", null)
