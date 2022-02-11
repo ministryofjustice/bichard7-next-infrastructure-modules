@@ -46,7 +46,8 @@ resource "aws_alb" "prometheus_cloudwatch_exporter_alb" {
   security_groups = [
     data.aws_security_group.prometheus_cloudwatch_exporter_alb.id
   ]
-  internal = true
+  internal     = true
+  idle_timeout = var.idle_timeout
 
   access_logs {
     bucket  = var.logging_bucket_name

@@ -188,3 +188,9 @@ variable "using_smtp_service" {
   type        = bool
   default     = false
 }
+
+variable "idle_timeout" {
+  description = "How long in seconds before we terminate a connection"
+  type        = number
+  default     = 180
+}

@@ -91,7 +91,8 @@ resource "aws_alb" "prometheus_alb" {
   security_groups = [
     data.aws_security_group.prometheus_alb.id
   ]
-  internal = true
+  internal     = true
+  idle_timeout = var.idle_timeout
 
   access_logs {
     bucket  = var.logging_bucket_name
