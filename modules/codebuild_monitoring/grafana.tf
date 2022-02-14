@@ -172,6 +172,7 @@ module "codebuild_monitoring_ecs_alb" {
   alb_protocol        = "HTTPS"
   logging_bucket_name = var.logging_bucket_name
   vpc_id              = var.vpc_id
+  enable_alb_logging  = false
 
   alb_health_check = {
     healthy_threshold   = "3"
