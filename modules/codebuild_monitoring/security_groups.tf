@@ -98,47 +98,23 @@ resource "aws_security_group_rule" "allow_grafana_alb_https_ingress" {
   cidr_blocks       = ["0.0.0.0/0"]
 }
 
-resource "aws_security_group_rule" "allow_grafana_alb_http_egress_to_grafana" {
+resource "aws_security_group_rule" "allow_grafana_alb_https_egress_to_grafana" {
   description = "Allow alb http egress to containers"
 
-  from_port = 80
-  to_port   = 80
+  from_port = 3000
+  to_port   = 3000
   protocol  = "tcp"
   type      = "egress"
 
   security_group_id        = aws_security_group.grafana_alb_security_group.id
   source_security_group_id = aws_security_group.grafana_cluster_security_group.id
-}
-
-resource "aws_security_group_rule" "allow_grafana_alb_https_egress_to_grafana" {
-  description = "Allow alb https egress to containers"
-
-  from_port = 443
-  to_port   = 443
-  protocol  = "tcp"
-  type      = "egress"
-
-  security_group_id        = aws_security_group.grafana_alb_security_group.id
-  source_security_group_id = aws_security_group.grafana_cluster_security_group.id
-}
-
-resource "aws_security_group_rule" "allow_grafana_alb_http_ingress_to_grafana" {
-  description = "Allow alb http ingress to containers"
-
-  from_port = 80
-  to_port   = 80
-  protocol  = "tcp"
-  type      = "ingress"
-
-  source_security_group_id = aws_security_group.grafana_alb_security_group.id
-  security_group_id        = aws_security_group.grafana_cluster_security_group.id
 }
 
 resource "aws_security_group_rule" "allow_grafana_alb_https_ingress_to_grafana" {
   description = "Allow alb https ingress to containers"
 
-  from_port = 443
-  to_port   = 443
+  from_port = 3000
+  to_port   = 3000
   protocol  = "tcp"
   type      = "ingress"
 

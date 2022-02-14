@@ -44,9 +44,7 @@ Provisions a monitoring cluster with the following components
 | [aws_security_group.grafana_cluster_security_group](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group) | resource |
 | [aws_security_group.grafana_db_security_group](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group) | resource |
 | [aws_security_group_rule.allow_db_ingress_from_grafana_containers](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.allow_grafana_alb_http_egress_to_grafana](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.allow_grafana_alb_http_ingress](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.allow_grafana_alb_http_ingress_to_grafana](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.allow_grafana_alb_https_egress_to_grafana](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.allow_grafana_alb_https_ingress](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.allow_grafana_alb_https_ingress_to_grafana](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
