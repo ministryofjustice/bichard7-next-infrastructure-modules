@@ -148,6 +148,12 @@ module "codebuild_monitoring_ecs_cluster" {
   fargate_cpu              = var.fargate_cpu
   fargate_memory           = var.fargate_memory
 
+  ssm_resources = [
+    aws_ssm_parameter.grafana_db_password.arn,
+    aws_ssm_parameter.grafana_admin_password.arn,
+    aws_ssm_parameter.grafana_secret_key.arn
+  ]
+
   load_balancers = [
     {
       target_group_arn = module.codebuild_monitoring_ecs_alb.target_group.arn
@@ -173,6 +179,9 @@ module "codebuild_monitoring_ecs_alb" {
   logging_bucket_name = var.logging_bucket_name
   vpc_id              = var.vpc_id
   enable_alb_logging  = false
+  alb_security_groups = [
+    aws_security_group.grafana_alb_security_group.id
+  ]
 
   alb_health_check = {
     healthy_threshold   = "3"
