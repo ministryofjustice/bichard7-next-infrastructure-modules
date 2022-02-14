@@ -143,10 +143,11 @@ module "codebuild_monitoring_ecs_cluster" {
   service_subnets          = var.service_subnets
   security_group_name      = aws_security_group.grafana_cluster_security_group.name
   assign_public_ip         = true
-  container_count          = 1
-  enable_execute_command   = true
-  fargate_cpu              = var.fargate_cpu
-  fargate_memory           = var.fargate_memory
+
+  container_count        = 1
+  enable_execute_command = true
+  fargate_cpu            = var.fargate_cpu
+  fargate_memory         = var.fargate_memory
 
   ssm_resources = [
     aws_ssm_parameter.grafana_db_password.arn,
@@ -179,6 +180,8 @@ module "codebuild_monitoring_ecs_alb" {
   logging_bucket_name = var.logging_bucket_name
   vpc_id              = var.vpc_id
   enable_alb_logging  = false
+  alb_is_internal     = false
+
   alb_security_groups = [
     aws_security_group.grafana_alb_security_group.id
   ]
