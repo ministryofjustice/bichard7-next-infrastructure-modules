@@ -40,6 +40,7 @@ No modules.
 | [aws_ecr_lifecycle_policy.e2etests](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecr_lifecycle_policy) | resource |
 | [aws_ecr_lifecycle_policy.gradle_jdk11](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecr_lifecycle_policy) | resource |
 | [aws_ecr_lifecycle_policy.grafana](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecr_lifecycle_policy) | resource |
+| [aws_ecr_lifecycle_policy.grafana_codebuild](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecr_lifecycle_policy) | resource |
 | [aws_ecr_lifecycle_policy.liberty](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecr_lifecycle_policy) | resource |
 | [aws_ecr_lifecycle_policy.liquibase](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecr_lifecycle_policy) | resource |
 | [aws_ecr_lifecycle_policy.logstash](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecr_lifecycle_policy) | resource |
@@ -69,6 +70,7 @@ No modules.
 | [aws_ecr_repository.e2etests](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecr_repository) | resource |
 | [aws_ecr_repository.gradle_jdk11](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecr_repository) | resource |
 | [aws_ecr_repository.grafana](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecr_repository) | resource |
+| [aws_ecr_repository.grafana_codebuild](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecr_repository) | resource |
 | [aws_ecr_repository.liberty](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecr_repository) | resource |
 | [aws_ecr_repository.liquibase](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecr_repository) | resource |
 | [aws_ecr_repository.logstash_7_10_1_staged](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecr_repository) | resource |
@@ -98,6 +100,7 @@ No modules.
 | [aws_ecr_repository_policy.allow_codebuild_e2etests](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecr_repository_policy) | resource |
 | [aws_ecr_repository_policy.allow_codebuild_gradle_jdk11](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecr_repository_policy) | resource |
 | [aws_ecr_repository_policy.allow_codebuild_grafana](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecr_repository_policy) | resource |
+| [aws_ecr_repository_policy.allow_codebuild_grafana_codebuild](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecr_repository_policy) | resource |
 | [aws_ecr_repository_policy.allow_codebuild_liberty](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecr_repository_policy) | resource |
 | [aws_ecr_repository_policy.allow_codebuild_liquibase](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecr_repository_policy) | resource |
 | [aws_ecr_repository_policy.allow_codebuild_nginx_auth_proxy](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecr_repository_policy) | resource |
@@ -178,6 +181,7 @@ No modules.
 | <a name="output_gradle_jdk11_docker_image"></a> [gradle\_jdk11\_docker\_image](#output\_gradle\_jdk11\_docker\_image) | The image hash for our ecs deployment |
 | <a name="output_gradle_jdk11_repository_arn"></a> [gradle\_jdk11\_repository\_arn](#output\_gradle\_jdk11\_repository\_arn) | The repository arn for our gradle\_jdk11 image |
 | <a name="output_gradle_jdk11_repository_url"></a> [gradle\_jdk11\_repository\_url](#output\_gradle\_jdk11\_repository\_url) | The repository url for our gradle\_jdk11 image |
+| <a name="output_grafana_codebuild_repository_arn"></a> [grafana\_codebuild\_repository\_arn](#output\_grafana\_codebuild\_repository\_arn) | The arn of our codebuild grafana repository |
 | <a name="output_grafana_repository_arn"></a> [grafana\_repository\_arn](#output\_grafana\_repository\_arn) | The arn of our grafana repository |
 | <a name="output_liquibase_docker_image"></a> [liquibase\_docker\_image](#output\_liquibase\_docker\_image) | The image hash for liquibase |
 | <a name="output_liquibase_repository_arn"></a> [liquibase\_repository\_arn](#output\_liquibase\_repository\_arn) | The repository arn for our liquibase image |
