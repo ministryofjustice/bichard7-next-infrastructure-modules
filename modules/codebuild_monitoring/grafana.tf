@@ -108,3 +108,44 @@ resource "aws_route53_record" "grafana_public_record" {
     module.codebuild_monitoring_ecs_alb.dns_name
   ]
 }
+
+resource "grafana_api_key" "admin_api_key" {
+  name            = "grafana_admin_key"
+  role            = "Admin"
+  seconds_to_live = 120
+
+  depends_on = [
+    time_sleep.wait_for_containers
+  ]
+}
+
+resource "aws_ssm_parameter" "grafana_admin_api_key" {
+  name      = "/${var.name}/codebuild_monitoring/grafana/api_key"
+  type      = "SecureString"
+  value     = grafana_api_key.admin_api_key.key
+  overwrite = true
+
+  tags = var.tags
+}
+
+resource "time_sleep" "wait_for_containers" {
+  create_duration = "60s"
+
+  depends_on = [
+    module.codebuild_monitoring_ecs_cluster
+  ]
+}
+
+resource "grafana_data_source" "cloudwatch" {
+  name = "${var.name}-cloudwatch"
+  type = "cloudwatch"
+
+  json_data {
+    default_region = data.aws_region.current.name
+    auth_type      = "file"
+  }
+
+  depends_on = [
+    time_sleep.wait_for_containers
+  ]
+}
