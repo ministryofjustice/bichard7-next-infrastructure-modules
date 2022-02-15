@@ -137,8 +137,9 @@ resource "time_sleep" "wait_for_containers" {
 }
 
 resource "grafana_data_source" "cloudwatch" {
-  name = "${var.name}-cloudwatch"
-  type = "cloudwatch"
+  name       = "${var.name}-cloudwatch"
+  type       = "cloudwatch"
+  is_default = true
 
   json_data {
     default_region = data.aws_region.current.name
