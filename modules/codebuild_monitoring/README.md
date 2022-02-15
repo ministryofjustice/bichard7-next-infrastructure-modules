@@ -64,7 +64,10 @@ Provisions a monitoring cluster with the following components
 | [aws_ssm_parameter.grafana_secret_key](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ssm_parameter) | resource |
 | [grafana_api_key.admin_api_key](https://registry.terraform.io/providers/grafana/grafana/1.19.0/docs/resources/api_key) | resource |
 | [grafana_dashboard.codebuild_dashboard](https://registry.terraform.io/providers/grafana/grafana/1.19.0/docs/resources/dashboard) | resource |
+| [grafana_dashboard.codebuild_ecs_stats](https://registry.terraform.io/providers/grafana/grafana/1.19.0/docs/resources/dashboard) | resource |
+| [grafana_dashboard.codebuild_status_dashboard](https://registry.terraform.io/providers/grafana/grafana/1.19.0/docs/resources/dashboard) | resource |
 | [grafana_data_source.cloudwatch](https://registry.terraform.io/providers/grafana/grafana/1.19.0/docs/resources/data_source) | resource |
+| [grafana_folder.codebuild_vpc_stats](https://registry.terraform.io/providers/grafana/grafana/1.19.0/docs/resources/folder) | resource |
 | [random_password.grafana_admin_password](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password) | resource |
 | [random_password.grafana_db_password](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password) | resource |
 | [random_string.grafana_admin_suffix](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string) | resource |

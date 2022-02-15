@@ -157,7 +157,3 @@ resource "aws_iam_role_policy" "allow_ecs_cloudwatch" {
   policy = file("${path.module}/policies/allow_cloudwatch.json")
   role   = module.codebuild_monitoring_ecs_cluster.ecs_service_role.name
 }
-
-resource "grafana_dashboard" "codebuild_dashboard" {
-  config_json = file("${path.module}/dashboards/aws-codebuild_rev4.json")
-}
