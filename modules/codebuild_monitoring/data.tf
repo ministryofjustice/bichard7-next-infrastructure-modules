@@ -49,3 +49,11 @@ data "template_file" "grafana_ecs_task" {
     environment = var.tags["Environment"]
   }
 }
+
+data "aws_iam_group" "admins" {
+  group_name = "AdminAccess"
+}
+
+data "aws_iam_group" "viewers" {
+  group_name = "ReadOnlyAccess"
+}

@@ -12,4 +12,7 @@ locals {
 
   grafana_domain    = "monitoring.${data.aws_route53_zone.public_zone.name}"
   grafana_data_path = "/grafana"
+
+  admins  = sort([for user in data.aws_iam_group.admins.users : user["user_name"]])
+  viewers = sort([for user in data.aws_iam_group.viewers.users : user["user_name"]])
 }
