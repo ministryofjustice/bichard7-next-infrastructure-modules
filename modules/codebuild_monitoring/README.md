@@ -25,8 +25,8 @@ Provisions a monitoring cluster with the following components
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_codebuild_monitoring_ecs_alb"></a> [codebuild\_monitoring\_ecs\_alb](#module\_codebuild\_monitoring\_ecs\_alb) | ../ecs_cluster_alb | n/a |
-| <a name="module_codebuild_monitoring_ecs_cluster"></a> [codebuild\_monitoring\_ecs\_cluster](#module\_codebuild\_monitoring\_ecs\_cluster) | ../ecs_cluster | n/a |
+| <a name="module_codebuild_monitoring_ecs_alb"></a> [codebuild\_monitoring\_ecs\_alb](#module\_codebuild\_monitoring\_ecs\_alb) | github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster_alb | n/a |
+| <a name="module_codebuild_monitoring_ecs_cluster"></a> [codebuild\_monitoring\_ecs\_cluster](#module\_codebuild\_monitoring\_ecs\_cluster) | github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster | n/a |
 
 ## Resources
 
@@ -40,6 +40,7 @@ Provisions a monitoring cluster with the following components
 | [aws_kms_key.logging_encryption_key](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/kms_key) | resource |
 | [aws_rds_cluster.grafana_db](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/rds_cluster) | resource |
 | [aws_rds_cluster_instance.grafana_db_instance](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/rds_cluster_instance) | resource |
+| [aws_route53_record.grafana_public_record](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/route53_record) | resource |
 | [aws_security_group.grafana_alb_security_group](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group) | resource |
 | [aws_security_group.grafana_cluster_security_group](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group) | resource |
 | [aws_security_group.grafana_db_security_group](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group) | resource |
@@ -90,5 +91,7 @@ Provisions a monitoring cluster with the following components
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_grafana_external_fqdn"></a> [grafana\_external\_fqdn](#output\_grafana\_external\_fqdn) | The public dns record for our grafana server |
 <!-- END_TF_DOCS -->
