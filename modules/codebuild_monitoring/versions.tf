@@ -12,6 +12,14 @@ terraform {
       source  = "hashicorp/local"
       version = "= 2.0.0"
     }
+    grafana = {
+      source  = "grafana/grafana"
+      version = "1.19.0"
+    }
+    time = {
+      source  = "hashicorp/time"
+      version = "0.7.2"
+    }
   }
   required_version = ">= 0.13"
 }

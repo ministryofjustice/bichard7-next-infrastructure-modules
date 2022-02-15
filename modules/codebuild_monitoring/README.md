@@ -10,23 +10,27 @@ Provisions a monitoring cluster with the following components
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | = 3.72.0 |
+| <a name="requirement_grafana"></a> [grafana](#requirement\_grafana) | 1.19.0 |
 | <a name="requirement_local"></a> [local](#requirement\_local) | = 2.0.0 |
 | <a name="requirement_template"></a> [template](#requirement\_template) | = 2.2.0 |
+| <a name="requirement_time"></a> [time](#requirement\_time) | 0.7.2 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
 | <a name="provider_aws"></a> [aws](#provider\_aws) | 3.72.0 |
+| <a name="provider_grafana"></a> [grafana](#provider\_grafana) | 1.19.0 |
 | <a name="provider_random"></a> [random](#provider\_random) | 3.1.0 |
 | <a name="provider_template"></a> [template](#provider\_template) | 2.2.0 |
+| <a name="provider_time"></a> [time](#provider\_time) | 0.7.2 |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_codebuild_monitoring_ecs_alb"></a> [codebuild\_monitoring\_ecs\_alb](#module\_codebuild\_monitoring\_ecs\_alb) | ../ecs_cluster_alb | n/a |
-| <a name="module_codebuild_monitoring_ecs_cluster"></a> [codebuild\_monitoring\_ecs\_cluster](#module\_codebuild\_monitoring\_ecs\_cluster) | ../ecs_cluster | n/a |
+| <a name="module_codebuild_monitoring_ecs_alb"></a> [codebuild\_monitoring\_ecs\_alb](#module\_codebuild\_monitoring\_ecs\_alb) | github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster_alb | n/a |
+| <a name="module_codebuild_monitoring_ecs_cluster"></a> [codebuild\_monitoring\_ecs\_cluster](#module\_codebuild\_monitoring\_ecs\_cluster) | github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster | n/a |
 
 ## Resources
 
@@ -34,12 +38,14 @@ Provisions a monitoring cluster with the following components
 |------|------|
 | [aws_cloudwatch_log_group.codebuild_monitoring](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/cloudwatch_log_group) | resource |
 | [aws_db_subnet_group.grafana_subnet_group](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/db_subnet_group) | resource |
+| [aws_iam_role_policy.allow_ecs_cloudwatch](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy) | resource |
 | [aws_kms_alias.aurora_cluster_encryption_key_alias](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/kms_alias) | resource |
 | [aws_kms_alias.logging_encryption_key_alias](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/kms_alias) | resource |
 | [aws_kms_key.aurora_cluster_encryption_key](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/kms_key) | resource |
 | [aws_kms_key.logging_encryption_key](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/kms_key) | resource |
 | [aws_rds_cluster.grafana_db](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/rds_cluster) | resource |
 | [aws_rds_cluster_instance.grafana_db_instance](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/rds_cluster_instance) | resource |
+| [aws_route53_record.grafana_public_record](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/route53_record) | resource |
 | [aws_security_group.grafana_alb_security_group](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group) | resource |
 | [aws_security_group.grafana_cluster_security_group](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group) | resource |
 | [aws_security_group.grafana_db_security_group](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group) | resource |
@@ -50,16 +56,20 @@ Provisions a monitoring cluster with the following components
 | [aws_security_group_rule.allow_grafana_alb_https_ingress_to_grafana](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.allow_grafana_container_egress_to_world](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.allow_grafana_egress_to_db](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
+| [aws_ssm_parameter.grafana_admin_api_key](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ssm_parameter) | resource |
 | [aws_ssm_parameter.grafana_admin_password](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ssm_parameter) | resource |
 | [aws_ssm_parameter.grafana_admin_username](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ssm_parameter) | resource |
 | [aws_ssm_parameter.grafana_db_password](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ssm_parameter) | resource |
 | [aws_ssm_parameter.grafana_db_username](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ssm_parameter) | resource |
 | [aws_ssm_parameter.grafana_secret_key](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ssm_parameter) | resource |
+| [grafana_api_key.admin_api_key](https://registry.terraform.io/providers/grafana/grafana/1.19.0/docs/resources/api_key) | resource |
+| [grafana_data_source.cloudwatch](https://registry.terraform.io/providers/grafana/grafana/1.19.0/docs/resources/data_source) | resource |
 | [random_password.grafana_admin_password](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password) | resource |
 | [random_password.grafana_db_password](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password) | resource |
 | [random_string.grafana_admin_suffix](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string) | resource |
 | [random_string.grafana_dbuser](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string) | resource |
 | [random_string.grafana_secret_key](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string) | resource |
+| [time_sleep.wait_for_containers](https://registry.terraform.io/providers/hashicorp/time/0.7.2/docs/resources/sleep) | resource |
 | [aws_availability_zones.current](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/availability_zones) | data source |
 | [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/caller_identity) | data source |
 | [aws_region.current](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/region) | data source |
@@ -90,5 +100,10 @@ Provisions a monitoring cluster with the following components
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_grafana_admin_user_name"></a> [grafana\_admin\_user\_name](#output\_grafana\_admin\_user\_name) | The user name of our grafana admin |
+| <a name="output_grafana_admin_user_password"></a> [grafana\_admin\_user\_password](#output\_grafana\_admin\_user\_password) | The password of our grafana admin |
+| <a name="output_grafana_api_key"></a> [grafana\_api\_key](#output\_grafana\_api\_key) | The api key we can use to provision grafana resources |
+| <a name="output_grafana_external_fqdn"></a> [grafana\_external\_fqdn](#output\_grafana\_external\_fqdn) | The public dns record for our grafana server |
 <!-- END_TF_DOCS -->
