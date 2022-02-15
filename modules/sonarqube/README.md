@@ -76,6 +76,7 @@ Module for creating sonarqube cluster on the dev environment
 | [aws_security_group_rule.postgres_db_egress](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.postgres_db_ingress](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.sonar_egress](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.sonar_egress_https](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.sonar_ingress](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.sonar_to_postgres_egress](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
 | [aws_ssm_parameter.sonar_admin_user_login](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ssm_parameter) | resource |

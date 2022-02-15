@@ -108,6 +108,20 @@ resource "aws_security_group_rule" "sonar_egress" {
   source_security_group_id = aws_security_group.sonar_alb.id
 }
 
+# tfsec:ignore:aws-vpc-no-public-egress-sgr
+resource "aws_security_group_rule" "sonar_egress_https" {
+  description = "Allow outbound ALB traffic"
+
+  from_port = 443
+  to_port   = 443
+  protocol  = "tcp"
+  type      = "egress"
+
+  security_group_id = aws_security_group.sonar_security_group.id
+  cidr_blocks       = ["0.0.0.0/0"] #tfsec:ignore:AWS007
+}
+
+
 resource "aws_security_group_rule" "sonar_ingress" {
   description = "Allow inbound ALB traffic"
 
