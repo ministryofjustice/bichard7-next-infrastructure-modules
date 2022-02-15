@@ -149,3 +149,10 @@ resource "grafana_data_source" "cloudwatch" {
     time_sleep.wait_for_containers
   ]
 }
+
+# tfsec:ignore:aws-iam-no-policy-wildcards
+resource "aws_iam_role_policy" "allow_ecs_cloudwatch" {
+  name   = "${var.name}-allow-cloudwatch-read"
+  policy = file("${path.module}/policies/allow_cloudwatch.json")
+  role   = module.codebuild_monitoring_ecs_cluster.ecs_service_role.name
+}

@@ -8,3 +8,15 @@ output "grafana_api_key" {
   sensitive   = true
   value       = grafana_api_key.admin_api_key.key
 }
+
+output "grafana_admin_user_name" {
+  description = "The user name of our grafana admin"
+  sensitive   = true
+  value       = aws_ssm_parameter.grafana_admin_username.value
+}
+
+output "grafana_admin_user_password" {
+  description = "The password of our grafana admin"
+  sensitive   = true
+  value       = aws_ssm_parameter.grafana_admin_password.value
+}

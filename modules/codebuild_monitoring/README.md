@@ -38,6 +38,7 @@ Provisions a monitoring cluster with the following components
 |------|------|
 | [aws_cloudwatch_log_group.codebuild_monitoring](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/cloudwatch_log_group) | resource |
 | [aws_db_subnet_group.grafana_subnet_group](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/db_subnet_group) | resource |
+| [aws_iam_role_policy.allow_ecs_cloudwatch](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy) | resource |
 | [aws_kms_alias.aurora_cluster_encryption_key_alias](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/kms_alias) | resource |
 | [aws_kms_alias.logging_encryption_key_alias](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/kms_alias) | resource |
 | [aws_kms_key.aurora_cluster_encryption_key](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/kms_key) | resource |
@@ -101,6 +102,8 @@ Provisions a monitoring cluster with the following components
 
 | Name | Description |
 |------|-------------|
+| <a name="output_grafana_admin_user_name"></a> [grafana\_admin\_user\_name](#output\_grafana\_admin\_user\_name) | The user name of our grafana admin |
+| <a name="output_grafana_admin_user_password"></a> [grafana\_admin\_user\_password](#output\_grafana\_admin\_user\_password) | The password of our grafana admin |
 | <a name="output_grafana_api_key"></a> [grafana\_api\_key](#output\_grafana\_api\_key) | The api key we can use to provision grafana resources |
 | <a name="output_grafana_external_fqdn"></a> [grafana\_external\_fqdn](#output\_grafana\_external\_fqdn) | The public dns record for our grafana server |
 <!-- END_TF_DOCS -->
