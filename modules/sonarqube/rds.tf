@@ -14,13 +14,14 @@ resource "aws_ssm_parameter" "sonar_db_password" {
 resource "aws_ssm_parameter" "sonar_db_user" {
   name  = "/sonarqube/rds/db_user"
   type  = "SecureString"
-  value = "sonar${random_id.sonar_user_suffix.id}"
+  value = "sonar${random_string.sonar_user_suffix.id}"
 
   tags = var.tags
 }
 
-resource "random_id" "sonar_user_suffix" {
-  byte_length = 6
+resource "random_string" "sonar_user_suffix" {
+  length  = 6
+  special = false
 }
 
 resource "random_password" "sonar_admin_user_password" {
@@ -31,7 +32,7 @@ resource "random_password" "sonar_admin_user_password" {
 resource "aws_ssm_parameter" "sonar_admin_user_login" {
   name  = "/sonarqube/rds/sonar_admin_login"
   type  = "SecureString"
-  value = "bichard-admin${random_id.sonar_user_suffix.id}"
+  value = "bichard-admin${random_string.sonar_user_suffix.id}"
 
   tags = var.tags
 }
