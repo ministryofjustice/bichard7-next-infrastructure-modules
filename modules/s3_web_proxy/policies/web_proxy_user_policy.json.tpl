@@ -19,6 +19,19 @@
     },
     {
       "Effect": "Allow",
+      "Action": [
+        "s3:DeleteObject",
+        "s3:GetBucketLocation",
+        "s3:PutObject",
+        "s3:PutObjectAcl"
+      ],
+      "Resource": [
+        "arn:aws:s3:::${bucket_name}/help/*",
+        "arn:aws:s3:::${bucket_name}"
+      ]
+    },
+    {
+      "Effect": "Allow",
       "Action": "s3:ListAllMyBuckets",
       "Resource": "*"
     }
