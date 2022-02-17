@@ -57,3 +57,23 @@ data "aws_iam_group" "admins" {
 data "aws_iam_group" "viewers" {
   group_name = "ReadOnlyAccess"
 }
+
+## Lambda
+
+data "archive_file" "codebuild_metrics_payload" {
+  output_path = "/tmp/generate_build_metrics.zip"
+  type        = "zip"
+
+  source {
+    content  = file("${path.module}/functions/generate_build_metrics.py")
+    filename = "webhook.py"
+  }
+}
+
+data "template_file" "codebuild_metrics_permissions" {
+  template = file("${path.module}/policies/lambda_permissions.json.tpl")
+
+  vars = {
+    account_id = data.aws_caller_identity.current.account_id
+  }
+}

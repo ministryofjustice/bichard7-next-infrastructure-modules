@@ -124,6 +124,8 @@ class CloudWatchMetric(object):
             }
         ]
 
+        print(metric_data)
+
         try:
             self._client.put_metric_data(
                 Namespace=namespace,
@@ -131,7 +133,12 @@ class CloudWatchMetric(object):
             )
         except Exception:
             pass
-        
+
+
+def lambda_handler(event, context):
+    init = CodebuildMetrics()
+    init.get_last_build_status()
+
 
 if __name__ == "__main__":
     init = CodebuildMetrics()
