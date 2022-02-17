@@ -185,8 +185,8 @@
         "ec2:AssociateRouteTable",
         "ec2:ModifyVpcAttribute",
         "ec2:ModifySecurityGroupRules",
-        "ec2:UpdateSecurityGroupRuleDescriptionIngress",
-        "ec2:UpdateSecurityGroupRuleDescriptionEgress",
+        "ec2:UpdateSecurityGroupRuleDescriptionsIngress",
+        "ec2:UpdateSecurityGroupRuleDescriptionsEgress",
         "ec2:DeleteRouteTable",
         "ec2:ReplaceRoute",
         "ec2:DeleteRoute"
