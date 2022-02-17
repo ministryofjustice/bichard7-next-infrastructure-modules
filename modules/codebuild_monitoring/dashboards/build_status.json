@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": null,
+  "id": 8,
   "links": [],
   "panels": [
     {
@@ -120,7 +120,7 @@
       "type": "status-history"
     }
   ],
-  "refresh": "",
+  "refresh": "1m",
   "schemaVersion": 30,
   "style": "dark",
   "tags": [
@@ -132,7 +132,7 @@
     "list": []
   },
   "time": {
-    "from": "now-5m",
+    "from": "now-1h",
     "to": "now"
   },
   "timepicker": {
@@ -162,5 +162,6 @@
   },
   "timezone": "browser",
   "title": "Last Codebuild Build Status",
-  "version": 1
+  "uid": "XxhtFVfnz",
+  "version": 2
 }
