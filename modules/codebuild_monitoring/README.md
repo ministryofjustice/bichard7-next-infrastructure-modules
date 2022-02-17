@@ -20,11 +20,11 @@ Provisions a monitoring cluster with the following components
 
 | Name | Version |
 |------|---------|
-| <a name="provider_archive"></a> [archive](#provider\_archive) | 2.2.0 |
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.72.0 |
+| <a name="provider_archive"></a> [archive](#provider\_archive) | = 2.2.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | = 3.72.0 |
 | <a name="provider_grafana"></a> [grafana](#provider\_grafana) | 1.19.0 |
-| <a name="provider_random"></a> [random](#provider\_random) | 3.1.0 |
-| <a name="provider_template"></a> [template](#provider\_template) | 2.2.0 |
+| <a name="provider_random"></a> [random](#provider\_random) | n/a |
+| <a name="provider_template"></a> [template](#provider\_template) | = 2.2.0 |
 | <a name="provider_time"></a> [time](#provider\_time) | 0.7.2 |
 
 ## Modules

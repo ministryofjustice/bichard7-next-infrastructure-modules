@@ -51,6 +51,6 @@ resource "null_resource" "tag_and_push_scoutsuite" {
 }
 
 resource "aws_ecr_lifecycle_policy" "scoutsuite" {
-  policy     = file("${path.module}/policies/application_image_ecr_lifecycle_policy.json")
+  policy     = file("${path.module}/policies/builder_image_ecr_lifecycle_policy.json")
   repository = aws_ecr_repository.scoutsuite.name
 }
