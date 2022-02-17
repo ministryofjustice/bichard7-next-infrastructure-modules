@@ -20,6 +20,10 @@ terraform {
       source  = "hashicorp/time"
       version = "0.7.2"
     }
+    archive = {
+      source  = "hashicorp/archive"
+      version = "= 2.2.0"
+    }
   }
   required_version = ">= 0.13"
 }

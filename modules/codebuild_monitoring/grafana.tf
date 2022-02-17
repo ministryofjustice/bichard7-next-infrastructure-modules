@@ -144,6 +144,8 @@ resource "grafana_data_source" "cloudwatch" {
   json_data {
     default_region = data.aws_region.current.name
     auth_type      = "file"
+
+    custom_metrics_namespaces = "Codebuild,LogMetrics,Ecs/ContainerInsights"
   }
 
   depends_on = [
