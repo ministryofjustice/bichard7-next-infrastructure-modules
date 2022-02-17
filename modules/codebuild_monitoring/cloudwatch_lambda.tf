@@ -22,7 +22,7 @@ resource "aws_lambda_function" "codebuild_metrics_lambda" {
   role        = aws_iam_role.codebuild_metrics_lambda.arn
   memory_size = "128"
   runtime     = "python3.8"
-  timeout     = "30"
+  timeout     = "60"
 
   tracing_config {
     mode = "PassThrough"
