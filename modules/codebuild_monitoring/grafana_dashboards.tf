@@ -14,3 +14,7 @@ resource "grafana_dashboard" "codebuild_ecs_stats" {
   config_json = file("${path.module}/dashboards/aws-ecs_rev7.json")
   folder      = grafana_folder.codebuild_vpc_stats.id
 }
+
+resource "grafana_dashboard" "codebuild_last_build_status_dashboard" {
+  config_json = file("${path.module}/dashboards/build_status.json")
+}

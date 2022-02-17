@@ -67,6 +67,7 @@ Provisions a monitoring cluster with the following components
 | [grafana_api_key.admin_api_key](https://registry.terraform.io/providers/grafana/grafana/1.19.0/docs/resources/api_key) | resource |
 | [grafana_dashboard.codebuild_dashboard](https://registry.terraform.io/providers/grafana/grafana/1.19.0/docs/resources/dashboard) | resource |
 | [grafana_dashboard.codebuild_ecs_stats](https://registry.terraform.io/providers/grafana/grafana/1.19.0/docs/resources/dashboard) | resource |
+| [grafana_dashboard.codebuild_last_build_status_dashboard](https://registry.terraform.io/providers/grafana/grafana/1.19.0/docs/resources/dashboard) | resource |
 | [grafana_dashboard.codebuild_status_dashboard](https://registry.terraform.io/providers/grafana/grafana/1.19.0/docs/resources/dashboard) | resource |
 | [grafana_data_source.cloudwatch](https://registry.terraform.io/providers/grafana/grafana/1.19.0/docs/resources/data_source) | resource |
 | [grafana_folder.codebuild_vpc_stats](https://registry.terraform.io/providers/grafana/grafana/1.19.0/docs/resources/folder) | resource |
