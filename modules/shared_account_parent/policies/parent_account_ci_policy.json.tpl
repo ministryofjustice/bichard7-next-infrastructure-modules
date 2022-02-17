@@ -184,6 +184,7 @@
         "ec2:CreateRoute",
         "ec2:AssociateRouteTable",
         "ec2:ModifyVpcAttribute",
+        "ec2:ModifySecurityGroupRules",
         "ec2:DeleteRouteTable",
         "ec2:ReplaceRoute",
         "ec2:DeleteRoute"
