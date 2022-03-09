@@ -13,9 +13,3 @@ variable "notifications_channel_name" {
   type        = string
   description = "Our slack channel for build notifications"
 }
-
-variable "is_production" {
-  default     = false
-  type        = bool
-  description = "Only create this webhook on production"
-}

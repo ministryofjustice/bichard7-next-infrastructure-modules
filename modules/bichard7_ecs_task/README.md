@@ -35,11 +35,15 @@ Module to configure Bichard7 on ECS, can be configured to be a web facing or bac
 | [aws_route53_record.bichard_public_record](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/route53_record) | resource |
 | [aws_security_group_rule.alb_allow_egress_to_instance](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.alb_default_https_access_from_alb](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.allow_all_outbound](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.allow_egress_to_amq](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.resource_to_beanconnect_egress](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.resource_to_s3_egress](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
 | [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/caller_identity) | data source |
 | [aws_route53_zone.cjse_dot_org](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/route53_zone) | data source |
 | [aws_security_group.bichard](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/security_group) | data source |
 | [aws_security_group.bichard_alb](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/security_group) | data source |
+| [aws_security_group.bichard_amq](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/security_group) | data source |
+| [aws_security_group.bichard_aurora](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/security_group) | data source |
 | [template_file.allow_ecr](https://registry.terraform.io/providers/hashicorp/template/2.2.0/docs/data-sources/file) | data source |
 | [template_file.allow_kms](https://registry.terraform.io/providers/hashicorp/template/2.2.0/docs/data-sources/file) | data source |
 | [template_file.allow_ssm](https://registry.terraform.io/providers/hashicorp/template/2.2.0/docs/data-sources/file) | data source |
@@ -79,6 +83,7 @@ Module to configure Bichard7 on ECS, can be configured to be a web facing or bac
 | <a name="input_service_type"></a> [service\_type](#input\_service\_type) | What type of service this is (web\|backend) | `string` | n/a | yes |
 | <a name="input_ssl_certificate_arn"></a> [ssl\_certificate\_arn](#input\_ssl\_certificate\_arn) | The arn of our ssl certificate | `string` | n/a | yes |
 | <a name="input_tags"></a> [tags](#input\_tags) | A map of tags | `map(string)` | `{}` | no |
+| <a name="input_vpc_endpoint_s3_prefix_list_id"></a> [vpc\_endpoint\_s3\_prefix\_list\_id](#input\_vpc\_endpoint\_s3\_prefix\_list\_id) | The vpc endpoint prefix list id for s3 | `string` | n/a | yes |
 | <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | The id of our vpc | `string` | n/a | yes |
 
 ## Outputs

@@ -157,3 +157,8 @@ variable "service_type" {
   description = "What type of service this is (web|backend)"
   type        = string
 }
+
+variable "vpc_endpoint_s3_prefix_list_id" {
+  description = "The vpc endpoint prefix list id for s3"
+  type        = string
+}
