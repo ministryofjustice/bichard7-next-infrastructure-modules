@@ -64,3 +64,11 @@ data "aws_security_group" "bichard" {
 data "aws_security_group" "bichard_alb" {
   name = "${var.name}-alb-${var.service_type}"
 }
+
+data "aws_security_group" "bichard_amq" {
+  name = "${var.name}-amq"
+}
+
+data "aws_security_group" "bichard_aurora" {
+  name = "${var.name}-aurora"
+}

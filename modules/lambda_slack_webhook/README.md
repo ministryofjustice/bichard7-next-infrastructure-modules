@@ -38,7 +38,6 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_is_production"></a> [is\_production](#input\_is\_production) | Only create this webhook on production | `bool` | `false` | no |
 | <a name="input_name"></a> [name](#input\_name) | Our resource name | `string` | n/a | yes |
 | <a name="input_notifications_channel_name"></a> [notifications\_channel\_name](#input\_notifications\_channel\_name) | Our slack channel for build notifications | `string` | `"moj-cjse-bichard-notifications"` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | A map of resource tags | `map(string)` | n/a | yes |
