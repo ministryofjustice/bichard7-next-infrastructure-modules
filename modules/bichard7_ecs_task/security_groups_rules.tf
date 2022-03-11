@@ -6,8 +6,8 @@ resource "aws_security_group_rule" "alb_default_https_access_from_alb" {
   to_port   = 9443
   type      = "ingress"
 
-  security_group_id        = data.aws_security_group.bichard.id
-  source_security_group_id = data.aws_security_group.bichard_alb.id
+  security_group_id        = data.aws_security_group.bichard_alb.id
+  source_security_group_id = data.aws_security_group.bichard.id
 }
 
 resource "aws_security_group_rule" "alb_allow_egress_to_instance" {
@@ -18,8 +18,8 @@ resource "aws_security_group_rule" "alb_allow_egress_to_instance" {
   to_port   = 9443
   type      = "egress"
 
-  security_group_id        = data.aws_security_group.bichard_alb.id
-  source_security_group_id = data.aws_security_group.bichard.id
+  security_group_id        = data.aws_security_group.bichard.id
+  source_security_group_id = data.aws_security_group.bichard_alb.id
 }
 
 resource "aws_security_group_rule" "allow_egress_to_amq" {
@@ -30,8 +30,8 @@ resource "aws_security_group_rule" "allow_egress_to_amq" {
   to_port   = 61617
   type      = "egress"
 
-  security_group_id        = data.aws_security_group.bichard_amq.id
-  source_security_group_id = data.aws_security_group.bichard.id
+  security_group_id        = data.aws_security_group.bichard.id
+  source_security_group_id = data.aws_security_group.bichard_amq.id
 }
 
 resource "aws_security_group_rule" "resource_to_s3_egress" {
