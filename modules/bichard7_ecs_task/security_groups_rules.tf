@@ -34,6 +34,18 @@ resource "aws_security_group_rule" "allow_egress_to_amq" {
   source_security_group_id = data.aws_security_group.bichard.id
 }
 
+resource "aws_security_group_rule" "allow_egress_to_aurora" {
+  description = "Allow egress to amq from container"
+
+  from_port = 5432
+  protocol  = "tcp"
+  to_port   = 5432
+  type      = "egress"
+
+  security_group_id        = data.aws_security_group.bichard_aurora.id
+  source_security_group_id = data.aws_security_group.bichard.id
+}
+
 resource "aws_security_group_rule" "resource_to_s3_egress" {
   description = "Allow traffic from the resource to S3 needed to pull the image from ecr on container start"
 
