@@ -18,8 +18,8 @@ resource "aws_security_group_rule" "alb_allow_egress_to_instance" {
   to_port   = 9443
   type      = "egress"
 
-  security_group_id        = data.aws_security_group.bichard.id
-  source_security_group_id = data.aws_security_group.bichard_alb.id
+  security_group_id        = data.aws_security_group.bichard_alb.id
+  source_security_group_id = data.aws_security_group.bichard.id
 }
 
 resource "aws_security_group_rule" "allow_egress_to_amq" {
