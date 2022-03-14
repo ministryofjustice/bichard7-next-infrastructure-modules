@@ -1,17 +1,17 @@
 resource "aws_security_group_rule" "alb_default_https_access_from_alb" {
-  description = "Allow access on http transport port from alb"
+  description = "Allow access on https incoming from alb to instance on 9433"
 
   from_port = 9443
   protocol  = "tcp"
   to_port   = 9443
   type      = "ingress"
 
-  security_group_id        = data.aws_security_group.bichard_alb.id
-  source_security_group_id = data.aws_security_group.bichard.id
+  security_group_id        = data.aws_security_group.bichard.id
+  source_security_group_id = data.aws_security_group.bichard_alb.id
 }
 
 resource "aws_security_group_rule" "alb_allow_egress_to_instance" {
-  description = "Allow access on http transport port from alb"
+  description = "Allow https on port 9443 from alb to instance"
 
   from_port = 9443
   protocol  = "tcp"
