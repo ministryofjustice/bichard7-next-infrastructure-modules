@@ -98,10 +98,12 @@
         "arn:aws:iam::${account_id}:role/vpc-flow-logs-role-cjse-*",
         "arn:aws:iam::${account_id}:role/Bichard7-Administrator-Access",
         "arn:aws:iam::${account_id}:role/Bichard7-Aws-Nuke-Access",
+        "arn:aws:iam::${account_id}:role/AllowQueryPNCConnection",
         "arn:aws:iam::${account_id}:policy/bichard-7-*",
         "arn:aws:iam::${account_id}:policy/cjse-*",
         "arn:aws:iam::${account_id}:policy/postfix-*",
-        "arn:aws:iam::${account_id}:policy/vpc-flow-logs-role-cjse-*"
+        "arn:aws:iam::${account_id}:policy/vpc-flow-logs-role-cjse-*",
+        "arn:aws:iam::${account_id}:policy/*-query-pnc-conn-lambda-manage-ec2-network-interfaces"
       ]
     },
     {
