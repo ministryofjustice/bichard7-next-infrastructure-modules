@@ -42,6 +42,7 @@ data "template_file" "nginx_auth_proxy_fargate" {
     user_service_domain           = "users.${data.aws_route53_zone.public_zone.name}"
     audit_logging_domain          = "audit.${data.aws_route53_zone.public_zone.name}"
     bichard_domain                = "bichard-web.${data.aws_route53_zone.public_zone.name}"
+    bichard_backend_domain        = "bichard-backend.${data.aws_route53_zone.public_zone.name}"
     static_service_domain         = "static-files.${data.aws_route53_zone.public_zone.name}"
   }
 }

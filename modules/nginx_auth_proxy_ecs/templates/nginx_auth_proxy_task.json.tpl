@@ -23,6 +23,10 @@
         "value": "${dns_resolver}"
       },
       {
+        "name": "CJSE_NGINX_BICHARDBACKEND_DOMAIN",
+        "value": "${bichard_backend_domain}"
+      },
+      {
         "name": "CJSE_NGINX_APP_DOMAIN",
         "value": "${bichard_domain}"
       },
