@@ -181,6 +181,30 @@ resource "aws_security_group_rule" "allow_bichard_https_alb_ingress_from_auth_pr
   source_security_group_id = data.aws_security_group.nginx_auth_proxy_ecs.id
 }
 
+resource "aws_security_group_rule" "allow_bichard_backend_http_alb_ingress_from_auth_proxy" {
+  description = "Allow https access to the alb from the auth proxy"
+
+  from_port = 80
+  protocol  = "tcp"
+  to_port   = 80
+  type      = "ingress"
+
+  security_group_id        = data.aws_security_group.bichard_backend_alb.id
+  source_security_group_id = data.aws_security_group.nginx_auth_proxy_ecs.id
+}
+
+resource "aws_security_group_rule" "allow_bichard_backend_https_alb_ingress_from_auth_proxy" {
+  description = "Allow https access to the alb from the auth proxy"
+
+  from_port = 443
+  protocol  = "tcp"
+  to_port   = 443
+  type      = "ingress"
+
+  security_group_id        = data.aws_security_group.bichard_backend_alb.id
+  source_security_group_id = data.aws_security_group.nginx_auth_proxy_ecs.id
+}
+
 resource "aws_security_group_rule" "allow_bichard_https_egress_to_auth_proxy" {
   description = "Allow https access to the auth proxy from the alb"
 
