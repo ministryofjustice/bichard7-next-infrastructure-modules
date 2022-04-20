@@ -43,6 +43,8 @@ are presenting both http and https.
 | [aws_security_group_rule.allow_audit_logging_http_egress_to_auth_proxy](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.allow_audit_logging_https_alb_ingress_from_auth_proxy](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.allow_audit_logging_https_egress_to_auth_proxy](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.allow_bichard_backend_http_alb_ingress_from_auth_proxy](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.allow_bichard_backend_https_alb_ingress_from_auth_proxy](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.allow_bichard_http_alb_ingress_from_auth_proxy](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.allow_bichard_https_alb_ingress_from_auth_proxy](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.allow_bichard_https_egress_to_auth_proxy](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
@@ -61,6 +63,7 @@ are presenting both http and https.
 | [aws_route53_zone.public_zone](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/route53_zone) | data source |
 | [aws_security_group.audit_logging_portal_alb](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/security_group) | data source |
 | [aws_security_group.bichard_alb](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/security_group) | data source |
+| [aws_security_group.bichard_backend_alb](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/security_group) | data source |
 | [aws_security_group.nginx_auth_proxy_alb](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/security_group) | data source |
 | [aws_security_group.nginx_auth_proxy_ecs](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/security_group) | data source |
 | [aws_security_group.user_service_alb](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/security_group) | data source |

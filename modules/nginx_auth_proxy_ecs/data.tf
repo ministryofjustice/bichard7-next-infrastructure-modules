@@ -23,6 +23,10 @@ data "aws_security_group" "bichard_alb" {
   name = "${var.name}-alb-web"
 }
 
+data "aws_security_group" "bichard_backend_alb" {
+  name = "${var.name}-alb-backend"
+}
+
 data "aws_security_group" "audit_logging_portal_alb" {
   name = "${var.name}-portal-alb"
 }
