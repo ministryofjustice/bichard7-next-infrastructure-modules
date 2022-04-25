@@ -32,7 +32,7 @@ variable "instance_type" {
 variable "ebs_volume_size" {
   description = "The size of our ebs instances"
   type        = number
-  default     = 1500
+  default     = 2000
 }
 
 variable "elasticsearch_log_groups" {
