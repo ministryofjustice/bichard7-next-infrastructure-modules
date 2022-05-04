@@ -48,8 +48,8 @@ data "template_file" "snapshot_s3_lambda_policy" {
   template = file("${path.module}/policies/lambda_role_policy.json.tpl")
 
   vars = {
-    es_role_arn              = aws_iam_role.snapshot_create.arn
-    es_domain_arn            = aws_elasticsearch_domain.os.arn
+    os_role_arn              = aws_iam_role.snapshot_create.arn
+    os_domain_arn            = aws_elasticsearch_domain.os.arn
     cloudwatch_log_group_arn = data.aws_cloudwatch_log_group.opensearch_snapshot_lambda.arn
     ssm_params = jsonencode(
       [
