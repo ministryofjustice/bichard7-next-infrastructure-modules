@@ -1,7 +1,8 @@
 provider "elasticsearch" {
-  url                   = "https://${aws_elasticsearch_domain.os.endpoint}"
-  username              = local.os_user_name
-  password              = aws_secretsmanager_secret_version.os_password.secret_string
+  url      = "https://${aws_elasticsearch_domain.os.endpoint}"
+  username = local.os_user_name
+  #password              = jsondecode(aws_secretsmanager_secret_version.os_password.secret_string)
+  password              = aws_ssm_parameter.es_password.value
   sniff                 = false
   aws_region            = data.aws_region.current.name
   healthcheck           = false
