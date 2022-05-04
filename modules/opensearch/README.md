@@ -85,7 +85,6 @@ $ARTIFACT_BUCKET=xxx aws-vault exec your-shared-credentials -- ./scripts/upload_
 | [aws_security_group_rule.elasticsearch_ingress_from_vpc](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.snapshot_lambda_egress](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.snapshot_lambda_ingress](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_ssm_parameter.es_password](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ssm_parameter) | resource |
 | [aws_ssm_parameter.os_user](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ssm_parameter) | resource |
 | [elasticsearch_kibana_object.cloudwatch_index_pattern](https://registry.terraform.io/providers/phillbaker/elasticsearch/2.0.0-beta.4/docs/resources/kibana_object) | resource |
 | [elasticsearch_opendistro_ism_policy.prune_indices_after_n_days](https://registry.terraform.io/providers/phillbaker/elasticsearch/2.0.0-beta.4/docs/resources/opendistro_ism_policy) | resource |

@@ -10,15 +10,6 @@ resource "random_password" "os" {
   min_lower   = 1
 }
 
-resource "aws_ssm_parameter" "es_password" {
-  name      = "/${var.name}/es/master/password"
-  type      = "SecureString"
-  value     = random_password.os.result
-  overwrite = true
-
-  tags = var.tags
-}
-
 resource "aws_kms_key" "secret_encryption_key" {
   description             = "${var.name} secret key"
   deletion_window_in_days = 10
