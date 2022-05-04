@@ -64,7 +64,7 @@ resource "aws_ssm_parameter" "os_user" {
 
 resource "aws_elasticsearch_domain" "os" {
   domain_name           = local.domain_name
-  elasticsearch_version = "OpenSearch_1.2"
+  elasticsearch_version = "OpenSearch_1.0"
 
   access_policies = data.template_file.elasticsearch_access_policy.rendered
 
@@ -73,8 +73,9 @@ resource "aws_elasticsearch_domain" "os" {
     internal_user_database_enabled = true
 
     master_user_options {
-      master_user_name     = local.os_user_name
-      master_user_password = data.aws_secretsmanager_secret_version.os_password.secret_string
+      master_user_name = local.os_user_name
+      #master_user_password = data.aws_secretsmanager_secret_version.os_password.secret_string
+      master_user_password = aws_ssm_parameter.es_password.value
     }
   }
 
