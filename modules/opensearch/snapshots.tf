@@ -81,7 +81,7 @@ module "snapshot_lambda" {
 
   environment_variables = {
     BUCKET     = aws_s3_bucket.snapshot.id
-    HOST       = aws_elasticsearch_domain.os.endpoint
+    HOST       = aws_elasticsearch_domain.es.endpoint
     REGION     = data.aws_region.current.name
     REPOSITORY = "s3-manual"
     RETENTION  = var.s3_snapshots_retention_period
