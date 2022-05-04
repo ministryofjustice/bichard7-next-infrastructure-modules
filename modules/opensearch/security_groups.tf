@@ -51,7 +51,7 @@ resource "aws_security_group_rule" "snapshot_lambda_ingress" {
 }
 
 resource "aws_security_group_rule" "allow_secret_rotation_lambda_ingress_from_endpoint" {
-  description = "Allow secrets rotation lambda out to VPCE"
+  description = "Allow traffic from our VPCE into secrets rotation lambda"
 
   from_port = 443
   to_port   = 443
@@ -63,7 +63,7 @@ resource "aws_security_group_rule" "allow_secret_rotation_lambda_ingress_from_en
 }
 
 resource "aws_security_group_rule" "allow_secret_rotation_lambda_egress_to_endpoint" {
-  description = "Allow secrets rotation lambda out to VPCE"
+  description = "Allow traffic from secrets rotation lambda out to VPCE"
 
   from_port = 443
   to_port   = 443
