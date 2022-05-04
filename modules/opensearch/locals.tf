@@ -10,7 +10,7 @@ locals {
     "Name" = local.name
   })
 
-  es_user_name = "bichard"
+  os_user_name = "bichard"
 
   deploy_opendistro_roles = (terraform.workspace == "e2e-test" || terraform.workspace == "preprod" || terraform.workspace == "production") ? 1 : 0
   deletion_window         = (terraform.workspace != "production") ? "21d" : "90d"

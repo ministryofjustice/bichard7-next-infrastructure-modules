@@ -1,4 +1,4 @@
-resource "random_password" "es" {
+resource "random_password" "os" {
   length      = 24
   special     = true
   min_special = 1
@@ -10,27 +10,52 @@ resource "random_password" "es" {
   min_lower   = 1
 }
 
-resource "aws_ssm_parameter" "es_user" {
-  name      = "/${var.name}/es/master/username"
+resource "aws_kms_key" "secret_encryption_key" {
+  description             = "${var.name} secret key"
+  deletion_window_in_days = 10
+  enable_key_rotation     = true
+
+  tags = var.tags
+}
+
+resource "aws_kms_alias" "secret" {
+  target_key_id = aws_kms_key.secret_encryption_key.id
+  name          = "alias/${var.name}-os-secret"
+}
+
+resource "aws_secretsmanager_secret" "os_password" {
+  name       = "${var.name}-opensearch-password"
+  kms_key_id = aws_kms_key.secret_encryption_key.id
+
+  tags = var.tags
+}
+
+resource "aws_secretsmanager_secret_version" "os_password" {
+  secret_id     = aws_secretsmanager_secret.os_password.id
+  secret_string = random_password.os.result
+}
+
+data "aws_secretsmanager_secret_version" "os_password" {
+  secret_id = aws_secretsmanager_secret.os_password.id
+
+  depends_on = [
+    aws_secretsmanager_secret.os_password,
+    aws_secretsmanager_secret_version.os_password
+  ]
+}
+
+resource "aws_ssm_parameter" "os_user" {
+  name      = "/${var.name}/os/master/username"
   type      = "SecureString"
-  value     = local.es_user_name
+  value     = local.os_user_name
   overwrite = true
 
   tags = var.tags
 }
 
-resource "aws_ssm_parameter" "es_password" {
-  name      = "/${var.name}/es/master/password"
-  type      = "SecureString"
-  value     = random_password.es.result
-  overwrite = true
-
-  tags = var.tags
-}
-
-resource "aws_elasticsearch_domain" "es" {
+resource "aws_elasticsearch_domain" "os" {
   domain_name           = local.domain_name
-  elasticsearch_version = "OpenSearch_1.0"
+  elasticsearch_version = "OpenSearch_1.2"
 
   access_policies = data.template_file.elasticsearch_access_policy.rendered
 
@@ -39,8 +64,8 @@ resource "aws_elasticsearch_domain" "es" {
     internal_user_database_enabled = true
 
     master_user_options {
-      master_user_name     = local.es_user_name
-      master_user_password = random_password.es.result
+      master_user_name     = local.os_user_name
+      master_user_password = data.aws_secretsmanager_secret_version.os_password.secret_string
     }
   }
 
@@ -135,7 +160,7 @@ resource "aws_route53_record" "elasticsearch" {
   ttl     = 60
 
   records = [
-    aws_elasticsearch_domain.es.endpoint
+    aws_elasticsearch_domain.os.endpoint
   ]
 }
 
@@ -153,7 +178,7 @@ resource "elasticsearch_opendistro_role" "writer" {
   }
 
   depends_on = [
-    aws_elasticsearch_domain.es,
+    aws_elasticsearch_domain.os,
     elasticsearch_kibana_object.cloudwatch_index_pattern
   ]
 }
@@ -184,7 +209,7 @@ resource "elasticsearch_opendistro_role" "backup" {
   }
 
   depends_on = [
-    aws_elasticsearch_domain.es,
+    aws_elasticsearch_domain.os,
     elasticsearch_kibana_object.cloudwatch_index_pattern
   ]
 }
@@ -203,6 +228,6 @@ resource "elasticsearch_opendistro_roles_mapping" "s3_archiver" {
   ]
 
   depends_on = [
-    aws_elasticsearch_domain.es
+    aws_elasticsearch_domain.os
   ]
 }

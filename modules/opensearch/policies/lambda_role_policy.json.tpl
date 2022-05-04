@@ -7,7 +7,7 @@
         "iam:PassRole"
       ],
       "Resource": [
-        "${es_role_arn}"
+        "${os_role_arn}"
       ]
     },
     {
@@ -16,7 +16,7 @@
         "es:ESHttp*"
       ],
       "Resource": [
-        "${es_domain_arn}"
+        "${os_domain_arn}"
       ]
     },
     {
