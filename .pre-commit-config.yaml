@@ -11,7 +11,6 @@ repos:
       - id: pretty-format-json
         args:
           - '--no-sort-keys'
-          - "--autofix"
       - id: mixed-line-ending
 
   - repo: git://github.com/antonbabenko/pre-commit-terraform
