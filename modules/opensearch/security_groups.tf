@@ -49,3 +49,27 @@ resource "aws_security_group_rule" "snapshot_lambda_ingress" {
   security_group_id        = data.aws_security_group.es.id
   source_security_group_id = data.aws_security_group.snapshot_lambda.id
 }
+
+resource "aws_security_group_rule" "allow_secret_rotation_lambda_ingress_from_endpoint" {
+  description = "Allow traffic from our VPCE into secrets rotation lambda"
+
+  from_port = 443
+  to_port   = 443
+  protocol  = "tcp"
+  type      = "ingress"
+
+  security_group_id        = data.aws_security_group.lambda_egress_to_secretsmanager_vpce.id
+  source_security_group_id = data.aws_security_group.secretsmanager_vpce.id
+}
+
+resource "aws_security_group_rule" "allow_secret_rotation_lambda_egress_to_endpoint" {
+  description = "Allow traffic from secrets rotation lambda out to VPCE"
+
+  from_port = 443
+  to_port   = 443
+  protocol  = "tcp"
+  type      = "egress"
+
+  security_group_id        = data.aws_security_group.secretsmanager_vpce.id
+  source_security_group_id = data.aws_security_group.lambda_egress_to_secretsmanager_vpce.id
+}

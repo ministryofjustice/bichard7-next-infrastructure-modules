@@ -59,3 +59,40 @@ data "template_file" "snapshot_s3_lambda_policy" {
     )
   }
 }
+
+data "archive_file" "secrets_rotation_lambda" {
+  output_path = "/tmp/secrets_rotation.zip"
+  type        = "zip"
+
+  source {
+    content = templatefile("${path.module}/functions/secrets_rotation.py.tpl", {
+      os_username              = "bichard",
+      opensearch_custom_domain = aws_elasticsearch_domain.es.domain_endpoint_options.*.custom_endpoint[0]
+    })
+    filename = "secrets_rotation.py"
+  }
+}
+
+data "aws_iam_policy" "write_to_cloudwatch" {
+  name = "bichard-7-${lower(var.tags["Environment"])}-lambda-write-cloudwatch-logs"
+}
+
+data "aws_iam_policy" "lambda_decrypt_env_vars" {
+  name = "bichard-7-${lower(var.tags["Environment"])}-lambda-decrypt-env-vars-policy"
+}
+
+data "aws_iam_policy" "manage_ec2_network_interfaces" {
+  name = "bichard-7-${lower(var.tags["Environment"])}-lambda-manage-ec2-network-interfaces"
+}
+
+data "aws_security_group" "secretsmanager_vpce" {
+  name = "cjse-${lower(var.tags["Environment"])}-bichard-7-secretsmanager-vpce"
+}
+
+data "aws_security_group" "lambda_egress_to_secretsmanager_vpce" {
+  name = "cjse-${lower(var.tags["Environment"])}-bichard-7-secrets-rotation-to-secrets-vpce"
+}
+
+data "aws_security_group" "resource_to_vpc" {
+  name = "cjse-${lower(var.tags["Environment"])}-bichard-7-resource-to-vpc"
+}

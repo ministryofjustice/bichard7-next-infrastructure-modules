@@ -28,9 +28,43 @@ resource "aws_ssm_parameter" "es_password" {
   tags = var.tags
 }
 
+resource "aws_kms_key" "secret_encryption_key" {
+  description             = "${var.name} secret key"
+  deletion_window_in_days = 10
+  enable_key_rotation     = true
+
+  tags = var.tags
+}
+
+resource "aws_kms_alias" "secret" {
+  target_key_id = aws_kms_key.secret_encryption_key.id
+  name          = "alias/${var.name}-os-secret"
+}
+
+resource "aws_secretsmanager_secret" "os_password" {
+  name       = "${var.name}-opensearch-password"
+  kms_key_id = aws_kms_key.secret_encryption_key.id
+
+  tags = var.tags
+}
+
+resource "aws_secretsmanager_secret_version" "os_password" {
+  secret_id     = aws_secretsmanager_secret.os_password.id
+  secret_string = random_password.es.result
+}
+
+data "aws_secretsmanager_secret_version" "os_password" {
+  secret_id = aws_secretsmanager_secret.os_password.id
+
+  depends_on = [
+    aws_secretsmanager_secret.os_password,
+    aws_secretsmanager_secret_version.os_password
+  ]
+}
+
 resource "aws_elasticsearch_domain" "es" {
   domain_name           = local.domain_name
-  elasticsearch_version = "OpenSearch_1.0"
+  elasticsearch_version = "OpenSearch_1.2"
 
   access_policies = data.template_file.elasticsearch_access_policy.rendered
 
