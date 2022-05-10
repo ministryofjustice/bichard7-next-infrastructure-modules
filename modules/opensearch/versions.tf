@@ -18,7 +18,7 @@ terraform {
     }
     elasticsearch = {
       source  = "phillbaker/elasticsearch"
-      version = "= 2.0.0-beta.4"
+      version = "= 2.0.1"
     }
     null = {
       source  = "hashicorp/null"
