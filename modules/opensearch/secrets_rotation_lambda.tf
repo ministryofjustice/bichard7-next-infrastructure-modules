@@ -37,7 +37,7 @@ resource "aws_iam_policy" "allow_lambda_secretsmanager" {
 }
 
 resource "aws_iam_role" "iam_for_secrets_rotation_lambda" {
-  name = "iam_for_lambda"
+  name = "bichard-7-secrets-rotation-lambda"
 
   assume_role_policy = <<EOF
 {
