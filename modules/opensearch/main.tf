@@ -53,15 +53,6 @@ resource "aws_secretsmanager_secret_version" "os_password" {
   secret_string = random_password.es.result
 }
 
-data "aws_secretsmanager_secret_version" "os_password" {
-  secret_id = aws_secretsmanager_secret.os_password.id
-
-  depends_on = [
-    aws_secretsmanager_secret.os_password,
-    aws_secretsmanager_secret_version.os_password
-  ]
-}
-
 resource "aws_elasticsearch_domain" "es" {
   domain_name           = local.domain_name
   elasticsearch_version = "OpenSearch_1.2"
