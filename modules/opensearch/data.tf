@@ -96,3 +96,12 @@ data "aws_security_group" "lambda_egress_to_secretsmanager_vpce" {
 data "aws_security_group" "resource_to_vpc" {
   name = "cjse-${lower(var.tags["Environment"])}-bichard-7-resource-to-vpc"
 }
+
+data "aws_secretsmanager_secret_version" "os_password" {
+  secret_id = aws_secretsmanager_secret.os_password.id
+
+  depends_on = [
+    aws_secretsmanager_secret.os_password,
+    aws_secretsmanager_secret_version.os_password
+  ]
+}
