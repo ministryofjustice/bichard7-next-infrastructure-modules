@@ -105,3 +105,7 @@ data "aws_secretsmanager_secret_version" "os_password" {
     aws_secretsmanager_secret_version.os_password
   ]
 }
+
+data "aws_ssm_parameter" "es_password" {
+  name = "/${var.name}/es/master/password"
+}
