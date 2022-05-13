@@ -1,11 +1,11 @@
-resource "aws_secretsmanager_secret_rotation" "os_password" {
-  secret_id           = aws_secretsmanager_secret.os_password.id
-  rotation_lambda_arn = aws_lambda_function.secrets_rotation_lambda.arn
+# resource "aws_secretsmanager_secret_rotation" "os_password" {
+#   secret_id           = aws_secretsmanager_secret.os_password.id
+#   rotation_lambda_arn = aws_lambda_function.secrets_rotation_lambda.arn
 
-  rotation_rules {
-    automatically_after_days = 30
-  }
-}
+#   rotation_rules {
+#     automatically_after_days = 30
+#   }
+# }
 #
 # tfsec:ignore:aws-iam-no-policy-wildcards
 resource "aws_iam_policy" "allow_lambda_secretsmanager" {
