@@ -22,7 +22,7 @@ resource "aws_ssm_parameter" "es_user" {
 resource "aws_ssm_parameter" "es_password" {
   name      = "/${var.name}/es/master/password"
   type      = "SecureString"
-  value     = random_password.es.result
+  value     = nonsensitive(data.aws_secretsmanager_secret_version.os_password.secret_string)
   overwrite = true
 
   tags = var.tags
