@@ -295,6 +295,18 @@ data "aws_ssm_parameter" "es_password" {
   name = "/cjse-${var.tags["Environment"]}-bichard-7/es/master/password"
 }
 
+data "aws_secretsmanager_secret" "os_password" {
+  name = "cjse-${terraform.workspace}-bichard-7-opensearch-password"
+}
+
+data "aws_secretsmanager_secret_version" "os_password" {
+  secret_id = data.aws_secretsmanager_secret.os_password.id
+}
+
+data "aws_kms_key" "secret_encryption_key" {
+  key_id = "alias/cjse-${terraform.workspace}-bichard-7-os-secret"
+}
+
 data "template_file" "logstash" {
   template = file("${path.module}/templates/logstash.json.tpl")
 
@@ -302,11 +314,11 @@ data "template_file" "logstash" {
     logstash_image     = var.logstash_image
     application_cpu    = var.fargate_cpu
     application_memory = var.fargate_memory
-    elasticsearch_host = var.elasticsearch_host
-    es_username        = data.aws_ssm_parameter.es_username.value
+    opensearch_host    = var.elasticsearch_host
+    os_username        = data.aws_ssm_parameter.es_username.value
     environment        = var.tags["Environment"]
     log_level          = "debug"
-    es_password_arn    = data.aws_ssm_parameter.es_password.arn
+    os_password_arn    = data.aws_secretsmanager_secret_version.os_password.arn
 
     log_group                  = data.aws_cloudwatch_log_group.logstash.name
     exporter_log_stream_prefix = "logstash"
