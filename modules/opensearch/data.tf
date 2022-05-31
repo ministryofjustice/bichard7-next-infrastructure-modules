@@ -54,7 +54,6 @@ data "template_file" "snapshot_s3_lambda_policy" {
     ssm_params = jsonencode(
       [
         aws_ssm_parameter.es_user.arn,
-        aws_ssm_parameter.es_password.arn
       ]
     )
   }
@@ -106,8 +105,4 @@ data "aws_secretsmanager_secret_version" "os_password" {
     aws_secretsmanager_secret.os_password,
     aws_secretsmanager_secret_version.os_password
   ]
-}
-
-data "aws_ssm_parameter" "es_password" {
-  name = "/${var.name}/es/master/password"
 }

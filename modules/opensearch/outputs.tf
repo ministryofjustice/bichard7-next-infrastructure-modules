@@ -18,9 +18,3 @@ output "elasticsearch_user_ssm_name" {
   value       = aws_ssm_parameter.es_user.name
   sensitive   = true
 }
-
-output "elasticsearch_password_ssm_name" {
-  description = "The name of our ssm password parameter"
-  value       = aws_ssm_parameter.es_password.name
-  sensitive   = true
-}

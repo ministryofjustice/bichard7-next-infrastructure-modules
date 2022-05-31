@@ -20,7 +20,6 @@ data "template_file" "allow_ssm" {
       aws_ssm_parameter.grafana_db_password.arn,
       aws_ssm_parameter.grafana_admin_password.arn,
       aws_ssm_parameter.grafana_secret_key.arn,
-      data.aws_ssm_parameter.es_password.arn,
       data.aws_ssm_parameter.es_username.arn
       ]
     )
@@ -289,10 +288,6 @@ data "template_file" "alert_webhook_source" {
 data "aws_ssm_parameter" "es_username" {
   name            = "/cjse-${var.tags["Environment"]}-bichard-7/es/master/username"
   with_decryption = true
-}
-
-data "aws_ssm_parameter" "es_password" {
-  name = "/cjse-${var.tags["Environment"]}-bichard-7/es/master/password"
 }
 
 data "aws_secretsmanager_secret" "os_password" {
