@@ -147,10 +147,13 @@ def set_secret(service_client, arn, token):
         payload = json.dumps({
             "password": newPassword["SecretString"]
         })
-        response = http.request('PUT', url, headers=merged_headers, body=payload)
+        response = http.request(
+            'PUT', url, headers=merged_headers, body=payload)
     except urllib3.exceptions.HTTPError as e:
         return "Error: " + str(e.reason)
     return response
+
+
 def test_secret(service_client, arn, token):
     """Test the secret
     This method should validate that the AWSPENDING secret works in the service that the secret belongs to. For example, if the secret
@@ -173,6 +176,8 @@ def test_secret(service_client, arn, token):
     except urllib3.exceptions.HTTPError as e:
         return "Error: " + str(e.reason)
     return response
+
+
 def finish_secret(service_client, arn, token):
     """Finish the secret
     This method finalizes the rotation process by marking the secret version passed in as the AWSCURRENT secret.
@@ -200,3 +205,8 @@ def finish_secret(service_client, arn, token):
         SecretId=arn, VersionStage="AWSCURRENT", MoveToVersionId=token, RemoveFromVersionId=current_version)
     logger.info(
         "finishSecret: Successfully set AWSCURRENT stage to version %s for secret %s." % (token, arn))
+    logger.info(
+        "rotating logstash containers to use new password")
+    ecs_client = boto3.client('ecs')
+    ecs_client.update_service(
+        cluster="${logstash_cluster}", service="${logstash_service}", forceNewDeployment=True)

@@ -108,6 +108,7 @@ $ARTIFACT_BUCKET=xxx aws-vault exec your-shared-credentials -- ./scripts/upload_
 | [aws_security_group.resource_to_vpc](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/security_group) | data source |
 | [aws_security_group.secretsmanager_vpce](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/security_group) | data source |
 | [aws_security_group.snapshot_lambda](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/security_group) | data source |
+| [aws_ssm_parameter.es_password](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/ssm_parameter) | data source |
 | [template_file.elasticsearch_access_policy](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) | data source |
 | [template_file.opensearch_ism_prune_policy](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) | data source |
 | [template_file.snapshot_s3_lambda_policy](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) | data source |

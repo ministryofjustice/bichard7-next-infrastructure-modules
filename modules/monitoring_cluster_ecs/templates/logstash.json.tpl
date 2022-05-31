@@ -29,11 +29,11 @@
       },
       {
         "name": "CJSE_LOGSTASH_ES_DOMAIN",
-        "value": "https://${elasticsearch_host}:443"
+        "value": "https://${opensearch_host}:443"
       },
       {
         "name": "CJSE_LOGSTASH_ES_USERNAME",
-        "value": "${es_username}"
+        "value": "${os_username}"
       },
       {
         "name": "CJSE_LOGSTASH_LOGLEVEL",
@@ -44,7 +44,7 @@
     "secrets": [
       {
         "name": "CJSE_LOGSTASH_ES_PASSWORD",
-        "valueFrom": "${es_password_arn}"
+        "valueFrom": "${os_password_arn}"
       }
     ],
     "logConfiguration": {

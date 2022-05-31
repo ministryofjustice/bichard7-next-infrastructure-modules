@@ -68,6 +68,8 @@ data "archive_file" "secrets_rotation_lambda" {
     content = templatefile("${path.module}/functions/secrets_rotation.py.tpl", {
       os_username              = "bichard",
       opensearch_custom_domain = aws_elasticsearch_domain.es.domain_endpoint_options.*.custom_endpoint[0]
+      logstash_cluster         = "cjse-${terraform.workspace}-bichard-7-monitoring"
+      logstash_service         = "cjse-${terraform.workspace}-bichard-7-logstash"
     })
     filename = "secrets_rotation.py"
   }

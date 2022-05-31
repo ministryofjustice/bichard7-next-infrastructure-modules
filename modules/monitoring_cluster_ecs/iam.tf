@@ -66,3 +66,37 @@ resource "aws_iam_role_policy" "allow_prometheus_notifications_kms_access" {
   policy = data.template_file.allow_notifications_kms_access.rendered
   role   = aws_iam_role.prometheus_task_role.id
 }
+
+# tfsec:ignore:aws-iam-no-policy-wildcards
+resource "aws_iam_policy" "allow_ecs_task_secretsmanager" {
+  name = "allow_ecs_task_secretsmanager"
+
+  policy = jsonencode({
+    "Version" : "2012-10-17",
+    "Statement" : [
+      {
+        "Effect" : "Allow",
+        "Action" : [
+          "secretsmanager:*",
+          "kms:*"
+        ],
+        "Resource" : [data.aws_secretsmanager_secret.os_password.arn, data.aws_kms_key.secret_encryption_key.arn]
+      },
+      {
+        "Effect" : "Allow",
+        "Action" : [
+          "secretsmanager:GetRandomPassword"
+        ],
+        "Resource" : "*"
+      }
+
+    ]
+  })
+
+  tags = var.tags
+}
+
+resource "aws_iam_role_policy_attachment" "prometheus_allow_secrets_manager" {
+  role       = aws_iam_role.prometheus_task_role.id
+  policy_arn = aws_iam_policy.allow_ecs_task_secretsmanager.arn
+}

@@ -23,12 +23,12 @@ resource "aws_alb" "alb" {
 resource "aws_lb_target_group" "alb_target_group" {
   count = (local.is_sticky == true) ? 0 : 1
 
-  name_prefix            = var.alb_name_prefix
-  port                   = var.alb_port
-  protocol               = var.alb_protocol
-  vpc_id                 = var.vpc_id
-  target_type            = var.alb_target_type
-  slow_start             = var.alb_slow_start
+  name_prefix = var.alb_name_prefix
+  port        = var.alb_port
+  protocol    = var.alb_protocol
+  vpc_id      = var.vpc_id
+  target_type = var.alb_target_type
+  slow_start  = var.alb_slow_start
 
   health_check {
     healthy_threshold   = lookup(var.alb_health_check, "healthy_threshold", null)
@@ -51,12 +51,12 @@ resource "aws_lb_target_group" "alb_target_group" {
 resource "aws_lb_target_group" "sticky_alb_target_group" {
   count = (local.is_sticky == true) ? 1 : 0
 
-  name_prefix            = var.alb_name_prefix
-  port                   = var.alb_port
-  protocol               = var.alb_protocol
-  vpc_id                 = var.vpc_id
-  target_type            = var.alb_target_type
-  slow_start             = var.alb_slow_start
+  name_prefix = var.alb_name_prefix
+  port        = var.alb_port
+  protocol    = var.alb_protocol
+  vpc_id      = var.vpc_id
+  target_type = var.alb_target_type
+  slow_start  = var.alb_slow_start
 
   health_check {
     healthy_threshold   = lookup(var.alb_health_check, "healthy_threshold", null)

@@ -53,6 +53,7 @@ No modules.
 | [aws_ecs_task_definition.prometheus_blackbox_exporter_tasks](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecs_task_definition) | resource |
 | [aws_ecs_task_definition.prometheus_cloudwatch_exporter_tasks](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecs_task_definition) | resource |
 | [aws_ecs_task_definition.prometheus_tasks](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecs_task_definition) | resource |
+| [aws_iam_policy.allow_ecs_task_secretsmanager](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_policy) | resource |
 | [aws_iam_policy.prometheus_alerts_logging](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_policy) | resource |
 | [aws_iam_policy.prometheus_allow_ecr_access](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_policy) | resource |
 | [aws_iam_policy.prometheus_allow_sns_publish](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_policy) | resource |
@@ -66,6 +67,7 @@ No modules.
 | [aws_iam_role_policy_attachment.attach_ecs_code_deploy_role_for_ecs](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.attach_ecs_task_execution](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.prometheus_allow_ecr_attachment](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_iam_role_policy_attachment.prometheus_allow_secrets_manager](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.prometheus_allow_sns_publish](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.prometheus_cloudwatch_ssm_attachment](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.scanning_lambda_logs](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy_attachment) | resource |
@@ -191,6 +193,7 @@ No modules.
 | [aws_cloudwatch_log_group.grafana](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/cloudwatch_log_group) | data source |
 | [aws_cloudwatch_log_group.logstash](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/cloudwatch_log_group) | data source |
 | [aws_iam_role.admin_role](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/iam_role) | data source |
+| [aws_kms_key.secret_encryption_key](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/kms_key) | data source |
 | [aws_lb.audit_logging](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/lb) | data source |
 | [aws_lb.beanconnect](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/lb) | data source |
 | [aws_lb.user_service](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/lb) | data source |
@@ -200,6 +203,8 @@ No modules.
 | [aws_lb_target_group.user_service](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/lb_target_group) | data source |
 | [aws_region.current](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/region) | data source |
 | [aws_route53_zone.cjse_dot_org](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/route53_zone) | data source |
+| [aws_secretsmanager_secret.os_password](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/secretsmanager_secret) | data source |
+| [aws_secretsmanager_secret_version.os_password](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/secretsmanager_secret_version) | data source |
 | [aws_security_group.audit_logging_portal_alb](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/security_group) | data source |
 | [aws_security_group.bichard7_alb_backend](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/security_group) | data source |
 | [aws_security_group.bichard_alb_web](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/security_group) | data source |
