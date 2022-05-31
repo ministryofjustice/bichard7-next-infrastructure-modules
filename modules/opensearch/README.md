@@ -85,7 +85,6 @@ $ARTIFACT_BUCKET=xxx aws-vault exec your-shared-credentials -- ./scripts/upload_
 | [aws_security_group_rule.elasticsearch_ingress_from_vpc](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.snapshot_lambda_egress](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.snapshot_lambda_ingress](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_ssm_parameter.es_password](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ssm_parameter) | resource |
 | [aws_ssm_parameter.es_user](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ssm_parameter) | resource |
 | [elasticsearch_kibana_object.cloudwatch_index_pattern](https://registry.terraform.io/providers/phillbaker/elasticsearch/2.0.1/docs/resources/kibana_object) | resource |
 | [elasticsearch_opendistro_ism_policy.prune_indices_after_n_days](https://registry.terraform.io/providers/phillbaker/elasticsearch/2.0.1/docs/resources/opendistro_ism_policy) | resource |
@@ -108,7 +107,6 @@ $ARTIFACT_BUCKET=xxx aws-vault exec your-shared-credentials -- ./scripts/upload_
 | [aws_security_group.resource_to_vpc](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/security_group) | data source |
 | [aws_security_group.secretsmanager_vpce](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/security_group) | data source |
 | [aws_security_group.snapshot_lambda](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/security_group) | data source |
-| [aws_ssm_parameter.es_password](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/ssm_parameter) | data source |
 | [template_file.elasticsearch_access_policy](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) | data source |
 | [template_file.opensearch_ism_prune_policy](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) | data source |
 | [template_file.snapshot_s3_lambda_policy](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) | data source |
@@ -140,7 +138,6 @@ $ARTIFACT_BUCKET=xxx aws-vault exec your-shared-credentials -- ./scripts/upload_
 | Name | Description |
 |------|-------------|
 | <a name="output_elasticsearch_fqdn"></a> [elasticsearch\_fqdn](#output\_elasticsearch\_fqdn) | The public fqdn for ElasticSearch |
-| <a name="output_elasticsearch_password_ssm_name"></a> [elasticsearch\_password\_ssm\_name](#output\_elasticsearch\_password\_ssm\_name) | The name of our ssm password parameter |
 | <a name="output_elasticsearch_user_ssm_name"></a> [elasticsearch\_user\_ssm\_name](#output\_elasticsearch\_user\_ssm\_name) | The name of our ssm user parameter |
 | <a name="output_elk_endpoint"></a> [elk\_endpoint](#output\_elk\_endpoint) | The internal fqdn for ElasticSearch |
 | <a name="output_elk_kibana_endpoint"></a> [elk\_kibana\_endpoint](#output\_elk\_kibana\_endpoint) | The internal fqdn for Kibana |

@@ -19,15 +19,6 @@ resource "aws_ssm_parameter" "es_user" {
   tags = var.tags
 }
 
-resource "aws_ssm_parameter" "es_password" {
-  name      = "/${var.name}/es/master/password"
-  type      = "SecureString"
-  value     = nonsensitive(data.aws_secretsmanager_secret_version.os_password.secret_string)
-  overwrite = true
-
-  tags = var.tags
-}
-
 resource "aws_kms_key" "secret_encryption_key" {
   description             = "${var.name} secret key"
   deletion_window_in_days = 10
