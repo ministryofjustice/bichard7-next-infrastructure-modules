@@ -68,16 +68,6 @@ output "amazon_linux_2_docker_image" {
   value       = "${aws_ecr_repository.amazon_linux_2.repository_url}@${data.docker_registry_image.amazon_linux_2.sha256_digest}"
 }
 
-output "sonarqube_8_8_docker_image" {
-  description = "The image hash for our sonarqube"
-  value       = "${aws_ecr_repository.sonarqube_8_8.repository_url}@${data.docker_registry_image.sonarqube_8_8.sha256_digest}"
-}
-
-output "sonarqube_8_8_repository_arn" {
-  description = "The repository arn for our sonarqube image"
-  value       = aws_ecr_repository.sonarqube_8_8.arn
-}
-
 output "liquibase_docker_image" {
   description = "The image hash for liquibase"
   value       = "${aws_ecr_repository.liquibase.repository_url}@${data.docker_registry_image.liquibase.sha256_digest}"
