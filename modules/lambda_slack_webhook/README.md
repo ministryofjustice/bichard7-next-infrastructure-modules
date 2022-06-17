@@ -31,6 +31,7 @@ No modules.
 | [aws_sns_topic_subscription.slack_webhook_subscription](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/sns_topic_subscription) | resource |
 | [archive_file.slack_webhook_notification](https://registry.terraform.io/providers/hashicorp/archive/latest/docs/data-sources/file) | data source |
 | [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/caller_identity) | data source |
+| [aws_iam_policy.allow_lambda_to_log](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/iam_policy) | data source |
 | [aws_region.current](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/region) | data source |
 | [aws_ssm_parameter.slack_webhook](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/ssm_parameter) | data source |
 

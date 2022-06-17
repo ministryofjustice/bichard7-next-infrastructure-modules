@@ -4,8 +4,12 @@ data "aws_region" "current" {}
 
 data "aws_ssm_parameter" "slack_webhook" {
   count           = local.is_production ? 1 : 0
-  name            = "/lambda/slack/webhook"
+  name            = "/lambda/slack/cloudwatch_alarms/webhook"
   with_decryption = true
+}
+
+data "aws_iam_policy" "allow_lambda_to_log" {
+  name = "AWSLambdaBasicExecutionRole"
 }
 
 data "archive_file" "slack_webhook_notification" {
