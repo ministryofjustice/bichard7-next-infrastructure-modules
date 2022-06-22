@@ -40,6 +40,8 @@ resource "aws_iam_role" "slack_webhook_notification" {
   name               = "AllowSlackWebhookNotifications"
   assume_role_policy = file("${path.module}/policies/allow_slack_webhook_notification.json")
 
+  managed_policy_arns = [data.aws_iam_policy.allow_lambda_to_log.arn]
+
   tags = var.tags
 }
 
