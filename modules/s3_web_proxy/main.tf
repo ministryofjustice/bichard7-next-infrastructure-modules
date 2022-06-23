@@ -6,7 +6,7 @@ resource "aws_cloudwatch_log_group" "ecs_log_group" {
 }
 
 module "s3_web_proxy_ecs_alb" {
-  source = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster_alb"
+  source = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster_alb?ref=upgrade-aws-provider"
   alb_security_groups = [
     aws_security_group.s3_web_proxy_alb.id
   ]
@@ -70,7 +70,7 @@ module "s3_web_proxy_ecs_alb" {
 }
 
 module "s3_web_proxy_ecs_service" {
-  source       = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster"
+  source       = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster?ref=upgrade-aws-provider"
   cluster_name = local.name
   ecr_repository_arns = [
     var.s3_web_proxy_arn

@@ -14,7 +14,7 @@ resource "aws_ssm_parameter" "nginx_auth_proxy_deploy_tag" {
 }
 
 //module "nginx_auth_proxy_alb" {
-//  source = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster_alb"
+//  source = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster_alb?ref=upgrade-aws-provider"
 //
 //  alb_security_groups = [
 //    data.aws_security_group.nginx_auth_proxy_alb.id
@@ -70,7 +70,7 @@ resource "aws_ssm_parameter" "nginx_auth_proxy_deploy_tag" {
 //}
 
 module "nginx_auth_proxy_ecs" {
-  source = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster"
+  source = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster?ref=upgrade-aws-provider"
 
   ecr_repository_arns = [
     var.nginx_auth_proxy_ecs_arn,

@@ -14,7 +14,7 @@ resource "aws_ssm_parameter" "user_service_deploy_tag" {
 }
 
 module "user_service_alb" {
-  source = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster_alb"
+  source = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster_alb?ref=upgrade-aws-provider"
 
   alb_security_groups = [
     data.aws_security_group.user_service_alb.id
@@ -78,7 +78,7 @@ module "user_service_alb" {
 }
 
 module "user_service_ecs" {
-  source = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster"
+  source = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster?ref=upgrade-aws-provider"
 
   ecr_repository_arns = [
     var.user_service_ecs_arn,

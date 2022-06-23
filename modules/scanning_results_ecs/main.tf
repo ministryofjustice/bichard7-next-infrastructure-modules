@@ -6,7 +6,7 @@ resource "aws_cloudwatch_log_group" "ecs_log_group" {
 }
 
 module "scanning_portal_ecs_alb" {
-  source = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster_alb"
+  source = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster_alb?ref=upgrade-aws-provider"
   alb_security_groups = [
     aws_security_group.scanning_portal_alb.id
   ]
@@ -70,7 +70,7 @@ module "scanning_portal_ecs_alb" {
 }
 
 module "scanning_portal_ecs_service" {
-  source       = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster"
+  source       = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster?ref=upgrade-aws-provider"
   cluster_name = local.name
   ecr_repository_arns = [
     data.aws_ecr_repository.scanning_portal.arn

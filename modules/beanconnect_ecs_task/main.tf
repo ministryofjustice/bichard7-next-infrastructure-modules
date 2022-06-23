@@ -22,7 +22,7 @@ resource "aws_ssm_parameter" "beanconnect_password" {
 }
 
 module "beanconnect_ecs_alb" {
-  source = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster_alb"
+  source = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster_alb?ref=upgrade-aws-provider"
   alb_listener = [
     {
       port     = 31004
@@ -47,7 +47,7 @@ module "beanconnect_ecs_alb" {
 }
 
 module "beanconnect_ecs_service" {
-  source = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster"
+  source = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster?ref=upgrade-aws-provider"
 
   cluster_name             = local.name
   ecr_repository_arns      = [var.beanconnect_repo_arn]

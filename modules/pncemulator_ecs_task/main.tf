@@ -1,5 +1,5 @@
 module "pncemulator_ecs_alb" {
-  source              = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster_alb"
+  source              = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster_alb?ref=upgrade-aws-provider"
   load_balancer_type  = "network"
   service_subnets     = var.service_subnets
   alb_name            = local.alb_name
@@ -29,7 +29,7 @@ module "pncemulator_ecs_alb" {
 }
 
 module "pncemulator_ecs_service" {
-  source                   = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster"
+  source                   = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster?ref=upgrade-aws-provider"
   cluster_name             = local.name
   ecr_repository_arns      = [var.pncemulator_repo_arn]
   log_group_name           = var.pncemulator_log_group.name

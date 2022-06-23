@@ -61,7 +61,7 @@ resource "aws_cloudwatch_log_group" "postfix_log_group" {
 }
 
 module "postfix_nlb" {
-  source             = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster_alb"
+  source             = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster_alb?ref=upgrade-aws-provider"
   load_balancer_type = "network"
   vpc_id             = module.postfix_vpc.vpc_id
 
@@ -125,7 +125,7 @@ resource "aws_alb_listener" "postfix_ecs_smtps" {
 }
 
 module "postfix_ecs_cluster" {
-  source = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster"
+  source = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster?ref=upgrade-aws-provider"
 
   cluster_name   = local.cluster_name
   fargate_memory = local.memory_units

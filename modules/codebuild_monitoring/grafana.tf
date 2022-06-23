@@ -1,5 +1,5 @@
 module "codebuild_monitoring_ecs_cluster" {
-  source       = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster"
+  source       = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster?ref=upgrade-aws-provider"
   cluster_name = "codebuild-monitoring"
   ecr_repository_arns = [
     var.grafana_repository_arn
@@ -37,7 +37,7 @@ module "codebuild_monitoring_ecs_cluster" {
 }
 
 module "codebuild_monitoring_ecs_alb" {
-  source              = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster_alb"
+  source              = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster_alb?ref=upgrade-aws-provider"
   alb_name            = local.grafana_alb_name
   alb_name_prefix     = local.grafana_alb_name_prefix
   service_subnets     = var.service_subnets

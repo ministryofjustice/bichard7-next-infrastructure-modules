@@ -39,7 +39,7 @@ resource "aws_s3_bucket_public_access_block" "static_file_bucket" {
 }
 
 module "static_file_service" {
-  source = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/s3_web_proxy"
+  source = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/s3_web_proxy?ref=upgrade-aws-provider"
 
   fargate_cpu         = 2048
   fargate_memory      = 4096
