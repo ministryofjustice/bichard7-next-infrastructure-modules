@@ -8,14 +8,14 @@ Module to allow groups to assume roles on child accounts
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | = 3.72.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | = 3.75.2 |
 | <a name="requirement_template"></a> [template](#requirement\_template) | = 2.2.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.72.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.75.2 |
 | <a name="provider_template"></a> [template](#provider\_template) | 2.2.0 |
 
 ## Modules
@@ -26,15 +26,15 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [aws_iam_group_policy_attachment.administrator_access_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_group_policy_attachment) | resource |
-| [aws_iam_group_policy_attachment.aws_nuke_access_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_group_policy_attachment) | resource |
-| [aws_iam_group_policy_attachment.ci_access_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_group_policy_attachment) | resource |
-| [aws_iam_group_policy_attachment.readonly_access_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_group_policy_attachment) | resource |
-| [aws_iam_policy.allow_assume_administrator_access_role](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_policy) | resource |
-| [aws_iam_policy.allow_assume_aws_nuke_access_role](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_policy) | resource |
-| [aws_iam_policy.allow_assume_ci_access_role](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_policy) | resource |
-| [aws_iam_policy.allow_assume_readonly_access_role](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_policy) | resource |
-| [aws_iam_group.nuke_user_group](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/iam_group) | data source |
+| [aws_iam_group_policy_attachment.administrator_access_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_group_policy_attachment) | resource |
+| [aws_iam_group_policy_attachment.aws_nuke_access_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_group_policy_attachment) | resource |
+| [aws_iam_group_policy_attachment.ci_access_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_group_policy_attachment) | resource |
+| [aws_iam_group_policy_attachment.readonly_access_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_group_policy_attachment) | resource |
+| [aws_iam_policy.allow_assume_administrator_access_role](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_policy) | resource |
+| [aws_iam_policy.allow_assume_aws_nuke_access_role](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_policy) | resource |
+| [aws_iam_policy.allow_assume_ci_access_role](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_policy) | resource |
+| [aws_iam_policy.allow_assume_readonly_access_role](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_policy) | resource |
+| [aws_iam_group.nuke_user_group](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/iam_group) | data source |
 | [template_file.allow_assume_administrator_access](https://registry.terraform.io/providers/hashicorp/template/2.2.0/docs/data-sources/file) | data source |
 | [template_file.allow_assume_aws_nuke_access](https://registry.terraform.io/providers/hashicorp/template/2.2.0/docs/data-sources/file) | data source |
 | [template_file.allow_assume_ci_access](https://registry.terraform.io/providers/hashicorp/template/2.2.0/docs/data-sources/file) | data source |

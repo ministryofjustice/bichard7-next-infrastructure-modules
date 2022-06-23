@@ -9,7 +9,7 @@ be overridden. If the notifications variable is empty we won't create the notifi
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | = 3.72.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | = 3.75.2 |
 | <a name="requirement_local"></a> [local](#requirement\_local) | = 2.0.0 |
 | <a name="requirement_template"></a> [template](#requirement\_template) | = 2.2.0 |
 
@@ -17,7 +17,7 @@ be overridden. If the notifications variable is empty we won't create the notifi
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.72.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.75.2 |
 | <a name="provider_template"></a> [template](#provider\_template) | 2.2.0 |
 
 ## Modules
@@ -30,16 +30,16 @@ be overridden. If the notifications variable is empty we won't create the notifi
 
 | Name | Type |
 |------|------|
-| [aws_codebuild_project.cb_project](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/codebuild_project) | resource |
-| [aws_iam_policy.codebuild_allow_ecr](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_policy) | resource |
-| [aws_iam_role.service_role](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role) | resource |
-| [aws_iam_role_policy.codebuild_role_extra_policies](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy) | resource |
-| [aws_iam_role_policy_attachment.codebuild_allow_ecr](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy_attachment) | resource |
-| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/caller_identity) | data source |
-| [aws_iam_group.ci_user_group](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/iam_group) | data source |
-| [aws_region.current](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/region) | data source |
-| [aws_ssm_parameter.access_key_id](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/ssm_parameter) | data source |
-| [aws_ssm_parameter.secret_access_key](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/ssm_parameter) | data source |
+| [aws_codebuild_project.cb_project](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/codebuild_project) | resource |
+| [aws_iam_policy.codebuild_allow_ecr](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_policy) | resource |
+| [aws_iam_role.service_role](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_role) | resource |
+| [aws_iam_role_policy.codebuild_role_extra_policies](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_role_policy) | resource |
+| [aws_iam_role_policy_attachment.codebuild_allow_ecr](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/caller_identity) | data source |
+| [aws_iam_group.ci_user_group](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/iam_group) | data source |
+| [aws_region.current](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/region) | data source |
+| [aws_ssm_parameter.access_key_id](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/ssm_parameter) | data source |
+| [aws_ssm_parameter.secret_access_key](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/ssm_parameter) | data source |
 | [template_file.allow_resources](https://registry.terraform.io/providers/hashicorp/template/2.2.0/docs/data-sources/file) | data source |
 | [template_file.codebuild_policy](https://registry.terraform.io/providers/hashicorp/template/2.2.0/docs/data-sources/file) | data source |
 

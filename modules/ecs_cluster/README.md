@@ -8,7 +8,7 @@ and this module can be used to create tasks for it
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | = 3.72.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | = 3.75.2 |
 | <a name="requirement_local"></a> [local](#requirement\_local) | = 2.0.0 |
 | <a name="requirement_template"></a> [template](#requirement\_template) | = 2.2.0 |
 
@@ -16,7 +16,7 @@ and this module can be used to create tasks for it
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.72.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.75.2 |
 | <a name="provider_template"></a> [template](#provider\_template) | 2.2.0 |
 
 ## Modules
@@ -27,27 +27,27 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [aws_cloudwatch_log_stream.log_stream](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/cloudwatch_log_stream) | resource |
-| [aws_ecs_cluster.cluster](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecs_cluster) | resource |
-| [aws_ecs_service.ecs_service](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecs_service) | resource |
-| [aws_ecs_task_definition.task_definition](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecs_task_definition) | resource |
-| [aws_iam_role.ecs_service_role](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role) | resource |
-| [aws_iam_role_policy.allow_admin_role_cmk_access](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy) | resource |
-| [aws_iam_role_policy.allow_ecr](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy) | resource |
-| [aws_iam_role_policy.allow_kms](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy) | resource |
-| [aws_iam_role_policy.allow_ssm](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy) | resource |
-| [aws_iam_role_policy.allow_ssm_messages](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy) | resource |
-| [aws_iam_role_policy.allow_ssm_messages_external_kms](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy) | resource |
-| [aws_iam_role_policy_attachment.attach_ecs_code_deploy_role_for_ecs](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy_attachment) | resource |
-| [aws_iam_role_policy_attachment.attach_ecs_task_execution](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy_attachment) | resource |
-| [aws_kms_alias.cluster_logs_encryption_key](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/kms_alias) | resource |
-| [aws_kms_key.cluster_logs_encryption_key](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/kms_key) | resource |
-| [aws_availability_zones.this](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/availability_zones) | data source |
-| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/caller_identity) | data source |
-| [aws_ecs_cluster.cluster](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/ecs_cluster) | data source |
-| [aws_iam_role.admin_role](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/iam_role) | data source |
-| [aws_region.current](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/region) | data source |
-| [aws_security_group.cluster_sg](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/security_group) | data source |
+| [aws_cloudwatch_log_stream.log_stream](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/cloudwatch_log_stream) | resource |
+| [aws_ecs_cluster.cluster](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ecs_cluster) | resource |
+| [aws_ecs_service.ecs_service](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ecs_service) | resource |
+| [aws_ecs_task_definition.task_definition](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ecs_task_definition) | resource |
+| [aws_iam_role.ecs_service_role](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_role) | resource |
+| [aws_iam_role_policy.allow_admin_role_cmk_access](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_role_policy) | resource |
+| [aws_iam_role_policy.allow_ecr](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_role_policy) | resource |
+| [aws_iam_role_policy.allow_kms](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_role_policy) | resource |
+| [aws_iam_role_policy.allow_ssm](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_role_policy) | resource |
+| [aws_iam_role_policy.allow_ssm_messages](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_role_policy) | resource |
+| [aws_iam_role_policy.allow_ssm_messages_external_kms](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_role_policy) | resource |
+| [aws_iam_role_policy_attachment.attach_ecs_code_deploy_role_for_ecs](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_iam_role_policy_attachment.attach_ecs_task_execution](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_kms_alias.cluster_logs_encryption_key](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/kms_alias) | resource |
+| [aws_kms_key.cluster_logs_encryption_key](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/kms_key) | resource |
+| [aws_availability_zones.this](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/availability_zones) | data source |
+| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/caller_identity) | data source |
+| [aws_ecs_cluster.cluster](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/ecs_cluster) | data source |
+| [aws_iam_role.admin_role](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/iam_role) | data source |
+| [aws_region.current](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/region) | data source |
+| [aws_security_group.cluster_sg](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/security_group) | data source |
 | [template_file.allow_admin_cmk_access](https://registry.terraform.io/providers/hashicorp/template/2.2.0/docs/data-sources/file) | data source |
 | [template_file.allow_ecr_repository](https://registry.terraform.io/providers/hashicorp/template/2.2.0/docs/data-sources/file) | data source |
 | [template_file.allow_kms_usage](https://registry.terraform.io/providers/hashicorp/template/2.2.0/docs/data-sources/file) | data source |

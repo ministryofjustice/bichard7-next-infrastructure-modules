@@ -23,13 +23,13 @@ Once all of the resources have been tainted, run the apply-ci-layer job in codeb
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | = 3.72.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | = 3.75.2 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.72.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.75.2 |
 
 ## Modules
 
@@ -39,7 +39,7 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [aws_codebuild_webhook.trigger_build](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/codebuild_webhook) | resource |
+| [aws_codebuild_webhook.trigger_build](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/codebuild_webhook) | resource |
 
 ## Inputs
 

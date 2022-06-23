@@ -8,13 +8,13 @@ Creates a dynamodb table and s3 bucket to handle terraform remote state
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | = 3.72.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | = 3.75.2 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.72.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.75.2 |
 
 ## Modules
 
@@ -24,11 +24,11 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [aws_dynamodb_table.terraform_state_lock](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/dynamodb_table) | resource |
-| [aws_kms_alias.remote_state_key_alias](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/kms_alias) | resource |
-| [aws_kms_key.terraform_remote_state_key](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/kms_key) | resource |
-| [aws_s3_bucket.terraform_remote_state](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/s3_bucket) | resource |
-| [aws_s3_bucket_public_access_block.terraform_remote_state](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/s3_bucket_public_access_block) | resource |
+| [aws_dynamodb_table.terraform_state_lock](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/dynamodb_table) | resource |
+| [aws_kms_alias.remote_state_key_alias](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/kms_alias) | resource |
+| [aws_kms_key.terraform_remote_state_key](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/kms_key) | resource |
+| [aws_s3_bucket.terraform_remote_state](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/s3_bucket) | resource |
+| [aws_s3_bucket_public_access_block.terraform_remote_state](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/s3_bucket_public_access_block) | resource |
 
 ## Inputs
 

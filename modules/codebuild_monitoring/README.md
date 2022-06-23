@@ -10,7 +10,7 @@ Provisions a monitoring cluster with the following components
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13 |
 | <a name="requirement_archive"></a> [archive](#requirement\_archive) | = 2.2.0 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | = 3.72.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | = 3.75.2 |
 | <a name="requirement_grafana"></a> [grafana](#requirement\_grafana) | 1.19.0 |
 | <a name="requirement_local"></a> [local](#requirement\_local) | = 2.0.0 |
 | <a name="requirement_template"></a> [template](#requirement\_template) | = 2.2.0 |
@@ -21,7 +21,7 @@ Provisions a monitoring cluster with the following components
 | Name | Version |
 |------|---------|
 | <a name="provider_archive"></a> [archive](#provider\_archive) | 2.2.0 |
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.72.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.75.2 |
 | <a name="provider_grafana"></a> [grafana](#provider\_grafana) | 1.19.0 |
 | <a name="provider_random"></a> [random](#provider\_random) | 3.1.3 |
 | <a name="provider_template"></a> [template](#provider\_template) | 2.2.0 |
@@ -38,40 +38,40 @@ Provisions a monitoring cluster with the following components
 
 | Name | Type |
 |------|------|
-| [aws_cloudwatch_event_rule.codebuild_metrics_lambda](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/cloudwatch_event_rule) | resource |
-| [aws_cloudwatch_event_target.codebuild_metrics_lambda](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/cloudwatch_event_target) | resource |
-| [aws_cloudwatch_log_group.codebuild_monitoring](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/cloudwatch_log_group) | resource |
-| [aws_db_subnet_group.grafana_subnet_group](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/db_subnet_group) | resource |
-| [aws_iam_role.codebuild_metrics_lambda](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role) | resource |
-| [aws_iam_role_policy.allow_ecs_cloudwatch](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy) | resource |
-| [aws_iam_role_policy.codebuild_metrics_lambda](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy) | resource |
-| [aws_kms_alias.aurora_cluster_encryption_key_alias](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/kms_alias) | resource |
-| [aws_kms_alias.logging_encryption_key_alias](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/kms_alias) | resource |
-| [aws_kms_key.aurora_cluster_encryption_key](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/kms_key) | resource |
-| [aws_kms_key.logging_encryption_key](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/kms_key) | resource |
-| [aws_lambda_function.codebuild_metrics_lambda](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/lambda_function) | resource |
-| [aws_lambda_permission.allow_cloudwatch_to_call_check_foo](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/lambda_permission) | resource |
-| [aws_rds_cluster.grafana_db](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/rds_cluster) | resource |
-| [aws_rds_cluster_instance.grafana_db_instance](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/rds_cluster_instance) | resource |
-| [aws_route53_record.grafana_public_record](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/route53_record) | resource |
-| [aws_security_group.grafana_alb_security_group](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group) | resource |
-| [aws_security_group.grafana_cluster_security_group](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group) | resource |
-| [aws_security_group.grafana_db_security_group](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group) | resource |
-| [aws_security_group_rule.allow_db_ingress_from_grafana_containers](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.allow_grafana_alb_http_ingress](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.allow_grafana_alb_https_egress_to_grafana](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.allow_grafana_alb_https_ingress](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.allow_grafana_alb_https_ingress_to_grafana](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.allow_grafana_container_egress_to_world](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.allow_grafana_egress_to_db](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_ssm_parameter.admin_password](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ssm_parameter) | resource |
-| [aws_ssm_parameter.grafana_admin_api_key](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ssm_parameter) | resource |
-| [aws_ssm_parameter.grafana_admin_password](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ssm_parameter) | resource |
-| [aws_ssm_parameter.grafana_admin_username](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ssm_parameter) | resource |
-| [aws_ssm_parameter.grafana_db_password](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ssm_parameter) | resource |
-| [aws_ssm_parameter.grafana_db_username](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ssm_parameter) | resource |
-| [aws_ssm_parameter.grafana_secret_key](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ssm_parameter) | resource |
-| [aws_ssm_parameter.readonly_password](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ssm_parameter) | resource |
+| [aws_cloudwatch_event_rule.codebuild_metrics_lambda](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/cloudwatch_event_rule) | resource |
+| [aws_cloudwatch_event_target.codebuild_metrics_lambda](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/cloudwatch_event_target) | resource |
+| [aws_cloudwatch_log_group.codebuild_monitoring](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/cloudwatch_log_group) | resource |
+| [aws_db_subnet_group.grafana_subnet_group](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/db_subnet_group) | resource |
+| [aws_iam_role.codebuild_metrics_lambda](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_role) | resource |
+| [aws_iam_role_policy.allow_ecs_cloudwatch](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_role_policy) | resource |
+| [aws_iam_role_policy.codebuild_metrics_lambda](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_role_policy) | resource |
+| [aws_kms_alias.aurora_cluster_encryption_key_alias](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/kms_alias) | resource |
+| [aws_kms_alias.logging_encryption_key_alias](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/kms_alias) | resource |
+| [aws_kms_key.aurora_cluster_encryption_key](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/kms_key) | resource |
+| [aws_kms_key.logging_encryption_key](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/kms_key) | resource |
+| [aws_lambda_function.codebuild_metrics_lambda](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/lambda_function) | resource |
+| [aws_lambda_permission.allow_cloudwatch_to_call_check_foo](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/lambda_permission) | resource |
+| [aws_rds_cluster.grafana_db](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/rds_cluster) | resource |
+| [aws_rds_cluster_instance.grafana_db_instance](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/rds_cluster_instance) | resource |
+| [aws_route53_record.grafana_public_record](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/route53_record) | resource |
+| [aws_security_group.grafana_alb_security_group](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group) | resource |
+| [aws_security_group.grafana_cluster_security_group](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group) | resource |
+| [aws_security_group.grafana_db_security_group](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group) | resource |
+| [aws_security_group_rule.allow_db_ingress_from_grafana_containers](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.allow_grafana_alb_http_ingress](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.allow_grafana_alb_https_egress_to_grafana](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.allow_grafana_alb_https_ingress](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.allow_grafana_alb_https_ingress_to_grafana](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.allow_grafana_container_egress_to_world](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.allow_grafana_egress_to_db](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_ssm_parameter.admin_password](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ssm_parameter) | resource |
+| [aws_ssm_parameter.grafana_admin_api_key](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ssm_parameter) | resource |
+| [aws_ssm_parameter.grafana_admin_password](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ssm_parameter) | resource |
+| [aws_ssm_parameter.grafana_admin_username](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ssm_parameter) | resource |
+| [aws_ssm_parameter.grafana_db_password](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ssm_parameter) | resource |
+| [aws_ssm_parameter.grafana_db_username](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ssm_parameter) | resource |
+| [aws_ssm_parameter.grafana_secret_key](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ssm_parameter) | resource |
+| [aws_ssm_parameter.readonly_password](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ssm_parameter) | resource |
 | [grafana_api_key.admin_api_key](https://registry.terraform.io/providers/grafana/grafana/1.19.0/docs/resources/api_key) | resource |
 | [grafana_dashboard.codebuild_dashboard](https://registry.terraform.io/providers/grafana/grafana/1.19.0/docs/resources/dashboard) | resource |
 | [grafana_dashboard.codebuild_ecs_stats](https://registry.terraform.io/providers/grafana/grafana/1.19.0/docs/resources/dashboard) | resource |
@@ -89,12 +89,12 @@ Provisions a monitoring cluster with the following components
 | [random_string.grafana_secret_key](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string) | resource |
 | [time_sleep.wait_for_containers](https://registry.terraform.io/providers/hashicorp/time/0.7.2/docs/resources/sleep) | resource |
 | [archive_file.codebuild_metrics_payload](https://registry.terraform.io/providers/hashicorp/archive/2.2.0/docs/data-sources/file) | data source |
-| [aws_availability_zones.current](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/availability_zones) | data source |
-| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/caller_identity) | data source |
-| [aws_iam_group.admins](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/iam_group) | data source |
-| [aws_iam_group.viewers](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/iam_group) | data source |
-| [aws_region.current](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/region) | data source |
-| [aws_route53_zone.public_zone](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/route53_zone) | data source |
+| [aws_availability_zones.current](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/availability_zones) | data source |
+| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/caller_identity) | data source |
+| [aws_iam_group.admins](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/iam_group) | data source |
+| [aws_iam_group.viewers](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/iam_group) | data source |
+| [aws_region.current](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/region) | data source |
+| [aws_route53_zone.public_zone](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/route53_zone) | data source |
 | [template_file.allow_kms_access](https://registry.terraform.io/providers/hashicorp/template/2.2.0/docs/data-sources/file) | data source |
 | [template_file.codebuild_metrics_permissions](https://registry.terraform.io/providers/hashicorp/template/2.2.0/docs/data-sources/file) | data source |
 | [template_file.grafana_ecs_task](https://registry.terraform.io/providers/hashicorp/template/2.2.0/docs/data-sources/file) | data source |
