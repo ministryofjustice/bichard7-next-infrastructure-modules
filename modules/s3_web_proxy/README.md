@@ -18,7 +18,7 @@ Module to deploy a s3 web proxy container that allows content served from a s3 b
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.75.2 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.72.0 |
 | <a name="provider_random"></a> [random](#provider\_random) | 3.0.1 |
 | <a name="provider_template"></a> [template](#provider\_template) | 2.2.0 |
 

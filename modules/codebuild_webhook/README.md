@@ -29,7 +29,7 @@ Once all of the resources have been tainted, run the apply-ci-layer job in codeb
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.75.2 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.72.0 |
 
 ## Modules
 
