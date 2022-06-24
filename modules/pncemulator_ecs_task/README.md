@@ -7,7 +7,7 @@ Module to configure the pnc emulator on ECS
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | = 3.72.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | = 3.75.2 |
 | <a name="requirement_local"></a> [local](#requirement\_local) | = 2.0.0 |
 | <a name="requirement_random"></a> [random](#requirement\_random) | = 3.0.1 |
 | <a name="requirement_template"></a> [template](#requirement\_template) | = 2.2.0 |
@@ -16,7 +16,7 @@ Module to configure the pnc emulator on ECS
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.72.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.75.2 |
 | <a name="provider_template"></a> [template](#provider\_template) | 2.2.0 |
 
 ## Modules
@@ -30,15 +30,15 @@ Module to configure the pnc emulator on ECS
 
 | Name | Type |
 |------|------|
-| [aws_lb_listener.pncemulator_api_listener](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/lb_listener) | resource |
-| [aws_lb_target_group.pncemulator_api](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/lb_target_group) | resource |
-| [aws_security_group_rule.allow_all_outbound](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.nlb_api_ingress_from_vpc](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.nlb_utm_ingress_from_vpc](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_availability_zones.this](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/availability_zones) | data source |
-| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/caller_identity) | data source |
-| [aws_region.current](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/region) | data source |
-| [aws_security_group.pncemulator](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/security_group) | data source |
+| [aws_lb_listener.pncemulator_api_listener](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/lb_listener) | resource |
+| [aws_lb_target_group.pncemulator_api](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/lb_target_group) | resource |
+| [aws_security_group_rule.allow_all_outbound](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.nlb_api_ingress_from_vpc](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.nlb_utm_ingress_from_vpc](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_availability_zones.this](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/availability_zones) | data source |
+| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/caller_identity) | data source |
+| [aws_region.current](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/region) | data source |
+| [aws_security_group.pncemulator](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/security_group) | data source |
 | [template_file.pncemulator_fargate](https://registry.terraform.io/providers/hashicorp/template/2.2.0/docs/data-sources/file) | data source |
 
 ## Inputs

@@ -14,7 +14,7 @@ Prometheus alerts are published to slack via SNS and Lambdas. Prometheus data is
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | = 3.72.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | = 3.75.2 |
 | <a name="requirement_local"></a> [local](#requirement\_local) | = 2.0.0 |
 | <a name="requirement_template"></a> [template](#requirement\_template) | = 2.2.0 |
 
@@ -23,7 +23,7 @@ Prometheus alerts are published to slack via SNS and Lambdas. Prometheus data is
 | Name | Version |
 |------|---------|
 | <a name="provider_archive"></a> [archive](#provider\_archive) | 2.2.0 |
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.72.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.75.2 |
 | <a name="provider_random"></a> [random](#provider\_random) | 3.1.3 |
 | <a name="provider_template"></a> [template](#provider\_template) | 2.2.0 |
 
@@ -35,150 +35,150 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [aws_alb.grafana_alb](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/alb) | resource |
-| [aws_alb.logstash_alb](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/alb) | resource |
-| [aws_alb.prometheus_alb](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/alb) | resource |
-| [aws_alb.prometheus_alert_manager_alb](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/alb) | resource |
-| [aws_alb.prometheus_blackbox_exporter_alb](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/alb) | resource |
-| [aws_alb.prometheus_cloudwatch_exporter_alb](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/alb) | resource |
-| [aws_db_subnet_group.grafana_subnet_group](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/db_subnet_group) | resource |
-| [aws_ecs_cluster.monitoring_cluster](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecs_cluster) | resource |
-| [aws_ecs_service.grafana_ecs_service](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecs_service) | resource |
-| [aws_ecs_service.logstash_service](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecs_service) | resource |
-| [aws_ecs_service.prometheus_blackbox_exporter_service](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecs_service) | resource |
-| [aws_ecs_service.prometheus_cloudwatch_exporter_service](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecs_service) | resource |
-| [aws_ecs_service.prometheus_service](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecs_service) | resource |
-| [aws_ecs_task_definition.grafana_ecs_task](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecs_task_definition) | resource |
-| [aws_ecs_task_definition.logstash_tasks](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecs_task_definition) | resource |
-| [aws_ecs_task_definition.prometheus_blackbox_exporter_tasks](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecs_task_definition) | resource |
-| [aws_ecs_task_definition.prometheus_cloudwatch_exporter_tasks](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecs_task_definition) | resource |
-| [aws_ecs_task_definition.prometheus_tasks](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ecs_task_definition) | resource |
-| [aws_iam_policy.allow_ecs_task_secretsmanager](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_policy) | resource |
-| [aws_iam_policy.prometheus_alerts_logging](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_policy) | resource |
-| [aws_iam_policy.prometheus_allow_ecr_access](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_policy) | resource |
-| [aws_iam_policy.prometheus_allow_sns_publish](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_policy) | resource |
-| [aws_iam_policy.prometheus_cloudwatch_ssm](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_policy) | resource |
-| [aws_iam_role.prometheus_task_role](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role) | resource |
-| [aws_iam_role.scanning_notification](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role) | resource |
-| [aws_iam_role_policy.allow_admin_role_cmk_access](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy) | resource |
-| [aws_iam_role_policy.allow_prometheus_notifications_kms_access](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy) | resource |
-| [aws_iam_role_policy.allow_ssm_messages](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy) | resource |
-| [aws_iam_role_policy_attachment.attach_cloudwatch_readonly](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy_attachment) | resource |
-| [aws_iam_role_policy_attachment.attach_ecs_code_deploy_role_for_ecs](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy_attachment) | resource |
-| [aws_iam_role_policy_attachment.attach_ecs_task_execution](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy_attachment) | resource |
-| [aws_iam_role_policy_attachment.prometheus_allow_ecr_attachment](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy_attachment) | resource |
-| [aws_iam_role_policy_attachment.prometheus_allow_secrets_manager](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy_attachment) | resource |
-| [aws_iam_role_policy_attachment.prometheus_allow_sns_publish](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy_attachment) | resource |
-| [aws_iam_role_policy_attachment.prometheus_cloudwatch_ssm_attachment](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy_attachment) | resource |
-| [aws_iam_role_policy_attachment.scanning_lambda_logs](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy_attachment) | resource |
-| [aws_kms_alias.alert_notifications_key_alias](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/kms_alias) | resource |
-| [aws_kms_alias.aurora_cluster_encryption_key_alias](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/kms_alias) | resource |
-| [aws_kms_alias.cluster_logs_encryption_key](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/kms_alias) | resource |
-| [aws_kms_key.alert_notifications_key](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/kms_key) | resource |
-| [aws_kms_key.aurora_cluster_encryption_key](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/kms_key) | resource |
-| [aws_kms_key.cluster_logs_encryption_key](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/kms_key) | resource |
-| [aws_lambda_function.prometheus_alerts](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/lambda_function) | resource |
-| [aws_lambda_permission.prometheus_alerts](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/lambda_permission) | resource |
-| [aws_lb_listener.grafana_http_listener](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/lb_listener) | resource |
-| [aws_lb_listener.grafana_https_listener](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/lb_listener) | resource |
-| [aws_lb_listener.logstash_https_listener](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/lb_listener) | resource |
-| [aws_lb_listener.prometheus_alert_manager_https_listener](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/lb_listener) | resource |
-| [aws_lb_listener.prometheus_blackbox_exporter_https_listener](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/lb_listener) | resource |
-| [aws_lb_listener.prometheus_cloudwatch_exporter_https_listener](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/lb_listener) | resource |
-| [aws_lb_listener.prometheus_http_listener](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/lb_listener) | resource |
-| [aws_lb_listener.prometheus_https_listener](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/lb_listener) | resource |
-| [aws_lb_target_group.grafana_alb_target_group](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/lb_target_group) | resource |
-| [aws_lb_target_group.logstash_alb](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/lb_target_group) | resource |
-| [aws_lb_target_group.prometheus_alb](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/lb_target_group) | resource |
-| [aws_lb_target_group.prometheus_alert_manager_alb](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/lb_target_group) | resource |
-| [aws_lb_target_group.prometheus_blackbox_exporter_alb](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/lb_target_group) | resource |
-| [aws_lb_target_group.prometheus_cloudwatch_exporter_alb](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/lb_target_group) | resource |
-| [aws_rds_cluster.grafana_db](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/rds_cluster) | resource |
-| [aws_rds_cluster_instance.grafana_db_instance](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/rds_cluster_instance) | resource |
-| [aws_route53_record.db_internal](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/route53_record) | resource |
-| [aws_route53_record.grafana_public_record](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/route53_record) | resource |
-| [aws_route53_record.logstash_private_dns](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/route53_record) | resource |
-| [aws_route53_record.prometheus_alert_manager_internal_record](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/route53_record) | resource |
-| [aws_route53_record.prometheus_alert_manager_public_record](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/route53_record) | resource |
-| [aws_route53_record.prometheus_blackbox_exporter_private_dns](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/route53_record) | resource |
-| [aws_route53_record.prometheus_cloudwatch_exporter_private_dns](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/route53_record) | resource |
-| [aws_route53_record.prometheus_internal_record](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/route53_record) | resource |
-| [aws_route53_record.prometheus_public_record](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/route53_record) | resource |
-| [aws_security_group_rule.allow_all_outbound](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.allow_all_prometheus_outbound](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.allow_audit_logging_bbe_ingress](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.allow_bbe_containers_https_egress](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.allow_bbe_containers_https_to_vpc](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.allow_bbe_containers_pnc_egress](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.allow_bbe_egress_to_audit_logging](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.allow_bbe_egress_to_bichard7](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.allow_bbe_egress_to_bichard7_backend](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.allow_bbe_egress_to_user_service](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.allow_bichard7_backend_bbe_ingress](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.allow_bichard7_bbe_ingress](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.allow_black_box_exporter_alb_egress](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.allow_elasticsearch_egress_from_logstash](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.allow_elasticsearch_ingress_from_logstash](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.allow_http_to_alb_from_vpc](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.allow_http_to_alert_manager_alb_from_vpc](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.allow_https_to_alert_manager_alb_from_vpc](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.allow_ingress_to_black_box_exporter_from_alb](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.allow_logstash_alb_egress_to_logstash_container](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.allow_logstash_alb_ingress_from_vpc](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.allow_logstash_alb_ingress_to_logstash](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.allow_logstash_egress_to_world](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.allow_prometheus_http_alb_egress_from_prometheus](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.allow_prometheus_http_alb_ingress_to_prometheus](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.allow_user_service_bbe_ingress](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.grafana_alb_to_grafana_container](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.grafana_alb_to_vpc_https](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.grafana_containers_to_db](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.grafana_ingress_from_alb](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.grafana_to_postgres](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.grafana_to_world_https](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.nfs_egress_tcp](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.nfs_egress_udp](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.nfs_ingress_tcp](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.nfs_ingress_udp](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.nfs_secure_egress_tcp](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.nfs_secure_ingress_tcp](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.prometheus_alb_allow_https_egress_to_vpc](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.prometheus_alb_allow_https_ingress_from_vpc](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.prometheus_alb_egress_to_alb](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.prometheus_alb_ingress_from_alb](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.prometheus_alert_manager_alb_allow_https_egress_to_vpc](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.prometheus_alert_manager_alb_egress_from_container](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.prometheus_alert_manager_alb_egress_to_container](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.prometheus_alert_manager_alb_ingress_from_container](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.prometheus_alert_manager_alb_ingress_to_container](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.prometheus_cloudwatch_exporter_egress_to_alb](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.prometheus_cloudwatch_exporter_ingress_from_alb](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.prometheus_cloudwatch_exporter_ingress_to_alb_from_vpc](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.prometheus_exporter_scrape_egress_to_prometheus](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.prometheus_exporter_scrape_ingress_from_prometheus](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.prometheus_nfs_egress_tcp](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.prometheus_nfs_egress_udp](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.prometheus_nfs_ingress_tcp](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.prometheus_nfs_ingress_udp](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.prometheus_nfs_secure_egress_tcp](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.prometheus_nfs_secure_ingress_tcp](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.prometheus_scrape_egress_to_node_exporter](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.prometheus_scrape_egress_to_postfix_exporter](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.prometheus_scrape_egress_to_prometheus_black_box_exporter](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.prometheus_scrape_egress_to_prometheus_exporter](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.prometheus_scrape_ingress_to_prometheus_black_box_exporter_alb](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.vpc_to_grafana_alb_http](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_security_group_rule.vpc_to_grafana_alb_https](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/security_group_rule) | resource |
-| [aws_sns_topic.alert_notifications](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/sns_topic) | resource |
-| [aws_sns_topic_policy.default](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/sns_topic_policy) | resource |
-| [aws_sns_topic_subscription.prometheus_alerts_subscription](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/sns_topic_subscription) | resource |
-| [aws_ssm_parameter.admin_htaccess_password](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ssm_parameter) | resource |
-| [aws_ssm_parameter.admin_htaccess_username](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ssm_parameter) | resource |
-| [aws_ssm_parameter.grafana_admin_password](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ssm_parameter) | resource |
-| [aws_ssm_parameter.grafana_admin_username](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ssm_parameter) | resource |
-| [aws_ssm_parameter.grafana_db_password](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ssm_parameter) | resource |
-| [aws_ssm_parameter.grafana_db_username](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ssm_parameter) | resource |
-| [aws_ssm_parameter.grafana_secret_key](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ssm_parameter) | resource |
+| [aws_alb.grafana_alb](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/alb) | resource |
+| [aws_alb.logstash_alb](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/alb) | resource |
+| [aws_alb.prometheus_alb](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/alb) | resource |
+| [aws_alb.prometheus_alert_manager_alb](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/alb) | resource |
+| [aws_alb.prometheus_blackbox_exporter_alb](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/alb) | resource |
+| [aws_alb.prometheus_cloudwatch_exporter_alb](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/alb) | resource |
+| [aws_db_subnet_group.grafana_subnet_group](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/db_subnet_group) | resource |
+| [aws_ecs_cluster.monitoring_cluster](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ecs_cluster) | resource |
+| [aws_ecs_service.grafana_ecs_service](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ecs_service) | resource |
+| [aws_ecs_service.logstash_service](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ecs_service) | resource |
+| [aws_ecs_service.prometheus_blackbox_exporter_service](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ecs_service) | resource |
+| [aws_ecs_service.prometheus_cloudwatch_exporter_service](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ecs_service) | resource |
+| [aws_ecs_service.prometheus_service](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ecs_service) | resource |
+| [aws_ecs_task_definition.grafana_ecs_task](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ecs_task_definition) | resource |
+| [aws_ecs_task_definition.logstash_tasks](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ecs_task_definition) | resource |
+| [aws_ecs_task_definition.prometheus_blackbox_exporter_tasks](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ecs_task_definition) | resource |
+| [aws_ecs_task_definition.prometheus_cloudwatch_exporter_tasks](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ecs_task_definition) | resource |
+| [aws_ecs_task_definition.prometheus_tasks](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ecs_task_definition) | resource |
+| [aws_iam_policy.allow_ecs_task_secretsmanager](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_policy) | resource |
+| [aws_iam_policy.prometheus_alerts_logging](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_policy) | resource |
+| [aws_iam_policy.prometheus_allow_ecr_access](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_policy) | resource |
+| [aws_iam_policy.prometheus_allow_sns_publish](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_policy) | resource |
+| [aws_iam_policy.prometheus_cloudwatch_ssm](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_policy) | resource |
+| [aws_iam_role.prometheus_task_role](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_role) | resource |
+| [aws_iam_role.scanning_notification](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_role) | resource |
+| [aws_iam_role_policy.allow_admin_role_cmk_access](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_role_policy) | resource |
+| [aws_iam_role_policy.allow_prometheus_notifications_kms_access](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_role_policy) | resource |
+| [aws_iam_role_policy.allow_ssm_messages](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_role_policy) | resource |
+| [aws_iam_role_policy_attachment.attach_cloudwatch_readonly](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_iam_role_policy_attachment.attach_ecs_code_deploy_role_for_ecs](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_iam_role_policy_attachment.attach_ecs_task_execution](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_iam_role_policy_attachment.prometheus_allow_ecr_attachment](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_iam_role_policy_attachment.prometheus_allow_secrets_manager](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_iam_role_policy_attachment.prometheus_allow_sns_publish](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_iam_role_policy_attachment.prometheus_cloudwatch_ssm_attachment](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_iam_role_policy_attachment.scanning_lambda_logs](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_kms_alias.alert_notifications_key_alias](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/kms_alias) | resource |
+| [aws_kms_alias.aurora_cluster_encryption_key_alias](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/kms_alias) | resource |
+| [aws_kms_alias.cluster_logs_encryption_key](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/kms_alias) | resource |
+| [aws_kms_key.alert_notifications_key](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/kms_key) | resource |
+| [aws_kms_key.aurora_cluster_encryption_key](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/kms_key) | resource |
+| [aws_kms_key.cluster_logs_encryption_key](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/kms_key) | resource |
+| [aws_lambda_function.prometheus_alerts](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/lambda_function) | resource |
+| [aws_lambda_permission.prometheus_alerts](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/lambda_permission) | resource |
+| [aws_lb_listener.grafana_http_listener](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/lb_listener) | resource |
+| [aws_lb_listener.grafana_https_listener](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/lb_listener) | resource |
+| [aws_lb_listener.logstash_https_listener](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/lb_listener) | resource |
+| [aws_lb_listener.prometheus_alert_manager_https_listener](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/lb_listener) | resource |
+| [aws_lb_listener.prometheus_blackbox_exporter_https_listener](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/lb_listener) | resource |
+| [aws_lb_listener.prometheus_cloudwatch_exporter_https_listener](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/lb_listener) | resource |
+| [aws_lb_listener.prometheus_http_listener](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/lb_listener) | resource |
+| [aws_lb_listener.prometheus_https_listener](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/lb_listener) | resource |
+| [aws_lb_target_group.grafana_alb_target_group](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/lb_target_group) | resource |
+| [aws_lb_target_group.logstash_alb](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/lb_target_group) | resource |
+| [aws_lb_target_group.prometheus_alb](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/lb_target_group) | resource |
+| [aws_lb_target_group.prometheus_alert_manager_alb](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/lb_target_group) | resource |
+| [aws_lb_target_group.prometheus_blackbox_exporter_alb](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/lb_target_group) | resource |
+| [aws_lb_target_group.prometheus_cloudwatch_exporter_alb](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/lb_target_group) | resource |
+| [aws_rds_cluster.grafana_db](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/rds_cluster) | resource |
+| [aws_rds_cluster_instance.grafana_db_instance](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/rds_cluster_instance) | resource |
+| [aws_route53_record.db_internal](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/route53_record) | resource |
+| [aws_route53_record.grafana_public_record](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/route53_record) | resource |
+| [aws_route53_record.logstash_private_dns](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/route53_record) | resource |
+| [aws_route53_record.prometheus_alert_manager_internal_record](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/route53_record) | resource |
+| [aws_route53_record.prometheus_alert_manager_public_record](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/route53_record) | resource |
+| [aws_route53_record.prometheus_blackbox_exporter_private_dns](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/route53_record) | resource |
+| [aws_route53_record.prometheus_cloudwatch_exporter_private_dns](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/route53_record) | resource |
+| [aws_route53_record.prometheus_internal_record](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/route53_record) | resource |
+| [aws_route53_record.prometheus_public_record](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/route53_record) | resource |
+| [aws_security_group_rule.allow_all_outbound](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.allow_all_prometheus_outbound](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.allow_audit_logging_bbe_ingress](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.allow_bbe_containers_https_egress](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.allow_bbe_containers_https_to_vpc](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.allow_bbe_containers_pnc_egress](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.allow_bbe_egress_to_audit_logging](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.allow_bbe_egress_to_bichard7](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.allow_bbe_egress_to_bichard7_backend](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.allow_bbe_egress_to_user_service](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.allow_bichard7_backend_bbe_ingress](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.allow_bichard7_bbe_ingress](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.allow_black_box_exporter_alb_egress](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.allow_elasticsearch_egress_from_logstash](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.allow_elasticsearch_ingress_from_logstash](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.allow_http_to_alb_from_vpc](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.allow_http_to_alert_manager_alb_from_vpc](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.allow_https_to_alert_manager_alb_from_vpc](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.allow_ingress_to_black_box_exporter_from_alb](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.allow_logstash_alb_egress_to_logstash_container](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.allow_logstash_alb_ingress_from_vpc](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.allow_logstash_alb_ingress_to_logstash](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.allow_logstash_egress_to_world](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.allow_prometheus_http_alb_egress_from_prometheus](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.allow_prometheus_http_alb_ingress_to_prometheus](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.allow_user_service_bbe_ingress](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.grafana_alb_to_grafana_container](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.grafana_alb_to_vpc_https](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.grafana_containers_to_db](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.grafana_ingress_from_alb](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.grafana_to_postgres](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.grafana_to_world_https](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.nfs_egress_tcp](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.nfs_egress_udp](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.nfs_ingress_tcp](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.nfs_ingress_udp](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.nfs_secure_egress_tcp](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.nfs_secure_ingress_tcp](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.prometheus_alb_allow_https_egress_to_vpc](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.prometheus_alb_allow_https_ingress_from_vpc](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.prometheus_alb_egress_to_alb](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.prometheus_alb_ingress_from_alb](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.prometheus_alert_manager_alb_allow_https_egress_to_vpc](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.prometheus_alert_manager_alb_egress_from_container](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.prometheus_alert_manager_alb_egress_to_container](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.prometheus_alert_manager_alb_ingress_from_container](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.prometheus_alert_manager_alb_ingress_to_container](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.prometheus_cloudwatch_exporter_egress_to_alb](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.prometheus_cloudwatch_exporter_ingress_from_alb](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.prometheus_cloudwatch_exporter_ingress_to_alb_from_vpc](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.prometheus_exporter_scrape_egress_to_prometheus](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.prometheus_exporter_scrape_ingress_from_prometheus](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.prometheus_nfs_egress_tcp](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.prometheus_nfs_egress_udp](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.prometheus_nfs_ingress_tcp](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.prometheus_nfs_ingress_udp](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.prometheus_nfs_secure_egress_tcp](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.prometheus_nfs_secure_ingress_tcp](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.prometheus_scrape_egress_to_node_exporter](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.prometheus_scrape_egress_to_postfix_exporter](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.prometheus_scrape_egress_to_prometheus_black_box_exporter](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.prometheus_scrape_egress_to_prometheus_exporter](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.prometheus_scrape_ingress_to_prometheus_black_box_exporter_alb](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.vpc_to_grafana_alb_http](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.vpc_to_grafana_alb_https](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_sns_topic.alert_notifications](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/sns_topic) | resource |
+| [aws_sns_topic_policy.default](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/sns_topic_policy) | resource |
+| [aws_sns_topic_subscription.prometheus_alerts_subscription](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/sns_topic_subscription) | resource |
+| [aws_ssm_parameter.admin_htaccess_password](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ssm_parameter) | resource |
+| [aws_ssm_parameter.admin_htaccess_username](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ssm_parameter) | resource |
+| [aws_ssm_parameter.grafana_admin_password](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ssm_parameter) | resource |
+| [aws_ssm_parameter.grafana_admin_username](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ssm_parameter) | resource |
+| [aws_ssm_parameter.grafana_db_password](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ssm_parameter) | resource |
+| [aws_ssm_parameter.grafana_db_username](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ssm_parameter) | resource |
+| [aws_ssm_parameter.grafana_secret_key](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ssm_parameter) | resource |
 | [random_password.admin_htaccess_password](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password) | resource |
 | [random_password.grafana_admin_password](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password) | resource |
 | [random_password.grafana_db_password](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password) | resource |
@@ -186,43 +186,43 @@ No modules.
 | [random_string.grafana_dbuser](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string) | resource |
 | [random_string.grafana_secret_key](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string) | resource |
 | [archive_file.alert_archive](https://registry.terraform.io/providers/hashicorp/archive/latest/docs/data-sources/file) | data source |
-| [aws_availability_zones.current](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/availability_zones) | data source |
-| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/caller_identity) | data source |
-| [aws_cloudwatch_log_group.blackbox_exporter](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/cloudwatch_log_group) | data source |
-| [aws_cloudwatch_log_group.cloudwatch_exporter](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/cloudwatch_log_group) | data source |
-| [aws_cloudwatch_log_group.grafana](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/cloudwatch_log_group) | data source |
-| [aws_cloudwatch_log_group.logstash](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/cloudwatch_log_group) | data source |
-| [aws_iam_role.admin_role](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/iam_role) | data source |
-| [aws_kms_key.secret_encryption_key](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/kms_key) | data source |
-| [aws_lb.audit_logging](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/lb) | data source |
-| [aws_lb.beanconnect](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/lb) | data source |
-| [aws_lb.user_service](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/lb) | data source |
-| [aws_lb_target_group.app](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/lb_target_group) | data source |
-| [aws_lb_target_group.audit_logging](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/lb_target_group) | data source |
-| [aws_lb_target_group.beanconnect](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/lb_target_group) | data source |
-| [aws_lb_target_group.user_service](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/lb_target_group) | data source |
-| [aws_region.current](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/region) | data source |
-| [aws_route53_zone.cjse_dot_org](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/route53_zone) | data source |
-| [aws_secretsmanager_secret.os_password](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/secretsmanager_secret) | data source |
-| [aws_secretsmanager_secret_version.os_password](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/secretsmanager_secret_version) | data source |
-| [aws_security_group.audit_logging_portal_alb](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/security_group) | data source |
-| [aws_security_group.bichard7_alb_backend](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/security_group) | data source |
-| [aws_security_group.bichard_alb_web](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/security_group) | data source |
-| [aws_security_group.elasticsearch_security_group](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/security_group) | data source |
-| [aws_security_group.grafana_alb_security_group](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/security_group) | data source |
-| [aws_security_group.grafana_db_security_group](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/security_group) | data source |
-| [aws_security_group.grafana_security_group](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/security_group) | data source |
-| [aws_security_group.logstash_alb_security_group](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/security_group) | data source |
-| [aws_security_group.logstash_security_group](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/security_group) | data source |
-| [aws_security_group.prometheus_alb](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/security_group) | data source |
-| [aws_security_group.prometheus_alert_manager_alb](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/security_group) | data source |
-| [aws_security_group.prometheus_blackbox_exporter_alb](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/security_group) | data source |
-| [aws_security_group.prometheus_blackbox_exporter_security_group](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/security_group) | data source |
-| [aws_security_group.prometheus_cloudwatch_exporter_alb](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/security_group) | data source |
-| [aws_security_group.prometheus_exporter_security_group](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/security_group) | data source |
-| [aws_security_group.prometheus_security_group](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/security_group) | data source |
-| [aws_security_group.user_service_alb](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/security_group) | data source |
-| [aws_ssm_parameter.es_username](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/ssm_parameter) | data source |
+| [aws_availability_zones.current](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/availability_zones) | data source |
+| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/caller_identity) | data source |
+| [aws_cloudwatch_log_group.blackbox_exporter](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/cloudwatch_log_group) | data source |
+| [aws_cloudwatch_log_group.cloudwatch_exporter](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/cloudwatch_log_group) | data source |
+| [aws_cloudwatch_log_group.grafana](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/cloudwatch_log_group) | data source |
+| [aws_cloudwatch_log_group.logstash](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/cloudwatch_log_group) | data source |
+| [aws_iam_role.admin_role](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/iam_role) | data source |
+| [aws_kms_key.secret_encryption_key](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/kms_key) | data source |
+| [aws_lb.audit_logging](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/lb) | data source |
+| [aws_lb.beanconnect](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/lb) | data source |
+| [aws_lb.user_service](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/lb) | data source |
+| [aws_lb_target_group.app](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/lb_target_group) | data source |
+| [aws_lb_target_group.audit_logging](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/lb_target_group) | data source |
+| [aws_lb_target_group.beanconnect](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/lb_target_group) | data source |
+| [aws_lb_target_group.user_service](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/lb_target_group) | data source |
+| [aws_region.current](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/region) | data source |
+| [aws_route53_zone.cjse_dot_org](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/route53_zone) | data source |
+| [aws_secretsmanager_secret.os_password](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/secretsmanager_secret) | data source |
+| [aws_secretsmanager_secret_version.os_password](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/secretsmanager_secret_version) | data source |
+| [aws_security_group.audit_logging_portal_alb](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/security_group) | data source |
+| [aws_security_group.bichard7_alb_backend](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/security_group) | data source |
+| [aws_security_group.bichard_alb_web](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/security_group) | data source |
+| [aws_security_group.elasticsearch_security_group](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/security_group) | data source |
+| [aws_security_group.grafana_alb_security_group](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/security_group) | data source |
+| [aws_security_group.grafana_db_security_group](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/security_group) | data source |
+| [aws_security_group.grafana_security_group](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/security_group) | data source |
+| [aws_security_group.logstash_alb_security_group](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/security_group) | data source |
+| [aws_security_group.logstash_security_group](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/security_group) | data source |
+| [aws_security_group.prometheus_alb](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/security_group) | data source |
+| [aws_security_group.prometheus_alert_manager_alb](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/security_group) | data source |
+| [aws_security_group.prometheus_blackbox_exporter_alb](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/security_group) | data source |
+| [aws_security_group.prometheus_blackbox_exporter_security_group](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/security_group) | data source |
+| [aws_security_group.prometheus_cloudwatch_exporter_alb](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/security_group) | data source |
+| [aws_security_group.prometheus_exporter_security_group](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/security_group) | data source |
+| [aws_security_group.prometheus_security_group](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/security_group) | data source |
+| [aws_security_group.user_service_alb](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/security_group) | data source |
+| [aws_ssm_parameter.es_username](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/ssm_parameter) | data source |
 | [template_file.alert_webhook_source](https://registry.terraform.io/providers/hashicorp/template/2.2.0/docs/data-sources/file) | data source |
 | [template_file.allow_cmk_admin_access](https://registry.terraform.io/providers/hashicorp/template/2.2.0/docs/data-sources/file) | data source |
 | [template_file.allow_ecr_policy](https://registry.terraform.io/providers/hashicorp/template/2.2.0/docs/data-sources/file) | data source |

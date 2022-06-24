@@ -8,14 +8,14 @@ Module that allows AWS codestar to post to a sns notifications queue
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | = 3.72.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | = 3.75.2 |
 | <a name="requirement_template"></a> [template](#requirement\_template) | = 2.2.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.72.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.75.2 |
 | <a name="provider_template"></a> [template](#provider\_template) | 2.2.0 |
 
 ## Modules
@@ -26,9 +26,9 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [aws_codestarnotifications_notification_rule.codebuild_notification_rule](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/codestarnotifications_notification_rule) | resource |
-| [aws_iam_policy.allow_codebuild_sns_kms](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_policy) | resource |
-| [aws_iam_role_policy_attachment.codebuild_sns_kms_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_codestarnotifications_notification_rule.codebuild_notification_rule](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/codestarnotifications_notification_rule) | resource |
+| [aws_iam_policy.allow_codebuild_sns_kms](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_policy) | resource |
+| [aws_iam_role_policy_attachment.codebuild_sns_kms_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_role_policy_attachment) | resource |
 | [template_file.allow_kms_access](https://registry.terraform.io/providers/hashicorp/template/2.2.0/docs/data-sources/file) | data source |
 
 ## Inputs

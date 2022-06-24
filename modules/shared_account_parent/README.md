@@ -14,14 +14,14 @@ If you want to create a user for AWS Nuke, the variable create_nuke_user needs t
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | = 3.72.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | = 3.75.2 |
 | <a name="requirement_template"></a> [template](#requirement\_template) | = 2.2.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.72.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 3.75.2 |
 | <a name="provider_template"></a> [template](#provider\_template) | 2.2.0 |
 
 ## Modules
@@ -32,35 +32,35 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [aws_iam_access_key.ci_user_key](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_access_key) | resource |
-| [aws_iam_access_key.nuke_user_key](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_access_key) | resource |
-| [aws_iam_group.administrator_access_group](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_group) | resource |
-| [aws_iam_group.aws_nuke_group](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_group) | resource |
-| [aws_iam_group.ci_access_group](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_group) | resource |
-| [aws_iam_group.mfa_group](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_group) | resource |
-| [aws_iam_group.readonly_access_group](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_group) | resource |
-| [aws_iam_group_policy.ci_user_allow_scoutsuite](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_group_policy) | resource |
-| [aws_iam_group_policy_attachment.admin_user_allow_all_policy](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_group_policy_attachment) | resource |
-| [aws_iam_group_policy_attachment.allow_ci_ssm_read_only](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_group_policy_attachment) | resource |
-| [aws_iam_group_policy_attachment.ci_group_policy](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_group_policy_attachment) | resource |
-| [aws_iam_group_policy_attachment.force_mfa](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_group_policy_attachment) | resource |
-| [aws_iam_group_policy_attachment.readonly_user_policy](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_group_policy_attachment) | resource |
-| [aws_iam_policy.ci_policy](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_policy) | resource |
-| [aws_iam_policy.mfa_policy](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_policy) | resource |
-| [aws_iam_role.assume_administrator_access_on_parent](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role) | resource |
-| [aws_iam_role_policy_attachment.administrator_access_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_role_policy_attachment) | resource |
-| [aws_iam_user.ci_user](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_user) | resource |
-| [aws_iam_user.nuke_user](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_user) | resource |
-| [aws_iam_user_group_membership.ci_user](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_user_group_membership) | resource |
-| [aws_iam_user_group_membership.nuke_user](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_user_group_membership) | resource |
-| [aws_iam_user_policy.allow_ci_codebuild_all](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/iam_user_policy) | resource |
-| [aws_ssm_parameter.ci_user_access_key_id](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ssm_parameter) | resource |
-| [aws_ssm_parameter.ci_user_secret_access_key](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ssm_parameter) | resource |
-| [aws_ssm_parameter.nuke_user_access_key_id](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ssm_parameter) | resource |
-| [aws_ssm_parameter.nuke_user_secret_access_key](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/resources/ssm_parameter) | resource |
-| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/caller_identity) | data source |
-| [aws_ssm_parameter.aws_nuke_user](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/ssm_parameter) | data source |
-| [aws_ssm_parameter.ci_user](https://registry.terraform.io/providers/hashicorp/aws/3.72.0/docs/data-sources/ssm_parameter) | data source |
+| [aws_iam_access_key.ci_user_key](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_access_key) | resource |
+| [aws_iam_access_key.nuke_user_key](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_access_key) | resource |
+| [aws_iam_group.administrator_access_group](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_group) | resource |
+| [aws_iam_group.aws_nuke_group](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_group) | resource |
+| [aws_iam_group.ci_access_group](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_group) | resource |
+| [aws_iam_group.mfa_group](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_group) | resource |
+| [aws_iam_group.readonly_access_group](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_group) | resource |
+| [aws_iam_group_policy.ci_user_allow_scoutsuite](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_group_policy) | resource |
+| [aws_iam_group_policy_attachment.admin_user_allow_all_policy](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_group_policy_attachment) | resource |
+| [aws_iam_group_policy_attachment.allow_ci_ssm_read_only](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_group_policy_attachment) | resource |
+| [aws_iam_group_policy_attachment.ci_group_policy](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_group_policy_attachment) | resource |
+| [aws_iam_group_policy_attachment.force_mfa](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_group_policy_attachment) | resource |
+| [aws_iam_group_policy_attachment.readonly_user_policy](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_group_policy_attachment) | resource |
+| [aws_iam_policy.ci_policy](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_policy) | resource |
+| [aws_iam_policy.mfa_policy](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_policy) | resource |
+| [aws_iam_role.assume_administrator_access_on_parent](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_role) | resource |
+| [aws_iam_role_policy_attachment.administrator_access_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_iam_user.ci_user](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_user) | resource |
+| [aws_iam_user.nuke_user](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_user) | resource |
+| [aws_iam_user_group_membership.ci_user](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_user_group_membership) | resource |
+| [aws_iam_user_group_membership.nuke_user](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_user_group_membership) | resource |
+| [aws_iam_user_policy.allow_ci_codebuild_all](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/iam_user_policy) | resource |
+| [aws_ssm_parameter.ci_user_access_key_id](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ssm_parameter) | resource |
+| [aws_ssm_parameter.ci_user_secret_access_key](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ssm_parameter) | resource |
+| [aws_ssm_parameter.nuke_user_access_key_id](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ssm_parameter) | resource |
+| [aws_ssm_parameter.nuke_user_secret_access_key](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ssm_parameter) | resource |
+| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/caller_identity) | data source |
+| [aws_ssm_parameter.aws_nuke_user](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/ssm_parameter) | data source |
+| [aws_ssm_parameter.ci_user](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/ssm_parameter) | data source |
 | [template_file.allow_assume_administrator_access_template](https://registry.terraform.io/providers/hashicorp/template/2.2.0/docs/data-sources/file) | data source |
 | [template_file.allow_assume_aws_nuke_access_template](https://registry.terraform.io/providers/hashicorp/template/2.2.0/docs/data-sources/file) | data source |
 | [template_file.allow_codebuild_ci](https://registry.terraform.io/providers/hashicorp/template/2.2.0/docs/data-sources/file) | data source |
