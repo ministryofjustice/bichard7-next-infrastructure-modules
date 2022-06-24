@@ -34,7 +34,7 @@ resource "aws_ssm_parameter" "public_domain_smtp_csr" {
 }
 
 module "smtp_nginx_self_signed_certificate" {
-  source = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/self_signed_certificate?ref=upgrade-aws-provider"
+  source = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/self_signed_certificate"
 
   tags = merge(
     var.tags,

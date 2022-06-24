@@ -60,7 +60,7 @@ resource "aws_iam_role_policy" "snapshot_lambda" {
 }
 
 module "snapshot_lambda" {
-  source           = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/s3_lambda?ref=upgrade-aws-provider"
+  source           = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/s3_lambda"
   bucket_name      = var.artifact_bucket_name
   filename         = "snapshot_lambda"
   function_name    = local.lambda_function_name
