@@ -7,12 +7,10 @@
       "Action": [
         "acm:DescribeCertificate",
         "acm:ListCertificates",
-        "codebuild:ListProjects",
         "cloudformation:DescribeStacks",
         "cloudformation:GetStackPolicy",
         "cloudformation:GetTemplate",
         "cloudformation:ListStacks",
-        "cloudfront:ListDistributions",
         "cloudtrail:DescribeTrails",
         "cloudtrail:GetEventSelectors",
         "cloudtrail:GetTrailStatus",
