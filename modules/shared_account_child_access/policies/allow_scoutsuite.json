@@ -7,6 +7,7 @@
       "Action": [
         "acm:DescribeCertificate",
         "acm:ListCertificates",
+        "codebuild:ListProjects",
         "cloudformation:DescribeStacks",
         "cloudformation:GetStackPolicy",
         "cloudformation:GetTemplate",
