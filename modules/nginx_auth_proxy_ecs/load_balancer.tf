@@ -12,7 +12,7 @@ resource "aws_alb" "auth_proxy_alb" {
   access_logs {
     bucket  = var.logging_bucket_name
     enabled = true
-    prefix  = "alb/AWSLogs/${data.aws_caller_identity.current.account_id}/${local.alb_name}"
+    prefix  = "alb/${data.aws_caller_identity.current.account_id}/${local.alb_name}"
   }
 
   enable_deletion_protection = (lower(var.tags["is-production"]) == "true") ? true : false
