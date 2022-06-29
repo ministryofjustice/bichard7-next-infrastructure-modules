@@ -106,6 +106,10 @@
         {
            "name": "WLP_LOGGING_APPS_WRITE_JSON",
            "value": "true"
+        },
+        {
+           "name": "PROCESSING_VALIDATION_PERCENTAGE",
+           "value": "1"
         }
       ],
       "secrets": ${SECRETS},
