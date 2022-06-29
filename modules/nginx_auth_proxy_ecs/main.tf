@@ -14,7 +14,7 @@ resource "aws_ssm_parameter" "nginx_auth_proxy_deploy_tag" {
 }
 
 //module "nginx_auth_proxy_alb" {
-//  source = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster_alb"
+//  source = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster_alb?ref=remove-AWSLogs-s3-prefix"
 //
 //  alb_security_groups = [
 //    data.aws_security_group.nginx_auth_proxy_alb.id

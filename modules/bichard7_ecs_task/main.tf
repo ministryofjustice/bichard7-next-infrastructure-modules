@@ -1,5 +1,5 @@
 module "bichard_ecs_alb" {
-  source              = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster_alb"
+  source              = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster_alb?ref=remove-AWSLogs-s3-prefix"
   alb_name            = local.alb_name
   alb_name_prefix     = "b7app"
   alb_port            = 9443

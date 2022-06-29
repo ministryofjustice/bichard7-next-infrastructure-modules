@@ -14,7 +14,7 @@ resource "aws_ssm_parameter" "audit_logging_deploy_tag" {
 }
 
 module "audit_logging_portal_ecs_alb" {
-  source = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster_alb"
+  source = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster_alb?ref=remove-AWSLogs-s3-prefix"
 
   alb_security_groups = [
     data.aws_security_group.audit_logging_portal_alb.id

@@ -61,7 +61,7 @@ resource "aws_cloudwatch_log_group" "postfix_log_group" {
 }
 
 module "postfix_nlb" {
-  source             = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster_alb"
+  source             = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster_alb?ref=remove-AWSLogs-s3-prefix"
   load_balancer_type = "network"
   vpc_id             = module.postfix_vpc.vpc_id
 

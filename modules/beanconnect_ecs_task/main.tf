@@ -22,7 +22,7 @@ resource "aws_ssm_parameter" "beanconnect_password" {
 }
 
 module "beanconnect_ecs_alb" {
-  source = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster_alb"
+  source = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster_alb?ref=remove-AWSLogs-s3-prefix"
   alb_listener = [
     {
       port     = 31004

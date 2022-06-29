@@ -14,7 +14,7 @@ resource "aws_ssm_parameter" "user_service_deploy_tag" {
 }
 
 module "user_service_alb" {
-  source = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster_alb"
+  source = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster_alb?ref=remove-AWSLogs-s3-prefix"
 
   alb_security_groups = [
     data.aws_security_group.user_service_alb.id
