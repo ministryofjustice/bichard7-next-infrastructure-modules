@@ -58,6 +58,7 @@ No modules.
 | [aws_ecr_lifecycle_policy.puppeteer](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ecr_lifecycle_policy) | resource |
 | [aws_ecr_lifecycle_policy.s3_web_proxy](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ecr_lifecycle_policy) | resource |
 | [aws_ecr_lifecycle_policy.scoutsuite](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ecr_lifecycle_policy) | resource |
+| [aws_ecr_lifecycle_policy.ui](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ecr_lifecycle_policy) | resource |
 | [aws_ecr_lifecycle_policy.user_service](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ecr_lifecycle_policy) | resource |
 | [aws_ecr_lifecycle_policy.zap_owasp_scanner](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ecr_lifecycle_policy) | resource |
 | [aws_ecr_repository.amazon_linux_2](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ecr_repository) | resource |
@@ -88,6 +89,7 @@ No modules.
 | [aws_ecr_repository.puppeteer](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ecr_repository) | resource |
 | [aws_ecr_repository.s3_web_proxy](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ecr_repository) | resource |
 | [aws_ecr_repository.scoutsuite](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ecr_repository) | resource |
+| [aws_ecr_repository.ui](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ecr_repository) | resource |
 | [aws_ecr_repository.user_service](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ecr_repository) | resource |
 | [aws_ecr_repository.zap_owasp_scanner](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ecr_repository) | resource |
 | [aws_ecr_repository_policy.allow_codebuild_amazon_linux](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ecr_repository_policy) | resource |
@@ -113,6 +115,7 @@ No modules.
 | [aws_ecr_repository_policy.allow_codebuild_puppeteer](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ecr_repository_policy) | resource |
 | [aws_ecr_repository_policy.allow_codebuild_s3_web_proxy](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ecr_repository_policy) | resource |
 | [aws_ecr_repository_policy.allow_codebuild_scoutsuite](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ecr_repository_policy) | resource |
+| [aws_ecr_repository_policy.allow_codebuild_ui](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ecr_repository_policy) | resource |
 | [aws_ecr_repository_policy.allow_codebuild_user_service](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ecr_repository_policy) | resource |
 | [aws_ecr_repository_policy.allow_codebuild_zap_owasp_scanner](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ecr_repository_policy) | resource |
 | [aws_ecr_repository_policy.ecr_bichard_liberty_policy](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ecr_repository_policy) | resource |
@@ -200,6 +203,8 @@ No modules.
 | <a name="output_scoutsuite_docker_image"></a> [scoutsuite\_docker\_image](#output\_scoutsuite\_docker\_image) | The image hash for our ecs deployment |
 | <a name="output_scoutsuite_repository_arn"></a> [scoutsuite\_repository\_arn](#output\_scoutsuite\_repository\_arn) | The repository arn for our scoutsuite image |
 | <a name="output_scoutsuite_repository_url"></a> [scoutsuite\_repository\_url](#output\_scoutsuite\_repository\_url) | The repository url for our scoutsuite image |
+| <a name="output_ui_repository"></a> [ui\_repository](#output\_ui\_repository) | The outputs of the ui ecr repository |
+| <a name="output_ui_repository_arn"></a> [ui\_repository\_arn](#output\_ui\_repository\_arn) | The repository arn for our ui image |
 | <a name="output_user_service_repository"></a> [user\_service\_repository](#output\_user\_service\_repository) | The outputs of the user service ecr repository |
 | <a name="output_user_service_repository_arn"></a> [user\_service\_repository\_arn](#output\_user\_service\_repository\_arn) | The repository arn for our user service image |
 | <a name="output_zap_owasp_scanner_docker_image"></a> [zap\_owasp\_scanner\_docker\_image](#output\_zap\_owasp\_scanner\_docker\_image) | The image hash for our ecs deployment |
