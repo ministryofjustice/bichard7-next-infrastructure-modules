@@ -97,7 +97,7 @@ resource "aws_alb" "prometheus_alb" {
   access_logs {
     bucket  = var.logging_bucket_name
     enabled = true
-    prefix  = "alb/${data.aws_caller_identity.current.account_id}/${local.prometheus_alb_name}"
+    prefix  = "alb/${local.prometheus_alb_name}"
   }
 
   enable_deletion_protection = (lower(var.tags["is-production"]) == "true") ? true : false
@@ -119,7 +119,7 @@ resource "aws_alb" "prometheus_alert_manager_alb" {
   access_logs {
     bucket  = var.logging_bucket_name
     enabled = true
-    prefix  = "alb/${data.aws_caller_identity.current.account_id}/${local.prometheus_alert_alb_name}"
+    prefix  = "alb/${local.prometheus_alert_alb_name}"
   }
 
   enable_deletion_protection = (lower(var.tags["is-production"]) == "true") ? true : false
