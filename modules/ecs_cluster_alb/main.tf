@@ -10,7 +10,7 @@ resource "aws_alb" "alb" {
   access_logs {
     bucket  = var.logging_bucket_name
     enabled = (var.load_balancer_type == "application" && var.enable_alb_logging) ? true : false
-    prefix  = "alb/AWSLogs/${data.aws_caller_identity.current.account_id}/${var.alb_name}"
+    prefix  = "alb/${var.alb_name}"
   }
 
   enable_deletion_protection = (lower(var.tags["is-production"]) == "true") ? true : false
