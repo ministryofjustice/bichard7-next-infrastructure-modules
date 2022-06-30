@@ -108,6 +108,16 @@ output "user_service_repository" {
   value       = aws_ecr_repository.user_service
 }
 
+output "ui_repository_arn" {
+  description = "The repository arn for our ui image"
+  value       = aws_ecr_repository.ui.arn
+}
+
+output "ui_repository" {
+  description = "The outputs of the ui ecr repository"
+  value       = aws_ecr_repository.ui
+}
+
 output "audit_logging_portal_arn" {
   description = "The repository arn for our audit logging portal image"
   value       = aws_ecr_repository.audit_logging_portal.arn
