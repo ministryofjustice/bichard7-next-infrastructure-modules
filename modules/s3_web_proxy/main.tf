@@ -6,7 +6,7 @@ resource "aws_cloudwatch_log_group" "ecs_log_group" {
 }
 
 module "s3_web_proxy_ecs_alb" {
-  source = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster_alb?ref=remove-AWSLogs-s3-prefix"
+  source = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster_alb"
   alb_security_groups = [
     aws_security_group.s3_web_proxy_alb.id
   ]

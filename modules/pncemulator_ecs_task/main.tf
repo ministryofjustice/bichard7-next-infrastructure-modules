@@ -1,5 +1,5 @@
 module "pncemulator_ecs_alb" {
-  source              = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster_alb?ref=remove-AWSLogs-s3-prefix"
+  source              = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster_alb"
   load_balancer_type  = "network"
   service_subnets     = var.service_subnets
   alb_name            = local.alb_name

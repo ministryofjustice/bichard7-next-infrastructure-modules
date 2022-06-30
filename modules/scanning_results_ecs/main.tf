@@ -6,7 +6,7 @@ resource "aws_cloudwatch_log_group" "ecs_log_group" {
 }
 
 module "scanning_portal_ecs_alb" {
-  source = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster_alb?ref=remove-AWSLogs-s3-prefix"
+  source = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster_alb"
   alb_security_groups = [
     aws_security_group.scanning_portal_alb.id
   ]

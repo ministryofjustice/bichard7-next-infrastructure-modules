@@ -37,7 +37,7 @@ module "codebuild_monitoring_ecs_cluster" {
 }
 
 module "codebuild_monitoring_ecs_alb" {
-  source              = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster_alb?ref=remove-AWSLogs-s3-prefix"
+  source              = "github.com/ministryofjustice/bichard7-next-infrastructure-modules.git//modules/ecs_cluster_alb"
   alb_name            = local.grafana_alb_name
   alb_name_prefix     = local.grafana_alb_name_prefix
   service_subnets     = var.service_subnets
