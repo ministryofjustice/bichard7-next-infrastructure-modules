@@ -109,7 +109,7 @@
         },
         {
            "name": "PROCESSING_VALIDATION_PERCENTAGE",
-           "value": "1"
+           "value": "100"
         }
       ],
       "secrets": ${SECRETS},
