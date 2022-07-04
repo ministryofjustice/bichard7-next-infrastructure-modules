@@ -31,6 +31,10 @@ data "aws_security_group" "audit_logging_portal_alb" {
   name = "${var.name}-portal-alb"
 }
 
+data "aws_security_group" "ui_alb" {
+  name = "${var.name}-ui-alb"
+}
+
 ### Templates
 data "template_file" "nginx_auth_proxy_fargate" {
   template = file("${path.module}/templates/nginx_auth_proxy_task.json.tpl")
@@ -44,6 +48,7 @@ data "template_file" "nginx_auth_proxy_fargate" {
     region                        = data.aws_region.current.name
     dns_resolver                  = var.dns_resolver
     user_service_domain           = "users.${data.aws_route53_zone.public_zone.name}"
+    ui_domain                     = "ui.${data.aws_route53_zone.public_zone.name}"
     audit_logging_domain          = "audit.${data.aws_route53_zone.public_zone.name}"
     bichard_domain                = "bichard-web.${data.aws_route53_zone.public_zone.name}"
     bichard_backend_domain        = "bichard-backend.${data.aws_route53_zone.public_zone.name}"
