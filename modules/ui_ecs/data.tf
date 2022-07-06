@@ -24,3 +24,7 @@ data "template_file" "ui_fargate" {
     region            = data.aws_region.current.name
   }
 }
+
+data "aws_ec2_managed_prefix_list" "s3" {
+  name = "com.amazonaws.${data.aws_region.current.name}.s3"
+}
