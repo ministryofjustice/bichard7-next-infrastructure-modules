@@ -35,6 +35,10 @@
         "value": "${user_service_domain}"
       },
       {
+        "name": "CJSE_NGINX_UI_DOMAIN",
+        "value": "${ui_domain}"
+      },
+      {
         "name": "CJSE_NGINX_AUDITLOGGING_DOMAIN",
         "value": "${audit_logging_domain}"
       },

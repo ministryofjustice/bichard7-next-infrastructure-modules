@@ -265,3 +265,52 @@ resource "aws_security_group_rule" "allow_audit_logging_https_egress_to_auth_pro
   security_group_id        = data.aws_security_group.audit_logging_portal_alb.id
   source_security_group_id = data.aws_security_group.nginx_auth_proxy_ecs.id
 }
+
+# Ui Rules
+resource "aws_security_group_rule" "allow_ui_http_alb_ingress_from_auth_proxy" {
+  description = "Allow the auth proxy http access to our alb"
+
+  from_port = 80
+  protocol  = "tcp"
+  to_port   = 80
+  type      = "ingress"
+
+  security_group_id        = data.aws_security_group.ui_alb.id
+  source_security_group_id = data.aws_security_group.nginx_auth_proxy_ecs.id
+}
+
+resource "aws_security_group_rule" "allow_ui_https_alb_ingress_from_auth_proxy" {
+  description = "Allow the auth proxy https access to our alb"
+
+  from_port = 443
+  protocol  = "tcp"
+  to_port   = 443
+  type      = "ingress"
+
+  security_group_id        = data.aws_security_group.ui_alb.id
+  source_security_group_id = data.aws_security_group.nginx_auth_proxy_ecs.id
+}
+
+resource "aws_security_group_rule" "allow_ui_http_egress_to_auth_proxy" {
+  description = "Allow all outbound HTTP traffic to our Auth Proxy"
+
+  from_port = 80
+  protocol  = "tcp"
+  to_port   = 80
+  type      = "egress"
+
+  security_group_id        = data.aws_security_group.ui_alb.id
+  source_security_group_id = data.aws_security_group.nginx_auth_proxy_ecs.id
+}
+
+resource "aws_security_group_rule" "allow_ui_https_egress_to_auth_proxy" {
+  description = "Allow all outbound HTTPS traffic to our VPC"
+
+  from_port = 443
+  protocol  = "tcp"
+  to_port   = 443
+  type      = "egress"
+
+  security_group_id        = data.aws_security_group.ui_alb.id
+  source_security_group_id = data.aws_security_group.nginx_auth_proxy_ecs.id
+}
