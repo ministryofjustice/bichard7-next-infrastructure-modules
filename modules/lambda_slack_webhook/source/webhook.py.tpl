@@ -11,10 +11,11 @@ def lambda_handler(event, context):
     url = "${webhook_url}"
 
     message = parse_message(event['Records'][0]['Sns']['Message'])
+    alarm_state = "[RESOLVED] " if message["NewStateValue"] == "OK" else ""
     msg = {
         "channel": "${notifications_channel_name}",
         "username": "Cloudwatch Alarms",
-        "text": message["AlarmDescription"],
+        "text": alarm_state+message["AlarmDescription"],
         "icon_emoji": ":bell:"
     }
 
