@@ -15,8 +15,7 @@ def lambda_handler(event, context):
     msg = {
         "channel": "${notifications_channel_name}",
         "username": "Cloudwatch Alarms",
-        "text": alarm_state+message["AlarmDescription"],
-        "icon_emoji": ":bell:"
+        "text": alarm_state+message["AlarmDescription"]
     }
 
     encoded_msg = json.dumps(msg).encode('utf-8')
