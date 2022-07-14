@@ -1,3 +1,3 @@
 locals {
-  is_production = (terraform.workspace == "production") ? true : false
+  is_production = (terraform.workspace == "production" || terraform.workspace == "pathtolive-ci") ? true : false
 }
