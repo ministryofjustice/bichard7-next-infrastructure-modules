@@ -13,3 +13,9 @@ variable "notifications_channel_name" {
   type        = string
   description = "Our slack channel for build notifications"
 }
+
+variable "is_path_to_live" {
+  default     = false
+  type        = bool
+  description = "use this to deploy to our parent path to live account"
+}
