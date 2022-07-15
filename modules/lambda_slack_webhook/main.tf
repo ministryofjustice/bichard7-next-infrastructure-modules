@@ -4,8 +4,9 @@ resource "aws_kms_key" "slack_webhook_notifications_key" {
   enable_key_rotation     = true
   deletion_window_in_days = 10
   policy = templatefile("${path.module}/policies/allow_cloudwatch_kms.json.tpl", {
-    region     = data.aws_region.current.name
-    account_id = data.aws_caller_identity.current.account_id
+    region                = data.aws_region.current.name
+    account_id            = data.aws_caller_identity.current.account_id
+    conditional_principal = var.is_path_to_live ? "arn:aws:iam::${data.aws_caller_identity.current.account_id}:user/system/cjse.ci" : "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/Bichard7-CI-Access"
   })
 
   tags = var.tags
