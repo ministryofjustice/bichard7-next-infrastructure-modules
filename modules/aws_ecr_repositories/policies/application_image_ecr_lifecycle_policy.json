@@ -11,19 +11,6 @@
       "action": {
         "type": "expire"
       }
-    },
-    {
-      "rulePriority": 10,
-      "description": "Expire images older than 21 days",
-      "selection": {
-        "tagStatus": "any",
-        "countType": "sinceImagePushed",
-        "countUnit": "days",
-        "countNumber": 21
-      },
-      "action": {
-        "type": "expire"
-      }
     }
   ]
 }

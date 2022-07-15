@@ -2,11 +2,11 @@
   "rules": [
     {
       "rulePriority": 10,
-      "description": "Expire images older than 21 days",
+      "description": "Keep last 30 images only",
       "selection": {
         "tagStatus": "any",
         "countType": "imageCountMoreThan",
-        "countNumber": 2
+        "countNumber": 30
       },
       "action": {
         "type": "expire"
