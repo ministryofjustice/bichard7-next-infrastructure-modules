@@ -6,8 +6,7 @@
         "Effect": "Allow",
         "Principal": {
             "AWS": [
-              "arn:aws:iam::${account_id}:root",
-              "arn:aws:iam::${account_id}:role/Bichard7-CI-Access"
+              "arn:aws:iam::${account_id}:*"
             ]
         },
         "Action": "kms:*",
