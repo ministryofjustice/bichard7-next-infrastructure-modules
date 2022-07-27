@@ -54,7 +54,7 @@ variable "remote_exec_enabled" {
 
 variable "grafana_db_instance_class" {
   description = "The class of DB instance we are using for Grafana"
-  default     = "db.t3.medium"
+  default     = "db.t3.small"
   type        = string
 }
 
