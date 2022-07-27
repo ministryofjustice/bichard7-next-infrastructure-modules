@@ -183,6 +183,12 @@ variable "grafana_db_instance_class" {
   type        = string
 }
 
+variable "grafana_db_instance_count" {
+  description = "The number of DB instance we are using for Grafana"
+  default     = 3
+  type        = number
+}
+
 variable "using_smtp_service" {
   description = "Are we using the CJSM smtp service"
   type        = bool
