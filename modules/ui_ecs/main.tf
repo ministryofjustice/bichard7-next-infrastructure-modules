@@ -100,7 +100,7 @@ module "ui_ecs" {
   fargate_cpu    = var.fargate_cpu
   fargate_memory = var.fargate_memory
 
-  ssm_resources = []
+  ssm_resources = local.allowed_resources
 
   tags = local.tags
 }
