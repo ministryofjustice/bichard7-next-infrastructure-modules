@@ -12,11 +12,25 @@
         "protocol": "tcp"
       }
     ],
-    "environment": [],
+    "environment": [
+        {
+           "name": "DB_USER",
+           "value": "${DB_USER}"
+        },
+        {
+           "name": "DB_HOST",
+           "value": "${DB_HOST}"
+        },
+        {
+           "name": "DB_SSL",
+           "value": "${DB_SSL}"
+        }
+
+    ],
     "dependsOn": [],
     "mountPoints": [],
     "environmentFiles": [],
-    "secrets": [],
+    "secrets": ${SECRETS},
     "logConfiguration": {
       "logDriver": "awslogs",
       "options": {

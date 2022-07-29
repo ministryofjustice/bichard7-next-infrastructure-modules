@@ -80,3 +80,19 @@ variable "override_deploy_tags" {
   type        = bool
   default     = false
 }
+
+variable "db_password_arn" {
+  type        = string
+  description = "The arn of our password parameter"
+}
+
+variable "db_host" {
+  description = "Our db endpoint url or fqdn"
+  type        = string
+}
+
+variable "db_ssl" {
+  description = "Are we forcing an ssl connection to postgres"
+  type        = bool
+  default     = false
+}

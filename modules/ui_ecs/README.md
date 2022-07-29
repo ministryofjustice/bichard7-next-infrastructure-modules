@@ -45,6 +45,9 @@
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_admin_allowed_cidr"></a> [admin\_allowed\_cidr](#input\_admin\_allowed\_cidr) | A list of subnet CIDRs allowed to access this resource | `list(string)` | n/a | yes |
+| <a name="input_db_host"></a> [db\_host](#input\_db\_host) | Our db endpoint url or fqdn | `string` | n/a | yes |
+| <a name="input_db_password_arn"></a> [db\_password\_arn](#input\_db\_password\_arn) | The arn of our password parameter | `string` | n/a | yes |
+| <a name="input_db_ssl"></a> [db\_ssl](#input\_db\_ssl) | Are we forcing an ssl connection to postgres | `bool` | `false` | no |
 | <a name="input_desired_instance_count"></a> [desired\_instance\_count](#input\_desired\_instance\_count) | The number of containers we wish to provision | `number` | `1` | no |
 | <a name="input_fargate_cpu"></a> [fargate\_cpu](#input\_fargate\_cpu) | The number of CPU units | `number` | n/a | yes |
 | <a name="input_fargate_memory"></a> [fargate\_memory](#input\_fargate\_memory) | The amount of memory that will be given to fargate in Megabytes | `number` | n/a | yes |
