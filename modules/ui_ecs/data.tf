@@ -22,6 +22,10 @@ data "template_file" "ui_fargate" {
     log_group         = var.ui_log_group.name
     log_stream_prefix = "bichard-ui"
     region            = data.aws_region.current.name
+    DB_HOST           = var.db_host
+    DB_USER           = "bichard"
+    DB_SSL            = var.db_ssl
+    SECRETS           = jsonencode([for k, v in local.secrets : { name = k, valueFrom = v } if v != null])
   }
 }
 
