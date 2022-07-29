@@ -127,7 +127,7 @@ resource "aws_rds_cluster" "grafana_db" {
 }
 
 resource "aws_rds_cluster_instance" "grafana_db_instance" {
-  count = 3
+  count = var.grafana_db_instance_count
 
   cluster_identifier   = aws_rds_cluster.grafana_db.id
   instance_class       = var.grafana_db_instance_class

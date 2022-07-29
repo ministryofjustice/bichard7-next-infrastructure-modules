@@ -54,8 +54,14 @@ variable "remote_exec_enabled" {
 
 variable "grafana_db_instance_class" {
   description = "The class of DB instance we are using for Grafana"
-  default     = "db.t3.medium"
+  default     = "db.t4g.medium"
   type        = string
+}
+
+variable "grafana_db_instance_count" {
+  description = "The number of DB instance we are using for Grafana"
+  default     = 3
+  type        = number
 }
 
 variable "using_smtp_service" {
