@@ -8,6 +8,7 @@ locals {
   ui_cpu_units       = ((var.fargate_cpu / 4) * 3)
   ui_memory_units    = ((var.fargate_memory / 4) * 3)
 
+  allowed_resources = [var.db_password_arn]
   secrets = {
     "DB_PASSWORD" = var.db_password_arn
   }
