@@ -252,7 +252,8 @@ No modules.
 | <a name="input_environment"></a> [environment](#input\_environment) | The target environment, will map to the terraform workspace | `string` | n/a | yes |
 | <a name="input_fargate_cpu"></a> [fargate\_cpu](#input\_fargate\_cpu) | The number of cpu units | `number` | `1024` | no |
 | <a name="input_fargate_memory"></a> [fargate\_memory](#input\_fargate\_memory) | The amount of memory that will be given to fargate in Megabytes | `number` | `2048` | no |
-| <a name="input_grafana_db_instance_class"></a> [grafana\_db\_instance\_class](#input\_grafana\_db\_instance\_class) | The class of DB instance we are using for Grafana | `string` | `"db.t3.medium"` | no |
+| <a name="input_grafana_db_instance_class"></a> [grafana\_db\_instance\_class](#input\_grafana\_db\_instance\_class) | The class of DB instance we are using for Grafana | `string` | `"db.t4g.medium"` | no |
+| <a name="input_grafana_db_instance_count"></a> [grafana\_db\_instance\_count](#input\_grafana\_db\_instance\_count) | The number of DB instance we are using for Grafana | `number` | `3` | no |
 | <a name="input_grafana_image"></a> [grafana\_image](#input\_grafana\_image) | The url of our grafana ecs image we want to use | `string` | n/a | yes |
 | <a name="input_idle_timeout"></a> [idle\_timeout](#input\_idle\_timeout) | How long in seconds before we terminate a connection | `number` | `180` | no |
 | <a name="input_logging_bucket_name"></a> [logging\_bucket\_name](#input\_logging\_bucket\_name) | The default logging bucket for lb access logs | `string` | n/a | yes |

@@ -24,6 +24,7 @@ data "template_file" "user_service_fargate" {
     region                    = data.aws_region.current.name
     base_url                  = "https://proxy.${data.aws_route53_zone.public_zone.name}/users"
     bichard_redirect_url      = "/bichard-ui/Authenticate"
+    new_bichard_redirect_url  = "/bichard"
     audit_logging_url         = "audit-logging"
     db_host                   = var.db_host
     db_ssl                    = var.db_ssl
