@@ -14,6 +14,7 @@
 |------|---------|
 | <a name="provider_aws"></a> [aws](#provider\_aws) | 3.75.2 |
 | <a name="provider_template"></a> [template](#provider\_template) | 2.2.0 |
+| <a name="provider_terraform"></a> [terraform](#provider\_terraform) | n/a |
 
 ## Modules
 
@@ -30,20 +31,26 @@
 | [aws_security_group_rule.allow_alb_to_containers](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.allow_containers_s3_outbound](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.allow_ecs_to_alb](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.allow_egress_to_db](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.allow_https_from_alb_into_containers](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.allow_https_from_ecs_into_alb](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.vpc_endpoints_from_es_egress](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
 | [aws_ssm_parameter.ui_deploy_tag](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ssm_parameter) | resource |
 | [aws_ec2_managed_prefix_list.s3](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/ec2_managed_prefix_list) | data source |
 | [aws_region.current](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/region) | data source |
 | [aws_route53_zone.public_zone](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/route53_zone) | data source |
+| [aws_security_group.bichard_aurora](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/security_group) | data source |
 | [aws_security_group.ui_alb](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/security_group) | data source |
 | [aws_security_group.ui_ecs](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/security_group) | data source |
 | [template_file.ui_fargate](https://registry.terraform.io/providers/hashicorp/template/2.2.0/docs/data-sources/file) | data source |
+| [terraform_remote_state.base_infra](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/data-sources/remote_state) | data source |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_account"></a> [account](#input\_account) | an account name for our accounts map | `string` | `"sandbox_a"` | no |
+| <a name="input_accounts"></a> [accounts](#input\_accounts) | A list of account ids we can assume roles into | `map(string)` | <pre>{<br>  "integration_baseline": "439237763202",<br>  "integration_next": "581823340673",<br>  "production": "415925668545",<br>  "q_solution": "071486367987",<br>  "sandbox_a": "454061736096",<br>  "sandbox_b": "108839434327",<br>  "sandbox_c": "744728743481"<br>}</pre> | no |
 | <a name="input_admin_allowed_cidr"></a> [admin\_allowed\_cidr](#input\_admin\_allowed\_cidr) | A list of subnet CIDRs allowed to access this resource | `list(string)` | n/a | yes |
 | <a name="input_db_host"></a> [db\_host](#input\_db\_host) | Our db endpoint url or fqdn | `string` | n/a | yes |
 | <a name="input_db_password_arn"></a> [db\_password\_arn](#input\_db\_password\_arn) | The arn of our password parameter | `string` | n/a | yes |
@@ -54,6 +61,7 @@
 | <a name="input_logging_bucket_name"></a> [logging\_bucket\_name](#input\_logging\_bucket\_name) | The default logging bucket for lb access logs | `string` | n/a | yes |
 | <a name="input_name"></a> [name](#input\_name) | The calling layers name | `string` | n/a | yes |
 | <a name="input_override_deploy_tags"></a> [override\_deploy\_tags](#input\_override\_deploy\_tags) | Required for CI/CD, do we want to allow us to overwrite the deploy tag | `bool` | `false` | no |
+| <a name="input_path_to_live_accounts"></a> [path\_to\_live\_accounts](#input\_path\_to\_live\_accounts) | A list of our path to live accounts | `list(string)` | <pre>[<br>  "439237763202",<br>  "581823340673",<br>  "071486367987",<br>  "415925668545"<br>]</pre> | no |
 | <a name="input_public_zone_id"></a> [public\_zone\_id](#input\_public\_zone\_id) | The zone id for our public hosted zone so we can use ACM certificates | `string` | n/a | yes |
 | <a name="input_service_subnets"></a> [service\_subnets](#input\_service\_subnets) | A list of our subnet ids to attach the tasks onto | `list(string)` | n/a | yes |
 | <a name="input_ssl_certificate_arn"></a> [ssl\_certificate\_arn](#input\_ssl\_certificate\_arn) | The arn of our ssl certificate | `string` | n/a | yes |

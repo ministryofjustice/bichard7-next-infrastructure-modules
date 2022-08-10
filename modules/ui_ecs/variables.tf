@@ -1,3 +1,34 @@
+variable "account" {
+  type        = string
+  description = "an account name for our accounts map"
+  default     = "sandbox_a"
+}
+
+variable "path_to_live_accounts" {
+  type        = list(string)
+  description = "A list of our path to live accounts"
+  default = [
+    "439237763202",
+    "581823340673",
+    "071486367987",
+    "415925668545"
+  ]
+}
+
+variable "accounts" {
+  description = "A list of account ids we can assume roles into"
+  type        = map(string)
+  default = {
+    sandbox_a            = "454061736096"
+    sandbox_b            = "108839434327"
+    sandbox_c            = "744728743481"
+    integration_baseline = "439237763202"
+    integration_next     = "581823340673"
+    q_solution           = "071486367987"
+    production           = "415925668545"
+  }
+}
+
 variable "admin_allowed_cidr" {
   description = "A list of subnet CIDRs allowed to access this resource"
   type        = list(string)

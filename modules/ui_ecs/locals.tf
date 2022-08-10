@@ -1,4 +1,9 @@
 locals {
+  remote_bucket_name = (
+    (contains(var.path_to_live_accounts, var.accounts[var.account])) ?
+    "cjse-bichard7-default-pathtolive-bootstrap-tfstate" :
+    "cjse-bichard7-default-sharedaccount-sandbox-bootstrap-tfstate"
+  )
   name            = "${var.name}-ui"
   alb_name        = (length(local.name) > 32) ? trim(substr(local.name, 0, 32), "-") : local.name
   alb_name_prefix = lower(substr(replace("BC${var.tags["Environment"]}", "-", ""), 0, 6))

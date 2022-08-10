@@ -57,3 +57,27 @@ resource "aws_security_group_rule" "allow_containers_s3_outbound" {
 
   prefix_list_ids = [data.aws_ec2_managed_prefix_list.s3.id]
 }
+
+resource "aws_security_group_rule" "allow_egress_to_db" {
+  description = "Allow egress to db from container"
+
+  from_port = 5432
+  protocol  = "tcp"
+  to_port   = 5432
+  type      = "egress"
+
+  security_group_id        = data.aws_security_group.ui_ecs.id
+  source_security_group_id = data.aws_security_group.bichard_aurora.id
+}
+
+resource "aws_security_group_rule" "vpc_endpoints_from_es_egress" {
+  description = "Allow egress to vpc endpoints"
+
+  from_port = 443
+  protocol  = "tcp"
+  to_port   = 443
+  type      = "egress"
+
+  security_group_id        = data.aws_security_group.ui_ecs.id
+  source_security_group_id = data.terraform_remote_state.base_infra.outputs.vpc.security_group_ids.vpc_endpoints
+}
