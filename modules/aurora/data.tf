@@ -19,3 +19,7 @@ data "aws_security_group" "bichard7_backend" {
 data "aws_security_group" "user_service_ecs" {
   name = "${var.environment_name}-user-service-ecs"
 }
+
+data "aws_security_group" "ui_ecs" {
+  name = "${var.environment_name}-ui-ecs"
+}

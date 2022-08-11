@@ -12,6 +12,16 @@ data "aws_security_group" "ui_ecs" {
   name = "${var.name}-ui-ecs"
 }
 
+data "terraform_remote_state" "base_infra" {
+  backend = "s3"
+  config = {
+    bucket         = local.remote_bucket_name
+    dynamodb_table = "${local.remote_bucket_name}-lock"
+    key            = "env:/${terraform.workspace}/${var.account}/base_infra/tfstate"
+    region         = "eu-west-2"
+  }
+}
+
 data "template_file" "ui_fargate" {
   template = file("${path.module}/templates/ui_task.json.tpl")
 
@@ -31,4 +41,8 @@ data "template_file" "ui_fargate" {
 
 data "aws_ec2_managed_prefix_list" "s3" {
   name = "com.amazonaws.${data.aws_region.current.name}.s3"
+}
+
+data "aws_security_group" "bichard_aurora" {
+  name = "${var.name}-aurora"
 }

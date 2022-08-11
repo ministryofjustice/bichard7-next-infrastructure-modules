@@ -69,3 +69,15 @@ resource "aws_security_group_rule" "user_service_ecs_ingress_to_db" {
   security_group_id        = data.aws_security_group.db.id
   source_security_group_id = data.aws_security_group.user_service_ecs.id
 }
+
+resource "aws_security_group_rule" "ui_ecs_ingress_to_db" {
+  description = "Allow ui to database"
+
+  from_port = 5432
+  to_port   = 5432
+  protocol  = "tcp"
+  type      = "ingress"
+
+  security_group_id        = data.aws_security_group.db.id
+  source_security_group_id = data.aws_security_group.ui_ecs.id
+}

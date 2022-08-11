@@ -22,6 +22,10 @@
         "value": "${bichard_redirect_url}"
       },
       {
+        "name": "NEW_BICHARD_REDIRECT_URL",
+        "value": "${new_bichard_redirect_url}"
+      },
+      {
         "name": "AUDIT_LOGGING_URL",
         "value": "${audit_logging_url}"
       },
