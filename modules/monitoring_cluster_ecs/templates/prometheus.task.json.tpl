@@ -5,6 +5,12 @@
       "essential": true,
       "cpu":${application_cpu},
       "memory":${application_memory},
+      "ulimits": [
+        {
+          "name": "nofile",
+          "hardLimit": 1024000
+        }
+      ],
       "volumesFrom": [],
       "mountPoints": [
         {
