@@ -22,6 +22,16 @@ data "terraform_remote_state" "base_infra" {
   }
 }
 
+data "terraform_remote_state" "data_storage" {
+  backend = "s3"
+  config = {
+    bucket         = local.remote_bucket_name
+    dynamodb_table = "${local.remote_bucket_name}-lock"
+    key            = "env:/${terraform.workspace}/${var.account}/stack_data_storage/tfstate"
+    region         = "eu-west-2"
+  }
+}
+
 data "template_file" "ui_fargate" {
   template = file("${path.module}/templates/ui_task.json.tpl")
 
@@ -35,6 +45,8 @@ data "template_file" "ui_fargate" {
     DB_HOST           = var.db_host
     DB_USER           = "bichard"
     DB_SSL            = var.db_ssl
+    MQ_USER           = "bichard"
+    MQ_URL            = data.terraform_remote_state.data_storage.outputs.amazonmq.stomp_url
     SECRETS           = jsonencode([for k, v in local.secrets : { name = k, valueFrom = v } if v != null])
   }
 }
