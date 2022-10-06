@@ -16,6 +16,7 @@ locals {
   allowed_resources = [var.db_password_arn]
   secrets = {
     "DB_PASSWORD" = var.db_password_arn
+    "MQ_PASSWORD" = var.mq_password_arn
   }
 
   tags = merge(

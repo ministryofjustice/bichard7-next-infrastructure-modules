@@ -24,8 +24,19 @@
         {
            "name": "DB_SSL",
            "value": "${DB_SSL}"
+        },
+        {
+           "name": "MQ_USER",
+           "value": "${MQ_USER}"
+        },
+        {
+           "name": "MQ_PASSWORD",
+           "value": "${MQ_PASSWORD}"
+        },
+        {
+           "name": "MQ_URL",
+           "value": "${MQ_URL}"
         }
-
     ],
     "dependsOn": [],
     "mountPoints": [],

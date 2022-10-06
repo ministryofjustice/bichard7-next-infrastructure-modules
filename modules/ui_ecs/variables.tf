@@ -114,7 +114,12 @@ variable "override_deploy_tags" {
 
 variable "db_password_arn" {
   type        = string
-  description = "The arn of our password parameter"
+  description = "The arn of our db password parameter"
+}
+
+variable "mq_password_arn" {
+  type        = string
+  description = "The arn of our mq password parameter"
 }
 
 variable "db_host" {
