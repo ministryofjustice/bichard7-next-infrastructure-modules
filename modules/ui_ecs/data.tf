@@ -58,3 +58,7 @@ data "aws_ec2_managed_prefix_list" "s3" {
 data "aws_security_group" "bichard_aurora" {
   name = "${var.name}-aurora"
 }
+
+data "aws_security_group" "bichard_amq" {
+  name = "${var.name}-amq"
+}

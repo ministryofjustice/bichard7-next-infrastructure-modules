@@ -30,10 +30,6 @@
            "value": "${MQ_USER}"
         },
         {
-           "name": "MQ_PASSWORD",
-           "value": "${MQ_PASSWORD}"
-        },
-        {
            "name": "MQ_URL",
            "value": "${MQ_URL}"
         }

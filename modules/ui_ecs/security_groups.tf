@@ -70,6 +70,18 @@ resource "aws_security_group_rule" "allow_egress_to_db" {
   source_security_group_id = data.aws_security_group.bichard_aurora.id
 }
 
+resource "aws_security_group_rule" "allow_egress_to_amq" {
+  description = "Allow egress to amq from container"
+
+  from_port = 61613
+  protocol  = "tcp"
+  to_port   = 61617
+  type      = "egress"
+
+  security_group_id        = data.aws_security_group.ui_ecs.id
+  source_security_group_id = data.aws_security_group.bichard_amq.id
+}
+
 resource "aws_security_group_rule" "vpc_endpoints_from_es_egress" {
   description = "Allow egress to vpc endpoints"
 

@@ -40,6 +40,7 @@ No modules.
 | [aws_security_group_rule.amq_allow_queue_vpc_ingress_stomp](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.was_backend_ingress_to_amq_openwire](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.was_backendingress_to_amq_stomp](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
+| [aws_security_group_rule.was_ui_ingress_to_amq_stomp](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.was_web_ingress_to_amq_openwire](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.was_web_ingress_to_amq_stomp](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/security_group_rule) | resource |
 | [aws_ssm_parameter.amq_password](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/ssm_parameter) | resource |
@@ -49,6 +50,7 @@ No modules.
 | [aws_route53_zone.cjse_dot_org](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/route53_zone) | data source |
 | [aws_security_group.amq](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/security_group) | data source |
 | [aws_security_group.bichard7_backend](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/security_group) | data source |
+| [aws_security_group.bichard7_ui](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/security_group) | data source |
 | [aws_security_group.bichard7_web](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/data-sources/security_group) | data source |
 
 ## Inputs
