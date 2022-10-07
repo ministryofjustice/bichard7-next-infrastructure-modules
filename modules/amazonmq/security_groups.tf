@@ -63,6 +63,19 @@ resource "aws_security_group_rule" "was_web_ingress_to_amq_stomp" {
   source_security_group_id = data.aws_security_group.bichard7_web.id
 }
 
+resource "aws_security_group_rule" "was_ui_ingress_to_amq_stomp" {
+  description = "Allow message queue access via stomp+ssl from WAS"
+
+  from_port = 61613
+  to_port   = 61617
+  protocol  = "tcp"
+
+  security_group_id = data.aws_security_group.amq.id
+  type              = "ingress"
+
+  source_security_group_id = data.aws_security_group.bichard7_ui.id
+}
+
 resource "aws_security_group_rule" "was_backendingress_to_amq_stomp" {
   description = "Allow message queue access via stomp+ssl from WAS"
 
