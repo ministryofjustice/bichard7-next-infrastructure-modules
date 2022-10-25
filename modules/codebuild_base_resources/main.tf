@@ -24,6 +24,30 @@ resource "aws_s3_bucket" "codebuild_artifact_bucket" {
   tags = var.tags
 }
 
+resource "aws_s3_bucket_lifecycle_configuration" "artifact_bucket_lifecycle_audit_logging" {
+  bucket = aws_s3_bucket.codebuild_artifact_bucket.id
+
+  rule {
+    id = "audit_log_clean_up"
+
+    expiration {
+          days = 90
+        }
+
+    filter {
+      and {
+        prefix = "audit_logging/"
+        tags = {
+          rule = "audit_log_clean_up"
+          autoclean = "true"
+        }
+      }
+    }
+
+    status = "Enabled"
+  }
+}
+
 resource "aws_s3_bucket_public_access_block" "codebuild_artifact_bucket" {
   bucket = aws_s3_bucket.codebuild_artifact_bucket.bucket
 

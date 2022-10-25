@@ -24,7 +24,7 @@ Provisions a monitoring cluster with the following components
 | <a name="provider_archive"></a> [archive](#provider\_archive) | 2.2.0 |
 | <a name="provider_aws"></a> [aws](#provider\_aws) | 3.75.2 |
 | <a name="provider_grafana"></a> [grafana](#provider\_grafana) | 1.19.0 |
-| <a name="provider_random"></a> [random](#provider\_random) | 3.3.2 |
+| <a name="provider_random"></a> [random](#provider\_random) | 3.4.3 |
 | <a name="provider_template"></a> [template](#provider\_template) | 2.2.0 |
 | <a name="provider_time"></a> [time](#provider\_time) | 0.7.2 |
 

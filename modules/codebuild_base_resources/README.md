@@ -53,6 +53,7 @@ Module to create a set of base resources required for our CD/Codebuild environme
 | [aws_s3_bucket.codebuild_artifact_bucket](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/s3_bucket) | resource |
 | [aws_s3_bucket.codebuild_flow_logs_bucket](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/s3_bucket) | resource |
 | [aws_s3_bucket.scanning_results_bucket](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/s3_bucket) | resource |
+| [aws_s3_bucket_lifecycle_configuration.artifact_bucket_lifecycle_audit_logging](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/s3_bucket_lifecycle_configuration) | resource |
 | [aws_s3_bucket_policy.allow_access_to_codebuild_bucket](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/s3_bucket_policy) | resource |
 | [aws_s3_bucket_policy.allow_access_to_scanning_results_bucket](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/s3_bucket_policy) | resource |
 | [aws_s3_bucket_policy.codebuild_flow_logs_bucket](https://registry.terraform.io/providers/hashicorp/aws/3.75.2/docs/resources/s3_bucket_policy) | resource |
