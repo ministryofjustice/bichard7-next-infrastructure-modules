@@ -31,14 +31,14 @@ resource "aws_s3_bucket_lifecycle_configuration" "artifact_bucket_lifecycle_audi
     id = "audit_log_clean_up"
 
     expiration {
-          days = 90
-        }
+      days = 90
+    }
 
     filter {
       and {
         prefix = "audit_logging/"
         tags = {
-          rule = "audit_log_clean_up"
+          rule      = "audit_log_clean_up"
           autoclean = "true"
         }
       }
