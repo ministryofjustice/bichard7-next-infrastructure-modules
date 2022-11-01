@@ -1,6 +1,7 @@
 locals {
   grafana_alb_name = (length("${var.name}-grafana") > 32) ? trim(substr("${var.name}-grafana", 0, 32), "-") : "${var.name}-grafana"
 
+  # tflint-ignore: invalid_index
   grafana_alb_name_prefix = lower(substr(replace("G${var.tags["Environment"]}", "-", ""), 0, 6))
 
   ecr_account_id = data.aws_caller_identity.current.account_id

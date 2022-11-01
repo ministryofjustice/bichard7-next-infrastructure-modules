@@ -14,10 +14,10 @@ Module to create amazon mq cluster
 
 ## Providers
 
-| Name                                                      | Version  |
-| --------------------------------------------------------- | -------- |
-| <a name="provider_aws"></a> [aws](#provider_aws)          | = 3.75.2 |
-| <a name="provider_random"></a> [random](#provider_random) | = 3.0.1  |
+| Name                                                      | Version |
+| --------------------------------------------------------- | ------- |
+| <a name="provider_aws"></a> [aws](#provider_aws)          | 3.75.2  |
+| <a name="provider_random"></a> [random](#provider_random) | 3.0.1   |
 
 ## Modules
 

@@ -1,3 +1,4 @@
+#tfsec:ignore:aws-s3-encryption-customer-key
 resource "aws_s3_bucket" "scanning_results_bucket" {
   bucket = "${var.name}-scanning-results"
   acl    = "private"
