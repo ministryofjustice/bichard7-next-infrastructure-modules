@@ -1,3 +1,4 @@
+#tfsec:ignore:aws-s3-encryption-customer-key
 resource "aws_s3_bucket" "codebuild_artifact_bucket" {
   bucket = "${var.name}-codebuild"
   acl    = "private"
@@ -25,7 +26,7 @@ resource "aws_s3_bucket" "codebuild_artifact_bucket" {
 }
 
 resource "aws_s3_bucket_lifecycle_configuration" "artifact_bucket_lifecycle_audit_logging" {
-  bucket = aws_s3_bucket.codebuild_artifact_bucket.id
+  bucket = aws_s3_bucket.codebuild_artifact_bucket.bucket
 
   rule {
     id = "audit_log_clean_up"

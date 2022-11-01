@@ -32,6 +32,7 @@ resource "aws_iam_role" "scanning_notification" {
   tags = var.tags
 }
 
+#tfsec:ignore:aws-lambda-enable-tracing
 resource "aws_lambda_function" "scanning_notification" {
   function_name = "${var.name}-scanning-notifications"
   description   = "Allow sns notifications to push to a webhook"

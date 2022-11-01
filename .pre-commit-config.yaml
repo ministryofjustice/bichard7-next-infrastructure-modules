@@ -21,6 +21,12 @@ repos:
           - "--args=--force"
           - "--args=--config=__GIT_WORKING_DIR__/.tflint.hcl"
           - "--args=--disable-rule=aws_lambda_function_deprecated_runtime"
+          - "--args=--disable-rule=terraform_module_pinned_source"
+          - "--args=--disable-rule=terraform_deprecated_interpolation"
+          - "--args=--disable-rule=terraform_unused_declarations"
+          - "--args=--disable-rule=terraform_required_providers"
+          - "--args=--disable-rule=terraform_typed_variables"
+          - "--args=--disable-rule=terraform_deprecated_index"
       - id: terraform_validate
       - id: terraform_tfsec
         args:

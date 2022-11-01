@@ -61,6 +61,7 @@ data "template_file" "child_accounts_cmk_access_template" {
   }
 }
 
+#tfsec:ignore:aws-iam-no-user-attached-policies
 data "aws_iam_user" "ci_user" {
   user_name = "cjse.ci"
 }

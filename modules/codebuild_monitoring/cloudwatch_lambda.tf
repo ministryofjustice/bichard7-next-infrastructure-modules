@@ -11,6 +11,7 @@ resource "aws_iam_role_policy" "codebuild_metrics_lambda" {
   policy = data.template_file.codebuild_metrics_permissions.rendered
 }
 
+#tfsec:ignore:aws-lambda-enable-tracing
 resource "aws_lambda_function" "codebuild_metrics_lambda" {
   function_name = "${var.name}-generate-codebuild-metrics"
   description   = "Periodically Generate Custom Codebuild Metrics and push these to Cloudwatch"

@@ -1,3 +1,4 @@
+#tfsec:ignore:aws-s3-encryption-customer-key
 resource "aws_s3_bucket" "codebuild_flow_logs_bucket" {
   bucket = "${var.name}-codebuild-flow-logs"
   acl    = "private"
