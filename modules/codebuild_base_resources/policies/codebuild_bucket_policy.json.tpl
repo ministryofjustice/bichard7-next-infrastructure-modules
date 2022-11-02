@@ -20,6 +20,7 @@
         "Sid": "AllObjectActions",
         "Effect": "Allow",
         "Action": [
+          "s3:*Tagging",
           "s3:*Object",
           "s3:GetObjectAcl",
           "s3:GetObjectVersion",
