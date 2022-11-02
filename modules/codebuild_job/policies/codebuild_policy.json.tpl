@@ -19,7 +19,8 @@
         "s3:GetObject",
         "s3:List*",
         "s3:GetObjectVersion",
-        "s3:PutObject"
+        "s3:PutObject",
+        "s3:*Tagging"
       ],
       "Resource": [
         "${codebuild_bucket}",
