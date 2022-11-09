@@ -64,7 +64,7 @@ variable "tags" {
 variable "memory_size" {
   description = "The memory size of the lambda"
   type        = number
-  default     = 128
+  default     = 256
 }
 
 variable "lambda_runtime" {
