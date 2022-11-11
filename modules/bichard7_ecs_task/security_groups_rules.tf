@@ -23,7 +23,7 @@ resource "aws_security_group_rule" "alb_allow_egress_to_instance" {
 }
 
 resource "aws_security_group_rule" "allow_egress_to_amq" {
-  count = var.service_type == "pnc-api" ? 0 : 1
+  count       = var.service_type == "pnc-api" ? 0 : 1
   description = "Allow egress to amq from container"
 
   from_port = 61613
