@@ -26,7 +26,7 @@ data "template_file" "bichard_fargate" {
     HEALTH_CHECK_TAC      = var.health_check_tac
     DEPLOY_ENV            = local.deploy_env
     TAC_SUFFIX            = local.tac_suffix
-    DISABLE_MDB           = var.service_type == "web" ? "true" : ""
+    DISABLE_MDB           = var.service_type == "backend" ? "" : "true"
     BC_PROXY_URL          = var.service_type == "web" ? "oltp://disabled:0/disabled" : "oltp://bc.cjse.org:31004/BCU31004"
     AUDIT_LOGGING_API_URL = var.audit_api_url
     LOG_PNC_REQUESTS      = (terraform.workspace == "production") ? "false" : "true"
