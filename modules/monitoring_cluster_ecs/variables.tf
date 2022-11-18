@@ -135,11 +135,6 @@ variable "user_service_targetgroup_arn" {
   type        = string
 }
 
-variable "audit_logging_targetgroup_arn" {
-  description = "The arn of our audit logging target group"
-  type        = string
-}
-
 variable "beanconnect_targetgroup_arn" {
   description = "The arn of our beanconnect target group"
   type        = string

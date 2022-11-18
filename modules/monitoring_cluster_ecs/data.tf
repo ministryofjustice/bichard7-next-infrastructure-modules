@@ -144,20 +144,12 @@ data "aws_lb" "user_service" {
   name = trim(substr("cjse-${var.tags["Environment"]}-bichard-7-user-service", 0, 32), "-")
 }
 
-data "aws_lb_target_group" "audit_logging" {
-  arn = var.audit_logging_targetgroup_arn
-}
-
 data "aws_lb" "beanconnect" {
   name = trim(substr("cjse-${var.tags["Environment"]}-bichard-7-beanconnect", 0, 32), "-")
 }
 
 data "aws_lb_target_group" "beanconnect" {
   arn = var.beanconnect_targetgroup_arn
-}
-
-data "aws_lb" "audit_logging" {
-  name = trim(substr("cjse-${var.tags["Environment"]}-bichard-7-audit-portal", 0, 32), "-")
 }
 
 data "template_file" "grafana_ecs_task" {
@@ -197,7 +189,6 @@ data "template_file" "grafana_ecs_task" {
     prometheus_alb  = aws_alb.prometheus_alb.arn_suffix
     grafana_alb     = aws_alb.grafana_alb.arn_suffix
     cloudwatch_alb  = aws_alb.prometheus_cloudwatch_exporter_alb.arn_suffix
-    audit_alb       = data.aws_lb.audit_logging.arn_suffix
     beanconnect_nlb = data.aws_lb_target_group.beanconnect.arn_suffix
   }
 }
