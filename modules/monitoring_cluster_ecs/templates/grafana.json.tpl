@@ -95,10 +95,6 @@
         "value": "${cloudwatch_alb}"
       },
       {
-        "name": "CJSE_AUDIT_ALB",
-        "value": "${audit_alb}"
-      },
-      {
         "name": "CJSE_BEANCONNECT_NLB",
         "value": "${beanconnect_nlb}"
       },
