@@ -4,11 +4,12 @@ import boto3
 from enum import IntEnum
 
 excluded_projects = [
-        "apply-dev-sgs-to-load-test",
-        "deploy-intergration-baseline-load-test",
-        "destroy-integration-baseline-load-test",
-        "remove-dev-sgs-from-load-test"
-        ]
+    "apply-dev-sgs-to-load-test",
+    "deploy-intergration-baseline-load-test",
+    "destroy-integration-baseline-load-test",
+    "remove-dev-sgs-from-load-test"
+]
+
 
 class BuildStatus(IntEnum):
     """
