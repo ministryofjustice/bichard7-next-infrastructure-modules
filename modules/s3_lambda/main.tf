@@ -7,6 +7,7 @@ data "aws_s3_bucket_object" "file" {
   tags = var.tags
 }
 
+#tfsec:ignore:aws-lambda-enable-tracing
 resource "aws_lambda_function" "lambda" {
   role                           = var.iam_role_arn
   function_name                  = local.function_name
