@@ -100,7 +100,7 @@ resource "aws_rds_cluster" "grafana_db" {
 
   availability_zones = data.aws_availability_zones.current.names
   vpc_security_group_ids = [
-    data.aws_security_group.grafana_db_security_group.id
+    var.grafana_db_security_group_id
   ]
 
   database_name   = "grafana"
@@ -171,7 +171,7 @@ resource "aws_ecs_service" "grafana_ecs_service" {
 
   network_configuration {
     security_groups = [
-      data.aws_security_group.grafana_security_group.id
+      var.grafana_security_group_id
     ]
     subnets = var.service_subnets
   }
@@ -192,7 +192,7 @@ resource "aws_alb" "grafana_alb" {
   subnets = var.service_subnets
 
   security_groups = [
-    data.aws_security_group.grafana_alb_security_group.id
+    var.grafana_alb_security_group_id
   ]
   internal     = true
   idle_timeout = var.idle_timeout
@@ -269,6 +269,12 @@ resource "aws_route53_record" "db_internal" {
   zone_id = data.aws_route53_zone.cjse_dot_org.zone_id
   ttl     = 30
   records = [aws_rds_cluster.grafana_db.endpoint]
+
+  lifecycle {
+    ignore_changes = [
+      name
+    ]
+  }
 }
 
 resource "aws_route53_record" "grafana_public_record" {
@@ -277,4 +283,10 @@ resource "aws_route53_record" "grafana_public_record" {
   zone_id = var.public_zone_id
   ttl     = 30
   records = [aws_alb.grafana_alb.dns_name]
+
+  lifecycle {
+    ignore_changes = [
+      name
+    ]
+  }
 }

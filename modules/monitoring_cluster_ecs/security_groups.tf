@@ -6,7 +6,7 @@ resource "aws_security_group_rule" "allow_all_outbound" {
   protocol  = -1
   to_port   = 0
 
-  security_group_id = data.aws_security_group.prometheus_exporter_security_group.id
+  security_group_id = var.prometheus_exporter_security_group_id
   type              = "egress"
 
   cidr_blocks = ["0.0.0.0/0"] #tfsec:ignore:AWS007
@@ -19,10 +19,10 @@ resource "aws_security_group_rule" "prometheus_exporter_scrape_ingress_from_prom
   protocol  = "tcp"
   to_port   = 9106
 
-  security_group_id = data.aws_security_group.prometheus_exporter_security_group.id
+  security_group_id = var.prometheus_exporter_security_group_id
   type              = "ingress"
 
-  source_security_group_id = data.aws_security_group.prometheus_cloudwatch_exporter_alb.id
+  source_security_group_id = var.prometheus_cloudwatch_exporter_alb_id
 }
 
 
@@ -33,10 +33,10 @@ resource "aws_security_group_rule" "prometheus_exporter_scrape_egress_to_prometh
   protocol  = "tcp"
   to_port   = 9106
 
-  security_group_id = data.aws_security_group.prometheus_exporter_security_group.id
+  security_group_id = var.prometheus_exporter_security_group_id
   type              = "egress"
 
-  source_security_group_id = data.aws_security_group.prometheus_cloudwatch_exporter_alb.id
+  source_security_group_id = var.prometheus_cloudwatch_exporter_alb_id
 }
 
 
@@ -47,10 +47,10 @@ resource "aws_security_group_rule" "prometheus_scrape_egress_to_prometheus_expor
   protocol  = "tcp"
   to_port   = 9106
 
-  security_group_id = data.aws_security_group.prometheus_security_group.id
+  security_group_id = var.prometheus_security_group_id
   type              = "egress"
 
-  source_security_group_id = data.aws_security_group.prometheus_exporter_security_group.id
+  source_security_group_id = var.prometheus_exporter_security_group_id
 }
 
 resource "aws_security_group_rule" "prometheus_scrape_egress_to_node_exporter" {
@@ -61,7 +61,7 @@ resource "aws_security_group_rule" "prometheus_scrape_egress_to_node_exporter" {
   to_port   = 9100
   type      = "egress"
 
-  security_group_id = data.aws_security_group.prometheus_security_group.id
+  security_group_id = var.prometheus_security_group_id
   cidr_blocks       = var.allowed_ingress_cidr
 }
 
@@ -73,7 +73,7 @@ resource "aws_security_group_rule" "prometheus_scrape_egress_to_postfix_exporter
   to_port   = 9154
   type      = "egress"
 
-  security_group_id = data.aws_security_group.prometheus_security_group.id
+  security_group_id = var.prometheus_security_group_id
   cidr_blocks       = var.allowed_ingress_cidr
 }
 
@@ -84,10 +84,10 @@ resource "aws_security_group_rule" "prometheus_alb_ingress_from_alb" {
   protocol  = "tcp"
   to_port   = 9090
 
-  security_group_id = data.aws_security_group.prometheus_security_group.id
+  security_group_id = var.prometheus_security_group_id
   type              = "ingress"
 
-  source_security_group_id = data.aws_security_group.prometheus_alb.id
+  source_security_group_id = var.prometheus_alb_id
 }
 
 resource "aws_security_group_rule" "prometheus_alb_egress_to_alb" {
@@ -97,10 +97,10 @@ resource "aws_security_group_rule" "prometheus_alb_egress_to_alb" {
   protocol  = "tcp"
   to_port   = 9090
 
-  security_group_id = data.aws_security_group.prometheus_security_group.id
+  security_group_id = var.prometheus_security_group_id
   type              = "egress"
 
-  source_security_group_id = data.aws_security_group.prometheus_alb.id
+  source_security_group_id = var.prometheus_alb_id
 }
 
 # tfsec:ignore:aws-vpc-no-public-egress-sgr
@@ -111,7 +111,7 @@ resource "aws_security_group_rule" "allow_all_prometheus_outbound" {
   protocol  = -1
   to_port   = 0
 
-  security_group_id = data.aws_security_group.prometheus_security_group.id
+  security_group_id = var.prometheus_security_group_id
   type              = "egress"
 
   cidr_blocks = ["0.0.0.0/0"] #tfsec:ignore:AWS007
@@ -124,7 +124,7 @@ resource "aws_security_group_rule" "allow_http_to_alb_from_vpc" {
   protocol  = "tcp"
   to_port   = 80
 
-  security_group_id = data.aws_security_group.prometheus_alb.id
+  security_group_id = var.prometheus_alb_id
   type              = "ingress"
 
   cidr_blocks = var.allowed_ingress_cidr
@@ -137,10 +137,10 @@ resource "aws_security_group_rule" "allow_prometheus_http_alb_ingress_to_prometh
   protocol  = "tcp"
   to_port   = 9090
 
-  security_group_id = data.aws_security_group.prometheus_alb.id
+  security_group_id = var.prometheus_alb_id
   type              = "ingress"
 
-  source_security_group_id = data.aws_security_group.prometheus_security_group.id
+  source_security_group_id = var.prometheus_security_group_id
 }
 
 resource "aws_security_group_rule" "allow_prometheus_http_alb_egress_from_prometheus" {
@@ -150,10 +150,10 @@ resource "aws_security_group_rule" "allow_prometheus_http_alb_egress_from_promet
   protocol  = "tcp"
   to_port   = 9090
 
-  security_group_id = data.aws_security_group.prometheus_alb.id
+  security_group_id = var.prometheus_alb_id
   type              = "egress"
 
-  source_security_group_id = data.aws_security_group.prometheus_security_group.id
+  source_security_group_id = var.prometheus_security_group_id
 }
 
 resource "aws_security_group_rule" "prometheus_alb_allow_https_ingress_from_vpc" {
@@ -163,7 +163,7 @@ resource "aws_security_group_rule" "prometheus_alb_allow_https_ingress_from_vpc"
   protocol  = "tcp"
   to_port   = 443
 
-  security_group_id = data.aws_security_group.prometheus_alb.id
+  security_group_id = var.prometheus_alb_id
   type              = "ingress"
 
   cidr_blocks = var.allowed_ingress_cidr
@@ -176,7 +176,7 @@ resource "aws_security_group_rule" "prometheus_alb_allow_https_egress_to_vpc" {
   protocol  = "tcp"
   to_port   = 443
 
-  security_group_id = data.aws_security_group.prometheus_alb.id
+  security_group_id = var.prometheus_alb_id
   type              = "egress"
 
   cidr_blocks = var.allowed_ingress_cidr
@@ -187,7 +187,7 @@ resource "aws_security_group_rule" "prometheus_cloudwatch_exporter_ingress_to_al
 
   from_port         = 9106
   protocol          = "tcp"
-  security_group_id = data.aws_security_group.prometheus_cloudwatch_exporter_alb.id
+  security_group_id = var.prometheus_cloudwatch_exporter_alb_id
   to_port           = 9106
   type              = "ingress"
 
@@ -199,11 +199,11 @@ resource "aws_security_group_rule" "prometheus_cloudwatch_exporter_ingress_from_
 
   from_port         = 9106
   protocol          = "tcp"
-  security_group_id = data.aws_security_group.prometheus_cloudwatch_exporter_alb.id
+  security_group_id = var.prometheus_cloudwatch_exporter_alb_id
   to_port           = 9106
   type              = "ingress"
 
-  source_security_group_id = data.aws_security_group.prometheus_exporter_security_group.id
+  source_security_group_id = var.prometheus_exporter_security_group_id
 }
 
 resource "aws_security_group_rule" "prometheus_cloudwatch_exporter_egress_to_alb" {
@@ -211,11 +211,11 @@ resource "aws_security_group_rule" "prometheus_cloudwatch_exporter_egress_to_alb
 
   from_port         = 9106
   protocol          = "tcp"
-  security_group_id = data.aws_security_group.prometheus_cloudwatch_exporter_alb.id
+  security_group_id = var.prometheus_cloudwatch_exporter_alb_id
   to_port           = 9106
   type              = "egress"
 
-  source_security_group_id = data.aws_security_group.prometheus_exporter_security_group.id
+  source_security_group_id = var.prometheus_exporter_security_group_id
 }
 
 ###EFS/NFS SG
@@ -226,7 +226,7 @@ resource "aws_security_group_rule" "nfs_ingress_tcp" {
   to_port                  = 2049
   protocol                 = "tcp"
   security_group_id        = var.ecs_to_efs_sg_id
-  source_security_group_id = data.aws_security_group.prometheus_security_group.id
+  source_security_group_id = var.prometheus_security_group_id
 }
 
 resource "aws_security_group_rule" "nfs_egress_tcp" {
@@ -236,7 +236,7 @@ resource "aws_security_group_rule" "nfs_egress_tcp" {
   to_port                  = 2049
   protocol                 = "tcp"
   security_group_id        = var.ecs_to_efs_sg_id
-  source_security_group_id = data.aws_security_group.prometheus_security_group.id
+  source_security_group_id = var.prometheus_security_group_id
 }
 
 resource "aws_security_group_rule" "prometheus_nfs_ingress_tcp" {
@@ -245,7 +245,7 @@ resource "aws_security_group_rule" "prometheus_nfs_ingress_tcp" {
   from_port                = 2049
   to_port                  = 2049
   protocol                 = "tcp"
-  security_group_id        = data.aws_security_group.prometheus_security_group.id
+  security_group_id        = var.prometheus_security_group_id
   source_security_group_id = var.ecs_to_efs_sg_id
 }
 
@@ -255,7 +255,7 @@ resource "aws_security_group_rule" "prometheus_nfs_egress_tcp" {
   from_port                = 2049
   to_port                  = 2049
   protocol                 = "tcp"
-  security_group_id        = data.aws_security_group.prometheus_security_group.id
+  security_group_id        = var.prometheus_security_group_id
   source_security_group_id = var.ecs_to_efs_sg_id
 }
 
@@ -266,7 +266,7 @@ resource "aws_security_group_rule" "nfs_ingress_udp" {
   to_port                  = 2049
   protocol                 = "udp"
   security_group_id        = var.ecs_to_efs_sg_id
-  source_security_group_id = data.aws_security_group.prometheus_security_group.id
+  source_security_group_id = var.prometheus_security_group_id
 }
 
 resource "aws_security_group_rule" "nfs_egress_udp" {
@@ -276,7 +276,7 @@ resource "aws_security_group_rule" "nfs_egress_udp" {
   to_port                  = 2049
   protocol                 = "udp"
   security_group_id        = var.ecs_to_efs_sg_id
-  source_security_group_id = data.aws_security_group.prometheus_security_group.id
+  source_security_group_id = var.prometheus_security_group_id
 }
 
 resource "aws_security_group_rule" "prometheus_nfs_ingress_udp" {
@@ -285,7 +285,7 @@ resource "aws_security_group_rule" "prometheus_nfs_ingress_udp" {
   from_port                = 2049
   to_port                  = 2049
   protocol                 = "udp"
-  security_group_id        = data.aws_security_group.prometheus_security_group.id
+  security_group_id        = var.prometheus_security_group_id
   source_security_group_id = var.ecs_to_efs_sg_id
 }
 
@@ -295,7 +295,7 @@ resource "aws_security_group_rule" "prometheus_nfs_egress_udp" {
   from_port                = 2049
   to_port                  = 2049
   protocol                 = "udp"
-  security_group_id        = data.aws_security_group.prometheus_security_group.id
+  security_group_id        = var.prometheus_security_group_id
   source_security_group_id = var.ecs_to_efs_sg_id
 }
 
@@ -306,7 +306,7 @@ resource "aws_security_group_rule" "nfs_secure_ingress_tcp" {
   to_port                  = 2149
   protocol                 = "tcp"
   security_group_id        = var.ecs_to_efs_sg_id
-  source_security_group_id = data.aws_security_group.prometheus_security_group.id
+  source_security_group_id = var.prometheus_security_group_id
 }
 
 resource "aws_security_group_rule" "nfs_secure_egress_tcp" {
@@ -316,7 +316,7 @@ resource "aws_security_group_rule" "nfs_secure_egress_tcp" {
   to_port                  = 2149
   protocol                 = "tcp"
   security_group_id        = var.ecs_to_efs_sg_id
-  source_security_group_id = data.aws_security_group.prometheus_security_group.id
+  source_security_group_id = var.prometheus_security_group_id
 }
 
 resource "aws_security_group_rule" "prometheus_nfs_secure_ingress_tcp" {
@@ -325,7 +325,7 @@ resource "aws_security_group_rule" "prometheus_nfs_secure_ingress_tcp" {
   from_port                = 2149
   to_port                  = 2149
   protocol                 = "tcp"
-  security_group_id        = data.aws_security_group.prometheus_security_group.id
+  security_group_id        = var.prometheus_security_group_id
   source_security_group_id = var.ecs_to_efs_sg_id
 }
 
@@ -335,7 +335,7 @@ resource "aws_security_group_rule" "prometheus_nfs_secure_egress_tcp" {
   from_port                = 2149
   to_port                  = 2149
   protocol                 = "tcp"
-  security_group_id        = data.aws_security_group.prometheus_security_group.id
+  security_group_id        = var.prometheus_security_group_id
   source_security_group_id = var.ecs_to_efs_sg_id
 }
 
@@ -348,8 +348,8 @@ resource "aws_security_group_rule" "grafana_containers_to_db" {
   to_port   = 5432
   type      = "ingress"
 
-  security_group_id        = data.aws_security_group.grafana_db_security_group.id
-  source_security_group_id = data.aws_security_group.grafana_security_group.id
+  security_group_id        = var.grafana_db_security_group_id
+  source_security_group_id = var.grafana_security_group_id
 }
 
 ### Grafana Containers
@@ -362,7 +362,7 @@ resource "aws_security_group_rule" "grafana_to_world_https" {
   to_port   = 443
   type      = "egress"
 
-  security_group_id = data.aws_security_group.grafana_security_group.id
+  security_group_id = var.grafana_security_group_id
   cidr_blocks       = ["0.0.0.0/0"] #tfsec:ignore:AWS007
 }
 
@@ -375,8 +375,8 @@ resource "aws_security_group_rule" "grafana_to_postgres" {
   to_port   = 5432
   type      = "egress"
 
-  security_group_id        = data.aws_security_group.grafana_security_group.id
-  source_security_group_id = data.aws_security_group.grafana_db_security_group.id
+  security_group_id        = var.grafana_security_group_id
+  source_security_group_id = var.grafana_db_security_group_id
 }
 
 resource "aws_security_group_rule" "grafana_ingress_from_alb" {
@@ -387,8 +387,8 @@ resource "aws_security_group_rule" "grafana_ingress_from_alb" {
   to_port   = 3000
   type      = "ingress"
 
-  security_group_id        = data.aws_security_group.grafana_security_group.id
-  source_security_group_id = data.aws_security_group.grafana_alb_security_group.id
+  security_group_id        = var.grafana_security_group_id
+  source_security_group_id = var.grafana_alb_security_group_id
 }
 
 ### Grafana Alb
@@ -400,7 +400,7 @@ resource "aws_security_group_rule" "grafana_alb_to_vpc_https" {
   to_port   = 443
   type      = "egress"
 
-  security_group_id = data.aws_security_group.grafana_alb_security_group.id
+  security_group_id = var.grafana_alb_security_group_id
   cidr_blocks       = var.allowed_ingress_cidr
 }
 
@@ -412,8 +412,8 @@ resource "aws_security_group_rule" "grafana_alb_to_grafana_container" {
   to_port   = 3000
   type      = "egress"
 
-  security_group_id        = data.aws_security_group.grafana_alb_security_group.id
-  source_security_group_id = data.aws_security_group.grafana_security_group.id
+  security_group_id        = var.grafana_alb_security_group_id
+  source_security_group_id = var.grafana_security_group_id
 }
 
 resource "aws_security_group_rule" "vpc_to_grafana_alb_https" {
@@ -424,7 +424,7 @@ resource "aws_security_group_rule" "vpc_to_grafana_alb_https" {
   to_port   = 443
   type      = "ingress"
 
-  security_group_id = data.aws_security_group.grafana_alb_security_group.id
+  security_group_id = var.grafana_alb_security_group_id
   cidr_blocks       = var.allowed_ingress_cidr
 }
 
@@ -436,8 +436,9 @@ resource "aws_security_group_rule" "vpc_to_grafana_alb_http" {
   to_port   = 80
   type      = "ingress"
 
-  security_group_id = data.aws_security_group.grafana_alb_security_group.id
+  security_group_id = var.grafana_alb_security_group_id
   cidr_blocks       = var.allowed_ingress_cidr
+
 }
 
 ## Alert Manager
@@ -449,10 +450,10 @@ resource "aws_security_group_rule" "prometheus_alert_manager_alb_ingress_from_co
   protocol  = "tcp"
   to_port   = 9092
 
-  security_group_id = data.aws_security_group.prometheus_security_group.id
+  security_group_id = var.prometheus_security_group_id
   type              = "ingress"
 
-  source_security_group_id = data.aws_security_group.prometheus_alert_manager_alb.id
+  source_security_group_id = var.prometheus_alert_manager_alb_id
 }
 
 resource "aws_security_group_rule" "prometheus_alert_manager_alb_egress_to_container" {
@@ -462,10 +463,10 @@ resource "aws_security_group_rule" "prometheus_alert_manager_alb_egress_to_conta
   protocol  = "tcp"
   to_port   = 9092
 
-  security_group_id = data.aws_security_group.prometheus_security_group.id
+  security_group_id = var.prometheus_security_group_id
   type              = "egress"
 
-  source_security_group_id = data.aws_security_group.prometheus_alert_manager_alb.id
+  source_security_group_id = var.prometheus_alert_manager_alb_id
 }
 
 resource "aws_security_group_rule" "prometheus_alert_manager_alb_ingress_to_container" {
@@ -475,10 +476,10 @@ resource "aws_security_group_rule" "prometheus_alert_manager_alb_ingress_to_cont
   protocol  = "tcp"
   to_port   = 9092
 
-  security_group_id = data.aws_security_group.prometheus_alert_manager_alb.id
+  security_group_id = var.prometheus_alert_manager_alb_id
   type              = "ingress"
 
-  source_security_group_id = data.aws_security_group.prometheus_alert_manager_alb.id
+  source_security_group_id = var.prometheus_alert_manager_alb_id
 }
 
 resource "aws_security_group_rule" "prometheus_alert_manager_alb_egress_from_container" {
@@ -488,10 +489,10 @@ resource "aws_security_group_rule" "prometheus_alert_manager_alb_egress_from_con
   protocol  = "tcp"
   to_port   = 9092
 
-  security_group_id = data.aws_security_group.prometheus_alert_manager_alb.id
+  security_group_id = var.prometheus_alert_manager_alb_id
   type              = "egress"
 
-  source_security_group_id = data.aws_security_group.prometheus_security_group.id
+  source_security_group_id = var.prometheus_security_group_id
 }
 
 resource "aws_security_group_rule" "allow_http_to_alert_manager_alb_from_vpc" {
@@ -501,7 +502,7 @@ resource "aws_security_group_rule" "allow_http_to_alert_manager_alb_from_vpc" {
   protocol  = "tcp"
   to_port   = 80
 
-  security_group_id = data.aws_security_group.prometheus_alert_manager_alb.id
+  security_group_id = var.prometheus_alert_manager_alb_id
   type              = "ingress"
 
   cidr_blocks = var.allowed_ingress_cidr
@@ -514,7 +515,7 @@ resource "aws_security_group_rule" "allow_https_to_alert_manager_alb_from_vpc" {
   protocol  = "tcp"
   to_port   = 443
 
-  security_group_id = data.aws_security_group.prometheus_alert_manager_alb.id
+  security_group_id = var.prometheus_alert_manager_alb_id
   type              = "ingress"
 
   cidr_blocks = var.allowed_ingress_cidr
@@ -527,7 +528,7 @@ resource "aws_security_group_rule" "prometheus_alert_manager_alb_allow_https_egr
   protocol  = "tcp"
   to_port   = 443
 
-  security_group_id = data.aws_security_group.prometheus_alert_manager_alb.id
+  security_group_id = var.prometheus_alert_manager_alb_id
   type              = "egress"
 
   cidr_blocks = var.allowed_ingress_cidr
@@ -542,8 +543,8 @@ resource "aws_security_group_rule" "allow_logstash_alb_ingress_to_logstash" {
   protocol = "tcp"
   type     = "ingress"
 
-  security_group_id        = data.aws_security_group.logstash_security_group.id
-  source_security_group_id = data.aws_security_group.logstash_alb_security_group.id
+  security_group_id        = var.logstash_security_group_id
+  source_security_group_id = var.logstash_alb_security_group_id
 }
 
 # tfsec:ignore:aws-vpc-no-public-egress-sgr
@@ -556,12 +557,12 @@ resource "aws_security_group_rule" "allow_logstash_egress_to_world" {
   protocol = "tcp"
   type     = "egress"
 
-  security_group_id = data.aws_security_group.logstash_security_group.id
+  security_group_id = var.logstash_security_group_id
   cidr_blocks       = ["0.0.0.0/0"] #tfsec:ignore:AWS007
 }
 
-resource "aws_security_group_rule" "allow_elasticsearch_egress_from_logstash" {
-  description = "Allow Logstash egress to elasticsearch"
+resource "aws_security_group_rule" "allow_opensearch_egress_from_logstash" {
+  description = "Allow Logstash egress to opensearch"
 
   to_port   = 443
   from_port = 443
@@ -569,12 +570,12 @@ resource "aws_security_group_rule" "allow_elasticsearch_egress_from_logstash" {
   protocol = "tcp"
   type     = "egress"
 
-  security_group_id        = data.aws_security_group.logstash_security_group.id
-  source_security_group_id = data.aws_security_group.elasticsearch_security_group.id
+  security_group_id        = var.logstash_security_group_id
+  source_security_group_id = var.opensearch_security_group_id
 }
 
-resource "aws_security_group_rule" "allow_elasticsearch_ingress_from_logstash" {
-  description = "Allow elasticsearch ingress from logstash"
+resource "aws_security_group_rule" "allow_opensearch_ingress_from_logstash" {
+  description = "Allow opensearch ingress from logstash"
 
   to_port   = 443
   from_port = 443
@@ -582,8 +583,8 @@ resource "aws_security_group_rule" "allow_elasticsearch_ingress_from_logstash" {
   protocol = "tcp"
   type     = "ingress"
 
-  source_security_group_id = data.aws_security_group.logstash_security_group.id
-  security_group_id        = data.aws_security_group.elasticsearch_security_group.id
+  source_security_group_id = var.logstash_security_group_id
+  security_group_id        = var.opensearch_security_group_id
 }
 
 resource "aws_security_group_rule" "allow_logstash_alb_ingress_from_vpc" {
@@ -595,7 +596,7 @@ resource "aws_security_group_rule" "allow_logstash_alb_ingress_from_vpc" {
   protocol = "tcp"
   type     = "ingress"
 
-  security_group_id = data.aws_security_group.logstash_alb_security_group.id
+  security_group_id = var.logstash_alb_security_group_id
   cidr_blocks       = var.allowed_ingress_cidr
 }
 
@@ -608,8 +609,8 @@ resource "aws_security_group_rule" "allow_logstash_alb_egress_to_logstash_contai
   protocol = "tcp"
   type     = "egress"
 
-  security_group_id        = data.aws_security_group.logstash_alb_security_group.id
-  source_security_group_id = data.aws_security_group.logstash_security_group.id
+  security_group_id        = var.logstash_alb_security_group_id
+  source_security_group_id = var.logstash_security_group_id
 }
 
 ### Blackbox Exporter ALB
@@ -621,8 +622,8 @@ resource "aws_security_group_rule" "prometheus_scrape_ingress_to_prometheus_blac
   to_port   = 9116
   type      = "ingress"
 
-  source_security_group_id = data.aws_security_group.prometheus_security_group.id
-  security_group_id        = data.aws_security_group.prometheus_blackbox_exporter_alb.id
+  source_security_group_id = var.prometheus_security_group_id
+  security_group_id        = var.prometheus_blackbox_exporter_alb_id
 }
 
 resource "aws_security_group_rule" "prometheus_scrape_egress_to_prometheus_black_box_exporter" {
@@ -633,8 +634,8 @@ resource "aws_security_group_rule" "prometheus_scrape_egress_to_prometheus_black
   to_port   = 9116
   type      = "egress"
 
-  security_group_id        = data.aws_security_group.prometheus_security_group.id
-  source_security_group_id = data.aws_security_group.prometheus_blackbox_exporter_alb.id
+  security_group_id        = var.prometheus_security_group_id
+  source_security_group_id = var.prometheus_blackbox_exporter_alb_id
 }
 
 ### Blackbox Exporter
@@ -646,8 +647,8 @@ resource "aws_security_group_rule" "allow_ingress_to_black_box_exporter_from_alb
   to_port   = 9116
   type      = "ingress"
 
-  security_group_id        = data.aws_security_group.prometheus_blackbox_exporter_security_group.id
-  source_security_group_id = data.aws_security_group.prometheus_blackbox_exporter_alb.id
+  security_group_id        = var.prometheus_blackbox_exporter_security_group_id
+  source_security_group_id = var.prometheus_blackbox_exporter_alb_id
 }
 
 resource "aws_security_group_rule" "allow_black_box_exporter_alb_egress" {
@@ -658,8 +659,8 @@ resource "aws_security_group_rule" "allow_black_box_exporter_alb_egress" {
   to_port   = 9116
   type      = "egress"
 
-  source_security_group_id = data.aws_security_group.prometheus_blackbox_exporter_security_group.id
-  security_group_id        = data.aws_security_group.prometheus_blackbox_exporter_alb.id
+  source_security_group_id = var.prometheus_blackbox_exporter_security_group_id
+  security_group_id        = var.prometheus_blackbox_exporter_alb_id
 }
 
 # tfsec:ignore:aws-vpc-no-public-egress-sgr
@@ -671,7 +672,7 @@ resource "aws_security_group_rule" "allow_bbe_containers_https_egress" {
   to_port   = 443
   type      = "egress"
 
-  security_group_id = data.aws_security_group.prometheus_blackbox_exporter_security_group.id
+  security_group_id = var.prometheus_blackbox_exporter_security_group_id
   cidr_blocks       = ["0.0.0.0/0"] #tfsec:ignore:AWS007
 }
 
@@ -683,7 +684,7 @@ resource "aws_security_group_rule" "allow_bbe_containers_pnc_egress" {
   to_port   = local.pnc_port
   type      = "egress"
 
-  security_group_id = data.aws_security_group.prometheus_blackbox_exporter_security_group.id
+  security_group_id = var.prometheus_blackbox_exporter_security_group_id
   cidr_blocks       = var.allowed_ingress_cidr
 }
 
@@ -695,8 +696,8 @@ resource "aws_security_group_rule" "allow_user_service_bbe_ingress" {
   protocol  = "tcp"
   type      = "ingress"
 
-  security_group_id        = data.aws_security_group.user_service_alb.id
-  source_security_group_id = data.aws_security_group.prometheus_blackbox_exporter_security_group.id
+  security_group_id        = var.user_service_alb_id
+  source_security_group_id = var.prometheus_blackbox_exporter_security_group_id
 }
 
 resource "aws_security_group_rule" "allow_bbe_egress_to_user_service" {
@@ -707,80 +708,56 @@ resource "aws_security_group_rule" "allow_bbe_egress_to_user_service" {
   protocol  = "tcp"
   type      = "egress"
 
-  security_group_id        = data.aws_security_group.prometheus_blackbox_exporter_security_group.id
-  source_security_group_id = data.aws_security_group.user_service_alb.id
+  security_group_id        = var.prometheus_blackbox_exporter_security_group_id
+  source_security_group_id = var.user_service_alb_id
 }
 
-resource "aws_security_group_rule" "allow_bichard7_bbe_ingress" {
-  description = "Allow BBE containers Ingress into the Bichard7 ALB"
+resource "aws_security_group_rule" "allow_bichard_bbe_ingress" {
+  description = "Allow BBE containers Ingress into the bichard ALB"
 
   from_port = 443
   to_port   = 443
   protocol  = "tcp"
   type      = "ingress"
 
-  security_group_id        = data.aws_security_group.bichard_alb_web.id
-  source_security_group_id = data.aws_security_group.prometheus_blackbox_exporter_security_group.id
+  security_group_id        = var.bichard_alb_web_id
+  source_security_group_id = var.prometheus_blackbox_exporter_security_group_id
 }
 
-resource "aws_security_group_rule" "allow_bbe_egress_to_bichard7" {
-  description = "Allow BBE containers Ingress into the Bichard7 ALB"
+resource "aws_security_group_rule" "allow_bbe_egress_to_bichard" {
+  description = "Allow BBE containers Ingress into the bichard ALB"
 
   from_port = 443
   to_port   = 443
   protocol  = "tcp"
   type      = "egress"
 
-  security_group_id        = data.aws_security_group.prometheus_blackbox_exporter_security_group.id
-  source_security_group_id = data.aws_security_group.bichard_alb_web.id
+  security_group_id        = var.prometheus_blackbox_exporter_security_group_id
+  source_security_group_id = var.bichard_alb_web_id
 }
 
-resource "aws_security_group_rule" "allow_bichard7_backend_bbe_ingress" {
-  description = "Allow BBE containers Ingress into the Bichard7 backend ALB"
+resource "aws_security_group_rule" "allow_bichard_backend_bbe_ingress" {
+  description = "Allow BBE containers Ingress into the bichard backend ALB"
 
   from_port = 443
   to_port   = 443
   protocol  = "tcp"
   type      = "ingress"
 
-  security_group_id        = data.aws_security_group.bichard7_alb_backend.id
-  source_security_group_id = data.aws_security_group.prometheus_blackbox_exporter_security_group.id
+  security_group_id        = var.bichard_alb_backend_id
+  source_security_group_id = var.prometheus_blackbox_exporter_security_group_id
 }
 
-resource "aws_security_group_rule" "allow_bbe_egress_to_bichard7_backend" {
-  description = "Allow BBE containers Ingress into the Bichard7 Backend ALB"
+resource "aws_security_group_rule" "allow_bbe_egress_to_bichard_backend" {
+  description = "Allow BBE containers Ingress into the bichard Backend ALB"
 
   from_port = 443
   to_port   = 443
   protocol  = "tcp"
   type      = "egress"
 
-  security_group_id        = data.aws_security_group.prometheus_blackbox_exporter_security_group.id
-  source_security_group_id = data.aws_security_group.bichard7_alb_backend.id
-}
-
-resource "aws_security_group_rule" "allow_audit_logging_bbe_ingress" {
-  description = "Allow BBE containers Ingress into the Audit Logging ALB"
-
-  from_port = 443
-  to_port   = 443
-  protocol  = "tcp"
-  type      = "ingress"
-
-  security_group_id        = data.aws_security_group.audit_logging_portal_alb.id
-  source_security_group_id = data.aws_security_group.prometheus_blackbox_exporter_security_group.id
-}
-
-resource "aws_security_group_rule" "allow_bbe_egress_to_audit_logging" {
-  description = "Allow BBE containers Ingress into the Audit Logging ALB"
-
-  from_port = 443
-  to_port   = 443
-  protocol  = "tcp"
-  type      = "egress"
-
-  security_group_id        = data.aws_security_group.prometheus_blackbox_exporter_security_group.id
-  source_security_group_id = data.aws_security_group.audit_logging_portal_alb.id
+  security_group_id        = var.prometheus_blackbox_exporter_security_group_id
+  source_security_group_id = var.bichard_alb_backend_id
 }
 
 resource "aws_security_group_rule" "allow_bbe_containers_https_to_vpc" {
@@ -791,6 +768,6 @@ resource "aws_security_group_rule" "allow_bbe_containers_https_to_vpc" {
   to_port   = 443
   type      = "egress"
 
-  security_group_id = data.aws_security_group.prometheus_blackbox_exporter_security_group.id
+  security_group_id = var.prometheus_blackbox_exporter_security_group_id
   cidr_blocks       = var.allowed_ingress_cidr
 }

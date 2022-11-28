@@ -1,26 +1,3 @@
-resource "random_password" "admin_htaccess_password" {
-  length  = 24
-  special = false
-}
-
-resource "aws_ssm_parameter" "admin_htaccess_username" {
-  name      = "/${var.name}/monitoring/prometheus/username"
-  type      = "SecureString"
-  value     = "bichard"
-  overwrite = true
-
-  tags = var.tags
-}
-
-resource "aws_ssm_parameter" "admin_htaccess_password" {
-  name      = "/${var.name}/monitoring/prometheus/password"
-  type      = "SecureString"
-  value     = random_password.admin_htaccess_password.result
-  overwrite = true
-
-  tags = var.tags
-}
-
 resource "aws_ecs_task_definition" "prometheus_tasks" {
   family             = "${var.name}-prometheus"
   execution_role_arn = aws_iam_role.prometheus_task_role.arn
@@ -31,7 +8,7 @@ resource "aws_ecs_task_definition" "prometheus_tasks" {
   cpu                      = 2048
 
   task_role_arn         = aws_iam_role.prometheus_task_role.arn
-  container_definitions = data.template_file.prometheus_ecs_task.rendered
+  container_definitions = base64decode(var.prometheus_ecs_task_def)
 
   volume {
     name = "${var.name}-prometheus-data"
@@ -61,7 +38,7 @@ resource "aws_ecs_service" "prometheus_service" {
 
   network_configuration {
     security_groups = [
-      data.aws_security_group.prometheus_security_group.id
+      var.prometheus_security_group_id
     ]
     subnets = var.service_subnets
   }
@@ -89,7 +66,7 @@ resource "aws_alb" "prometheus_alb" {
   subnets = var.service_subnets
 
   security_groups = [
-    data.aws_security_group.prometheus_alb.id
+    var.prometheus_alb_id
   ]
   internal     = true
   idle_timeout = var.idle_timeout
@@ -112,7 +89,7 @@ resource "aws_alb" "prometheus_alert_manager_alb" {
   subnets = var.service_subnets
 
   security_groups = [
-    data.aws_security_group.prometheus_alert_manager_alb.id
+    var.prometheus_alert_manager_alb_id
   ]
   internal = true
 
@@ -225,6 +202,12 @@ resource "aws_route53_record" "prometheus_public_record" {
 
   ttl     = 60
   records = [aws_alb.prometheus_alb.dns_name]
+
+  lifecycle {
+    ignore_changes = [
+      name
+    ]
+  }
 }
 
 resource "aws_route53_record" "prometheus_alert_manager_public_record" {
@@ -234,6 +217,12 @@ resource "aws_route53_record" "prometheus_alert_manager_public_record" {
 
   ttl     = 60
   records = [aws_alb.prometheus_alert_manager_alb.dns_name]
+
+  lifecycle {
+    ignore_changes = [
+      name
+    ]
+  }
 }
 
 resource "aws_route53_record" "prometheus_internal_record" {
@@ -243,6 +232,12 @@ resource "aws_route53_record" "prometheus_internal_record" {
 
   ttl     = 30
   records = [aws_alb.prometheus_alb.dns_name]
+
+  lifecycle {
+    ignore_changes = [
+      name
+    ]
+  }
 }
 
 
@@ -253,4 +248,10 @@ resource "aws_route53_record" "prometheus_alert_manager_internal_record" {
 
   ttl     = 30
   records = [aws_alb.prometheus_alb.dns_name]
+
+  lifecycle {
+    ignore_changes = [
+      name
+    ]
+  }
 }

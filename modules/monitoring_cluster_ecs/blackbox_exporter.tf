@@ -8,7 +8,7 @@ resource "aws_ecs_task_definition" "prometheus_blackbox_exporter_tasks" {
   cpu                      = 2048
 
   task_role_arn         = aws_iam_role.prometheus_task_role.arn
-  container_definitions = data.template_file.prometheus_blackbox_exporter_ecs_task.rendered
+  container_definitions = base64decode(var.prometheus_blackbox_exporter_ecs_task_def)
 
   tags = var.tags
 }
@@ -24,7 +24,7 @@ resource "aws_ecs_service" "prometheus_blackbox_exporter_service" {
 
   network_configuration {
     security_groups = [
-      data.aws_security_group.prometheus_blackbox_exporter_security_group.id
+      var.prometheus_blackbox_exporter_security_group_id
     ]
     subnets = var.service_subnets
   }
@@ -44,7 +44,7 @@ resource "aws_alb" "prometheus_blackbox_exporter_alb" {
 
   subnets = var.service_subnets
   security_groups = [
-    data.aws_security_group.prometheus_blackbox_exporter_alb.id
+    var.prometheus_blackbox_exporter_alb_id
   ]
   internal     = true
   idle_timeout = var.idle_timeout
@@ -102,4 +102,10 @@ resource "aws_route53_record" "prometheus_blackbox_exporter_private_dns" {
   zone_id = var.private_zone_id
   ttl     = 60
   records = [aws_alb.prometheus_blackbox_exporter_alb.dns_name]
+
+  lifecycle {
+    ignore_changes = [
+      name
+    ]
+  }
 }
