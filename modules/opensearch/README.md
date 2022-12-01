@@ -141,4 +141,5 @@ $ARTIFACT_BUCKET=xxx aws-vault exec your-shared-credentials -- ./scripts/upload_
 | <a name="output_elasticsearch_user_ssm_name"></a> [elasticsearch\_user\_ssm\_name](#output\_elasticsearch\_user\_ssm\_name) | The name of our ssm user parameter |
 | <a name="output_elk_endpoint"></a> [elk\_endpoint](#output\_elk\_endpoint) | The internal fqdn for ElasticSearch |
 | <a name="output_elk_kibana_endpoint"></a> [elk\_kibana\_endpoint](#output\_elk\_kibana\_endpoint) | The internal fqdn for Kibana |
+| <a name="output_os_password_arn"></a> [os\_password\_arn](#output\_os\_password\_arn) | n/a |
 <!-- END_TF_DOCS -->

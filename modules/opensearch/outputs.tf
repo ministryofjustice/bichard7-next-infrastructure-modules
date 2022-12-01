@@ -18,3 +18,11 @@ output "elasticsearch_user_ssm_name" {
   value       = aws_ssm_parameter.es_user.name
   sensitive   = true
 }
+
+output "os_username_arn" {
+  value = aws_ssm_parameter.es_user.arn
+}
+
+output "os_password_arn" {
+  value = aws_secretsmanager_secret_version.os_password.arn
+}
