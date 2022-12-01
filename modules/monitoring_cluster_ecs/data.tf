@@ -116,7 +116,7 @@ data "template_file" "grafana_ecs_task" {
     database_password_arn      = aws_ssm_parameter.grafana_db_password.arn
     grafana_admin              = aws_ssm_parameter.grafana_admin_username.value
     grafana_admin_password_arn = aws_ssm_parameter.grafana_admin_password.arn
-    grafana_secret_key_arn     = aws_ssm_parameter.grafana_secret_key.value
+    grafana_secret_key_arn     = aws_ssm_parameter.grafana_secret_key.arn
 
     # Prometheus Datasource Config
     prometheus_url          = "https://${aws_route53_record.prometheus_public_record.fqdn}"
