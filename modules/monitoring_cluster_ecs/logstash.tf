@@ -8,7 +8,7 @@ resource "aws_ecs_task_definition" "logstash_tasks" {
   cpu                      = 2048
 
   task_role_arn         = aws_iam_role.prometheus_task_role.arn
-  container_definitions = data.template_file.logstash.rendered
+  container_definitions = base64decode(var.logstash_ecs_task_def)
 
   tags = var.tags
 }
@@ -24,7 +24,7 @@ resource "aws_ecs_service" "logstash_service" {
 
   network_configuration {
     security_groups = [
-      data.aws_security_group.logstash_security_group.id
+      var.logstash_security_group_id
     ]
     subnets = var.service_subnets
   }
@@ -44,7 +44,7 @@ resource "aws_alb" "logstash_alb" {
 
   subnets = var.service_subnets
   security_groups = [
-    data.aws_security_group.logstash_alb_security_group.id
+    var.logstash_alb_security_group_id
   ]
   internal     = true
   idle_timeout = var.idle_timeout
@@ -102,4 +102,10 @@ resource "aws_route53_record" "logstash_private_dns" {
   zone_id = var.private_zone_id
   ttl     = 60
   records = [aws_alb.logstash_alb.dns_name]
+
+  lifecycle {
+    ignore_changes = [
+      name
+    ]
+  }
 }

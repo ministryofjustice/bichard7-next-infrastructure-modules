@@ -23,7 +23,7 @@ resource "aws_iam_role_policy_attachment" "attach_cloudwatch_readonly" {
 
 ## Prometheus Cloudwatch SSM
 resource "aws_iam_policy" "prometheus_cloudwatch_ssm" {
-  policy = data.template_file.allow_ssm.rendered
+  policy = data.template_file.allow_ssm_policy.rendered
 
   name = "PrometheusAllowSSM-${var.name}"
   tags = var.tags

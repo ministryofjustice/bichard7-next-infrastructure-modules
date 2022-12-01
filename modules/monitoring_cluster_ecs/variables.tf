@@ -34,21 +34,12 @@ variable "vpc_id" {
 variable "allowed_ingress_cidr" {
   description = "An allowed list of ingress CIDRS in our vpc"
   type        = list(string)
+  default     = []
 }
 
 variable "service_subnets" {
   description = "A list of our subnets"
   type        = list(string)
-}
-
-variable "prometheus_image" {
-  type        = string
-  description = "The ecr image we want to deploy"
-}
-
-variable "prometheus_cloudwatch_exporter_image" {
-  type        = string
-  description = "The ecr image we want to deploy"
 }
 
 variable "public_zone_id" {
@@ -157,21 +148,6 @@ variable "slack_webhook_url" {
   type        = string
 }
 
-variable "logstash_image" {
-  description = "The logstash image we wish to deploy"
-  type        = string
-}
-
-variable "elasticsearch_host" {
-  description = "The elasticsearch host"
-  type        = string
-}
-
-variable "prometheus_blackbox_exporter_image" {
-  description = "The url of our prometheus blackbox exporter image ecs image we want to use"
-  type        = string
-}
-
 variable "grafana_db_instance_class" {
   description = "The class of DB instance we are using for Grafana"
   default     = "db.t4g.medium"
@@ -194,4 +170,104 @@ variable "idle_timeout" {
   description = "How long in seconds before we terminate a connection"
   type        = number
   default     = 180
+}
+
+### Security groups
+variable "prometheus_exporter_security_group_id" {
+  type = string
+}
+
+variable "prometheus_cloudwatch_exporter_alb_id" {
+  type = string
+}
+
+variable "prometheus_blackbox_exporter_security_group_id" {
+  type = string
+}
+
+variable "prometheus_blackbox_exporter_alb_id" {
+  type = string
+}
+
+variable "prometheus_security_group_id" {
+  type = string
+}
+
+variable "prometheus_alb_id" {
+  type = string
+}
+
+variable "prometheus_alert_manager_alb_id" {
+  type = string
+}
+
+variable "grafana_security_group_id" {
+  type = string
+}
+
+variable "grafana_alb_security_group_id" {
+  type = string
+}
+
+variable "grafana_db_security_group_id" {
+  type = string
+}
+
+variable "logstash_security_group_id" {
+  type = string
+}
+
+variable "logstash_alb_security_group_id" {
+  type = string
+}
+
+variable "opensearch_security_group_id" {
+  type = string
+}
+
+variable "user_service_alb_id" {
+  type = string
+}
+
+variable "bichard_alb_web_id" {
+  type = string
+}
+
+variable "bichard_alb_backend_id" {
+  type = string
+}
+
+variable "prometheus_ecs_task_def" {
+  description = "ecs task definition base encoded"
+  type        = string
+}
+
+variable "prometheus_blackbox_exporter_ecs_task_def" {
+  description = "ecs task definition base encoded"
+  type        = string
+}
+
+variable "prometheus_cloudwatch_exporter_ecs_task_def" {
+  description = "ecs task definition base encoded"
+  type        = string
+}
+
+variable "logstash_ecs_task_def" {
+  description = "ecs task definition base encoded"
+  type        = string
+}
+
+variable "admin_htaccess_username" {
+  description = "prometheus username"
+  type        = string
+}
+
+variable "admin_htaccess_password_arn" {
+  description = "prometheus password arn"
+  type        = string
+}
+
+variable "os_username_arn" {
+  description = "opensearch username arn"
+  type        = string
 }
