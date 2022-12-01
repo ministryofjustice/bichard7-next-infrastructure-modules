@@ -5,8 +5,13 @@ from enum import IntEnum
 
 excluded_projects = [
     "apply-dev-sgs-to-load-test",
-    "deploy-intergration-baseline-load-test",
+    "deploy-integration-baseline-load-test",
     "destroy-integration-baseline-load-test",
+    "destroy-integration-baseline-e2e-test",
+    "destroy-qsolution-preprod",
+    "destroy-qsolution-production",
+    "restart-load-test-pnc-emulator-container",
+    "restart-load-test-migrations",
     "remove-dev-sgs-from-load-test"
 ]
 
