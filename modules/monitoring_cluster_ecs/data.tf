@@ -34,15 +34,6 @@ data "template_file" "allow_kms_access" {
   }
 }
 
-data "template_file" "allow_sns_publish_policy" {
-  template = file("${path.module}/policies/allow_sns_policy.json.tpl")
-
-  vars = {
-    account_id    = data.aws_caller_identity.current.account_id
-    sns_topic_arn = aws_sns_topic.alert_notifications.arn
-  }
-}
-
 ### Iam
 data "template_file" "allow_ssm_policy" {
   template = file("${path.module}/policies/allow_ssm.json.tpl")
@@ -179,7 +170,7 @@ data "template_file" "allow_sns_events_publish" {
   template = file("${path.module}/policies/allow_sns_events_publish.json.tpl")
 
   vars = {
-    sns_topic_arn = aws_sns_topic.alert_notifications.arn
+    sns_topic_arn = var.sns_alert_notifications_arn
   }
 }
 
@@ -187,7 +178,7 @@ data "template_file" "allow_notifications_kms_access" {
   template = file("${path.module}/policies/allow_notifications_kms_access.json.tpl")
 
   vars = {
-    kms_key_arn = aws_kms_key.alert_notifications_key.arn
+    kms_key_arn = var.kms_key_alert_notifications_arn
   }
 }
 

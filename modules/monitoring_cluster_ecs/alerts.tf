@@ -1,29 +1,3 @@
-resource "aws_kms_key" "alert_notifications_key" {
-  description             = "${var.name}-alert-notifications-encryption-key"
-  enable_key_rotation     = true
-  deletion_window_in_days = 10
-
-  tags = var.tags
-}
-
-resource "aws_kms_alias" "alert_notifications_key_alias" {
-  name          = "alias/${var.name}-alert-notifications"
-  target_key_id = aws_kms_key.alert_notifications_key.arn
-}
-
-resource "aws_sns_topic" "alert_notifications" {
-  name              = "${var.name}-prometheus-alert-notifications"
-  display_name      = title(replace("${var.name}-prometheus-alert-notifications", "-", " "))
-  kms_master_key_id = aws_kms_key.alert_notifications_key.arn
-
-  tags = var.tags
-}
-
-resource "aws_sns_topic_policy" "default" {
-  arn    = aws_sns_topic.alert_notifications.arn
-  policy = data.template_file.allow_sns_publish_policy.rendered
-}
-
 ### Lambda
 resource "aws_iam_role" "scanning_notification" {
   name               = "${var.name}-AllowAlertNotifications"
@@ -60,14 +34,14 @@ resource "aws_lambda_permission" "prometheus_alerts" {
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.prometheus_alerts[count.index].function_name
   principal     = "sns.amazonaws.com"
-  source_arn    = aws_sns_topic.alert_notifications.arn
+  source_arn    = var.sns_alert_notifications_arn
 }
 
 resource "aws_sns_topic_subscription" "prometheus_alerts_subscription" {
   count     = local.provision_alerts
   endpoint  = aws_lambda_function.prometheus_alerts[count.index].arn
   protocol  = "lambda"
-  topic_arn = aws_sns_topic.alert_notifications.arn
+  topic_arn = var.sns_alert_notifications_arn
 }
 
 # tfsec:ignore:aws-iam-no-policy-wildcards

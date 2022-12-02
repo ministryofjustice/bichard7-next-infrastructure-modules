@@ -271,3 +271,11 @@ variable "os_username_arn" {
   description = "opensearch username arn"
   type        = string
 }
+
+variable "sns_alert_notifications_arn" {
+  type = string
+}
+
+variable "kms_key_alert_notifications_arn" {
+  type = string
+}

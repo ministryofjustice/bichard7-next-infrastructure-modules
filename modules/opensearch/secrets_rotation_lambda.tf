@@ -73,6 +73,7 @@ EOF
   ]
 }
 
+#tfsec:ignore:aws-lambda-enable-tracing
 resource "aws_lambda_function" "secrets_rotation_lambda" {
   filename         = data.archive_file.secrets_rotation_lambda.output_path
   source_code_hash = data.archive_file.secrets_rotation_lambda.output_base64sha256

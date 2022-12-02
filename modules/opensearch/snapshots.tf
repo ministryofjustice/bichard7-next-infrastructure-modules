@@ -1,3 +1,4 @@
+#tfsec:ignore:aws-s3-encryption-customer-key
 resource "aws_s3_bucket" "snapshot" {
   bucket = "${var.name}-opensearch-snapshots"
   acl    = "private"
