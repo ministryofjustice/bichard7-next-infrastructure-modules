@@ -1,5 +1,5 @@
 data "docker_registry_image" "scoutsuite" {
-  name = "rossja/ncc-scoutsuite:latest"
+  name = "rossja/ncc-scoutsuite:aws-latest"
 }
 # Get our image hashes
 data "external" "scoutsuite_hash" {

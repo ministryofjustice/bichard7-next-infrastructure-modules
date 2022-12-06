@@ -146,5 +146,6 @@ $ARTIFACT_BUCKET=xxx aws-vault exec your-shared-credentials -- ./scripts/upload_
 | <a name="output_elk_endpoint"></a> [elk_endpoint](#output_elk_endpoint)                                              | The internal fqdn for ElasticSearch |
 | <a name="output_elk_kibana_endpoint"></a> [elk_kibana_endpoint](#output_elk_kibana_endpoint)                         | The internal fqdn for Kibana        |
 | <a name="output_os_password_arn"></a> [os_password_arn](#output_os_password_arn)                                     | n/a                                 |
+| <a name="output_os_username_arn"></a> [os_username_arn](#output_os_username_arn)                                     | n/a                                 |
 
 <!-- END_TF_DOCS -->
