@@ -72,6 +72,14 @@ module "vpc_endpoints" {
         Name = "${var.tags["Name"]}-dynamodb"
       }
     },
+    sqs = {
+      service             = "sqs"
+      private_dns_enabled = true
+      subnet_ids          = module.vpc.private_subnets
+      tags = {
+        Name = "${var.tags["Name"]}-sqs"
+      }
+    },
     ssm = {
       service             = "ssm"
       private_dns_enabled = true
