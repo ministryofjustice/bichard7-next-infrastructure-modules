@@ -8,10 +8,13 @@ excluded_projects = [
     "deploy-integration-baseline-load-test",
     "destroy-integration-baseline-load-test",
     "destroy-integration-baseline-e2e-test",
+    "destroy-integration-next-e2e-test",
     "destroy-qsolution-preprod",
     "destroy-qsolution-production",
     "restart-load-test-pnc-emulator-container",
     "restart-load-test-migrations",
+    "run-load-test",
+    "run-load-test-migrations",
     "remove-dev-sgs-from-load-test"
 ]
 
