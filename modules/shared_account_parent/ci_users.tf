@@ -1,3 +1,4 @@
+# tfsec:ignore:aws-iam-no-user-attached-policies
 resource "aws_iam_user" "ci_user" {
   name = data.aws_ssm_parameter.ci_user.value
   path = "/system/"

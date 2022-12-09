@@ -12,6 +12,7 @@ resource "aws_kms_alias" "lambda_trail_encryption" {
   name          = "alias/${var.name}-lambda-cloudtrail"
 }
 
+# tfsec:ignore:aws-cloudtrail-ensure-cloudwatch-integration
 resource "aws_cloudtrail" "lambda_trail" {
   name                          = "${var.name}-lambdas"
   s3_bucket_name                = aws_s3_bucket.lambda_logs_bucket.id
@@ -35,7 +36,7 @@ resource "aws_cloudtrail" "lambda_trail" {
   tags = var.tags
 }
 
-# tfsec:ignore:aws-s3-enable-bucket-logging
+# tfsec:ignore:aws-s3-enable-bucket-logging tfsec:ignore:aws-s3-encryption-customer-key
 resource "aws_s3_bucket" "lambda_logs_bucket" {
   bucket        = "${var.name}-lambdas-cloudtrail"
   force_destroy = true

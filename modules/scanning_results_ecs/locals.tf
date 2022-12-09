@@ -1,6 +1,6 @@
 locals {
   name            = "${var.name}-scanning"
-  alb_name        = (length(local.name) > 32) ? trim(substr(local.name, 0, 32), "-") : local.name
+  alb_name        = (length(var.name) > 32) ? trim(substr(var.name, 0, 32), "-") : var.name
   alb_name_prefix = lower(substr(replace(local.name, "-", ""), 0, 6))
 
   scanning_image = "${data.aws_ecr_repository.scanning_portal.repository_url}@${data.external.scanning_portal_latest_image.result.tags}"

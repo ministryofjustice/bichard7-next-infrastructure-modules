@@ -1,6 +1,6 @@
 locals {
   name               = var.name
-  alb_name           = (length(local.name) > 32) ? trim(substr(local.name, 0, 32), "-") : local.name
+  alb_name           = (length(var.name) > 32) ? trim(substr(var.name, 0, 32), "-") : var.name
   alb_name_prefix    = lower(substr(replace(local.name, "-", ""), 0, 6))
   s3_web_proxy_image = var.s3_web_proxy_image
 
