@@ -1,3 +1,4 @@
+# tfsec:ignore:aws-iam-no-user-attached-policies
 resource "aws_iam_user" "s3_web_proxy_user" {
   name = "${var.service_id}.user"
   path = "/system/"

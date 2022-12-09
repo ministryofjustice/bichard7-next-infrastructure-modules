@@ -1,3 +1,4 @@
+# tfsec:ignore:aws-iam-no-user-attached-policies
 resource "aws_iam_user" "scanning_bucket_user" {
   name = "scanning.results.reader"
   path = "/system/"

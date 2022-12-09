@@ -68,6 +68,6 @@ resource "aws_security_group_rule" "resource_to_beanconnect_egress" {
   from_port         = 31004
   to_port           = 31004
 
-  #tfsec:ignore:aws-vpc-no-public-ingress-sgr
+  #tfsec:ignore:aws-ec2-no-public-egress-sgr
   cidr_blocks = ["0.0.0.0/0"] #tfsec:ignore:AWS007
 }

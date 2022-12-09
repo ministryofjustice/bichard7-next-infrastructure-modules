@@ -1,3 +1,4 @@
+#tfsec:ignore:aws-s3-encryption-customer-key
 resource "aws_s3_bucket" "static_file_bucket" {
   bucket = local.static_files_bucket_name
   acl    = "private"
