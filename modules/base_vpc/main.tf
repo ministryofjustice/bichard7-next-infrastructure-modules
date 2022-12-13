@@ -72,6 +72,30 @@ module "vpc_endpoints" {
         Name = "${var.tags["Name"]}-dynamodb"
       }
     },
+    airflow_api = {
+      service             = "airflow.api"
+      private_dns_enabled = true
+      subnet_ids          = module.vpc.private_subnets
+      tags = {
+        Name = "${var.tags["Name"]}-airflow-api"
+      }
+    },
+    airflow_env = {
+      service             = "airflow.env"
+      private_dns_enabled = true
+      subnet_ids          = module.vpc.private_subnets
+      tags = {
+        Name = "${var.tags["Name"]}-airflow-env"
+      }
+    },
+    airflow_ops = {
+      service             = "airflow.ops"
+      private_dns_enabled = true
+      subnet_ids          = module.vpc.private_subnets
+      tags = {
+        Name = "${var.tags["Name"]}-airflow-ops"
+      }
+    },
     sqs = {
       service             = "sqs"
       private_dns_enabled = true
