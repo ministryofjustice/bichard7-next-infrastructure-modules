@@ -1,2 +1,0 @@
-curator-opensearch
-requests_aws4auth
